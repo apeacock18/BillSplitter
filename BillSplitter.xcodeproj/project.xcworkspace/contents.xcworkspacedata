@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:p2.xcodeproj">
+      location = "self:/Users/apeacock/Desktop/p2/BillSplitter.xcodeproj">
    </FileRef>
 </Workspace>

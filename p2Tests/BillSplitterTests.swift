@@ -1,15 +1,7 @@
-//
-//  p2Tests.swift
-//  p2Tests
-//
-//  Created by Andrew Peacock on 3/10/16.
-//  Copyright © 2016 Andrew Peacock. All rights reserved.
-//
-
 import XCTest
-@testable import p2
+@testable import BillSplitter
 
-class p2Tests: XCTestCase {
+class BillSplitterTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

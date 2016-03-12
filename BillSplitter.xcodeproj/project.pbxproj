@@ -12,8 +12,8 @@
 		1D63E4AA1C922CE900D8863B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D63E4A81C922CE900D8863B /* Main.storyboard */; };
 		1D63E4AC1C922CE900D8863B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D63E4AB1C922CE900D8863B /* Assets.xcassets */; };
 		1D63E4AF1C922CE900D8863B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D63E4AD1C922CE900D8863B /* LaunchScreen.storyboard */; };
-		1D63E4BA1C922CEA00D8863B /* p2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4B91C922CEA00D8863B /* p2Tests.swift */; };
-		1D63E4C51C922CEA00D8863B /* p2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4C41C922CEA00D8863B /* p2UITests.swift */; };
+		1D63E4BA1C922CEA00D8863B /* BillSplitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4B91C922CEA00D8863B /* BillSplitterTests.swift */; };
+		1D63E4C51C922CEA00D8863B /* BillSplitterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4C41C922CEA00D8863B /* BillSplitterUITests.swift */; };
 		1D63E4D51C9288EC00D8863B /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4D41C9288EC00D8863B /* TransactionTableViewCell.swift */; };
 		1D63E4DD1C937BB000D8863B /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4DB1C937BB000D8863B /* TransactionTableViewController.swift */; };
 		1D63E4DF1C937E9300D8863B /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4DE1C937E9300D8863B /* Transaction.swift */; };
@@ -37,18 +37,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1D63E4A11C922CE900D8863B /* p2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D63E4A11C922CE900D8863B /* BillSplitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BillSplitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D63E4A41C922CE900D8863B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D63E4A61C922CE900D8863B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1D63E4A91C922CE900D8863B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1D63E4AB1C922CE900D8863B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D63E4AE1C922CE900D8863B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D63E4B01C922CE900D8863B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1D63E4B51C922CEA00D8863B /* p2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = p2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D63E4B91C922CEA00D8863B /* p2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = p2Tests.swift; sourceTree = "<group>"; };
+		1D63E4B51C922CEA00D8863B /* BillSplitter.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BillSplitter.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D63E4B91C922CEA00D8863B /* BillSplitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillSplitterTests.swift; sourceTree = "<group>"; };
 		1D63E4BB1C922CEA00D8863B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1D63E4C01C922CEA00D8863B /* p2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = p2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D63E4C41C922CEA00D8863B /* p2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = p2UITests.swift; sourceTree = "<group>"; };
+		1D63E4C01C922CEA00D8863B /* BillSplitter.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BillSplitter.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D63E4C41C922CEA00D8863B /* BillSplitterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillSplitterUITests.swift; sourceTree = "<group>"; };
 		1D63E4C61C922CEA00D8863B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D63E4D41C9288EC00D8863B /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		1D63E4DB1C937BB000D8863B /* TransactionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
@@ -84,9 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				1D63E4D41C9288EC00D8863B /* TransactionTableViewCell.swift */,
-				1D63E4A31C922CE900D8863B /* p2 */,
-				1D63E4B81C922CEA00D8863B /* p2Tests */,
-				1D63E4C31C922CEA00D8863B /* p2UITests */,
+				1D63E4A31C922CE900D8863B /* BillSplitter */,
+				1D63E4B81C922CEA00D8863B /* BillSplitterTests */,
+				1D63E4C31C922CEA00D8863B /* BillSplitterUITests */,
 				1D63E4A21C922CE900D8863B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,14 +94,14 @@
 		1D63E4A21C922CE900D8863B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D63E4A11C922CE900D8863B /* p2.app */,
-				1D63E4B51C922CEA00D8863B /* p2Tests.xctest */,
-				1D63E4C01C922CEA00D8863B /* p2UITests.xctest */,
+				1D63E4A11C922CE900D8863B /* BillSplitter.app */,
+				1D63E4B51C922CEA00D8863B /* BillSplitter.xctest */,
+				1D63E4C01C922CEA00D8863B /* BillSplitter.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1D63E4A31C922CE900D8863B /* p2 */ = {
+		1D63E4A31C922CE900D8863B /* BillSplitter */ = {
 			isa = PBXGroup;
 			children = (
 				1D63E4DB1C937BB000D8863B /* TransactionTableViewController.swift */,
@@ -113,33 +113,36 @@
 				1D63E4AD1C922CE900D8863B /* LaunchScreen.storyboard */,
 				1D63E4B01C922CE900D8863B /* Info.plist */,
 			);
+			name = BillSplitter;
 			path = p2;
 			sourceTree = "<group>";
 		};
-		1D63E4B81C922CEA00D8863B /* p2Tests */ = {
+		1D63E4B81C922CEA00D8863B /* BillSplitterTests */ = {
 			isa = PBXGroup;
 			children = (
-				1D63E4B91C922CEA00D8863B /* p2Tests.swift */,
+				1D63E4B91C922CEA00D8863B /* BillSplitterTests.swift */,
 				1D63E4BB1C922CEA00D8863B /* Info.plist */,
 			);
+			name = BillSplitterTests;
 			path = p2Tests;
 			sourceTree = "<group>";
 		};
-		1D63E4C31C922CEA00D8863B /* p2UITests */ = {
+		1D63E4C31C922CEA00D8863B /* BillSplitterUITests */ = {
 			isa = PBXGroup;
 			children = (
-				1D63E4C41C922CEA00D8863B /* p2UITests.swift */,
+				1D63E4C41C922CEA00D8863B /* BillSplitterUITests.swift */,
 				1D63E4C61C922CEA00D8863B /* Info.plist */,
 			);
+			name = BillSplitterUITests;
 			path = p2UITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D63E4A01C922CE900D8863B /* p2 */ = {
+		1D63E4A01C922CE900D8863B /* BillSplitter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D63E4C91C922CEA00D8863B /* Build configuration list for PBXNativeTarget "p2" */;
+			buildConfigurationList = 1D63E4C91C922CEA00D8863B /* Build configuration list for PBXNativeTarget "BillSplitter" */;
 			buildPhases = (
 				1D63E49D1C922CE900D8863B /* Sources */,
 				1D63E49E1C922CE900D8863B /* Frameworks */,
@@ -149,14 +152,14 @@
 			);
 			dependencies = (
 			);
-			name = p2;
+			name = BillSplitter;
 			productName = p2;
-			productReference = 1D63E4A11C922CE900D8863B /* p2.app */;
+			productReference = 1D63E4A11C922CE900D8863B /* BillSplitter.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1D63E4B41C922CEA00D8863B /* p2Tests */ = {
+		1D63E4B41C922CEA00D8863B /* BillSplitterTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D63E4CC1C922CEA00D8863B /* Build configuration list for PBXNativeTarget "p2Tests" */;
+			buildConfigurationList = 1D63E4CC1C922CEA00D8863B /* Build configuration list for PBXNativeTarget "BillSplitterTests" */;
 			buildPhases = (
 				1D63E4B11C922CEA00D8863B /* Sources */,
 				1D63E4B21C922CEA00D8863B /* Frameworks */,
@@ -167,14 +170,14 @@
 			dependencies = (
 				1D63E4B71C922CEA00D8863B /* PBXTargetDependency */,
 			);
-			name = p2Tests;
+			name = BillSplitterTests;
 			productName = p2Tests;
-			productReference = 1D63E4B51C922CEA00D8863B /* p2Tests.xctest */;
+			productReference = 1D63E4B51C922CEA00D8863B /* BillSplitter.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		1D63E4BF1C922CEA00D8863B /* p2UITests */ = {
+		1D63E4BF1C922CEA00D8863B /* BillSplitterUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D63E4CF1C922CEA00D8863B /* Build configuration list for PBXNativeTarget "p2UITests" */;
+			buildConfigurationList = 1D63E4CF1C922CEA00D8863B /* Build configuration list for PBXNativeTarget "BillSplitterUITests" */;
 			buildPhases = (
 				1D63E4BC1C922CEA00D8863B /* Sources */,
 				1D63E4BD1C922CEA00D8863B /* Frameworks */,
@@ -185,9 +188,9 @@
 			dependencies = (
 				1D63E4C21C922CEA00D8863B /* PBXTargetDependency */,
 			);
-			name = p2UITests;
+			name = BillSplitterUITests;
 			productName = p2UITests;
-			productReference = 1D63E4C01C922CEA00D8863B /* p2UITests.xctest */;
+			productReference = 1D63E4C01C922CEA00D8863B /* BillSplitter.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -213,7 +216,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1D63E49C1C922CE900D8863B /* Build configuration list for PBXProject "p2" */;
+			buildConfigurationList = 1D63E49C1C922CE900D8863B /* Build configuration list for PBXProject "BillSplitter" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -226,9 +229,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D63E4A01C922CE900D8863B /* p2 */,
-				1D63E4B41C922CEA00D8863B /* p2Tests */,
-				1D63E4BF1C922CEA00D8863B /* p2UITests */,
+				1D63E4A01C922CE900D8863B /* BillSplitter */,
+				1D63E4B41C922CEA00D8863B /* BillSplitterTests */,
+				1D63E4BF1C922CEA00D8863B /* BillSplitterUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -277,7 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D63E4BA1C922CEA00D8863B /* p2Tests.swift in Sources */,
+				1D63E4BA1C922CEA00D8863B /* BillSplitterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D63E4C51C922CEA00D8863B /* p2UITests.swift in Sources */,
+				1D63E4C51C922CEA00D8863B /* BillSplitterUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,12 +297,12 @@
 /* Begin PBXTargetDependency section */
 		1D63E4B71C922CEA00D8863B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1D63E4A01C922CE900D8863B /* p2 */;
+			target = 1D63E4A01C922CE900D8863B /* BillSplitter */;
 			targetProxy = 1D63E4B61C922CEA00D8863B /* PBXContainerItemProxy */;
 		};
 		1D63E4C21C922CEA00D8863B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1D63E4A01C922CE900D8863B /* p2 */;
+			target = 1D63E4A01C922CE900D8863B /* BillSplitter */;
 			targetProxy = 1D63E4C11C922CEA00D8863B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -412,8 +415,8 @@
 				INFOPLIST_FILE = p2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = asdf.p2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = info.gomeow;
+				PRODUCT_NAME = BillSplitter;
 			};
 			name = Debug;
 		};
@@ -424,8 +427,8 @@
 				INFOPLIST_FILE = p2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = asdf.p2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = info.gomeow;
+				PRODUCT_NAME = BillSplitter;
 			};
 			name = Release;
 		};
@@ -436,8 +439,8 @@
 				INFOPLIST_FILE = p2Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = asdf.p2Tests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/p2.app/p2";
+				PRODUCT_NAME = BillSplitter;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BillSplitter.app/BillSplitter";
 			};
 			name = Debug;
 		};
@@ -448,8 +451,8 @@
 				INFOPLIST_FILE = p2Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = asdf.p2Tests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/p2.app/p2";
+				PRODUCT_NAME = BillSplitter;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BillSplitter.app/BillSplitter";
 			};
 			name = Release;
 		};
@@ -459,7 +462,7 @@
 				INFOPLIST_FILE = p2UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = asdf.p2UITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BillSplitter;
 				TEST_TARGET_NAME = p2;
 				USES_XCTRUNNER = YES;
 			};
@@ -471,7 +474,7 @@
 				INFOPLIST_FILE = p2UITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = asdf.p2UITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BillSplitter;
 				TEST_TARGET_NAME = p2;
 				USES_XCTRUNNER = YES;
 			};
@@ -480,7 +483,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D63E49C1C922CE900D8863B /* Build configuration list for PBXProject "p2" */ = {
+		1D63E49C1C922CE900D8863B /* Build configuration list for PBXProject "BillSplitter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D63E4C71C922CEA00D8863B /* Debug */,
@@ -489,7 +492,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1D63E4C91C922CEA00D8863B /* Build configuration list for PBXNativeTarget "p2" */ = {
+		1D63E4C91C922CEA00D8863B /* Build configuration list for PBXNativeTarget "BillSplitter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D63E4CA1C922CEA00D8863B /* Debug */,
@@ -497,7 +500,7 @@
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		1D63E4CC1C922CEA00D8863B /* Build configuration list for PBXNativeTarget "p2Tests" */ = {
+		1D63E4CC1C922CEA00D8863B /* Build configuration list for PBXNativeTarget "BillSplitterTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D63E4CD1C922CEA00D8863B /* Debug */,
@@ -505,7 +508,7 @@
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		1D63E4CF1C922CEA00D8863B /* Build configuration list for PBXNativeTarget "p2UITests" */ = {
+		1D63E4CF1C922CEA00D8863B /* Build configuration list for PBXNativeTarget "BillSplitterUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D63E4D01C922CEA00D8863B /* Debug */,

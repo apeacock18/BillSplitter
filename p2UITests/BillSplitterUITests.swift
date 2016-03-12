@@ -1,14 +1,6 @@
-//
-//  p2UITests.swift
-//  p2UITests
-//
-//  Created by Andrew Peacock on 3/10/16.
-//  Copyright © 2016 Andrew Peacock. All rights reserved.
-//
-
 import XCTest
 
-class p2UITests: XCTestCase {
+class BillSplitterUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
