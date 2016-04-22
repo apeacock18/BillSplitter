@@ -6,6 +6,8 @@
 //  Copyright © 2016 Andrew Peacock. All rights reserved.
 //
 
+import Parse
+import Bolts
 import UIKit
 
 @UIApplicationMain
@@ -16,6 +18,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "1b38359d-f9ba-49b5-8c31-342d9be92f2e"
+            $0.server = "https://billsplitter375.azurewebsites.net/parse/"
+            $0.clientKey = " "
+        }
+        Parse.initializeWithConfiguration(configuration)
+        
+        /*let testObject = PFObject(className: "TestObject")
+        testObject["foo"] = "bar"
+        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+            print("Object has been saved.")
+        }*/
+        
         return true
     }
 

@@ -11,10 +11,17 @@ import UIKit
 class TransactionTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var transactions = [Transaction]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let button = UIButton(type: .Custom)
+        button.setTitle("+", forState: .Normal)
+        button.titleLabel?.font = UIFont.systemFontOfSize(20.0)
+        button.frame = CGRectMake(0, 0, 100, 40)
+        //self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .Plain, target: self, action: #selector(TransactionTableViewController.onCreate))
+        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName:UIFont.systemFontOfSize(40)], forState: .Normal)
         loadSampleTransactions()
     }
     
@@ -32,6 +39,11 @@ class TransactionTableViewController: UIViewController, UITableViewDataSource, U
         let t4 = Transaction(name: "Billy", photo: photo4, amount: 876.01)
         
         transactions += [t1, t2, t3, t4]
+    }
+    
+    func onCreate() {
+        let vc = LoginViewController()
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     
 
