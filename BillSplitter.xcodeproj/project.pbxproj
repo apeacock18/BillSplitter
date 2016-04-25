@@ -11,8 +11,6 @@
 		1D63E4A71C922CE900D8863B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4A61C922CE900D8863B /* ViewController.swift */; };
 		1D63E4AA1C922CE900D8863B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D63E4A81C922CE900D8863B /* Main.storyboard */; };
 		1D63E4AC1C922CE900D8863B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D63E4AB1C922CE900D8863B /* Assets.xcassets */; };
-		1D63E4BA1C922CEA00D8863B /* BillSplitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4B91C922CEA00D8863B /* BillSplitterTests.swift */; };
-		1D63E4C51C922CEA00D8863B /* BillSplitterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4C41C922CEA00D8863B /* BillSplitterUITests.swift */; };
 		1D63E4D51C9288EC00D8863B /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4D41C9288EC00D8863B /* TransactionTableViewCell.swift */; };
 		1D63E4DD1C937BB000D8863B /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4DB1C937BB000D8863B /* TransactionTableViewController.swift */; };
 		1D63E4DF1C937E9300D8863B /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4DE1C937E9300D8863B /* Transaction.swift */; };
@@ -63,11 +61,7 @@
 		1D63E4AB1C922CE900D8863B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../BillSplitter/Assets.xcassets; sourceTree = "<group>"; };
 		1D63E4B01C922CE900D8863B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../BillSplitter/Info.plist; sourceTree = "<group>"; };
 		1D63E4B51C922CEA00D8863B /* BillSplitter.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BillSplitter.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D63E4B91C922CEA00D8863B /* BillSplitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillSplitterTests.swift; sourceTree = "<group>"; };
-		1D63E4BB1C922CEA00D8863B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D63E4C01C922CEA00D8863B /* BillSplitter.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BillSplitter.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D63E4C41C922CEA00D8863B /* BillSplitterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillSplitterUITests.swift; sourceTree = "<group>"; };
-		1D63E4C61C922CEA00D8863B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D63E4D41C9288EC00D8863B /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionTableViewCell.swift; path = ../BillSplitter/TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		1D63E4DB1C937BB000D8863B /* TransactionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionTableViewController.swift; path = BillSplitter/TransactionTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		1D63E4DE1C937E9300D8863B /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Transaction.swift; path = ../BillSplitter/Transaction.swift; sourceTree = "<group>"; };
@@ -146,8 +140,6 @@
 				39AB43A41CC9AAAA004F9937 /* Bolts.framework */,
 				39AB43A51CC9AAAA004F9937 /* Parse.framework */,
 				1D63E4A31C922CE900D8863B /* BillSplitter */,
-				1D63E4B81C922CEA00D8863B /* BillSplitterTests */,
-				1D63E4C31C922CEA00D8863B /* BillSplitterUITests */,
 				1D63E4A21C922CE900D8863B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -184,26 +176,6 @@
 			);
 			name = BillSplitter;
 			path = p2;
-			sourceTree = "<group>";
-		};
-		1D63E4B81C922CEA00D8863B /* BillSplitterTests */ = {
-			isa = PBXGroup;
-			children = (
-				1D63E4B91C922CEA00D8863B /* BillSplitterTests.swift */,
-				1D63E4BB1C922CEA00D8863B /* Info.plist */,
-			);
-			name = BillSplitterTests;
-			path = p2Tests;
-			sourceTree = "<group>";
-		};
-		1D63E4C31C922CEA00D8863B /* BillSplitterUITests */ = {
-			isa = PBXGroup;
-			children = (
-				1D63E4C41C922CEA00D8863B /* BillSplitterUITests.swift */,
-				1D63E4C61C922CEA00D8863B /* Info.plist */,
-			);
-			name = BillSplitterUITests;
-			path = p2UITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,7 +328,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D63E4BA1C922CEA00D8863B /* BillSplitterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,7 +335,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D63E4C51C922CEA00D8863B /* BillSplitterUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
