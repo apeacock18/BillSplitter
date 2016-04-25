@@ -10,26 +10,45 @@ import UIKit
 
 class Transaction {
     
-    var name: String
-    var to: String
-    var photo: UIImage
+    var payee: String
+    var from: Array<String>
     var amount: Double
+    var reason: String
     
-    init(name: String, photo: UIImage, amount: Double)
+    init(name: String, amount: Double, from: Array<String>, reason: String)
     {
-        self.name = name
-        self.photo = photo
+        self.payee = name
         self.amount = amount
-        self.to = ""
+        self.from = from
+        self.reason = reason
     }
     
-    func toString() {
+    init?(json: String) {
+        
+        let data: NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
+        do {
+            let jsonObject = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+            self.payee = jsonObject["payee"] as! String
+            self.from = jsonObject["from"] as! Array<String>
+            self.amount = jsonObject["amount"] as! Double
+            self.reason = jsonObject["reason"] as! String
+        } catch {
+            return nil
+        }
+    }
+    
+    func toString() -> String? {
         let jsonObject: [String: AnyObject] = [
-        "name": self.name,
-        "to": self.to,
-        "amount": self.amount
+        "payee": self.payee,
+        "from": self.from,
+        "amount": self.amount,
+        "reason": self.reason
         ]
-        let valid = NSJSONSerialization.isValidJSONObject(jsonObject)
+        do {
+            return String(try NSJSONSerialization.dataWithJSONObject(jsonObject, options: []))
+        } catch {
+            return nil
+        }
     }
     
 }
