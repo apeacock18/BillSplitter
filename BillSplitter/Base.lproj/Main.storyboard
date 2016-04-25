@@ -558,7 +558,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
-                                    <segue destination="TQ5-y1-Z76" kind="show" id="Z94-cb-nvq"/>
+                                    <action selector="login:" destination="qLf-r9-HBK" eventType="touchUpInside" id="afS-8P-cm8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JaT-oD-BCl">
@@ -581,10 +581,10 @@
                             <constraint firstItem="JaT-oD-BCl" firstAttribute="leading" secondItem="1As-Ec-sxY" secondAttribute="leadingMargin" constant="60" id="6mi-uK-Opq"/>
                             <constraint firstItem="FfM-xl-oMs" firstAttribute="trailing" secondItem="1As-Ec-sxY" secondAttribute="trailingMargin" constant="-60" id="8Wt-80-bqo"/>
                             <constraint firstItem="xBW-oY-hmh" firstAttribute="centerX" secondItem="1As-Ec-sxY" secondAttribute="centerX" id="9DW-3z-YCu"/>
-                            <constraint firstItem="xFN-pG-eTa" firstAttribute="top" secondItem="Ulb-Vf-AIj" secondAttribute="bottom" constant="8" symbolic="YES" id="BI7-Vv-2xa"/>
                             <constraint firstItem="4Mw-0M-Rob" firstAttribute="leading" secondItem="1As-Ec-sxY" secondAttribute="leadingMargin" id="JJO-3l-AML"/>
                             <constraint firstItem="xFN-pG-eTa" firstAttribute="leading" secondItem="Ri6-P3-30j" secondAttribute="leading" id="OqG-sj-ur0"/>
                             <constraint firstItem="Ri6-P3-30j" firstAttribute="trailing" secondItem="1As-Ec-sxY" secondAttribute="trailingMargin" id="Y5J-e9-sh8"/>
+                            <constraint firstItem="xFN-pG-eTa" firstAttribute="top" secondItem="Ulb-Vf-AIj" secondAttribute="bottom" constant="8" symbolic="YES" id="hQ7-R3-YQL"/>
                             <constraint firstItem="Ri6-P3-30j" firstAttribute="leading" secondItem="1As-Ec-sxY" secondAttribute="leadingMargin" id="jr8-Uw-9Be"/>
                             <constraint firstItem="4Mw-0M-Rob" firstAttribute="top" secondItem="Ri6-P3-30j" secondAttribute="bottom" constant="30" id="oLy-ya-EWv"/>
                             <constraint firstItem="FfM-xl-oMs" firstAttribute="top" secondItem="xBW-oY-hmh" secondAttribute="bottom" constant="40" id="ouQ-GY-ucl"/>
@@ -597,7 +597,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFT-to-HL3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1102.5" y="1274.5"/>
+            <point key="canvasLocation" x="1100.5" y="1265.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="9EA-Bi-Xw2">
@@ -669,13 +669,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y2H-Zi-Ob7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="484.5" y="1226.5"/>
+            <point key="canvasLocation" x="507" y="1185"/>
         </scene>
     </scenes>
     <resources>
         <image name="dog1" width="1200" height="959"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Z94-cb-nvq"/>
+        <segue reference="E3a-zk-OGL"/>
     </inferredMetricsTieBreakers>
 </document>

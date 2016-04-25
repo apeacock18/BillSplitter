@@ -11,18 +11,39 @@ import Parse
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var testImage: UIImageView!
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadImages()
-        // Do any additional setup after loading the view.
+        
+        //Root View
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    @IBAction func login(sender: UIButton) {
+        // TODO: Actually login
+        self.presentViewController(TabViewController(), animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func register(sender: UIButton) {
+        self.presentViewController(CreateViewController(), animated: true, completion: nil)
+        
+    }
+
+    
+    @IBAction func forgot(sender: UIButton) {
+    }
+    
     
     func loadImages() {
         
@@ -36,8 +57,8 @@ class LoginViewController: UIViewController {
                     imageFile.getDataInBackgroundWithBlock({
                         (imageData: NSData?, error: NSError?) -> Void in
                         if (error == nil) {
-                            let image = UIImage(data: imageData!)
-                            self.testImage.image = image
+                            _ = UIImage(data: imageData!)
+                            //self.testImage.image = image
                         }
                     })
                 }

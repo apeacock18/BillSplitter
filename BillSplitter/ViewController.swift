@@ -12,10 +12,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     
     @IBAction func Register(sender: UIButton) {
-        let vc = CreateViewController()
+        let vc = TabViewController()
         self.presentViewController(vc, animated: true, completion: nil)
     }
     
+    @IBAction func login(sender: UIButton) {
+        let vc = TabViewController()
+        self.presentViewController(vc, animated: true, completion: nil)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

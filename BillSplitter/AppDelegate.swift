@@ -14,6 +14,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var loginViewController: LoginViewController?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -25,6 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.clientKey = " "
         }
         Parse.initializeWithConfiguration(configuration)
+        
+        loginViewController = LoginViewController()
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window!.rootViewController = loginViewController
+        //self.window!.backgroundColor = UIColor.whiteColor()
+        self.window!.makeKeyAndVisible()
+        
         
         /*let testObject = PFObject(className: "TestObject")
         testObject["foo"] = "bar"
