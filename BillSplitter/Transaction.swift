@@ -1,9 +1,9 @@
 //
 //  Transaction.swift
-//  p2
+//  BillSplitter
 //
-//  Created by Andrew Peacock on 3/11/16.
-//  Copyright © 2016 Andrew Peacock. All rights reserved.
+//  Created by Davis Mariotti on 4/25/16.
+//  Copyright © 2016 Davis Mariotti. All rights reserved.
 //
 
 import UIKit
@@ -50,5 +50,14 @@ class Transaction {
             return nil
         }
     }
+    
+    /*
+
+     Example JSON:
+     
+     {"payee":"v4vh5hb6", "from": ["vbghnkl54", "5vgh45bc2", "45ghvb33f"], amount: 20.0, reason: "Electricity"}
+     
+    */
+    
     
 }
