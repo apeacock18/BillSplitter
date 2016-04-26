@@ -1,24 +1,22 @@
 //
-//  TabViewController.swift
+//  NewBillViewController.swift
 //  BillSplitter
 //
 //  Created by gomeow on 4/25/16.
-//  Copyright © 2016 Andrew Peacock. All rights reserved.
+//  Copyright © 2016 Davis Mariotti. All rights reserved.
 //
 
 import UIKit
 
-class TabViewController: UITabBarController {
+class NewBillViewController: UIViewController {
 
+    @IBOutlet weak var paid: UITextField!
+    @IBOutlet weak var sharing: UITextField!
+    @IBOutlet weak var billDescription: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let vc1 = TransactionTableViewController()
-        vc1.title = "Summary"
-        let vc2 = NewBillViewController()
-        vc2.title = "Bill"
-        
-        self.viewControllers = [vc1, vc2]
+        self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
 
@@ -27,7 +25,16 @@ class TabViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func cancel(sender: UIButton) {
+        self.navigationController?.popToViewController(LoginViewController(), animated: true)
+    }
 
+    @IBAction func add(sender: UIButton) {
+    }
+    
+    @IBAction func datepicked(sender: UIDatePicker) {
+    }
+    
     /*
     // MARK: - Navigation
 

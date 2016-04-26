@@ -7,18 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D63E4A51C922CE900D8863B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4A41C922CE900D8863B /* AppDelegate.swift */; };
-		1D63E4A71C922CE900D8863B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4A61C922CE900D8863B /* ViewController.swift */; };
 		1D63E4AA1C922CE900D8863B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D63E4A81C922CE900D8863B /* Main.storyboard */; };
 		1D63E4AC1C922CE900D8863B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D63E4AB1C922CE900D8863B /* Assets.xcassets */; };
-		1D63E4D51C9288EC00D8863B /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4D41C9288EC00D8863B /* TransactionTableViewCell.swift */; };
-		1D63E4DD1C937BB000D8863B /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4DB1C937BB000D8863B /* TransactionTableViewController.swift */; };
-		1D63E4DF1C937E9300D8863B /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4DE1C937E9300D8863B /* Transaction.swift */; };
 		396CC9F81CCED67A00E4AC1D /* CreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396CC9F61CCED67A00E4AC1D /* CreateViewController.xib */; };
-		396CC9F91CCED67A00E4AC1D /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CC9F71CCED67A00E4AC1D /* SummaryViewController.swift */; };
 		396CC9FB1CCED6E200E4AC1D /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396CC9FA1CCED6E200E4AC1D /* LoginViewController.xib */; };
-		397878811CC9EA410052DF04 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3978787F1CC9EA410052DF04 /* CreateViewController.swift */; };
-		397EBAB31CCEA26500E2A56B /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397EBAB21CCEA26500E2A56B /* TabViewController.swift */; };
 		39AB43A61CC9AAAA004F9937 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A41CC9AAAA004F9937 /* Bolts.framework */; };
 		39AB43A71CC9AAAA004F9937 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A51CC9AAAA004F9937 /* Parse.framework */; };
 		39AB43B21CC9AB9E004F9937 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A81CC9AB9E004F9937 /* AudioToolbox.framework */; };
@@ -31,9 +23,22 @@
 		39AB43B91CC9AB9F004F9937 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43AF1CC9AB9E004F9937 /* Security.framework */; };
 		39AB43BA1CC9AB9F004F9937 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43B01CC9AB9E004F9937 /* StoreKit.framework */; };
 		39AB43BB1CC9AB9F004F9937 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43B11CC9AB9E004F9937 /* SystemConfiguration.framework */; };
-		39AB43C61CC9CB3B004F9937 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AB43C41CC9CB3B004F9937 /* LoginViewController.swift */; };
-		39BFF4011CAF007200CCA5D3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFF4001CAF007200CCA5D3 /* SettingsViewController.swift */; };
 		39BFF4071CAF03B700CCA5D3 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39BFF4051CAF03B700CCA5D3 /* SettingsViewController.xib */; };
+		39CA4A351CCEE16D00FC15A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4A41C922CE900D8863B /* AppDelegate.swift */; };
+		39CA4A361CCEE17800FC15A8 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3978787F1CC9EA410052DF04 /* CreateViewController.swift */; };
+		39CA4A371CCEE17800FC15A8 /* CreateViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 396CC9F61CCED67A00E4AC1D /* CreateViewController.xib */; };
+		39CA4A381CCEE17800FC15A8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AB43C41CC9CB3B004F9937 /* LoginViewController.swift */; };
+		39CA4A391CCEE17800FC15A8 /* LoginViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 396CC9FA1CCED6E200E4AC1D /* LoginViewController.xib */; };
+		39CA4A3A1CCEE17800FC15A8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFF4001CAF007200CCA5D3 /* SettingsViewController.swift */; };
+		39CA4A3B1CCEE17800FC15A8 /* SettingsViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 39BFF4051CAF03B700CCA5D3 /* SettingsViewController.xib */; };
+		39CA4A3C1CCEE17800FC15A8 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CC9F71CCED67A00E4AC1D /* SummaryViewController.swift */; };
+		39CA4A3D1CCEE17800FC15A8 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397EBAB21CCEA26500E2A56B /* TabViewController.swift */; };
+		39CA4A3E1CCEE17800FC15A8 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4DE1C937E9300D8863B /* Transaction.swift */; };
+		39CA4A3F1CCEE17800FC15A8 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4D41C9288EC00D8863B /* TransactionTableViewCell.swift */; };
+		39CA4A401CCEE17800FC15A8 /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4DB1C937BB000D8863B /* TransactionTableViewController.swift */; };
+		39CA4A411CCEE17800FC15A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4A61C922CE900D8863B /* ViewController.swift */; };
+		39CA4A451CCEF11600FC15A8 /* NewBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CA4A431CCEF11600FC15A8 /* NewBillViewController.swift */; };
+		39CA4A461CCEF11600FC15A8 /* NewBillViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39CA4A441CCEF11600FC15A8 /* NewBillViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +60,7 @@
 
 /* Begin PBXFileReference section */
 		1D63E4A11C922CE900D8863B /* BillSplitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BillSplitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D63E4A41C922CE900D8863B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../BillSplitter/AppDelegate.swift; sourceTree = "<group>"; };
+		1D63E4A41C922CE900D8863B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D63E4A61C922CE900D8863B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../BillSplitter/ViewController.swift; sourceTree = "<group>"; };
 		1D63E4A91C922CE900D8863B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1D63E4AB1C922CE900D8863B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../BillSplitter/Assets.xcassets; sourceTree = "<group>"; };
@@ -85,6 +90,8 @@
 		39AB43C41CC9CB3B004F9937 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../BillSplitter/LoginViewController.swift; sourceTree = "<group>"; };
 		39BFF4001CAF007200CCA5D3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../BillSplitter/SettingsViewController.swift; sourceTree = "<group>"; };
 		39BFF4051CAF03B700CCA5D3 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = ../BillSplitter/SettingsViewController.xib; sourceTree = "<group>"; };
+		39CA4A431CCEF11600FC15A8 /* NewBillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewBillViewController.swift; sourceTree = "<group>"; };
+		39CA4A441CCEF11600FC15A8 /* NewBillViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewBillViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,9 +180,10 @@
 				1D63E4D41C9288EC00D8863B /* TransactionTableViewCell.swift */,
 				1D63E4DB1C937BB000D8863B /* TransactionTableViewController.swift */,
 				1D63E4A61C922CE900D8863B /* ViewController.swift */,
+				39CA4A431CCEF11600FC15A8 /* NewBillViewController.swift */,
+				39CA4A441CCEF11600FC15A8 /* NewBillViewController.xib */,
 			);
-			name = BillSplitter;
-			path = p2;
+			path = BillSplitter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,7 +250,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0720;
-				ORGANIZATIONNAME = "Andrew Peacock";
+				ORGANIZATIONNAME = "Davis Mariotti";
 				TargetAttributes = {
 					1D63E4A01C922CE900D8863B = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -286,6 +294,7 @@
 				396CC9F81CCED67A00E4AC1D /* CreateViewController.xib in Resources */,
 				1D63E4AC1C922CE900D8863B /* Assets.xcassets in Resources */,
 				1D63E4AA1C922CE900D8863B /* Main.storyboard in Resources */,
+				39CA4A461CCEF11600FC15A8 /* NewBillViewController.xib in Resources */,
 				39BFF4071CAF03B700CCA5D3 /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,16 +320,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D63E4A71C922CE900D8863B /* ViewController.swift in Sources */,
-				1D63E4D51C9288EC00D8863B /* TransactionTableViewCell.swift in Sources */,
-				397878811CC9EA410052DF04 /* CreateViewController.swift in Sources */,
-				1D63E4A51C922CE900D8863B /* AppDelegate.swift in Sources */,
-				39AB43C61CC9CB3B004F9937 /* LoginViewController.swift in Sources */,
-				1D63E4DD1C937BB000D8863B /* TransactionTableViewController.swift in Sources */,
-				1D63E4DF1C937E9300D8863B /* Transaction.swift in Sources */,
-				397EBAB31CCEA26500E2A56B /* TabViewController.swift in Sources */,
-				39BFF4011CAF007200CCA5D3 /* SettingsViewController.swift in Sources */,
-				396CC9F91CCED67A00E4AC1D /* SummaryViewController.swift in Sources */,
+				39CA4A361CCEE17800FC15A8 /* CreateViewController.swift in Sources */,
+				39CA4A371CCEE17800FC15A8 /* CreateViewController.xib in Sources */,
+				39CA4A451CCEF11600FC15A8 /* NewBillViewController.swift in Sources */,
+				39CA4A381CCEE17800FC15A8 /* LoginViewController.swift in Sources */,
+				39CA4A391CCEE17800FC15A8 /* LoginViewController.xib in Sources */,
+				39CA4A3A1CCEE17800FC15A8 /* SettingsViewController.swift in Sources */,
+				39CA4A3B1CCEE17800FC15A8 /* SettingsViewController.xib in Sources */,
+				39CA4A3C1CCEE17800FC15A8 /* SummaryViewController.swift in Sources */,
+				39CA4A3D1CCEE17800FC15A8 /* TabViewController.swift in Sources */,
+				39CA4A3E1CCEE17800FC15A8 /* Transaction.swift in Sources */,
+				39CA4A3F1CCEE17800FC15A8 /* TransactionTableViewCell.swift in Sources */,
+				39CA4A401CCEE17800FC15A8 /* TransactionTableViewController.swift in Sources */,
+				39CA4A411CCEE17800FC15A8 /* ViewController.swift in Sources */,
+				39CA4A351CCEE16D00FC15A8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,7 +469,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = p2/Info.plist;
+				INFOPLIST_FILE = BillSplitter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = info.gomeow;
@@ -476,7 +489,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = p2/Info.plist;
+				INFOPLIST_FILE = BillSplitter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = info.gomeow;
