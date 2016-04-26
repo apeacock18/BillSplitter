@@ -10,7 +10,7 @@ import UIKit
 
 class TransactionTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var transactions = [Transaction]()
+    var transactions: Array<AnyObject> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,16 +27,18 @@ class TransactionTableViewController: UIViewController, UITableViewDataSource, U
     
     func loadSampleTransactions() {
         let photo1 = UIImage(named: "dog1")!
-        let t1 = Transaction(name: "Corgi Butt", photo: photo1, amount: 42.00)
+        let t1 = ["name":"Corgi Butt", "photo":photo1, "amount": 42.00]
+        
+        
         
         let photo2 = UIImage(named: "dog2")!
-        let t2 = Transaction(name: "Doug Barkman", photo: photo2, amount: 42.00)
+        let t2 = ["name":"Doug Barkman", "photo":photo2, "amount": 47.00]
         
         let photo3 = UIImage(named: "dog3")!
-        let t3 = Transaction(name: "Snowball", photo: photo3, amount: 0.0)
+        let t3 = ["name":"Snowball", "photo":photo3, "amount": 0.00]
         
         let photo4 = UIImage(named: "default")!
-        let t4 = Transaction(name: "Billy", photo: photo4, amount: 876.01)
+        let t4 = ["name":"Billy", "photo":photo4, "amount": 876.01]
         
         transactions += [t1, t2, t3, t4]
     }
@@ -69,10 +71,11 @@ class TransactionTableViewController: UIViewController, UITableViewDataSource, U
 
         let t = transactions[indexPath.row]
         
-        cell.nameLabel.text = t.name
-        cell.photoImageView.image = t.photo
-        cell.amountLabel.text = String(format:"%f", t.amount)
-        if(t.amount != 0.0) {
+        cell.nameLabel.text = t["photo"] as? String
+        cell.photoImageView.image = t["photo"] as? UIImage
+        let amount: Double = t["amount"] as! Double
+        cell.amountLabel.text = String(format:"%f", amount)
+        if(amount != 0.0) {
             cell.backgroundColor = UIColor.redColor()
         }
 
