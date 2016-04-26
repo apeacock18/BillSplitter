@@ -13,12 +13,13 @@ class TabViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let vc1 = TransactionTableViewController()
-        vc1.title = "Summary"
+        let vc1 = TestViewController()
+        vc1.title = "Test"
         let vc2 = NewBillViewController()
         vc2.title = "Bill"
         
         self.viewControllers = [vc1, vc2]
+        self.selectedIndex = 1
         // Do any additional setup after loading the view.
     }
 

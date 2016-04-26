@@ -11,6 +11,8 @@
 		1D63E4AC1C922CE900D8863B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D63E4AB1C922CE900D8863B /* Assets.xcassets */; };
 		391A24171CCF253B00884A27 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 391A24151CCF245500884A27 /* CryptoSwift.framework */; };
 		391A24181CCF253B00884A27 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 391A24151CCF245500884A27 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		391A241E1CCF31F800884A27 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391A241C1CCF31F800884A27 /* TestViewController.swift */; };
+		391A241F1CCF31F800884A27 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 391A241D1CCF31F800884A27 /* TestViewController.xib */; };
 		396CC9F81CCED67A00E4AC1D /* CreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396CC9F61CCED67A00E4AC1D /* CreateViewController.xib */; };
 		396CC9FB1CCED6E200E4AC1D /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396CC9FA1CCED6E200E4AC1D /* LoginViewController.xib */; };
 		39AB43A61CC9AAAA004F9937 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A41CC9AAAA004F9937 /* Bolts.framework */; };
@@ -87,6 +89,8 @@
 		1D63E4DB1C937BB000D8863B /* TransactionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionTableViewController.swift; path = BillSplitter/TransactionTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		1D63E4DE1C937E9300D8863B /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Transaction.swift; path = ../BillSplitter/Transaction.swift; sourceTree = "<group>"; };
 		391A24151CCF245500884A27 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CryptoSwift.framework; sourceTree = "<group>"; };
+		391A241C1CCF31F800884A27 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		391A241D1CCF31F800884A27 /* TestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
 		396CC9F61CCED67A00E4AC1D /* CreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateViewController.xib; path = BillSplitter/CreateViewController.xib; sourceTree = SOURCE_ROOT; };
 		396CC9F71CCED67A00E4AC1D /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SummaryViewController.swift; path = BillSplitter/SummaryViewController.swift; sourceTree = SOURCE_ROOT; };
 		396CC9FA1CCED6E200E4AC1D /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = BillSplitter/LoginViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -191,16 +195,18 @@
 				39AB43C41CC9CB3B004F9937 /* LoginViewController.swift */,
 				396CC9FA1CCED6E200E4AC1D /* LoginViewController.xib */,
 				1D63E4A81C922CE900D8863B /* Main.storyboard */,
+				39CA4A431CCEF11600FC15A8 /* NewBillViewController.swift */,
+				39CA4A441CCEF11600FC15A8 /* NewBillViewController.xib */,
 				39BFF4001CAF007200CCA5D3 /* SettingsViewController.swift */,
 				39BFF4051CAF03B700CCA5D3 /* SettingsViewController.xib */,
 				396CC9F71CCED67A00E4AC1D /* SummaryViewController.swift */,
 				397EBAB21CCEA26500E2A56B /* TabViewController.swift */,
+				391A241C1CCF31F800884A27 /* TestViewController.swift */,
+				391A241D1CCF31F800884A27 /* TestViewController.xib */,
 				1D63E4DE1C937E9300D8863B /* Transaction.swift */,
 				1D63E4D41C9288EC00D8863B /* TransactionTableViewCell.swift */,
 				1D63E4DB1C937BB000D8863B /* TransactionTableViewController.swift */,
 				1D63E4A61C922CE900D8863B /* ViewController.swift */,
-				39CA4A431CCEF11600FC15A8 /* NewBillViewController.swift */,
-				39CA4A441CCEF11600FC15A8 /* NewBillViewController.xib */,
 			);
 			path = BillSplitter;
 			sourceTree = "<group>";
@@ -315,6 +321,7 @@
 				1D63E4AC1C922CE900D8863B /* Assets.xcassets in Resources */,
 				1D63E4AA1C922CE900D8863B /* Main.storyboard in Resources */,
 				39CA4A461CCEF11600FC15A8 /* NewBillViewController.xib in Resources */,
+				391A241F1CCF31F800884A27 /* TestViewController.xib in Resources */,
 				39BFF4071CAF03B700CCA5D3 /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +349,7 @@
 			files = (
 				39CA4A361CCEE17800FC15A8 /* CreateViewController.swift in Sources */,
 				39CA4A371CCEE17800FC15A8 /* CreateViewController.xib in Sources */,
+				391A241E1CCF31F800884A27 /* TestViewController.swift in Sources */,
 				39CA4A451CCEF11600FC15A8 /* NewBillViewController.swift in Sources */,
 				39CA4A381CCEE17800FC15A8 /* LoginViewController.swift in Sources */,
 				39CA4A391CCEE17800FC15A8 /* LoginViewController.xib in Sources */,

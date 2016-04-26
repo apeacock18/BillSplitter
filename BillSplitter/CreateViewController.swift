@@ -45,13 +45,28 @@ class CreateViewController: UIViewController {
         user.saveInBackground()
     }
     
+    func saveSelfLocal(fName: String, lName: String, username: String, email: String) {
+        let data = [
+            "fName": fName,
+            "lName": lName,
+            "username": username,
+            "email": email
+        ]
+        
+        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(NSKeyedArchiver.archivedDataWithRootObject(data), forKey: "selfData")
+        defaults.synchronize()
+        
+    }
+    
     @IBAction func create(sender: UIButton) {
         
         // TODO: Check if already exists
         
+        saveSelfLocal(fName.text!, lName: lName.text!, username: username.text!, email: email.text!)
         
-        
-        sendToServer(fName.text!, lName: lName.text!, username: username.text!, email: email.text!, password: hash1(password.text!, salt: username.text!))
+        //sendToServer(fName.text!, lName: lName.text!, username: username.text!, email: email.text!, password: hash1(password.text!, salt: username.text!))
+        self.presentViewController(TabViewController(), animated: true, completion: nil)
     }
 
     /*
