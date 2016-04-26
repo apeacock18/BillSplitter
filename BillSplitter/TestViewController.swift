@@ -24,7 +24,7 @@ class TestViewController: UIViewController {
         if let data = defaults.objectForKey("selfData") as? NSData {
             
             let dict = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [String:String]
-            return dict.description
+            return dict["fName"]!+" "+dict["lName"]!+" "+dict["username"]!+" "+dict["email"]!
         } else {
             return "nil"
         }

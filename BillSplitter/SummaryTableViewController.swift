@@ -1,29 +1,17 @@
 //
-//  TransactionTableViewController.swift
-//  p2
+//  SummaryTableViewController.swift
+//  BillSplitter
 //
-//  Created by Andrew Peacock on 3/10/16.
-//  Copyright © 2016 Andrew Peacock. All rights reserved.
+//  Created by gomeow on 4/26/16.
+//  Copyright © 2016 Davis Mariotti. All rights reserved.
 //
 
 import UIKit
 
-class TransactionTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SummaryTableViewController: UITableViewController {
+    
     
     var transactions: Array<AnyObject> = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let button = UIButton(type: .Custom)
-        button.setTitle("+", forState: .Normal)
-        button.titleLabel?.font = UIFont.systemFontOfSize(20.0)
-        button.frame = CGRectMake(0, 0, 100, 40)
-        //self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .Plain, target: self, action: #selector(TransactionTableViewController.onCreate))
-        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName:UIFont.systemFontOfSize(40)], forState: .Normal)
-        loadSampleTransactions()
-    }
     
     func loadSampleTransactions() {
         let photo1 = UIImage(named: "dog1")!
@@ -43,11 +31,14 @@ class TransactionTableViewController: UIViewController, UITableViewDataSource, U
         transactions += [t1, t2, t3, t4]
     }
     
-    func onCreate() {
-        let vc = LoginViewController()
-        self.presentViewController(vc, animated: true, completion: nil)
-    }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadSampleTransactions()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -56,32 +47,32 @@ class TransactionTableViewController: UIViewController, UITableViewDataSource, U
 
     // MARK: - Table view data source
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transactions.count
     }
-
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellIdentifier = "TransactionTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! TransactionTableViewCell
-
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cellIdentifier = "SummaryTableViewCell"
+        
+        tableView.registerNib(UINib(nibName: "SummaryTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! SummaryTableViewCell
+        
         let t = transactions[indexPath.row]
         
-        cell.nameLabel.text = t["photo"] as? String
-        cell.photoImageView.image = t["photo"] as? UIImage
+        cell.name.text = t["name"] as? String
+        cell.avatar.image = t["photo"] as? UIImage
         let amount: Double = t["amount"] as! Double
-        cell.amountLabel.text = String(format:"%f", amount)
+        cell.amount.text = String(format:"%f", amount)
         if(amount != 0.0) {
             cell.backgroundColor = UIColor.redColor()
         }
-
+        
         return cell
     }
-    
 
     /*
     // Override to support conditional editing of the table view.
@@ -127,5 +118,5 @@ class TransactionTableViewController: UIViewController, UITableViewDataSource, U
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

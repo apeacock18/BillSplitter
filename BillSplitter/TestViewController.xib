@@ -18,11 +18,11 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRA-4Z-MPf">
                     <rect key="frame" x="0.0" y="60" width="600" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hG-M7-Pdk">
-                    <rect key="frame" x="285" y="104" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hG-M7-Pdk">
+                    <rect key="frame" x="250" y="104" width="100" height="30"/>
                     <state key="normal" title="Do"/>
                     <connections>
                         <action selector="doIt:" destination="-1" eventType="touchUpInside" id="zNh-sT-7T5"/>
@@ -32,6 +32,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="bRA-4Z-MPf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="RIK-hu-nEX"/>
+                <constraint firstAttribute="trailing" secondItem="6hG-M7-Pdk" secondAttribute="trailing" constant="250" id="SrL-Rx-Sp9"/>
                 <constraint firstAttribute="trailing" secondItem="bRA-4Z-MPf" secondAttribute="trailing" id="Us0-8D-zvU"/>
                 <constraint firstItem="bRA-4Z-MPf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="cg4-Pa-kQJ"/>
                 <constraint firstItem="6hG-M7-Pdk" firstAttribute="top" secondItem="bRA-4Z-MPf" secondAttribute="bottom" constant="23" id="j7o-hV-pt9"/>

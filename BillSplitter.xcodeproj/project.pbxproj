@@ -15,6 +15,11 @@
 		391A241F1CCF31F800884A27 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 391A241D1CCF31F800884A27 /* TestViewController.xib */; };
 		396CC9F81CCED67A00E4AC1D /* CreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396CC9F61CCED67A00E4AC1D /* CreateViewController.xib */; };
 		396CC9FB1CCED6E200E4AC1D /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396CC9FA1CCED6E200E4AC1D /* LoginViewController.xib */; };
+		398B7C091CD004AB0053FE69 /* SummaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398B7C071CD004AB0053FE69 /* SummaryTableViewController.swift */; };
+		398B7C0A1CD004AB0053FE69 /* SummaryTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 398B7C081CD004AB0053FE69 /* SummaryTableViewController.xib */; };
+		398B7C0C1CD008CA0053FE69 /* SummaryNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398B7C0B1CD008CA0053FE69 /* SummaryNavViewController.swift */; };
+		398B7C0F1CD00FEA0053FE69 /* SummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398B7C0D1CD00FEA0053FE69 /* SummaryTableViewCell.swift */; };
+		398B7C101CD00FEA0053FE69 /* SummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 398B7C0E1CD00FEA0053FE69 /* SummaryTableViewCell.xib */; };
 		39AB43A61CC9AAAA004F9937 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A41CC9AAAA004F9937 /* Bolts.framework */; };
 		39AB43A71CC9AAAA004F9937 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A51CC9AAAA004F9937 /* Parse.framework */; };
 		39AB43B21CC9AB9E004F9937 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A81CC9AB9E004F9937 /* AudioToolbox.framework */; };
@@ -35,12 +40,8 @@
 		39CA4A391CCEE17800FC15A8 /* LoginViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 396CC9FA1CCED6E200E4AC1D /* LoginViewController.xib */; };
 		39CA4A3A1CCEE17800FC15A8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BFF4001CAF007200CCA5D3 /* SettingsViewController.swift */; };
 		39CA4A3B1CCEE17800FC15A8 /* SettingsViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 39BFF4051CAF03B700CCA5D3 /* SettingsViewController.xib */; };
-		39CA4A3C1CCEE17800FC15A8 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CC9F71CCED67A00E4AC1D /* SummaryViewController.swift */; };
 		39CA4A3D1CCEE17800FC15A8 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397EBAB21CCEA26500E2A56B /* TabViewController.swift */; };
 		39CA4A3E1CCEE17800FC15A8 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4DE1C937E9300D8863B /* Transaction.swift */; };
-		39CA4A3F1CCEE17800FC15A8 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4D41C9288EC00D8863B /* TransactionTableViewCell.swift */; };
-		39CA4A401CCEE17800FC15A8 /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4DB1C937BB000D8863B /* TransactionTableViewController.swift */; };
-		39CA4A411CCEE17800FC15A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4A61C922CE900D8863B /* ViewController.swift */; };
 		39CA4A451CCEF11600FC15A8 /* NewBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CA4A431CCEF11600FC15A8 /* NewBillViewController.swift */; };
 		39CA4A461CCEF11600FC15A8 /* NewBillViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39CA4A441CCEF11600FC15A8 /* NewBillViewController.xib */; };
 /* End PBXBuildFile section */
@@ -79,23 +80,24 @@
 /* Begin PBXFileReference section */
 		1D63E4A11C922CE900D8863B /* BillSplitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BillSplitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D63E4A41C922CE900D8863B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1D63E4A61C922CE900D8863B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../BillSplitter/ViewController.swift; sourceTree = "<group>"; };
 		1D63E4A91C922CE900D8863B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1D63E4AB1C922CE900D8863B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../BillSplitter/Assets.xcassets; sourceTree = "<group>"; };
 		1D63E4B01C922CE900D8863B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../BillSplitter/Info.plist; sourceTree = "<group>"; };
 		1D63E4B51C922CEA00D8863B /* BillSplitter.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BillSplitter.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D63E4C01C922CEA00D8863B /* BillSplitter.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BillSplitter.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1D63E4D41C9288EC00D8863B /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionTableViewCell.swift; path = ../BillSplitter/TransactionTableViewCell.swift; sourceTree = "<group>"; };
-		1D63E4DB1C937BB000D8863B /* TransactionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionTableViewController.swift; path = BillSplitter/TransactionTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		1D63E4DE1C937E9300D8863B /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Transaction.swift; path = ../BillSplitter/Transaction.swift; sourceTree = "<group>"; };
 		391A24151CCF245500884A27 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CryptoSwift.framework; sourceTree = "<group>"; };
 		391A241C1CCF31F800884A27 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		391A241D1CCF31F800884A27 /* TestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
 		396CC9F61CCED67A00E4AC1D /* CreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateViewController.xib; path = BillSplitter/CreateViewController.xib; sourceTree = SOURCE_ROOT; };
-		396CC9F71CCED67A00E4AC1D /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SummaryViewController.swift; path = BillSplitter/SummaryViewController.swift; sourceTree = SOURCE_ROOT; };
 		396CC9FA1CCED6E200E4AC1D /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = BillSplitter/LoginViewController.xib; sourceTree = SOURCE_ROOT; };
 		3978787F1CC9EA410052DF04 /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateViewController.swift; path = ../BillSplitter/CreateViewController.swift; sourceTree = "<group>"; };
 		397EBAB21CCEA26500E2A56B /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = ../BillSplitter/TabViewController.swift; sourceTree = "<group>"; };
+		398B7C071CD004AB0053FE69 /* SummaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryTableViewController.swift; sourceTree = "<group>"; };
+		398B7C081CD004AB0053FE69 /* SummaryTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SummaryTableViewController.xib; sourceTree = "<group>"; };
+		398B7C0B1CD008CA0053FE69 /* SummaryNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryNavViewController.swift; sourceTree = "<group>"; };
+		398B7C0D1CD00FEA0053FE69 /* SummaryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryTableViewCell.swift; sourceTree = "<group>"; };
+		398B7C0E1CD00FEA0053FE69 /* SummaryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SummaryTableViewCell.xib; sourceTree = "<group>"; };
 		39AB43A41CC9AAAA004F9937 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		39AB43A51CC9AAAA004F9937 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		39AB43A81CC9AB9E004F9937 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -187,6 +189,8 @@
 		1D63E4A31C922CE900D8863B /* BillSplitter */ = {
 			isa = PBXGroup;
 			children = (
+				398B7C081CD004AB0053FE69 /* SummaryTableViewController.xib */,
+				398B7C071CD004AB0053FE69 /* SummaryTableViewController.swift */,
 				1D63E4A41C922CE900D8863B /* AppDelegate.swift */,
 				1D63E4AB1C922CE900D8863B /* Assets.xcassets */,
 				3978787F1CC9EA410052DF04 /* CreateViewController.swift */,
@@ -195,18 +199,17 @@
 				39AB43C41CC9CB3B004F9937 /* LoginViewController.swift */,
 				396CC9FA1CCED6E200E4AC1D /* LoginViewController.xib */,
 				1D63E4A81C922CE900D8863B /* Main.storyboard */,
+				398B7C0B1CD008CA0053FE69 /* SummaryNavViewController.swift */,
 				39CA4A431CCEF11600FC15A8 /* NewBillViewController.swift */,
 				39CA4A441CCEF11600FC15A8 /* NewBillViewController.xib */,
 				39BFF4001CAF007200CCA5D3 /* SettingsViewController.swift */,
 				39BFF4051CAF03B700CCA5D3 /* SettingsViewController.xib */,
-				396CC9F71CCED67A00E4AC1D /* SummaryViewController.swift */,
 				397EBAB21CCEA26500E2A56B /* TabViewController.swift */,
 				391A241C1CCF31F800884A27 /* TestViewController.swift */,
 				391A241D1CCF31F800884A27 /* TestViewController.xib */,
 				1D63E4DE1C937E9300D8863B /* Transaction.swift */,
-				1D63E4D41C9288EC00D8863B /* TransactionTableViewCell.swift */,
-				1D63E4DB1C937BB000D8863B /* TransactionTableViewController.swift */,
-				1D63E4A61C922CE900D8863B /* ViewController.swift */,
+				398B7C0D1CD00FEA0053FE69 /* SummaryTableViewCell.swift */,
+				398B7C0E1CD00FEA0053FE69 /* SummaryTableViewCell.xib */,
 			);
 			path = BillSplitter;
 			sourceTree = "<group>";
@@ -320,6 +323,8 @@
 				396CC9F81CCED67A00E4AC1D /* CreateViewController.xib in Resources */,
 				1D63E4AC1C922CE900D8863B /* Assets.xcassets in Resources */,
 				1D63E4AA1C922CE900D8863B /* Main.storyboard in Resources */,
+				398B7C101CD00FEA0053FE69 /* SummaryTableViewCell.xib in Resources */,
+				398B7C0A1CD004AB0053FE69 /* SummaryTableViewController.xib in Resources */,
 				39CA4A461CCEF11600FC15A8 /* NewBillViewController.xib in Resources */,
 				391A241F1CCF31F800884A27 /* TestViewController.xib in Resources */,
 				39BFF4071CAF03B700CCA5D3 /* SettingsViewController.xib in Resources */,
@@ -348,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39CA4A361CCEE17800FC15A8 /* CreateViewController.swift in Sources */,
+				398B7C0F1CD00FEA0053FE69 /* SummaryTableViewCell.swift in Sources */,
 				39CA4A371CCEE17800FC15A8 /* CreateViewController.xib in Sources */,
 				391A241E1CCF31F800884A27 /* TestViewController.swift in Sources */,
 				39CA4A451CCEF11600FC15A8 /* NewBillViewController.swift in Sources */,
@@ -355,12 +361,10 @@
 				39CA4A391CCEE17800FC15A8 /* LoginViewController.xib in Sources */,
 				39CA4A3A1CCEE17800FC15A8 /* SettingsViewController.swift in Sources */,
 				39CA4A3B1CCEE17800FC15A8 /* SettingsViewController.xib in Sources */,
-				39CA4A3C1CCEE17800FC15A8 /* SummaryViewController.swift in Sources */,
 				39CA4A3D1CCEE17800FC15A8 /* TabViewController.swift in Sources */,
 				39CA4A3E1CCEE17800FC15A8 /* Transaction.swift in Sources */,
-				39CA4A3F1CCEE17800FC15A8 /* TransactionTableViewCell.swift in Sources */,
-				39CA4A401CCEE17800FC15A8 /* TransactionTableViewController.swift in Sources */,
-				39CA4A411CCEE17800FC15A8 /* ViewController.swift in Sources */,
+				398B7C091CD004AB0053FE69 /* SummaryTableViewController.swift in Sources */,
+				398B7C0C1CD008CA0053FE69 /* SummaryNavViewController.swift in Sources */,
 				39CA4A351CCEE16D00FC15A8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
