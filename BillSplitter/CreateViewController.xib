@@ -10,6 +10,7 @@
                 <outlet property="fName" destination="wqs-yW-V9Q" id="8Q3-aR-B62"/>
                 <outlet property="lName" destination="arP-7I-mKt" id="kIW-Ll-RK6"/>
                 <outlet property="password" destination="cdr-eg-SpA" id="oxK-RF-6Ea"/>
+                <outlet property="username" destination="VhF-n3-VM7" id="VD5-n8-7Q2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -34,18 +35,23 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fBB-2i-ZkX">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VhF-n3-VM7">
                     <rect key="frame" x="20" y="182" width="560" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cdr-eg-SpA">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fBB-2i-ZkX">
                     <rect key="frame" x="20" y="220" width="560" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cdr-eg-SpA">
+                    <rect key="frame" x="20" y="258" width="560" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQF-ZX-WsG">
-                    <rect key="frame" x="20" y="276" width="560" height="48"/>
+                    <rect key="frame" x="20" y="314" width="560" height="48"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <state key="normal" title="Create"/>
                     <connections>
@@ -56,7 +62,10 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="cdr-eg-SpA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="3Zv-wq-hyw"/>
+                <constraint firstItem="fBB-2i-ZkX" firstAttribute="top" secondItem="VhF-n3-VM7" secondAttribute="bottom" constant="8" id="3gh-9F-Kss"/>
                 <constraint firstItem="hQF-ZX-WsG" firstAttribute="top" secondItem="cdr-eg-SpA" secondAttribute="bottom" constant="26" id="4vW-Ak-4fV"/>
+                <constraint firstItem="VhF-n3-VM7" firstAttribute="top" secondItem="arP-7I-mKt" secondAttribute="bottom" constant="8" id="5Fn-cs-8P7"/>
+                <constraint firstAttribute="trailing" secondItem="VhF-n3-VM7" secondAttribute="trailing" constant="20" id="5iN-yN-1Ww"/>
                 <constraint firstItem="wqs-yW-V9Q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="8VH-oK-jou"/>
                 <constraint firstItem="arP-7I-mKt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="8nx-FP-bb1"/>
                 <constraint firstAttribute="trailing" secondItem="bdJ-kz-3U7" secondAttribute="trailing" constant="20" id="KdP-E8-zR1"/>
@@ -70,7 +79,7 @@
                 <constraint firstItem="fBB-2i-ZkX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="dRl-85-QWz"/>
                 <constraint firstItem="cdr-eg-SpA" firstAttribute="top" secondItem="fBB-2i-ZkX" secondAttribute="bottom" constant="8" id="n6r-mY-Suu"/>
                 <constraint firstItem="hQF-ZX-WsG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="pdG-eV-VK0"/>
-                <constraint firstItem="fBB-2i-ZkX" firstAttribute="top" secondItem="arP-7I-mKt" secondAttribute="bottom" constant="8" id="qXB-w1-r1y"/>
+                <constraint firstItem="VhF-n3-VM7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="pvA-xt-n8t"/>
                 <constraint firstAttribute="trailing" secondItem="hQF-ZX-WsG" secondAttribute="trailing" constant="20" id="wic-L2-XbD"/>
                 <constraint firstAttribute="trailing" secondItem="cdr-eg-SpA" secondAttribute="trailing" constant="20" id="yk1-3c-WDm"/>
             </constraints>

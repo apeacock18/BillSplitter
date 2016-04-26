@@ -8,11 +8,13 @@
 
 import Parse
 import UIKit
+import CryptoSwift
 
 class CreateViewController: UIViewController {
 
     @IBOutlet weak var fName: UITextField!
     @IBOutlet weak var lName: UITextField!
+    @IBOutlet weak var username: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
@@ -27,17 +29,29 @@ class CreateViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func sendToServer(fName: String, lName: String, email: String, password: String) {
+    func hash1(input: String, salt: String) -> String {
+        var password: String = input
+        password += salt
+        return input.sha512()
+    }
+    
+    func sendToServer(fName: String, lName: String, username: String, email: String, password: String) {
         let user = PFObject(className: "Users")
         user["fName"] = fName
         user["lName"] = lName
+        user["username"] = username
         user["email"] = email
         user["password"] = password
         user.saveInBackground()
     }
     
     @IBAction func create(sender: UIButton) {
-        sendToServer(fName.text!, lName: lName.text!, email: email.text!, password: password.text!)
+        
+        // TODO: Check if already exists
+        
+        
+        
+        sendToServer(fName.text!, lName: lName.text!, username: username.text!, email: email.text!, password: hash1(password.text!, salt: username.text!))
     }
 
     /*
