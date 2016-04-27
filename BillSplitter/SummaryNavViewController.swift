@@ -21,14 +21,19 @@ class SummaryNavViewController: UINavigationController {
         button.setTitle("+", forState: .Normal)
         button.titleLabel?.font = UIFont.systemFontOfSize(20.0)
         button.frame = CGRectMake(0, 0, 100, 40)
+        self.navigationBar.topItem?.title = "Groups"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .Plain, target: self, action: #selector(TransactionTableViewController.onCreate))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .Plain, target: self, action: #selector(SummaryNavViewController.onCreate))
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName:UIFont.systemFontOfSize(40)], forState: .Normal)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func onCreate() {
+        
     }
     
 

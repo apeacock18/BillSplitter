@@ -65,7 +65,7 @@ class CreateViewController: UIViewController {
         
         saveSelfLocal(fName.text!, lName: lName.text!, username: username.text!, email: email.text!)
         
-        //sendToServer(fName.text!, lName: lName.text!, username: username.text!, email: email.text!, password: hash1(password.text!, salt: username.text!))
+        sendToServer(fName.text!, lName: lName.text!, username: username.text!, email: email.text!, password: hash1(password.text!, salt: username.text!))
         self.presentViewController(TabViewController(), animated: true, completion: nil)
     }
 
