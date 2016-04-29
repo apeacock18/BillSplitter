@@ -38,6 +38,7 @@ class SummaryTableViewController: UITableViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.rowHeight = 80.0
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,7 +67,7 @@ class SummaryTableViewController: UITableViewController {
         cell.name.text = t["name"] as? String
         cell.avatar.image = t["photo"] as? UIImage
         let amount: Double = t["amount"] as! Double
-        cell.amount.text = String(format:"%f", amount)
+        cell.amount.text = String(format:"%.2f", amount)
         if(amount != 0.0) {
             cell.backgroundColor = UIColor.redColor()
         }
