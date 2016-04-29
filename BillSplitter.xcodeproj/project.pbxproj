@@ -16,7 +16,10 @@
 		396CC9F81CCED67A00E4AC1D /* CreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396CC9F61CCED67A00E4AC1D /* CreateViewController.xib */; };
 		396CC9FB1CCED6E200E4AC1D /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396CC9FA1CCED6E200E4AC1D /* LoginViewController.xib */; };
 		397784E11CD3E72F000F7600 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397784E01CD3E72F000F7600 /* StorageManager.swift */; };
-		397784E41CD3E7BF000F7600 /* Summary in Resources */ = {isa = PBXBuildFile; fileRef = 397784E31CD3E7BF000F7600 /* Summary */; };
+		397784EE1CD3E8FC000F7600 /* SummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 397784EA1CD3E8FC000F7600 /* SummaryTableViewCell.xib */; };
+		397784F11CD3E91A000F7600 /* SummaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397784E91CD3E8FC000F7600 /* SummaryTableViewController.swift */; };
+		397784F21CD3E91A000F7600 /* SummaryNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397784EB1CD3E8FC000F7600 /* SummaryNavViewController.swift */; };
+		397784F31CD3E91A000F7600 /* SummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397784EC1CD3E8FC000F7600 /* SummaryTableViewCell.swift */; };
 		39AB43A61CC9AAAA004F9937 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A41CC9AAAA004F9937 /* Bolts.framework */; };
 		39AB43A71CC9AAAA004F9937 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A51CC9AAAA004F9937 /* Parse.framework */; };
 		39AB43B21CC9AB9E004F9937 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A81CC9AB9E004F9937 /* AudioToolbox.framework */; };
@@ -89,7 +92,10 @@
 		396CC9F61CCED67A00E4AC1D /* CreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateViewController.xib; path = BillSplitter/CreateViewController.xib; sourceTree = SOURCE_ROOT; };
 		396CC9FA1CCED6E200E4AC1D /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = BillSplitter/LoginViewController.xib; sourceTree = SOURCE_ROOT; };
 		397784E01CD3E72F000F7600 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
-		397784E31CD3E7BF000F7600 /* Summary */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Summary; sourceTree = "<group>"; };
+		397784E91CD3E8FC000F7600 /* SummaryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryTableViewController.swift; sourceTree = "<group>"; };
+		397784EA1CD3E8FC000F7600 /* SummaryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SummaryTableViewCell.xib; sourceTree = "<group>"; };
+		397784EB1CD3E8FC000F7600 /* SummaryNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryNavViewController.swift; sourceTree = "<group>"; };
+		397784EC1CD3E8FC000F7600 /* SummaryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryTableViewCell.swift; sourceTree = "<group>"; };
 		3978787F1CC9EA410052DF04 /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateViewController.swift; path = ../BillSplitter/CreateViewController.swift; sourceTree = "<group>"; };
 		397EBAB21CCEA26500E2A56B /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = ../BillSplitter/TabViewController.swift; sourceTree = "<group>"; };
 		39AB43A41CC9AAAA004F9937 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -183,7 +189,7 @@
 		1D63E4A31C922CE900D8863B /* BillSplitter */ = {
 			isa = PBXGroup;
 			children = (
-				397784E31CD3E7BF000F7600 /* Summary */,
+				397784E81CD3E8E7000F7600 /* Summary */,
 				1D63E4A41C922CE900D8863B /* AppDelegate.swift */,
 				1D63E4AB1C922CE900D8863B /* Assets.xcassets */,
 				3978787F1CC9EA410052DF04 /* CreateViewController.swift */,
@@ -203,6 +209,17 @@
 				397784E01CD3E72F000F7600 /* StorageManager.swift */,
 			);
 			path = BillSplitter;
+			sourceTree = "<group>";
+		};
+		397784E81CD3E8E7000F7600 /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				397784E91CD3E8FC000F7600 /* SummaryTableViewController.swift */,
+				397784EA1CD3E8FC000F7600 /* SummaryTableViewCell.xib */,
+				397784EB1CD3E8FC000F7600 /* SummaryNavViewController.swift */,
+				397784EC1CD3E8FC000F7600 /* SummaryTableViewCell.swift */,
+			);
+			name = Summary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,9 +328,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				396CC9FB1CCED6E200E4AC1D /* LoginViewController.xib in Resources */,
-				397784E41CD3E7BF000F7600 /* Summary in Resources */,
 				396CC9F81CCED67A00E4AC1D /* CreateViewController.xib in Resources */,
 				1D63E4AC1C922CE900D8863B /* Assets.xcassets in Resources */,
+				397784EE1CD3E8FC000F7600 /* SummaryTableViewCell.xib in Resources */,
 				1D63E4AA1C922CE900D8863B /* Main.storyboard in Resources */,
 				39CA4A461CCEF11600FC15A8 /* NewBillViewController.xib in Resources */,
 				391A241F1CCF31F800884A27 /* TestViewController.xib in Resources */,
@@ -342,6 +359,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				397784F11CD3E91A000F7600 /* SummaryTableViewController.swift in Sources */,
+				397784F21CD3E91A000F7600 /* SummaryNavViewController.swift in Sources */,
+				397784F31CD3E91A000F7600 /* SummaryTableViewCell.swift in Sources */,
 				39CA4A361CCEE17800FC15A8 /* CreateViewController.swift in Sources */,
 				39CA4A371CCEE17800FC15A8 /* CreateViewController.xib in Sources */,
 				391A241E1CCF31F800884A27 /* TestViewController.swift in Sources */,

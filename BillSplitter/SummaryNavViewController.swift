@@ -14,9 +14,6 @@ class SummaryNavViewController: UINavigationController {
         super.viewDidLoad()
         self.viewControllers = [SummaryTableViewController()]
         
-        //self.navigationBar.tit
-        
-        
         let button = UIButton(type: .Custom)
         button.setTitle("+", forState: .Normal)
         button.titleLabel?.font = UIFont.systemFontOfSize(20.0)
