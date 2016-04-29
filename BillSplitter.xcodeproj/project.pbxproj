@@ -32,6 +32,8 @@
 		39AB43B91CC9AB9F004F9937 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43AF1CC9AB9E004F9937 /* Security.framework */; };
 		39AB43BA1CC9AB9F004F9937 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43B01CC9AB9E004F9937 /* StoreKit.framework */; };
 		39AB43BB1CC9AB9F004F9937 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43B11CC9AB9E004F9937 /* SystemConfiguration.framework */; };
+		39B6398D1CD41DF2002269A8 /* VariableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B6398C1CD41DF2002269A8 /* VariableManager.swift */; };
+		39B6398F1CD4228C002269A8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B6398E1CD4228C002269A8 /* NetworkManager.swift */; };
 		39BFF4071CAF03B700CCA5D3 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39BFF4051CAF03B700CCA5D3 /* SettingsViewController.xib */; };
 		39CA4A351CCEE16D00FC15A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4A41C922CE900D8863B /* AppDelegate.swift */; };
 		39CA4A361CCEE17800FC15A8 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3978787F1CC9EA410052DF04 /* CreateViewController.swift */; };
@@ -111,6 +113,8 @@
 		39AB43B01CC9AB9E004F9937 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		39AB43B11CC9AB9E004F9937 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		39AB43C41CC9CB3B004F9937 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../BillSplitter/LoginViewController.swift; sourceTree = "<group>"; };
+		39B6398C1CD41DF2002269A8 /* VariableManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariableManager.swift; sourceTree = "<group>"; };
+		39B6398E1CD4228C002269A8 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		39BFF4001CAF007200CCA5D3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../BillSplitter/SettingsViewController.swift; sourceTree = "<group>"; };
 		39BFF4051CAF03B700CCA5D3 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = ../BillSplitter/SettingsViewController.xib; sourceTree = "<group>"; };
 		39CA4A431CCEF11600FC15A8 /* NewBillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewBillViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +211,8 @@
 				391A241D1CCF31F800884A27 /* TestViewController.xib */,
 				1D63E4DE1C937E9300D8863B /* Transaction.swift */,
 				397784E01CD3E72F000F7600 /* StorageManager.swift */,
+				39B6398C1CD41DF2002269A8 /* VariableManager.swift */,
+				39B6398E1CD4228C002269A8 /* NetworkManager.swift */,
 			);
 			path = BillSplitter;
 			sourceTree = "<group>";
@@ -360,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				397784F11CD3E91A000F7600 /* SummaryTableViewController.swift in Sources */,
+				39B6398D1CD41DF2002269A8 /* VariableManager.swift in Sources */,
 				397784F21CD3E91A000F7600 /* SummaryNavViewController.swift in Sources */,
 				397784F31CD3E91A000F7600 /* SummaryTableViewCell.swift in Sources */,
 				39CA4A361CCEE17800FC15A8 /* CreateViewController.swift in Sources */,
@@ -368,6 +375,7 @@
 				39CA4A451CCEF11600FC15A8 /* NewBillViewController.swift in Sources */,
 				39CA4A381CCEE17800FC15A8 /* LoginViewController.swift in Sources */,
 				39CA4A391CCEE17800FC15A8 /* LoginViewController.xib in Sources */,
+				39B6398F1CD4228C002269A8 /* NetworkManager.swift in Sources */,
 				39CA4A3A1CCEE17800FC15A8 /* SettingsViewController.swift in Sources */,
 				39CA4A3B1CCEE17800FC15A8 /* SettingsViewController.xib in Sources */,
 				39CA4A3D1CCEE17800FC15A8 /* TabViewController.swift in Sources */,

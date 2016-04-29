@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 class StorageManager {
@@ -50,7 +51,51 @@ class StorageManager {
         
         group["members"] = currentUsers.filter() {$0 != id}
         groupData[groupId] = group
-        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(groupData), forKey: "groups")
+        NSUserDefaults.standardUserDefaults().setObject(groupData, forKey: "groups")
+        return true
+    }
+    
+    
+    
+    /*
+     * Self data below.
+     */
+    
+    func recallSelfData() {
+        let data: [String: String] = NSUserDefaults.standardUserDefaults().objectForKey("selfData") as! [String: String]
+        VariableManager.setID(data["id"]!)
+        VariableManager.setEmail(data["email"]!)
+        VariableManager.setFName(data["fName"]!)
+        VariableManager.setLName(data["lName"]!)
+        VariableManager.setPhoneNumber(data["phoneNumber"]!)
+    }
+    
+    static func saveSelfData() {
+        let data: [String: AnyObject] = [
+            "id":VariableManager.getID(),
+            "email": VariableManager.getEmail(),
+            "fName": VariableManager.getFName(),
+            "lName": VariableManager.getLName(),
+            "phoneNumber": VariableManager.getPhoneNumber()
+        ]
+        NSUserDefaults.standardUserDefaults().setObject(data, forKey: "selfData")
+    }
+    
+    
+    func getAvatar() -> UIImage? {
+        var currentImage = NSUserDefaults.standardUserDefaults().objectForKey("selfAvatar") as? UIImage
+        if currentImage == nil {
+            currentImage = UIImage(named: "default")!
+        }
+        return currentImage
+    }
+    
+    func saveSelfAvatar(image: UIImage) -> Bool {
+        let currentImage = NSUserDefaults.standardUserDefaults().objectForKey("selfAvatar") as? UIImage
+        if currentImage == nil {
+            return false
+        }
+        NSUserDefaults.standardUserDefaults().setObject(image, forKey: "selfAvatar")
         return true
     }
     
