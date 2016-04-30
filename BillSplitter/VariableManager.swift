@@ -16,6 +16,7 @@ class VariableManager {
     private static var phoneNumber: String = ""
     private static var fName: String = ""
     private static var lName: String = ""
+    private static var username: String = ""
     
     
     private static var avatar: UIImage? = nil
@@ -58,6 +59,14 @@ class VariableManager {
     
     static func setPhoneNumber(phoneNumber: String) {
         self.phoneNumber = phoneNumber
+    }
+    
+    static func getUsername() -> String {
+        return username
+    }
+    
+    static func setUsername(username: String) {
+        self.username = username
     }
     
     static func setAvatar(image: UIImage) {
