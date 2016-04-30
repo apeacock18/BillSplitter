@@ -37,7 +37,7 @@ class VariableManager {
     }
     
     static func getFName() -> String {
-        return lName
+        return fName
     }
     
     static func setFName(fName: String) {
