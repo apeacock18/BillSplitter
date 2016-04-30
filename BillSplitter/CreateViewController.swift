@@ -36,26 +36,69 @@ class CreateViewController: UIViewController {
 
     @IBAction func create(sender: UIButton) {
         let name: String = username.text!.lowercaseString
-        let exists: Bool = NetworkManager.createNewUser(name,
-            password: password.text!.lowercaseString.hashWithSalt(name),
-            email: email.text!.lowercaseString,
-            phoneNumber: "".lowercaseString,
-            fName: fName.text!.lowercaseString,
-            lName: lName.text!.lowercaseString
-        )
+        let fNameText = fName.text!
+        let lNameText = lName.text!
+        let emailText = email.text!.lowercaseString
 
-        if exists {
-            // Send an error, the username is taken
-        } else {
-            VariableManager.setFName(fName.text!.lowercaseString)
-            VariableManager.setLName(lName.text!.lowercaseString)
-            VariableManager.setEmail(email.text!.lowercaseString)
-            VariableManager.setUsername(username.text!.lowercaseString)
-            VariableManager.setPhoneNumber("".lowercaseString); // TODO: Add phone number field
-            StorageManager.saveSelfData()
-
-            self.presentViewController(TabViewController(), animated: true, completion: nil)
+        // Validate input
+        if name.characters.count < 6 {
+            let message = UIAlertController(title: "Username not long enough", message: "Your username must be at least 6 characters long.", preferredStyle: UIAlertControllerStyle.Alert)
+            message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(message, animated: true, completion: nil)
+            return
         }
+        if fNameText.characters.count == 0 {
+            let message = UIAlertController(title: "First name not entered", message: "Please enter a first name.", preferredStyle: UIAlertControllerStyle.Alert)
+            message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(message, animated: true, completion: nil)
+            return
+        }
+        if lNameText.characters.count == 0 {
+            let message = UIAlertController(title: "Last name not entered", message: "Please enter a last name.", preferredStyle: UIAlertControllerStyle.Alert)
+            message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(message, animated: true, completion: nil)
+            return
+        }
+        if emailText.characters.count == 0 {
+            let message = UIAlertController(title: "Email not entered", message: "Please enter an email.", preferredStyle: UIAlertControllerStyle.Alert)
+            message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(message, animated: true, completion: nil)
+            return
+        }
+        if password.text!.characters.count < 8 {
+            let message = UIAlertController(title: "Password not long enough", message: "Your password must be at least 8 characters long.", preferredStyle: UIAlertControllerStyle.Alert)
+            message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(message, animated: true, completion: nil)
+            return
+        }
+
+        // Query server
+
+        NetworkManager.createNewUser(name,
+            password: password.text!.hashWithSalt(name),
+            email: emailText,
+            phoneNumber: "".lowercaseString,
+            fName: fNameText,
+            lName: lNameText
+        ) {
+            (result: Int) in
+            if result == 0 {
+            } else if result == 1 { // Send an error, the username is taken
+                let message = UIAlertController(title: "Username Taken", message: "Please choose another username.", preferredStyle: UIAlertControllerStyle.Alert)
+                message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(message, animated: true, completion: nil)
+            } else { // Result = 2
+                VariableManager.setFName(self.fName.text!)
+                VariableManager.setLName(self.lName.text!)
+                VariableManager.setEmail(self.email.text!.lowercaseString)
+                VariableManager.setUsername(self.username.text!.lowercaseString)
+                VariableManager.setPhoneNumber("".lowercaseString); // TODO: Add phone number field
+                StorageManager.saveSelfData()
+
+                self.presentViewController(TabViewController(), animated: true, completion: nil)
+            }
+        }
+
     }
     
 }
