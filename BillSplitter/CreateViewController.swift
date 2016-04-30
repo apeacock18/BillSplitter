@@ -61,22 +61,29 @@ class CreateViewController: UIViewController {
     
     @IBAction func create(sender: UIButton) {
         
-        // TODO: Check if already exists
+        let exists: Bool = NetworkManager.createNewUser(username.text!,
+            password: hash1(password.text!,
+            salt: username.text!),
+            email: email.text!,
+            phoneNumber: "",
+            fName: fName.text!,
+            lName: lName.text!
+        )
         
-        saveSelfLocal(fName.text!, lName: lName.text!, username: username.text!, email: email.text!)
-        
-        sendToServer(fName.text!, lName: lName.text!, username: username.text!, email: email.text!, password: hash1(password.text!, salt: username.text!))
-        self.presentViewController(TabViewController(), animated: true, completion: nil)
+        if exists {
+            // Send an error, the username is taken
+        } else {
+            saveSelfLocal(fName.text!, lName: lName.text!, username: username.text!, email: email.text!)
+            
+            VariableManager.setFName(fName.text!)
+            VariableManager.setLName(lName.text!)
+            VariableManager.setEmail(email.text!)
+            VariableManager.setUsername(username.text!)
+            VariableManager.setPhoneNumber(""); // TODO: Add phone number field
+            StorageManager.saveSelfData()
+            
+            self.presentViewController(TabViewController(), animated: true, completion: nil)
+        }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
