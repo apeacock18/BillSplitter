@@ -52,7 +52,7 @@ class NetworkManager {
         return true
     }
 
-    static func createNewUser(username: String, password: String, email: String, phoneNumber: String, fName: String, lName: String) -> Bool {
+    static func createNewUser(username: String, password: String, email: String, phoneNumber: String, fName: String, lName: String, completion: (result: Int) -> Void) {
         PFCloud.callFunctionInBackground("create", withParameters: [
             "username":username,
             "password": password,
@@ -63,21 +63,21 @@ class NetworkManager {
         ]) {
             (response: AnyObject?, error: NSError?) -> Void in
             if response != nil {
-                print(response)
-                // TODO: VariableManager.setID(response as! String)
+                print("Create User Response: " + (response as! String))
+                VariableManager.setID(response as! String)
+                completion(result: 2)
             }
             if error != nil {
-                print(error!.code)
                 let errorCode: Int = error!.userInfo["error"] as! Int
-                if errorCode == 1 { // Username already taken
-                    // TODO: Implement a completion handler
-                }
-                print(errorCode)
+                /*
+                 * Error Codes:
+                 * 0: Unknown error
+                 * 1: Username already taken
+                 */
+                completion(result: errorCode)
+                print("Create User Error: " + String(errorCode))
             }
         }
-
-
-        return true
     }
 
 
