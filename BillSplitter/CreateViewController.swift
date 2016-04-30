@@ -16,6 +16,7 @@ class CreateViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var password2: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +68,12 @@ class CreateViewController: UIViewController {
         }
         if password.text!.characters.count < 8 {
             let message = UIAlertController(title: "Password not long enough", message: "Your password must be at least 8 characters long.", preferredStyle: UIAlertControllerStyle.Alert)
+            message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(message, animated: true, completion: nil)
+            return
+        }
+        if password.text! != password2.text! {
+            let message = UIAlertController(title: "Passwords do not match", message: "Your passwords must match.", preferredStyle: UIAlertControllerStyle.Alert)
             message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(message, animated: true, completion: nil)
             return

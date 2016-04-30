@@ -10,6 +10,7 @@
                 <outlet property="fName" destination="wqs-yW-V9Q" id="8Q3-aR-B62"/>
                 <outlet property="lName" destination="arP-7I-mKt" id="kIW-Ll-RK6"/>
                 <outlet property="password" destination="cdr-eg-SpA" id="oxK-RF-6Ea"/>
+                <outlet property="password2" destination="0JJ-xI-bso" id="93j-50-g7E"/>
                 <outlet property="username" destination="VhF-n3-VM7" id="VD5-n8-7Q2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -50,8 +51,13 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reenter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0JJ-xI-bso">
+                    <rect key="frame" x="20" y="296" width="560" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQF-ZX-WsG">
-                    <rect key="frame" x="20" y="314" width="560" height="48"/>
+                    <rect key="frame" x="20" y="334" width="560" height="48"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <state key="normal" title="Create"/>
                     <connections>
@@ -63,13 +69,14 @@
             <constraints>
                 <constraint firstItem="cdr-eg-SpA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="3Zv-wq-hyw"/>
                 <constraint firstItem="fBB-2i-ZkX" firstAttribute="top" secondItem="VhF-n3-VM7" secondAttribute="bottom" constant="8" id="3gh-9F-Kss"/>
-                <constraint firstItem="hQF-ZX-WsG" firstAttribute="top" secondItem="cdr-eg-SpA" secondAttribute="bottom" constant="26" id="4vW-Ak-4fV"/>
                 <constraint firstItem="VhF-n3-VM7" firstAttribute="top" secondItem="arP-7I-mKt" secondAttribute="bottom" constant="8" id="5Fn-cs-8P7"/>
                 <constraint firstAttribute="trailing" secondItem="VhF-n3-VM7" secondAttribute="trailing" constant="20" id="5iN-yN-1Ww"/>
+                <constraint firstItem="0JJ-xI-bso" firstAttribute="top" secondItem="cdr-eg-SpA" secondAttribute="bottom" constant="8" id="6Kj-SZ-kOU"/>
                 <constraint firstItem="wqs-yW-V9Q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="8VH-oK-jou"/>
                 <constraint firstItem="arP-7I-mKt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="8nx-FP-bb1"/>
                 <constraint firstAttribute="trailing" secondItem="bdJ-kz-3U7" secondAttribute="trailing" constant="20" id="KdP-E8-zR1"/>
                 <constraint firstItem="arP-7I-mKt" firstAttribute="top" secondItem="wqs-yW-V9Q" secondAttribute="bottom" constant="8" id="Kf6-Mg-qDz"/>
+                <constraint firstItem="0JJ-xI-bso" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Tg3-LV-YkZ"/>
                 <constraint firstItem="bdJ-kz-3U7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="VNB-Bd-YQJ"/>
                 <constraint firstItem="wqs-yW-V9Q" firstAttribute="top" secondItem="bdJ-kz-3U7" secondAttribute="bottom" constant="30" id="WMv-04-geo"/>
                 <constraint firstItem="bdJ-kz-3U7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="ZNc-0P-7Rc"/>
@@ -77,6 +84,8 @@
                 <constraint firstAttribute="trailing" secondItem="wqs-yW-V9Q" secondAttribute="trailing" constant="20" id="agu-NH-o84"/>
                 <constraint firstAttribute="trailing" secondItem="fBB-2i-ZkX" secondAttribute="trailing" constant="20" id="cOZ-Wg-bMp"/>
                 <constraint firstItem="fBB-2i-ZkX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="dRl-85-QWz"/>
+                <constraint firstAttribute="trailing" secondItem="0JJ-xI-bso" secondAttribute="trailing" constant="20" id="fdH-EG-kgJ"/>
+                <constraint firstItem="hQF-ZX-WsG" firstAttribute="top" secondItem="0JJ-xI-bso" secondAttribute="bottom" constant="8" id="mVd-wt-i5Q"/>
                 <constraint firstItem="cdr-eg-SpA" firstAttribute="top" secondItem="fBB-2i-ZkX" secondAttribute="bottom" constant="8" id="n6r-mY-Suu"/>
                 <constraint firstItem="hQF-ZX-WsG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="pdG-eV-VK0"/>
                 <constraint firstItem="VhF-n3-VM7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="pvA-xt-n8t"/>
