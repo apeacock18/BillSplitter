@@ -8,7 +8,6 @@
 
 import UIKit
 import Parse
-import CryptoSwift
 
 class LoginViewController: UIViewController {
 
@@ -19,6 +18,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         username.autocorrectionType = UITextAutocorrectionType.No
+        password.autocorrectionType = UITextAutocorrectionType.No
         //Root View
         
         
@@ -34,7 +34,12 @@ class LoginViewController: UIViewController {
     @IBAction func login(sender: UIButton) {
         // TODO: Actually login
         //self.presentViewController(TabViewController(), animated: true, completion: nil)
-        NetworkManager.login(username.text!, password: hashPassword(password.text!, salt: username.text!))
+        
+        let name: String = username.text!.lowercaseString
+        NetworkManager.login(
+            name,
+            password: password.text!.lowercaseString.hashWithSalt(name)
+        )
     }
     
     
@@ -45,12 +50,6 @@ class LoginViewController: UIViewController {
 
     
     @IBAction func forgot(sender: UIButton) {
-    }
-    
-    func hashPassword(input: String, salt: String) -> String {
-        var password: String = input
-        password += salt
-        return input.sha512()
     }
 
     /*

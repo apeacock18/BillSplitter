@@ -9,6 +9,7 @@
 import Parse
 import Bolts
 import UIKit
+import CryptoSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -82,6 +83,14 @@ extension UIViewController {
     
     func dismissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+extension String {
+    func hashWithSalt(salt: String) -> String {
+        var password: String = self
+        password += salt
+        return password.sha512()
     }
 }
 

@@ -8,7 +8,6 @@
 
 import Parse
 import UIKit
-import CryptoSwift
 
 class CreateViewController: UIViewController {
 
@@ -20,7 +19,12 @@ class CreateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        fName.autocorrectionType = UITextAutocorrectionType.No
+        lName.autocorrectionType = UITextAutocorrectionType.No
+        username.autocorrectionType = UITextAutocorrectionType.No
+        email.autocorrectionType = UITextAutocorrectionType.No
+        password.autocorrectionType = UITextAutocorrectionType.No
+        
         // Do any additional setup after loading the view.
     }
 
@@ -28,58 +32,26 @@ class CreateViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func hash1(input: String, salt: String) -> String {
-        var password: String = input
-        password += salt
-        return input.sha512()
-    }
-    
-    func sendToServer(fName: String, lName: String, username: String, email: String, password: String) {
-        let user = PFObject(className: "Users")
-        user["fName"] = fName
-        user["lName"] = lName
-        user["username"] = username
-        user["email"] = email
-        user["password"] = password
-        user.saveInBackground()
-    }
-    
-    func saveSelfLocal(fName: String, lName: String, username: String, email: String) {
-        let data = [
-            "fName": fName,
-            "lName": lName,
-            "username": username,
-            "email": email
-        ]
-        
-        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(NSKeyedArchiver.archivedDataWithRootObject(data), forKey: "selfData")
-        defaults.synchronize()
-        
-    }
-    
+
+
     @IBAction func create(sender: UIButton) {
-        
-        let exists: Bool = NetworkManager.createNewUser(username.text!,
-            password: hash1(password.text!,
-            salt: username.text!),
-            email: email.text!,
-            phoneNumber: "",
-            fName: fName.text!,
-            lName: lName.text!
+        let name: String = username.text!.lowercaseString
+        let exists: Bool = NetworkManager.createNewUser(name,
+            password: password.text!.lowercaseString.hashWithSalt(name),
+            email: email.text!.lowercaseString,
+            phoneNumber: "".lowercaseString,
+            fName: fName.text!.lowercaseString,
+            lName: lName.text!.lowercaseString
         )
         
         if exists {
             // Send an error, the username is taken
         } else {
-            saveSelfLocal(fName.text!, lName: lName.text!, username: username.text!, email: email.text!)
-            
-            VariableManager.setFName(fName.text!)
-            VariableManager.setLName(lName.text!)
-            VariableManager.setEmail(email.text!)
-            VariableManager.setUsername(username.text!)
-            VariableManager.setPhoneNumber(""); // TODO: Add phone number field
+            VariableManager.setFName(fName.text!.lowercaseString)
+            VariableManager.setLName(lName.text!.lowercaseString)
+            VariableManager.setEmail(email.text!.lowercaseString)
+            VariableManager.setUsername(username.text!.lowercaseString)
+            VariableManager.setPhoneNumber("".lowercaseString); // TODO: Add phone number field
             StorageManager.saveSelfData()
             
             self.presentViewController(TabViewController(), animated: true, completion: nil)
