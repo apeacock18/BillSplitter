@@ -11,7 +11,7 @@ import UIKit
 import Parse
 
 class NetworkManager {
-    
+
     static func login(username: String, password: String) -> Bool {
         PFCloud.callFunctionInBackground("login", withParameters: ["username":username, "password":password]) {
             (response: AnyObject?, error: NSError?) -> Void in
@@ -22,36 +22,36 @@ class NetworkManager {
                 print(response)
             }
         }
-        
+
         /*
          * TODO: Refresh local cache
          *
-         
-        let query = PFQuery(className: "Users").whereKey("username", equalTo: username)
-        query.getFirstObjectInBackgroundWithBlock({
-            (object: PFObject?, error: NSError?) -> Void in
-            if error == nil {
-                VariableManager.setID(object!.valueForKey("id") as! String)
-                VariableManager.setEmail(object!.valueForKey("email") as! String)
-                VariableManager.setFName(object!.valueForKey("fName") as! String)
-                VariableManager.setLName(object!.valueForKey("lName") as! String)
-                VariableManager.setPhoneNumber(object!.valueForKey("phoneNumber") as! String)
-                
-                let imageFile = object!.valueForKey("avatar") as! PFFile
-                imageFromData(imageFile) {
-                    (result: UIImage?) in
-                    if result != nil {
-                        VariableManager.setAvatar(result!)
-                    }
-                }
-                
-                StorageManager.saveSelfData()
-            }
-        })*/
-        
+
+         let query = PFQuery(className: "Users").whereKey("username", equalTo: username)
+         query.getFirstObjectInBackgroundWithBlock({
+         (object: PFObject?, error: NSError?) -> Void in
+         if error == nil {
+         VariableManager.setID(object!.valueForKey("id") as! String)
+         VariableManager.setEmail(object!.valueForKey("email") as! String)
+         VariableManager.setFName(object!.valueForKey("fName") as! String)
+         VariableManager.setLName(object!.valueForKey("lName") as! String)
+         VariableManager.setPhoneNumber(object!.valueForKey("phoneNumber") as! String)
+
+         let imageFile = object!.valueForKey("avatar") as! PFFile
+         imageFromData(imageFile) {
+         (result: UIImage?) in
+         if result != nil {
+         VariableManager.setAvatar(result!)
+         }
+         }
+
+         StorageManager.saveSelfData()
+         }
+         })*/
+
         return true
     }
-    
+
     static func createNewUser(username: String, password: String, email: String, phoneNumber: String, fName: String, lName: String) -> Bool {
         PFCloud.callFunctionInBackground("create", withParameters: [
             "username":username,
@@ -75,12 +75,12 @@ class NetworkManager {
                 print(errorCode)
             }
         }
-        
-        
+
+
         return true
     }
-    
-    
+
+
     static func imageFromData(file: PFFile, completion: (result: UIImage?) -> Void) {
         file.getDataInBackgroundWithBlock({
             (imageData: NSData?, error: NSError?) -> Void in
@@ -89,5 +89,5 @@ class NetworkManager {
             }
         })
     }
-    
+
 }

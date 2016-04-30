@@ -16,7 +16,7 @@ class CreateViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         fName.autocorrectionType = UITextAutocorrectionType.No
@@ -24,7 +24,7 @@ class CreateViewController: UIViewController {
         username.autocorrectionType = UITextAutocorrectionType.No
         email.autocorrectionType = UITextAutocorrectionType.No
         password.autocorrectionType = UITextAutocorrectionType.No
-        
+
         // Do any additional setup after loading the view.
     }
 
@@ -43,7 +43,7 @@ class CreateViewController: UIViewController {
             fName: fName.text!.lowercaseString,
             lName: lName.text!.lowercaseString
         )
-        
+
         if exists {
             // Send an error, the username is taken
         } else {
@@ -53,9 +53,9 @@ class CreateViewController: UIViewController {
             VariableManager.setUsername(username.text!.lowercaseString)
             VariableManager.setPhoneNumber("".lowercaseString); // TODO: Add phone number field
             StorageManager.saveSelfData()
-            
+
             self.presentViewController(TabViewController(), animated: true, completion: nil)
         }
     }
-
+    
 }

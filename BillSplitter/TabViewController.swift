@@ -12,12 +12,12 @@ class TabViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let vc1 = TestViewController()
         vc1.title = "Test"
         let vc2 = SummaryNavViewController()
         vc2.title = "Summary"
-        
+
         self.viewControllers = [vc1, vc2]
         self.selectedIndex = 1
         // Do any additional setup after loading the view.
@@ -27,16 +27,16 @@ class TabViewController: UITabBarController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
