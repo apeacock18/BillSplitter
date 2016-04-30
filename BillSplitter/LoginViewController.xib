@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="BillSplitter" customModuleProvider="target">
             <connections>
-                <outlet property="password" destination="Vuc-Jc-ZeG" id="aks-j4-FiA"/>
+                <outlet property="password" destination="Vuc-Jc-ZeG" id="sG3-bD-Spx"/>
                 <outlet property="username" destination="7gJ-ZD-yOL" id="65v-H4-hbW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -37,7 +37,7 @@
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vuc-Jc-ZeG">
                     <rect key="frame" x="20" y="207" width="560" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZ2-Xo-eoq">
                     <rect key="frame" x="0.0" y="277" width="600" height="60"/>
