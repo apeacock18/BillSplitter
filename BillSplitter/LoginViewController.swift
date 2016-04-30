@@ -8,15 +8,17 @@
 
 import UIKit
 import Parse
+import CryptoSwift
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var email: UITextField!
+    
+    @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        username.autocorrectionType = UITextAutocorrectionType.No
         //Root View
         
         
@@ -31,7 +33,8 @@ class LoginViewController: UIViewController {
     
     @IBAction func login(sender: UIButton) {
         // TODO: Actually login
-        self.presentViewController(TabViewController(), animated: true, completion: nil)
+        //self.presentViewController(TabViewController(), animated: true, completion: nil)
+        NetworkManager.login(username.text!, password: hashPassword(password.text!, salt: username.text!))
     }
     
     
@@ -44,26 +47,10 @@ class LoginViewController: UIViewController {
     @IBAction func forgot(sender: UIButton) {
     }
     
-    
-    func loadImages() {
-        
-        let query = PFQuery(className: "test")
-        
-        query.findObjectsInBackgroundWithBlock ({
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            if (error == nil) {
-                for object in objects! {
-                    let imageFile = object.valueForKey("files") as! PFFile
-                    imageFile.getDataInBackgroundWithBlock({
-                        (imageData: NSData?, error: NSError?) -> Void in
-                        if (error == nil) {
-                            _ = UIImage(data: imageData!)
-                            //self.testImage.image = image
-                        }
-                    })
-                }
-            }
-        })
+    func hashPassword(input: String, salt: String) -> String {
+        var password: String = input
+        password += salt
+        return input.sha512()
     }
 
     /*
