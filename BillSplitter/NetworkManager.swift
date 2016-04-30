@@ -13,9 +13,20 @@ import Parse
 class NetworkManager {
     
     static func login(username: String, password: String) -> Bool {
+        PFCloud.callFunctionInBackground("login", withParameters: ["username":username, "password":password]) {
+            (response: AnyObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+            }
+            if response != nil {
+                print(response)
+            }
+        }
         
-        
-        
+        /*
+         * TODO: Refresh local cache
+         *
+         
         let query = PFQuery(className: "Users").whereKey("username", equalTo: username)
         query.getFirstObjectInBackgroundWithBlock({
             (object: PFObject?, error: NSError?) -> Void in
@@ -36,7 +47,35 @@ class NetworkManager {
                 
                 StorageManager.saveSelfData()
             }
-        })
+        })*/
+        
+        return true
+    }
+    
+    static func createNewUser(username: String, password: String, email: String, phoneNumber: String, fName: String, lName: String) -> Bool {
+        PFCloud.callFunctionInBackground("create", withParameters: [
+            "username":username,
+            "password": password,
+            "email": email,
+            "phoneNumber": phoneNumber,
+            "fName": fName,
+            "lName": lName
+        ]) {
+            (response: AnyObject?, error: NSError?) -> Void in
+            if response != nil {
+                print(response)
+                // TODO: VariableManager.setID(response as! String)
+            }
+            if error != nil {
+                print(error!.code)
+                let errorCode: Int = error!.userInfo["error"] as! Int
+                if errorCode == 1 { // Username already taken
+                    // TODO: Implement a completion handler
+                }
+                print(errorCode)
+            }
+        }
+        
         
         return true
     }
