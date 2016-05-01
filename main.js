@@ -52,6 +52,33 @@ Parse.Cloud.define("addUserToGroup", function(request, response) {
 		}
 	});
 });
+Parse.Cloud.define("leaveGroup", function(request, response) {
+	var userId = request.params.userId;
+	var groupId = request.params.groupId;
+
+	var query = Parse.Query("Users");
+	query.equalTo("objectId", userId);
+	query.first({
+		success: function(result) {
+			result.remove("groups", groupId);
+
+			var groupQuery = Parse.Query("Groups");
+			query.equalTo("objectId", groupId);
+			query.first({
+				success: function(result) {
+					result.remove("members", userId);
+					response.success(true);
+				},
+				error: function(error) {
+					response.error(error);
+				}
+			});
+		},
+		error: function(error) {
+			response.error(error);
+		}
+	});
+});
 Parse.Cloud.define("createGroup", function(request, response) {
 	var name = request.params.name;
 	var GroupObject = Parse.Object.extend("Groups");
