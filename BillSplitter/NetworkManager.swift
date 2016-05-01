@@ -54,7 +54,7 @@ class NetworkManager {
 
     static func createNewUser(username: String, password: String, email: String, phoneNumber: String, fName: String, lName: String, completion: (result: Int) -> Void) {
         PFCloud.callFunctionInBackground("create", withParameters: [
-            "username":username,
+            "username": username,
             "password": password,
             "email": email,
             "phoneNumber": phoneNumber,
@@ -76,6 +76,41 @@ class NetworkManager {
                  */
                 completion(result: errorCode)
                 print("Create User Error: " + String(errorCode))
+            }
+        }
+    }
+
+    static func createGroup(name: String, completion: (result: String?) -> Void) {
+        PFCloud.callFunctionInBackground("createGroup", withParameters: ["name": name]) {
+            (response: AnyObject?, error: NSError?) -> Void in
+            if response != nil {
+                print(response)
+                let groupId = response as! String
+                addUserToGroup(groupId, userId: VariableManager.getID()) {
+                    (result: Bool) in
+                    if result {
+                        // TODO Modify local storage
+                    }
+                }
+                completion(result: groupId)
+            }
+            if error != nil {
+                print(error)
+                completion(result: nil)
+            }
+        }
+    }
+
+    static func addUserToGroup(groupId: String, userId: String, completion: (result: Bool) -> Void) {
+        PFCloud.callFunctionInBackground("addUserToGroup", withParameters: ["userId": userId, "groupId": groupId]) {
+            (response: AnyObject?, error: NSError?) -> Void in
+            if response != nil {
+                print(response)
+                completion(result: true)
+            }
+            if error != nil {
+                print(error)
+                completion(result: false)
             }
         }
     }
