@@ -99,19 +99,5 @@ class StorageManager {
         return true
     }
 
-    func saveSelfLocal(fName: String, lName: String, username: String, email: String) {
-        let data = [
-            "fName": fName,
-            "lName": lName,
-            "username": username,
-            "email": email
-        ]
-
-        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(NSKeyedArchiver.archivedDataWithRootObject(data), forKey: "selfData")
-        defaults.synchronize()
-
-    }
-
 
 }
