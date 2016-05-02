@@ -32,14 +32,12 @@ class LoginViewController: UIViewController {
 
 
     @IBAction func login(sender: UIButton) {
-        // TODO: Actually login
-        //self.presentViewController(TabViewController(), animated: true, completion: nil)
-
         let name: String = username.text!.lowercaseString
         NetworkManager.login(
             name,
             password: password.text!.lowercaseString.hashWithSalt(name)
         )
+        self.presentViewController(TabViewController(), animated: true, completion: nil)
     }
 
 
