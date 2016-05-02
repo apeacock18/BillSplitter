@@ -62,13 +62,14 @@ class StorageManager {
      */
 
     static func recallSelfData() {
-        let data: [String: String] = NSUserDefaults.standardUserDefaults().objectForKey("selfData") as! [String: String]
-        VariableManager.setID(data["id"]!)
-        VariableManager.setEmail(data["email"]!)
-        VariableManager.setFName(data["fName"]!)
-        VariableManager.setLName(data["lName"]!)
-        VariableManager.setPhoneNumber(data["phoneNumber"]!)
-        getAvatar()
+        if let data: [String: String] = NSUserDefaults.standardUserDefaults().objectForKey("selfData") as? [String: String] {
+            VariableManager.setID(data["id"]!)
+            VariableManager.setEmail(data["email"]!)
+            VariableManager.setFName(data["fName"]!)
+            VariableManager.setLName(data["lName"]!)
+            VariableManager.setPhoneNumber(data["phoneNumber"]!)
+            getAvatar()
+        }
     }
 
     static func saveSelfData() {
