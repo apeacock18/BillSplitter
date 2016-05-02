@@ -61,13 +61,14 @@ class StorageManager {
      * Self data below.
      */
 
-    func recallSelfData() {
+    static func recallSelfData() {
         let data: [String: String] = NSUserDefaults.standardUserDefaults().objectForKey("selfData") as! [String: String]
         VariableManager.setID(data["id"]!)
         VariableManager.setEmail(data["email"]!)
         VariableManager.setFName(data["fName"]!)
         VariableManager.setLName(data["lName"]!)
         VariableManager.setPhoneNumber(data["phoneNumber"]!)
+        getAvatar()
     }
 
     static func saveSelfData() {
@@ -82,7 +83,7 @@ class StorageManager {
     }
 
 
-    func getAvatar() -> UIImage? {
+    static func getAvatar() -> UIImage? {
         var currentImage = NSUserDefaults.standardUserDefaults().objectForKey("selfAvatar") as? UIImage
         if currentImage == nil {
             currentImage = UIImage(named: "default")!
@@ -90,7 +91,7 @@ class StorageManager {
         return currentImage
     }
 
-    func saveSelfAvatar(image: UIImage) -> Bool {
+    static func saveSelfAvatar(image: UIImage) -> Bool {
         let currentImage = NSUserDefaults.standardUserDefaults().objectForKey("selfAvatar") as? UIImage
         if currentImage == nil {
             return false
