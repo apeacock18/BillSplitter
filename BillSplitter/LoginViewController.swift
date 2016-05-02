@@ -33,11 +33,16 @@ class LoginViewController: UIViewController {
 
     @IBAction func login(sender: UIButton) {
         let name: String = username.text!.lowercaseString
-        NetworkManager.login(
-            name,
-            password: password.text!.lowercaseString.hashWithSalt(name)
-        )
-        self.presentViewController(TabViewController(), animated: true, completion: nil)
+        NetworkManager.login(name, password: password.text!.lowercaseString.hashWithSalt(name)) {
+            (result: Bool) in
+            if result {
+                self.presentViewController(TabViewController(), animated: true, completion: nil)
+            } else {
+                let message = UIAlertController(title: "Username/Password Incorrect", message: "Please try again.", preferredStyle: UIAlertControllerStyle.Alert)
+                message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(message, animated: true, completion: nil)
+            }
+        }
     }
 
 

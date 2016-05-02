@@ -12,17 +12,19 @@ import Parse
 
 class NetworkManager {
 
-    static func login(username: String, password: String) {
+    static func login(username: String, password: String, completion: (result: Bool) -> Void) {
         PFCloud.callFunctionInBackground("login", withParameters: ["username":username, "password":password]) {
             (response: AnyObject?, error: NSError?) -> Void in
             if error != nil {
                 print(error)
+                completion(result: false)
             }
             if response != nil {
                 print(response)
                 let userId = response as! String
                 VariableManager.setID(userId)
                 getSelfDataFromServer(userId)
+                completion(result: true)
             }
         }
     }
