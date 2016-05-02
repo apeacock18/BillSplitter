@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MeViewController" customModule="BillSplitter" customModuleProvider="target">
             <connections>
-                <outlet property="avatar" destination="zc4-Ie-hYR" id="Lx0-hM-6cq"/>
+                <outlet property="avatar" destination="ML9-G6-b9b" id="aLl-9j-oNC"/>
                 <outlet property="nameLabel" destination="fIZ-BF-WHV" id="Qpp-nc-rVf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -16,34 +16,36 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIZ-BF-WHV">
-                    <rect key="frame" x="528" y="84" width="42" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIZ-BF-WHV">
+                    <rect key="frame" x="391" y="84" width="179" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zc4-Ie-hYR">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ML9-G6-b9b">
                     <rect key="frame" x="10" y="30" width="130" height="130"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="130" id="VEq-le-pSC"/>
-                        <constraint firstAttribute="height" constant="130" id="W2V-4c-L2E"/>
+                        <constraint firstAttribute="width" constant="130" id="R7U-cC-Mq3"/>
+                        <constraint firstAttribute="height" constant="130" id="vLG-4g-q5J"/>
                     </constraints>
-                    <state key="normal" image="default"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="up0-ox-bif">
+                    <rect key="frame" x="25.5" y="168" width="99" height="30"/>
+                    <state key="normal" title="Change Image"/>
                     <connections>
-                        <action selector="avatarButton:" destination="-1" eventType="touchUpInside" id="2kB-AS-wOh"/>
+                        <action selector="avatarButton:" destination="-1" eventType="touchUpInside" id="aJO-gf-YGb"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="zc4-Ie-hYR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="0Rj-4m-pOM"/>
-                <constraint firstItem="zc4-Ie-hYR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="NkX-Je-Seb"/>
+                <constraint firstItem="up0-ox-bif" firstAttribute="centerX" secondItem="ML9-G6-b9b" secondAttribute="centerX" id="7Lb-bM-keZ"/>
+                <constraint firstItem="ML9-G6-b9b" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="CCp-q9-uLD"/>
                 <constraint firstAttribute="trailing" secondItem="fIZ-BF-WHV" secondAttribute="trailing" constant="30" id="Wcs-q2-e7s"/>
-                <constraint firstItem="fIZ-BF-WHV" firstAttribute="centerY" secondItem="zc4-Ie-hYR" secondAttribute="centerY" id="Xl9-5S-U8Q"/>
+                <constraint firstItem="up0-ox-bif" firstAttribute="top" secondItem="ML9-G6-b9b" secondAttribute="bottom" constant="8" id="c6d-mG-tNd"/>
+                <constraint firstItem="ML9-G6-b9b" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="gQ0-hN-bwU"/>
+                <constraint firstItem="fIZ-BF-WHV" firstAttribute="centerY" secondItem="ML9-G6-b9b" secondAttribute="centerY" id="hZA-1b-Cgy"/>
             </constraints>
         </view>
     </objects>
-    <resources>
-        <image name="default" width="500" height="500"/>
-    </resources>
 </document>
