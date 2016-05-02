@@ -115,6 +115,20 @@ class NetworkManager {
         }
     }
 
+    static func removeUserFromGroup(groupId: String, userId: String, completion: (result: Bool) -> Void) {
+        PFCloud.callFunctionInBackground("removeUserFromGroup", withParameters: ["userId": userId, "groupId": groupId]) {
+            (response: AnyObject?, error: NSError?) -> Void in
+            if response != nil {
+                print(response)
+                completion(result: true)
+            }
+            if error != nil {
+                print(error)
+                completion(result: false)
+            }
+        }
+    }
+
 
     static func imageFromData(file: PFFile, completion: (result: UIImage?) -> Void) {
         file.getDataInBackgroundWithBlock({
