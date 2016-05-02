@@ -40,6 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             print("Object has been saved.")
         }*/
+
+
+        StorageManager.recallSelfData()
         
         return true
     }
