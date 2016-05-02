@@ -17,8 +17,10 @@ class TabViewController: UITabBarController {
         vc1.title = "Test"
         let vc2 = SummaryNavViewController()
         vc2.title = "Summary"
+        let vc3 = MeViewController()
+        vc3.title = "Me"
 
-        self.viewControllers = [vc1, vc2]
+        self.viewControllers = [vc1, vc2, vc3]
         self.selectedIndex = 1
         // Do any additional setup after loading the view.
     }

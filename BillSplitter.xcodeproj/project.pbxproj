@@ -46,6 +46,8 @@
 		39CA4A3E1CCEE17800FC15A8 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4DE1C937E9300D8863B /* Transaction.swift */; };
 		39CA4A451CCEF11600FC15A8 /* NewBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CA4A431CCEF11600FC15A8 /* NewBillViewController.swift */; };
 		39CA4A461CCEF11600FC15A8 /* NewBillViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39CA4A441CCEF11600FC15A8 /* NewBillViewController.xib */; };
+		39DEB6AE1CD7DC8400BA0440 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DEB6AC1CD7DC8400BA0440 /* MeViewController.swift */; };
+		39DEB6AF1CD7DC8400BA0440 /* MeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39DEB6AD1CD7DC8400BA0440 /* MeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +121,8 @@
 		39BFF4051CAF03B700CCA5D3 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = ../BillSplitter/SettingsViewController.xib; sourceTree = "<group>"; };
 		39CA4A431CCEF11600FC15A8 /* NewBillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewBillViewController.swift; sourceTree = "<group>"; };
 		39CA4A441CCEF11600FC15A8 /* NewBillViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewBillViewController.xib; sourceTree = "<group>"; };
+		39DEB6AC1CD7DC8400BA0440 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		39DEB6AD1CD7DC8400BA0440 /* MeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +217,8 @@
 				397784E01CD3E72F000F7600 /* StorageManager.swift */,
 				39B6398C1CD41DF2002269A8 /* VariableManager.swift */,
 				39B6398E1CD4228C002269A8 /* NetworkManager.swift */,
+				39DEB6AC1CD7DC8400BA0440 /* MeViewController.swift */,
+				39DEB6AD1CD7DC8400BA0440 /* MeViewController.xib */,
 			);
 			path = BillSplitter;
 			sourceTree = "<group>";
@@ -333,6 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39DEB6AF1CD7DC8400BA0440 /* MeViewController.xib in Resources */,
 				396CC9FB1CCED6E200E4AC1D /* LoginViewController.xib in Resources */,
 				396CC9F81CCED67A00E4AC1D /* CreateViewController.xib in Resources */,
 				1D63E4AC1C922CE900D8863B /* Assets.xcassets in Resources */,
@@ -365,6 +372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39DEB6AE1CD7DC8400BA0440 /* MeViewController.swift in Sources */,
 				397784F11CD3E91A000F7600 /* SummaryTableViewController.swift in Sources */,
 				39B6398D1CD41DF2002269A8 /* VariableManager.swift in Sources */,
 				397784F21CD3E91A000F7600 /* SummaryNavViewController.swift in Sources */,
