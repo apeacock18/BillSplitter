@@ -121,6 +121,18 @@ class NetworkManager {
     }
 
 
+    static func sendAvatarToServer(image: UIImage) {
+        let user = PFObject(className: "Users")
+        user.objectId = VariableManager.getID()
+
+        let imageData = UIImagePNGRepresentation(image)
+        let imageFile: PFFile = PFFile(data: imageData!)!
+
+        user.setObject(imageFile, forKey: "avatar")
+
+        user.saveInBackground()
+    }
+
     static func imageFromData(file: PFFile, completion: (result: UIImage?) -> Void) {
         file.getDataInBackgroundWithBlock({
             (imageData: NSData?, error: NSError?) -> Void in
