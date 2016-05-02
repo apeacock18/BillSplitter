@@ -53,6 +53,10 @@ class VariableManager {
         self.lName = lName
     }
 
+    static func getFullName() -> String {
+        return self.fName + " " + self.lName
+    }
+
     static func getPhoneNumber() -> String {
         return phoneNumber
     }
@@ -67,6 +71,10 @@ class VariableManager {
 
     static func setUsername(username: String) {
         self.username = username
+    }
+
+    static func getAvatar() -> UIImage {
+        return avatar!
     }
 
     static func setAvatar(image: UIImage) {
