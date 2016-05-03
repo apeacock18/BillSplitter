@@ -14,7 +14,6 @@ class GroupNavViewController: UINavigationController {
         super.viewDidLoad()
         self.viewControllers = [GroupTableViewController()]
 
-
         self.navigationBar.topItem?.title = "Groups"
 
         let button = UIButton(type: .Custom)
@@ -24,6 +23,8 @@ class GroupNavViewController: UINavigationController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .Plain, target: self, action: #selector(GroupNavViewController.onCreate))
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName:UIFont.systemFontOfSize(40)], forState: .Normal)
+
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(GroupNavViewController.onCreate))
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,8 +33,47 @@ class GroupNavViewController: UINavigationController {
     }
     
     func onCreate() {
-        let message = UIAlertController(title: "Passwords do not match", message: "Your passwords must match.", preferredStyle: UIAlertControllerStyle.Alert)
-        message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+        let createGroup = UIAlertController(title: "Enter a group name", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        createGroup.addTextFieldWithConfigurationHandler({
+            (textField: UITextField!) in
+            textField.placeholder = "Group Name"
+        })
+
+        let create = UIAlertAction(title: "Create", style: .Default) {
+            (paramAction: UIAlertAction) in
+            if let textFields = createGroup.textFields {
+                let fields = textFields as [UITextField]
+                let text = fields[0].text
+                if text == nil || text == "" {
+
+                } else {
+                    NetworkManager.createGroup(text!) {
+                        (result: String?) in
+                        if result != nil {
+                            let groupId: String = result!
+                            NetworkManager.addUserToGroup(groupId, userId: VariableManager.getID()) {
+                                (result: Bool) in
+                                if result {
+                                    StorageManager.addUserToGroup(VariableManager.getID(), groupId: groupId)
+                                    VariableManager.addGroup(Group(id: groupId, name: text!, members: [VariableManager.getID()]))
+                                } else {
+                                    self.handleError()
+                                }
+                            }
+                        } else {
+                            self.handleError()
+                        }
+                    }
+                }
+            }
+        }
+        createGroup.addAction(create)
+
+    }
+
+    func handleError() {
+        let message = UIAlertController(title: "Error", message: "Please try again.", preferredStyle: UIAlertControllerStyle.Alert)
+        message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(message, animated: true, completion: nil)
     }
 

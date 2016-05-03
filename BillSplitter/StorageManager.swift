@@ -12,6 +12,12 @@ import UIKit
 
 class StorageManager {
 
+
+    static func createGroup(id: String) {
+        
+    }
+
+
     /*
      * This function adds a user to the specified group.
      */
