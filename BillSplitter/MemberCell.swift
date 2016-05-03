@@ -1,5 +1,5 @@
 //
-//  SummaryTableViewCell.swift
+//  GroupCell.swift
 //  BillSplitter
 //
 //  Created by gomeow on 4/26/16.
@@ -8,9 +8,8 @@
 
 import UIKit
 
-class SummaryTableViewCell: UITableViewCell {
+class MemberCell: UITableViewCell {
 
-    
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var amount: UILabel!
