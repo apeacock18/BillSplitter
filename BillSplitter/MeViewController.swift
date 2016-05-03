@@ -37,7 +37,7 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
 
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
             avatar.image = pickedImage
             NetworkManager.sendAvatarToServer(pickedImage)
             StorageManager.saveSelfAvatar(pickedImage)

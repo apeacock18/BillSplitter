@@ -14,13 +14,13 @@ class GroupNavViewController: UINavigationController {
         super.viewDidLoad()
         self.viewControllers = [GroupTableViewController()]
 
-        
+
+        self.navigationBar.topItem?.title = "Groups"
 
         let button = UIButton(type: .Custom)
         button.setTitle("+", forState: .Normal)
         button.titleLabel?.font = UIFont.systemFontOfSize(20.0)
         button.frame = CGRectMake(0, 0, 100, 40)
-        self.navigationBar.topItem?.title = "Groups"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .Plain, target: self, action: #selector(GroupNavViewController.onCreate))
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName:UIFont.systemFontOfSize(40)], forState: .Normal)
@@ -32,9 +32,11 @@ class GroupNavViewController: UINavigationController {
     }
     
     func onCreate() {
-        
+        let message = UIAlertController(title: "Passwords do not match", message: "Your passwords must match.", preferredStyle: UIAlertControllerStyle.Alert)
+        message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(message, animated: true, completion: nil)
     }
-    
+
 
     /*
     // MARK: - Navigation

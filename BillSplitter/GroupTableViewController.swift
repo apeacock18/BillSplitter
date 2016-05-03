@@ -51,11 +51,11 @@ class GroupTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 10
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups.count
+        return /*groups.count*/1
     }
     
     /*override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -81,7 +81,11 @@ class GroupTableViewController: UITableViewController {
 
         let cellIdentifier = "GroupCell"
         tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MemberCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! GroupCell
+
+        //let group = groups[indexPath.row]
+        cell.groupNameLabel.text = "Fan Four"
+        cell.membersLabel.text = "5 Members"
 
         return cell
     }
