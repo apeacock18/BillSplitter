@@ -23,7 +23,7 @@ class GroupNavViewController: UINavigationController {
         tableController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .Plain, target: self, action: #selector(GroupNavViewController.onCreate))
         tableController.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName:UIFont.systemFontOfSize(40)], forState: .Normal)
 
-        tableController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(GroupNavViewController.onCreate))
+        tableController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(GroupNavViewController.logout))
         tableController.title = "Groups"
 
         self.viewControllers = [tableController]
@@ -33,7 +33,15 @@ class GroupNavViewController: UINavigationController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    func logout() {
+        print(Array(NSUserDefaults.standardUserDefaults().dictionaryRepresentation().keys).count)
+        let appDomain = NSBundle.mainBundle().bundleIdentifier!
+        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+        print(Array(NSUserDefaults.standardUserDefaults().dictionaryRepresentation().keys).count)
+        self.presentViewController(LoginViewController(), animated: true, completion: nil)
+    }
+
     func onCreate() {
         let createGroup = UIAlertController(title: "Enter a group name", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         createGroup.addTextFieldWithConfigurationHandler({
