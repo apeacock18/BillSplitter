@@ -15,7 +15,7 @@ class StorageManager {
     /*
      * This function adds a user to the specified group.
      */
-    func addUserToGroup(id: String, groupId: String) -> Bool {
+    static func addUserToGroup(id: String, groupId: String) -> Bool {
         var groupData: [String:AnyObject] = NSUserDefaults.standardUserDefaults().objectForKey("groups") as! [String:AnyObject]
         var group: [String:AnyObject] = groupData[groupId] as! [String:AnyObject]
         var currentUsers: [String] = group["members"] as! [String]
@@ -38,7 +38,7 @@ class StorageManager {
     /*
      * This function removes a user from the specified group.
      */
-    func removeUserFromGroup(id: String, groupId: String) -> Bool {
+    static func removeUserFromGroup(id: String, groupId: String) -> Bool {
         var groupData: [String:AnyObject] = NSUserDefaults.standardUserDefaults().objectForKey("groups") as! [String:AnyObject]
         var group: [String:AnyObject] = groupData[groupId] as! [String:AnyObject]
         let currentUsers: [String] = group["members"] as! [String]
