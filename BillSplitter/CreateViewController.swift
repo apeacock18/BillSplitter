@@ -9,7 +9,7 @@
 import Parse
 import UIKit
 
-class CreateViewController: UIViewController {
+class CreateViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var fName: UITextField!
     @IBOutlet weak var lName: UITextField!
@@ -20,11 +20,19 @@ class CreateViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fName.autocorrectionType = UITextAutocorrectionType.No
-        lName.autocorrectionType = UITextAutocorrectionType.No
-        username.autocorrectionType = UITextAutocorrectionType.No
-        email.autocorrectionType = UITextAutocorrectionType.No
-        password.autocorrectionType = UITextAutocorrectionType.No
+        fName.autocorrectionType = .No
+        lName.autocorrectionType = .No
+        username.autocorrectionType = .No
+        email.autocorrectionType = .No
+        password.autocorrectionType = .No
+        password2.autocorrectionType = .No
+
+        fName.delegate = self
+        lName.delegate = self
+        username.delegate = self
+        email.delegate = self
+        password.delegate = self
+        password2.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -36,6 +44,10 @@ class CreateViewController: UIViewController {
 
 
     @IBAction func create(sender: UIButton) {
+        create()
+    }
+
+    func create() {
         let name: String = username.text!.lowercaseString
         let fNameText = fName.text!
         let lNameText = lName.text!
@@ -44,37 +56,37 @@ class CreateViewController: UIViewController {
         // Validate input
         if name.characters.count < 6 {
             let message = UIAlertController(title: "Username not long enough", message: "Your username must be at least 6 characters long.", preferredStyle: UIAlertControllerStyle.Alert)
-            message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+            message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(message, animated: true, completion: nil)
             return
         }
         if fNameText.characters.count == 0 {
             let message = UIAlertController(title: "First name not entered", message: "Please enter a first name.", preferredStyle: UIAlertControllerStyle.Alert)
-            message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+            message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(message, animated: true, completion: nil)
             return
         }
         if lNameText.characters.count == 0 {
             let message = UIAlertController(title: "Last name not entered", message: "Please enter a last name.", preferredStyle: UIAlertControllerStyle.Alert)
-            message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+            message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(message, animated: true, completion: nil)
             return
         }
         if emailText.characters.count == 0 {
             let message = UIAlertController(title: "Email not entered", message: "Please enter an email.", preferredStyle: UIAlertControllerStyle.Alert)
-            message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+            message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(message, animated: true, completion: nil)
             return
         }
         if password.text!.characters.count < 8 {
             let message = UIAlertController(title: "Password not long enough", message: "Your password must be at least 8 characters long.", preferredStyle: UIAlertControllerStyle.Alert)
-            message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+            message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(message, animated: true, completion: nil)
             return
         }
         if password.text! != password2.text! {
             let message = UIAlertController(title: "Passwords do not match", message: "Your passwords must match.", preferredStyle: UIAlertControllerStyle.Alert)
-            message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+            message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(message, animated: true, completion: nil)
             return
         }
@@ -82,11 +94,11 @@ class CreateViewController: UIViewController {
         // Query server
 
         NetworkManager.createNewUser(name,
-            password: password.text!.hashWithSalt(name),
-            email: emailText,
-            phoneNumber: "".lowercaseString,
-            fName: fNameText,
-            lName: lNameText
+                                     password: password.text!.hashWithSalt(name),
+                                     email: emailText,
+                                     phoneNumber: "".lowercaseString,
+                                     fName: fNameText,
+                                     lName: lNameText
         ) {
             (result: Int) in
             if result == 0 {
@@ -102,11 +114,16 @@ class CreateViewController: UIViewController {
                 VariableManager.setPhoneNumber("".lowercaseString); // TODO: Add phone number field
                 VariableManager.setAvatar(UIImage(named: "default")!)
                 StorageManager.saveSelfData()
-
+                
                 self.presentViewController(TabViewController(), animated: true, completion: nil)
             }
         }
-
     }
-    
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
+        username.resignFirstResponder()
+        create()
+        return true
+    }
+
 }

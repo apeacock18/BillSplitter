@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
 
     @IBOutlet weak var username: UITextField!
@@ -18,9 +18,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         username.autocorrectionType = UITextAutocorrectionType.No
+        username.delegate = self
         password.autocorrectionType = UITextAutocorrectionType.No
+        password.delegate = self
         //Root View
-
 
 
     }
@@ -32,6 +33,24 @@ class LoginViewController: UIViewController {
 
 
     @IBAction func login(sender: UIButton) {
+        login()
+    }
+
+    func login() {
+        if username.text!.characters.count == 0 {
+            let message = UIAlertController(title: "Username not entered", message: "Please enter your username.", preferredStyle: UIAlertControllerStyle.Alert)
+            message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(message, animated: true, completion: nil)
+            return
+        }
+        if password.text!.characters.count == 0 {
+            let message = UIAlertController(title: "Password not entered", message: "Please enter your password.", preferredStyle: UIAlertControllerStyle.Alert)
+            message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(message, animated: true, completion: nil)
+            return
+        }
+
+
         let name: String = username.text!.lowercaseString
         NetworkManager.login(name, password: password.text!.lowercaseString.hashWithSalt(name)) {
             (result: Bool) in
@@ -45,10 +64,15 @@ class LoginViewController: UIViewController {
         }
     }
 
+    func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
+        username.resignFirstResponder()
+        login()
+        return true
+    }
+
 
     @IBAction func register(sender: UIButton) {
         self.presentViewController(CreateViewController(), animated: true, completion: nil)
-
     }
 
 
