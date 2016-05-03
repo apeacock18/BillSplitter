@@ -92,12 +92,6 @@ class NetworkManager {
             if response != nil {
                 print(response)
                 let groupId = response as! String
-                addUserToGroup(groupId, userId: VariableManager.getID()) {
-                    (result: Bool) in
-                    if result {
-                        // TODO Modify local storage
-                    }
-                }
                 completion(result: groupId)
             }
             if error != nil {
