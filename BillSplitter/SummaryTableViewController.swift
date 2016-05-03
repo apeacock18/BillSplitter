@@ -11,34 +11,36 @@ import UIKit
 class SummaryTableViewController: UITableViewController {
     
     
-    var transactions: Array<AnyObject> = []
+    var groups: Array<AnyObject> = []
     
     func loadSampleTransactions() {
         let photo1 = UIImage(named: "dog1")!
         let t1 = ["name":"Corgi Butt", "photo":photo1, "amount": 42.00]
-        
-        
-        
+
         let photo2 = UIImage(named: "dog2")!
         let t2 = ["name":"Doug Barkman", "photo":photo2, "amount": 47.00]
-        
+
         let photo3 = UIImage(named: "dog3")!
         let t3 = ["name":"Snowball", "photo":photo3, "amount": 0.00]
         
         let photo4 = UIImage(named: "default")!
         let t4 = ["name":"Billy", "photo":photo4, "amount": 876.01]
         
-        transactions += [t1, t2, t3, t4]
+        //transactions += [t1, t2, t3, t4]
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadSampleTransactions()
-        
+        //loadSampleTransactions()
+        loadGroups()
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 80.0
+    }
+
+    func loadGroups() {
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,10 +55,10 @@ class SummaryTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return transactions.count
+        return groups.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    /*override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "MemberCell"
         
         tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
@@ -72,6 +74,15 @@ class SummaryTableViewController: UITableViewController {
             cell.backgroundColor = UIColor.redColor()
         }
         
+        return cell
+    }*/
+
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
+        let cellIdentifier = "GroupCell"
+        tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MemberCell
+
         return cell
     }
 

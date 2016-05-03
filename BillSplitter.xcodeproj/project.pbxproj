@@ -15,6 +15,9 @@
 		391A241F1CCF31F800884A27 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 391A241D1CCF31F800884A27 /* TestViewController.xib */; };
 		39579E231CD821C800E0ED6D /* MemberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39579E211CD821C800E0ED6D /* MemberCell.xib */; };
 		39579E241CD821C800E0ED6D /* MemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39579E221CD821C800E0ED6D /* MemberCell.swift */; };
+		39579E271CD8249500E0ED6D /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39579E251CD8249500E0ED6D /* GroupCell.swift */; };
+		39579E281CD8249500E0ED6D /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39579E261CD8249500E0ED6D /* GroupCell.xib */; };
+		39579E2A1CD8264C00E0ED6D /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39579E291CD8264C00E0ED6D /* Group.swift */; };
 		396CC9F81CCED67A00E4AC1D /* CreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396CC9F61CCED67A00E4AC1D /* CreateViewController.xib */; };
 		396CC9FB1CCED6E200E4AC1D /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396CC9FA1CCED6E200E4AC1D /* LoginViewController.xib */; };
 		397784E11CD3E72F000F7600 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397784E01CD3E72F000F7600 /* StorageManager.swift */; };
@@ -95,6 +98,9 @@
 		391A241D1CCF31F800884A27 /* TestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
 		39579E211CD821C800E0ED6D /* MemberCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemberCell.xib; sourceTree = "<group>"; };
 		39579E221CD821C800E0ED6D /* MemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberCell.swift; sourceTree = "<group>"; };
+		39579E251CD8249500E0ED6D /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		39579E261CD8249500E0ED6D /* GroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupCell.xib; sourceTree = "<group>"; };
+		39579E291CD8264C00E0ED6D /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		396CC9F61CCED67A00E4AC1D /* CreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateViewController.xib; path = BillSplitter/CreateViewController.xib; sourceTree = SOURCE_ROOT; };
 		396CC9FA1CCED6E200E4AC1D /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = BillSplitter/LoginViewController.xib; sourceTree = SOURCE_ROOT; };
 		397784E01CD3E72F000F7600 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
@@ -219,6 +225,7 @@
 				39B6398E1CD4228C002269A8 /* NetworkManager.swift */,
 				39DEB6AC1CD7DC8400BA0440 /* MeViewController.swift */,
 				39DEB6AD1CD7DC8400BA0440 /* MeViewController.xib */,
+				39579E291CD8264C00E0ED6D /* Group.swift */,
 			);
 			path = BillSplitter;
 			sourceTree = "<group>";
@@ -226,10 +233,12 @@
 		397784E81CD3E8E7000F7600 /* Summary */ = {
 			isa = PBXGroup;
 			children = (
-				39579E211CD821C800E0ED6D /* MemberCell.xib */,
-				39579E221CD821C800E0ED6D /* MemberCell.swift */,
 				397784E91CD3E8FC000F7600 /* SummaryTableViewController.swift */,
 				397784EB1CD3E8FC000F7600 /* SummaryNavViewController.swift */,
+				39579E251CD8249500E0ED6D /* GroupCell.swift */,
+				39579E261CD8249500E0ED6D /* GroupCell.xib */,
+				39579E211CD821C800E0ED6D /* MemberCell.xib */,
+				39579E221CD821C800E0ED6D /* MemberCell.swift */,
 			);
 			name = Summary;
 			sourceTree = "<group>";
@@ -342,6 +351,7 @@
 				39DEB6AF1CD7DC8400BA0440 /* MeViewController.xib in Resources */,
 				39579E231CD821C800E0ED6D /* MemberCell.xib in Resources */,
 				396CC9FB1CCED6E200E4AC1D /* LoginViewController.xib in Resources */,
+				39579E281CD8249500E0ED6D /* GroupCell.xib in Resources */,
 				396CC9F81CCED67A00E4AC1D /* CreateViewController.xib in Resources */,
 				1D63E4AC1C922CE900D8863B /* Assets.xcassets in Resources */,
 				1D63E4AA1C922CE900D8863B /* Main.storyboard in Resources */,
@@ -374,6 +384,8 @@
 			files = (
 				39DEB6AE1CD7DC8400BA0440 /* MeViewController.swift in Sources */,
 				397784F11CD3E91A000F7600 /* SummaryTableViewController.swift in Sources */,
+				39579E271CD8249500E0ED6D /* GroupCell.swift in Sources */,
+				39579E2A1CD8264C00E0ED6D /* Group.swift in Sources */,
 				39B6398D1CD41DF2002269A8 /* VariableManager.swift in Sources */,
 				397784F21CD3E91A000F7600 /* SummaryNavViewController.swift in Sources */,
 				39CA4A361CCEE17800FC15A8 /* CreateViewController.swift in Sources */,

@@ -18,8 +18,26 @@ class VariableManager {
     private static var lName: String = ""
     private static var username: String = ""
 
+    private static var groups: Array<Group> = []
+
 
     private static var avatar: UIImage? = nil
+
+    /* Group Data */
+
+    static func addGroup(group: Group) {
+        groups.append(group)
+    }
+
+    static func getGroups() -> Array<Group> {
+        return groups
+    }
+
+    static func groupCount() -> Int {
+        return groups.count
+    }
+
+    /* Self Data */
 
     static func getID() -> String {
         return id
