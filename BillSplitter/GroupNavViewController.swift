@@ -12,19 +12,23 @@ class GroupNavViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewControllers = [GroupTableViewController()]
 
-        self.navigationBar.topItem?.title = "Groups"
+        let tableController = GroupTableViewController()
 
         let button = UIButton(type: .Custom)
         button.setTitle("+", forState: .Normal)
         button.titleLabel?.font = UIFont.systemFontOfSize(20.0)
         button.frame = CGRectMake(0, 0, 100, 40)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .Plain, target: self, action: #selector(GroupNavViewController.onCreate))
-        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName:UIFont.systemFontOfSize(40)], forState: .Normal)
+        tableController.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        tableController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .Plain, target: self, action: #selector(GroupNavViewController.onCreate))
+        tableController.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName:UIFont.systemFontOfSize(40)], forState: .Normal)
 
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(GroupNavViewController.onCreate))
+        tableController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(GroupNavViewController.onCreate))
+        tableController.title = "Groups"
+
+        self.viewControllers = [tableController]
+
+        // self.navigationBar.topItem?.title = "Groups"
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,7 +71,9 @@ class GroupNavViewController: UINavigationController {
                 }
             }
         }
+        createGroup.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
         createGroup.addAction(create)
+        self.presentViewController(createGroup, animated: true, completion: nil)
 
     }
 
