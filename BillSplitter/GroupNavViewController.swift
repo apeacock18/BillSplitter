@@ -8,19 +8,21 @@
 
 import UIKit
 
-class SummaryNavViewController: UINavigationController {
+class GroupNavViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewControllers = [SummaryTableViewController()]
+        self.viewControllers = [GroupTableViewController()]
+
         
+
         let button = UIButton(type: .Custom)
         button.setTitle("+", forState: .Normal)
         button.titleLabel?.font = UIFont.systemFontOfSize(20.0)
         button.frame = CGRectMake(0, 0, 100, 40)
         self.navigationBar.topItem?.title = "Groups"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .Plain, target: self, action: #selector(SummaryNavViewController.onCreate))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .Plain, target: self, action: #selector(GroupNavViewController.onCreate))
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName:UIFont.systemFontOfSize(40)], forState: .Normal)
     }
 

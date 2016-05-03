@@ -15,7 +15,7 @@ class TabViewController: UITabBarController {
 
         let vc1 = TestViewController()
         vc1.title = "Test"
-        let vc2 = SummaryNavViewController()
+        let vc2 = GroupNavViewController()
         vc2.title = "Summary"
         let vc3 = MeViewController()
         vc3.title = "Me"

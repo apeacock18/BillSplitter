@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SummaryTableViewController: UITableViewController {
+class GroupTableViewController: UITableViewController {
     
     
     var groups: Array<AnyObject> = []
