@@ -37,6 +37,15 @@ class VariableManager {
         return groups.count
     }
 
+    static func containsGroup(groupId: String) -> Bool {
+        for group in groups {
+            if group.getID() == groupId {
+                return true
+            }
+        }
+        return false
+    }
+
     /* Self Data */
 
     static func getID() -> String {

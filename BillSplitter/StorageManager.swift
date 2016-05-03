@@ -13,8 +13,16 @@ import UIKit
 class StorageManager {
 
 
-    static func createGroup(id: String) {
-        
+    static func createGroup(id: String, name: String) {
+        if NSUserDefaults.standardUserDefaults().objectForKey("groups") != nil {
+            var groupData: [String:AnyObject] = NSUserDefaults.standardUserDefaults().objectForKey("groups") as! [String:AnyObject]
+            groupData[id] = ["name": name, "members": []]
+            NSUserDefaults.standardUserDefaults().setObject(groupData, forKey: "groups")
+
+        } else {
+            let groupData: [String: AnyObject] = [id: ["name": name, "members": []]]
+            NSUserDefaults.standardUserDefaults().setObject(groupData, forKey: "groups")
+        }
     }
 
 
@@ -37,7 +45,7 @@ class StorageManager {
         currentUsers.append(id)
         group["members"] = currentUsers
         groupData[groupId] = group
-        NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(groupData), forKey: "groups")
+        NSUserDefaults.standardUserDefaults().setObject(groupData, forKey: "groups")
         return true
     }
 

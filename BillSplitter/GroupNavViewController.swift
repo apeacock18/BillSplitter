@@ -10,10 +10,10 @@ import UIKit
 
 class GroupNavViewController: UINavigationController {
 
+    let tableController = GroupTableViewController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let tableController = GroupTableViewController()
 
         let button = UIButton(type: .Custom)
         button.setTitle("+", forState: .Normal)
@@ -27,8 +27,6 @@ class GroupNavViewController: UINavigationController {
         tableController.title = "Groups"
 
         self.viewControllers = [tableController]
-
-        // self.navigationBar.topItem?.title = "Groups"
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,8 +56,10 @@ class GroupNavViewController: UINavigationController {
                             NetworkManager.addUserToGroup(groupId, userId: VariableManager.getID()) {
                                 (result: Bool) in
                                 if result {
+                                    StorageManager.createGroup(groupId, name: text!)
                                     StorageManager.addUserToGroup(VariableManager.getID(), groupId: groupId)
                                     VariableManager.addGroup(Group(id: groupId, name: text!, members: [VariableManager.getID()]))
+                                    self.tableController.reload()
                                 } else {
                                     self.handleError()
                                 }
