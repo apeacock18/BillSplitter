@@ -64,7 +64,8 @@ class NetworkManager {
             "email": email,
             "phoneNumber": phoneNumber,
             "fName": fName,
-            "lName": lName
+            "lName": lName,
+            "groups": []
         ]) {
             (response: AnyObject?, error: NSError?) -> Void in
             if response != nil {
