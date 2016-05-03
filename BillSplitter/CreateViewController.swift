@@ -34,6 +34,7 @@ class CreateViewController: UIViewController, UITextFieldDelegate {
         password.delegate = self
         password2.delegate = self
 
+        self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
 
