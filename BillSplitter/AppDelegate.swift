@@ -20,21 +20,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
+
         let configuration = ParseClientConfiguration {
             $0.applicationId = "SmKujk7VXA7gQcUNz6hHjbPWpk1jF0Wtp1RPZ71Z"
             $0.server = "https://parseapi.back4app.com/"
             $0.clientKey = "g1gsXIi0t2Hk1maTsl5lXGbEaqLMlIQE8MludaDW"
         }
         Parse.initializeWithConfiguration(configuration)
-        
+
         loginViewController = LoginViewController()
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window!.rootViewController = loginViewController
         //self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.makeKeyAndVisible()
-        
-        
+
+
         /*let testObject = PFObject(className: "TestObject")
         testObject["foo"] = "bar"
         testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
         StorageManager.recallSelfData()
-        
+
         return true
     }
 
@@ -67,8 +67,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         NSUserDefaults.standardUserDefaults().synchronize()
     }
-    
-    
+
+
     struct Variables {
         // Store main variables here?
     }
@@ -82,9 +82,25 @@ extension UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
-    
+
     func dismissKeyboard() {
         view.endEditing(true)
+    }
+
+    func topMostViewController() -> UIViewController {
+        if self.presentedViewController == nil {
+            return self
+        }
+        if let navigation = self.presentedViewController as? UINavigationController {
+            return (navigation.visibleViewController?.topMostViewController())!
+        }
+        if let tab = self.presentedViewController as? UITabBarController {
+            if let selectedTab = tab.selectedViewController {
+                return selectedTab.topMostViewController()
+            }
+            return tab.topMostViewController()
+        }
+        return self.presentedViewController!.topMostViewController()
     }
 }
 
@@ -93,6 +109,12 @@ extension String {
         var password: String = self
         password += salt
         return password.sha512()
+    }
+}
+
+extension UIApplication {
+    func topMostViewController() -> UIViewController? {
+        return self.keyWindow?.rootViewController?.topMostViewController()
     }
 }
 

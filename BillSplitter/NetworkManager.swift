@@ -46,6 +46,22 @@ class NetworkManager {
                         (result: UIImage?) in
                         if result != nil {
                             VariableManager.setAvatar(result!)
+
+                            /*
+                             * The code below protects against slow internet.
+                             * If the client's download speed is slow, they can try to view their profile before
+                             * their avatar is downloaded, creating an NPE.
+                             */
+
+                            // Load avatar into Profile view if it is open
+                            let app = UIApplication.sharedApplication().delegate as! AppDelegate
+                            let vc = app.window?.rootViewController?.topMostViewController()
+                            if vc != nil {
+                                if vc!.isKindOfClass(MeViewController) {
+                                    let meVc = vc as! MeViewController
+                                    meVc.avatar.image = result
+                                }
+                            }
                         }
                     }
                 } else {

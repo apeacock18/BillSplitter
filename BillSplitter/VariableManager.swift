@@ -101,7 +101,11 @@ class VariableManager {
     }
 
     static func getAvatar() -> UIImage {
-        return avatar!
+        if avatar != nil {
+            return avatar!
+        } else {
+            return UIImage(named: "default")!
+        }
     }
 
     static func setAvatar(image: UIImage) {
