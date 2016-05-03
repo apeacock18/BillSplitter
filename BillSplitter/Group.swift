@@ -11,17 +11,22 @@ import UIKit
 
 class Group {
 
+    private var id: String = ""
     private var name: String = ""
-
     private var members: Array<String> = []
 
     // TODO create a status object
     //private var status
 
 
-    init(name: String, members: Array<String>) {
+    init(id: String, name: String, members: Array<String>) {
+        self.id = id
         self.name = name
         self.members = members
+    }
+
+    func getID() -> String{
+        return id
     }
 
     func getName() -> String {
