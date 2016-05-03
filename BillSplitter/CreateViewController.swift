@@ -100,6 +100,7 @@ class CreateViewController: UIViewController {
                 VariableManager.setEmail(self.email.text!.lowercaseString)
                 VariableManager.setUsername(self.username.text!.lowercaseString)
                 VariableManager.setPhoneNumber("".lowercaseString); // TODO: Add phone number field
+                VariableManager.setAvatar(UIImage(named: "default")!)
                 StorageManager.saveSelfData()
 
                 self.presentViewController(TabViewController(), animated: true, completion: nil)
