@@ -11,7 +11,7 @@ import UIKit
 class GroupTableViewController: UITableViewController {
     
     
-    var groups: Array<AnyObject> = []
+    var groups: Array<Group> = []
     
     func loadSampleTransactions() {
         let photo1 = UIImage(named: "dog1")!
@@ -32,7 +32,6 @@ class GroupTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //loadSampleTransactions()
         loadGroups()
         tableView.dataSource = self
         tableView.delegate = self
@@ -40,7 +39,7 @@ class GroupTableViewController: UITableViewController {
     }
 
     func loadGroups() {
-
+        groups = VariableManager.getGroups()
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,11 +50,11 @@ class GroupTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 10
+        return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return /*groups.count*/1
+        return groups.count
     }
     
     /*override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -78,16 +77,19 @@ class GroupTableViewController: UITableViewController {
     }*/
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if groups.count != 0 {
+            let cellIdentifier = "GroupCell"
+            tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! GroupCell
 
-        let cellIdentifier = "GroupCell"
-        tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! GroupCell
+            let group = groups[indexPath.row]
+            cell.groupNameLabel.text = group.getName()
+            cell.membersLabel.text = String(group.count()) + " Members"
 
-        //let group = groups[indexPath.row]
-        cell.groupNameLabel.text = "Fan Four"
-        cell.membersLabel.text = "5 Members"
-
-        return cell
+            return cell
+        } else {
+            return UITableViewCell() // TODO Create cell that says no groups
+        }
     }
 
     /*
