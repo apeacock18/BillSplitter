@@ -11,9 +11,9 @@ import UIKit
 class SpinnerView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.blackColor()
+        //self.view.backgroundColor = UIColor.blackColor()
         let spinner = Spinner(text: "Logging in")
-        self.view.tintColor = UIColor.grayColor()
+        //self.view.tintColor = UIColor.grayColor()
         self.view.addSubview(spinner)
 
     }

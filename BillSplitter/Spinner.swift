@@ -17,7 +17,7 @@ class Spinner: UIVisualEffectView {
 
     let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .White)
     let label: UILabel = UILabel()
-    let blurEffect = UIBlurEffect(style: .Light)
+    let blurEffect = UIBlurEffect(style: .Dark)
     let vibrancyView: UIVisualEffectView
 
     init(text: String) {
@@ -39,7 +39,6 @@ class Spinner: UIVisualEffectView {
         vibrancyView.contentView.addSubview(activityIndicator)
         vibrancyView.contentView.addSubview(label)
         activityIndicator.startAnimating()
-        self.backgroundColor = UIColor.grayColor()
     }
 
     override func didMoveToSuperview() {
