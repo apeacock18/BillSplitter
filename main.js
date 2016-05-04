@@ -67,6 +67,19 @@ Parse.Cloud.define("leaveGroup", function(request, response) {
 			query.first({
 				success: function(result) {
 					result.remove("members", userId);
+					if(result.get("members").length == 0) {
+						var GroupObject = Parse.Object.extend("Groups");
+						var group = new GroupObject();
+						group.id = groupId;
+						group.destroy({
+							success: function(object) {
+								// Hurray
+							},
+							error: function(object, error) {
+								// So sad
+							}
+						});
+					}
 					response.success(true);
 				},
 				error: function(error) {
