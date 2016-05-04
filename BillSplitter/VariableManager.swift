@@ -23,6 +23,17 @@ class VariableManager {
 
     private static var avatar: UIImage? = nil
 
+    static func erase() {
+        id = ""
+        email = ""
+        phoneNumber = ""
+        fName = ""
+        lName = ""
+        username = ""
+        groups = []
+        avatar = nil
+    }
+
     /* Group Data */
 
     static func addGroup(group: Group) {
