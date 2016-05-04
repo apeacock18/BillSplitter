@@ -23,54 +23,71 @@ class NetworkManager {
                 print(response)
                 let userId = response as! String
                 VariableManager.setID(userId)
-                getSelfDataFromServer(userId)
-                completion(result: true)
+
+                let query = PFQuery(className: "Users").whereKey("objectId", equalTo: userId)
+                query.getFirstObjectInBackgroundWithBlock({
+                    (object: PFObject?, error: NSError?) -> Void in
+                    if error == nil {
+                        VariableManager.setUsername(object!.valueForKey("username") as! String)
+                        VariableManager.setEmail(object!.valueForKey("email") as! String)
+                        VariableManager.setFName(object!.valueForKey("fName") as! String)
+                        VariableManager.setLName(object!.valueForKey("lName") as! String)
+                        //VariableManager.setPhoneNumber(object!.valueForKey("phoneNumber") as! String)
+
+                        let groups = object!.valueForKey("groups") as! Array<String>
+
+                        let imageFile = object!.valueForKey("avatar") as? PFFile
+                        if imageFile != nil {
+                            imageFromData(imageFile!) {
+                                (result: UIImage?) in
+                                if result != nil {
+                                    VariableManager.setAvatar(result!)
+                                }
+                                getGroupDataFromServer(groups) {
+                                    (result: Bool) in
+                                    completion(result: true)
+                                }
+                            }
+                        } else {
+                            VariableManager.setAvatar(UIImage(named: "default")!)
+                            completion(result: true)
+                            getGroupDataFromServer(groups) {
+                                (result: Bool) in
+                                completion(result: true)
+                            }
+                        }
+                        StorageManager.saveSelfData()
+                    }
+                })
             }
         }
     }
 
-    static func getSelfDataFromServer(userId: String) {
-        let query = PFQuery(className: "Users").whereKey("objectId", equalTo: userId)
-        query.getFirstObjectInBackgroundWithBlock({
-            (object: PFObject?, error: NSError?) -> Void in
-            if error == nil {
-                VariableManager.setUsername(object!.valueForKey("username") as! String)
-                VariableManager.setEmail(object!.valueForKey("email") as! String)
-                VariableManager.setFName(object!.valueForKey("fName") as! String)
-                VariableManager.setLName(object!.valueForKey("lName") as! String)
-                //VariableManager.setPhoneNumber(object!.valueForKey("phoneNumber") as! String)
-
-                let imageFile = object!.valueForKey("avatar") as? PFFile
-                if imageFile != nil {
-                    imageFromData(imageFile!) {
-                        (result: UIImage?) in
-                        if result != nil {
-                            VariableManager.setAvatar(result!)
-
-                            /*
-                             * The code below protects against slow internet.
-                             * If the client's download speed is slow, they can try to view their profile before
-                             * their avatar is downloaded, creating an NPE.
-                             */
-
-                            // Load avatar into Profile view if it is open
-                            let app = UIApplication.sharedApplication().delegate as! AppDelegate
-                            let vc = app.window?.rootViewController?.topMostViewController()
-                            if vc != nil {
-                                if vc!.isKindOfClass(MeViewController) {
-                                    let meVc = vc as! MeViewController
-                                    meVc.avatar.image = result
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    VariableManager.setAvatar(UIImage(named: "default")!)
+    static func getGroupDataFromServer(groups: Array<String>, completion: (result: Bool) -> Void) {
+        var queries: Array<PFQuery> = []
+        for group in groups {
+            queries.append(PFQuery(className: "Groups").whereKey("objectId", equalTo: group))
+        }
+        let query = PFQuery.orQueryWithSubqueries(queries)
+        query.findObjectsInBackgroundWithBlock {
+            (results: [PFObject]?, error: NSError?) -> Void in
+            if error == nil && results != nil {
+                for result in results! {
+                    let groupObj = Group(
+                        id: result.objectId!,
+                        name: result["name"] as! String,
+                        members: result["members"] as! Array<String>
+                    )
+                    VariableManager.addGroup(groupObj)
+                    completion(result: true)
                 }
-                
-                StorageManager.saveSelfData()
+                // TODO Refresh groups page
+            } else {
+                completion(result: true)
+                print("getGroupDataFromServer error:")
+                print(error)
             }
-        })
+        }
     }
 
     static func createNewUser(username: String, password: String, email: String, phoneNumber: String, fName: String, lName: String, completion: (result: Int) -> Void) {

@@ -38,6 +38,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
     func login() {
+        self.dismissKeyboard()
         if username.text!.characters.count == 0 {
             let message = UIAlertController(title: "Username not entered", message: "Please enter your username.", preferredStyle: UIAlertControllerStyle.Alert)
             message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
@@ -51,10 +52,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
 
+        // Start loading screen
+        let sv = SpinnerView()
+        self.view.addSubview(sv.view)
 
         let name: String = username.text!.lowercaseString
         NetworkManager.login(name, password: password.text!.lowercaseString.hashWithSalt(name)) {
             (result: Bool) in
+            sv.view.removeFromSuperview() // Remove loading screen
             if result {
                 self.presentViewController(TabViewController(), animated: true, completion: nil)
             } else {
