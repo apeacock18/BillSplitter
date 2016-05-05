@@ -24,6 +24,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         //Root View
 
         self.hideKeyboardWhenTappedAround()
+        sleep(1)
+        username.text = "gomeow"
+        password.text = "1ironman"
+        sleep(1)
+        login()
 
     }
 
