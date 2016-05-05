@@ -20,6 +20,23 @@ Parse.Cloud.define("login", function(request, response) {
 		}
 	});
 });
+Parse.Cloud.define("userIdFromUsername", function(request, response) {
+	var username = request.params.username;
+	var query = new Parse.Query("Users");
+	query.equalTo("username", username);
+	query.find({
+		success: function(results) {
+			if(results.length == 0) { // User does not exist
+				response.error(2);
+			} else {
+				response.success(results[0].id);
+			}
+		},
+		error: function(error) {
+			response.error(0);
+		}
+	});
+});
 Parse.Cloud.define("addUserToGroup", function(request, response) {
 	var userId = request.params.userId;
 	var groupId = request.params.groupId;
