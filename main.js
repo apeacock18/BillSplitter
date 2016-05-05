@@ -23,29 +23,42 @@ Parse.Cloud.define("login", function(request, response) {
 Parse.Cloud.define("addUserToGroup", function(request, response) {
 	var userId = request.params.userId;
 	var groupId = request.params.groupId;
-	// Add groupId to user
-	var UserObject = Parse.Object.extend("Users");
-	var user = new UserObject();
-	user.id = userId;
-	user.add("groups", groupId);
-	user.save(null, {
-		success: function(object) {
-			// Add user as member to group
-			var GroupObject = Parse.Object.extend("Groups");
-			var group = new GroupObject();
-			group.id = groupId;
-			group.add("members", userId);
-			group.save(null, {
-				success: function(object2) {
-					var dict = {};
-					dict["user"] = object;
-					dict["group"] = object2;
-					response.success(dict);
-				},
-				error: function(error) {
-					response.error(error);
-				}
-			});
+	var query = Parse.Query("Groups");
+	query.equalTo("objectId", groupId);
+	query.find({
+		success: function(result) {
+			if(result.get("members").contains(userId)) {
+				response.error(1); // Group already contains user
+			} else {
+				// Add groupId to user
+				var UserObject = Parse.Object.extend("Users");
+				var user = new UserObject();
+				user.id = userId;
+				user.add("groups", groupId);
+				user.save(null, {
+					success: function(object) {
+						// Add user as member to group
+						var GroupObject = Parse.Object.extend("Groups");
+						var group = new GroupObject();
+						group.id = groupId;
+						group.add("members", userId);
+						group.save(null, {
+							success: function(object2) {
+								var dict = {};
+								dict["user"] = object;
+								dict["group"] = object2;
+								response.success(dict);
+							},
+							error: function(error) {
+								response.error(error);
+							}
+						});
+					},
+					error: function(error) {
+						response.error(error);
+					}
+				});
+			}
 		},
 		error: function(error) {
 			response.error(error);
