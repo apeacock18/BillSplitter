@@ -17,7 +17,16 @@ class MemberNavController: UINavigationController {
         super.viewDidLoad()
 
         memberController.title = "Members"
-        memberController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Options", style: .Plain, target: self, action: #selector(MemberNavController.options))
+
+
+        let button = UIButton(type: .Custom)
+        button.setTitle("+", forState: .Normal)
+        button.titleLabel?.font = UIFont.systemFontOfSize(20.0)
+        button.frame = CGRectMake(0, 0, 100, 40)
+        memberController.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        memberController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .Plain, target: self, action: #selector(MemberNavController.add))
+        memberController.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName:UIFont.systemFontOfSize(40)], forState: .Normal)
+        memberController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: #selector(MemberNavController.back))
 
         self.viewControllers = [memberController]
     }
@@ -26,7 +35,11 @@ class MemberNavController: UINavigationController {
         super.didReceiveMemoryWarning()
     }
 
-    func options() {
+    func back() {
+        (UIApplication.sharedApplication().delegate as! AppDelegate).tabViewController!.viewControllers![1] = GroupNavViewController()
+    }
+
+    func add() {
         let addUser = UIAlertController(title: "Enter a username", message: nil, preferredStyle: .Alert)
         addUser.addTextFieldWithConfigurationHandler({
             (textField: UITextField!) in

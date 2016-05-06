@@ -64,7 +64,10 @@ class GroupTableViewController: UITableViewController {
         let vc = MemberNavController()
         vc.memberController.group = groups[indexPath.row]
         vc.memberController.members = groups[indexPath.row].getMembers()
-        self.presentViewController(vc, animated: true, completion: nil)
+        vc.title = "Groups"
+        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        delegate.tabViewController?.viewControllers![1] = vc
+        //self.presentViewController(vc, animated: true, completion: nil)
         
         
     }

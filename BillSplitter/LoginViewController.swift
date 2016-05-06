@@ -60,7 +60,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             (result: Bool) in
             sv.view.removeFromSuperview() // Remove loading screen
             if result {
-                self.presentViewController(TabViewController(), animated: true, completion: nil)
+                let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                delegate.tabViewController = TabViewController()
+                self.presentViewController(delegate.tabViewController!, animated: true, completion: nil)
             } else {
                 let message = UIAlertController(title: "Username/Password Incorrect", message: "Please try again.", preferredStyle: UIAlertControllerStyle.Alert)
                 message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
