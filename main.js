@@ -1,3 +1,13 @@
+/**
+ * Logs a user in
+ * @param {string} username
+ * @param {string} password
+ * @returns {string} userId
+ *
+ * Error Codes:
+ * 0: User not found
+ * 1: Incorrect password
+ */
 Parse.Cloud.define("login", function(request, response) {
     var username = request.params.username;
     var password = request.params.password;
@@ -21,8 +31,9 @@ Parse.Cloud.define("login", function(request, response) {
     });
 });
 
-/* Adds a user to a group
- * @param username String Username to query
+/**
+ * Adds a user to a group
+ * @param {string} username - Username to query
  * @returns String userId
  * 
  * Error Codes:
@@ -46,10 +57,10 @@ Parse.Cloud.define("userIdFromUsername", function(request, response) {
     });
 });
 
-
-/* Adds a user to a group
- * @param userId String User to add to the group
- * @param groupId String Group to add user to
+/**
+ * Adds a user to a group
+ * @param {string} userId - User to add to the group
+ * @param {string} groupId - Group to add user to
  * @returns
  * 
  * Error Codes:
@@ -113,6 +124,15 @@ Parse.Cloud.define("addUserToGroup", function(request, response) {
         }
     });
 });
+
+/**
+ * Removes a user from a group
+ * @param {string} userId - User to remove from the group
+ * @param {string} groupId - Group to remove user from
+ * @returns
+ * 
+ * Error Codes:
+ */
 Parse.Cloud.define("leaveGroup", function(request, response) {
     var userId = request.params.userId;
     var groupId = request.params.groupId;
@@ -153,6 +173,12 @@ Parse.Cloud.define("leaveGroup", function(request, response) {
         }
     });
 });
+
+/**
+ * Creates a new group
+ * @param {string} name - The name for the new group
+ * @returns {string} groupId
+ */
 Parse.Cloud.define("createGroup", function(request, response) {
     var name = request.params.name;
     var GroupObject = Parse.Object.extend("Groups");
@@ -169,6 +195,17 @@ Parse.Cloud.define("createGroup", function(request, response) {
     });
 
 });
+
+/**
+ * Creates a new password
+ * @param {string} username
+ * @param {string} password - Hashed password (SHA-512)
+ * @param {string} email
+ * @param {string} phoneNumber
+ * @param {string} fName - First Name
+ * @param {string} username - Last Name
+ * @returns 
+ */
 Parse.Cloud.define("create", function(request, response) {
     var username = request.params.username;
     var password = request.params.password;
