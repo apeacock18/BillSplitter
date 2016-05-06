@@ -37,17 +37,34 @@ class MemberNavController: UINavigationController {
             if let textFields = addUser.textFields {
                 let fields = textFields as [UITextField]
                 let text = fields[0].text
-                if text == nil || text == "" {
-
-                } else {
-                    print(text!)
-                    PFCloud.callFunctionInBackground("userIdFromUsername", withParameters: ["username": text!]) {
-                        (response: AnyObject?, error: NSError?) -> Void in
-                        if error != nil {
-                            print(error)
-                        }
-                        if response != nil {
-                            print(response)
+                if text != nil && text != "" {
+                    NetworkManager.userExists(text!) {
+                        (result: String?) in
+                        if result == nil {
+                            let message = UIAlertController(title: "Invalid username", message: "That username does not exist.", preferredStyle: UIAlertControllerStyle.Alert)
+                            message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                            self.presentViewController(message, animated: true, completion: nil)
+                        } else {
+                            let userId: String = result!
+                            if userId != VariableManager.getID() {
+                                let groupId = self.memberController.group!.getID()
+                                NetworkManager.addUserToGroup(groupId, userId: userId) {
+                                    (result: Bool) in
+                                    if result {
+                                        VariableManager.addUserToGroup(userId, groupId: groupId)
+                                        StorageManager.addUserToGroup(userId, groupId: groupId)
+                                        self.memberController.group!.addMember(userId)
+                                        self.memberController.members.append(userId)
+                                        self.memberController.tableView.reloadData()
+                                    } else {
+                                        // TODO Error
+                                    }
+                                }
+                            } else {
+                                let message = UIAlertController(title: "Invalid username", message: "You cannot add yourself to a group.", preferredStyle: UIAlertControllerStyle.Alert)
+                                message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                                self.presentViewController(message, animated: true, completion: nil)
+                            }
                         }
                     }
                 }

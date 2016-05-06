@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
 
         let configuration = ParseClientConfiguration {
             $0.applicationId = "SmKujk7VXA7gQcUNz6hHjbPWpk1jF0Wtp1RPZ71Z"
@@ -31,18 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         loginViewController = LoginViewController()
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window!.rootViewController = loginViewController
-        //self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.makeKeyAndVisible()
 
-
-        /*let testObject = PFObject(className: "TestObject")
-        testObject["foo"] = "bar"
-        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-            print("Object has been saved.")
-        }*/
-
-
+        /* TODO: These should be used when local storage is used instead of getting all information from the server.
         StorageManager.recallSelfData()
+        StorageManager.recallGroupData()
+        */
 
         return true
     }

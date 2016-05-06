@@ -57,6 +57,14 @@ class VariableManager {
         return false
     }
 
+    static func addUserToGroup(userId: String, groupId: String) {
+        for group in groups {
+            if group.getID() == groupId {
+                group.addMember(userId)
+            }
+        }
+    }
+
     /* Self Data */
 
     static func getID() -> String {

@@ -25,7 +25,7 @@ class Group {
         self.members = members
     }
 
-    func getID() -> String{
+    func getID() -> String {
         return id
     }
 
@@ -35,6 +35,10 @@ class Group {
 
     func getMembers() -> Array<String> {
         return members
+    }
+
+    func addMember(userId: String) {
+        members.append(userId)
     }
 
     func count() -> Int {

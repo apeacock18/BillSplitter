@@ -34,7 +34,9 @@ class NetworkManager {
                         VariableManager.setLName(object!.valueForKey("lName") as! String)
                         //VariableManager.setPhoneNumber(object!.valueForKey("phoneNumber") as! String)
 
-                        let groups = object!.valueForKey("groups") as! Array<String>
+                        let groups = object!.valueForKey("groups") as? Array<String>
+                        print(groups)
+
 
                         let imageFile = object!.valueForKey("avatar") as? PFFile
                         if imageFile != nil {
@@ -43,17 +45,20 @@ class NetworkManager {
                                 if result != nil {
                                     VariableManager.setAvatar(result!)
                                 }
-                                getGroupDataFromServer(groups) {
-                                    (result: Bool) in
-                                    completion(result: true)
+                                if groups != nil {
+                                    getGroupDataFromServer(groups!) {
+                                        (result: Bool) in
+                                        completion(result: true)
+                                    }
                                 }
                             }
                         } else {
                             VariableManager.setAvatar(UIImage(named: "default")!)
-                            completion(result: true)
-                            getGroupDataFromServer(groups) {
-                                (result: Bool) in
-                                completion(result: true)
+                            if groups != nil {
+                                getGroupDataFromServer(groups!) {
+                                    (result: Bool) in
+                                    completion(result: true)
+                                }
                             }
                         }
                         StorageManager.saveSelfData()
@@ -79,11 +84,11 @@ class NetworkManager {
                         members: result["members"] as! Array<String>
                     )
                     VariableManager.addGroup(groupObj)
-                    completion(result: true)
                 }
-                // TODO Refresh groups page
-            } else {
+                StorageManager.saveGroupData()
                 completion(result: true)
+            } else {
+                completion(result: false)
                 print("getGroupDataFromServer error:")
                 print(error)
             }
@@ -138,7 +143,6 @@ class NetworkManager {
         PFCloud.callFunctionInBackground("addUserToGroup", withParameters: ["userId": userId, "groupId": groupId]) {
             (response: AnyObject?, error: NSError?) -> Void in
             if response != nil {
-                print(response)
                 completion(result: true)
             }
             if error != nil {
@@ -158,6 +162,19 @@ class NetworkManager {
             if error != nil {
                 print(error)
                 completion(result: false)
+            }
+        }
+    }
+
+    static func userExists(username: String, completion: (result: String?) -> Void) {
+        PFCloud.callFunctionInBackground("userIdFromUsername", withParameters: ["username": username]) {
+            (response: AnyObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+                completion(result: nil)
+            }
+            if response != nil {
+                completion(result: response as? String)
             }
         }
     }

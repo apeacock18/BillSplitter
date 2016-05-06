@@ -24,11 +24,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         //Root View
 
         self.hideKeyboardWhenTappedAround()
-        sleep(1)
-        username.text = "gomeow"
-        password.text = "1ironman"
-        sleep(1)
-        login()
 
     }
 
@@ -60,7 +55,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Start loading screen
         let sv = SpinnerView()
         self.view.addSubview(sv.view)
-
         let name: String = username.text!.lowercaseString
         NetworkManager.login(name, password: password.text!.lowercaseString.hashWithSalt(name)) {
             (result: Bool) in

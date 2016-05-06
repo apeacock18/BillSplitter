@@ -23,6 +23,7 @@ class StorageManager {
             let groupData: [String: AnyObject] = [id: ["name": name, "members": []]]
             NSUserDefaults.standardUserDefaults().setObject(groupData, forKey: "groups")
         }
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
 
 
@@ -46,6 +47,7 @@ class StorageManager {
         group["members"] = currentUsers
         groupData[groupId] = group
         NSUserDefaults.standardUserDefaults().setObject(groupData, forKey: "groups")
+        NSUserDefaults.standardUserDefaults().synchronize()
         return true
     }
 
@@ -66,7 +68,25 @@ class StorageManager {
         group["members"] = currentUsers.filter() {$0 != id}
         groupData[groupId] = group
         NSUserDefaults.standardUserDefaults().setObject(groupData, forKey: "groups")
+        NSUserDefaults.standardUserDefaults().synchronize()
         return true
+    }
+
+    static func recallGroupData() {
+
+    }
+
+    static func saveGroupData() {
+        var data: [String: AnyObject] = [:]
+        for group in VariableManager.getGroups() {
+            let groupData: [String: AnyObject] = [
+                "name": group.getName(),
+                "members": group.getMembers()
+            ]
+            data[group.getID()] = groupData
+        }
+        NSUserDefaults.standardUserDefaults().setObject(data, forKey: "groups")
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
 
 
@@ -95,6 +115,7 @@ class StorageManager {
             "phoneNumber": VariableManager.getPhoneNumber()
         ]
         NSUserDefaults.standardUserDefaults().setObject(data, forKey: "selfData")
+        NSUserDefaults.standardUserDefaults().synchronize()
     }
 
 
@@ -112,6 +133,7 @@ class StorageManager {
             return false
         }
         NSUserDefaults.standardUserDefaults().setObject(image, forKey: "selfAvatar")
+        NSUserDefaults.standardUserDefaults().synchronize()
         return true
     }
 

@@ -65,9 +65,9 @@ class GroupNavViewController: UINavigationController {
                             NetworkManager.addUserToGroup(groupId, userId: VariableManager.getID()) {
                                 (result: Bool) in
                                 if result {
+                                    VariableManager.addGroup(Group(id: groupId, name: text!, members: [VariableManager.getID()]))
                                     StorageManager.createGroup(groupId, name: text!)
                                     StorageManager.addUserToGroup(VariableManager.getID(), groupId: groupId)
-                                    VariableManager.addGroup(Group(id: groupId, name: text!, members: [VariableManager.getID()]))
                                     self.tableController.reload()
                                 } else {
                                     self.handleError()
