@@ -45,9 +45,16 @@ class MemberTableViewController: UITableViewController {
             let cellIdentifier = "MemberCell"
             tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MemberCell
-            cell.name.text = members[indexPath.row - 1]
 
-            cell.avatar.image = UIImage(named: "default")
+            let id = members[indexPath.row - 1]
+            if id == VariableManager.getID() {
+                cell.name.text = VariableManager.getFullName()
+                cell.avatar.image = VariableManager.getAvatar()
+            } else {
+                let user = VariableManager.getUserById(id)
+                cell.name.text = user?.username
+                cell.avatar.image = user?.getAvatar()
+            }
             cell.amount.text = "$0.00"
             return cell
         }

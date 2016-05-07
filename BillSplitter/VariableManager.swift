@@ -20,6 +20,8 @@ class VariableManager {
 
     private static var groups: Array<Group> = []
 
+    private static var users: Array<User> = []
+
 
     private static var avatar: UIImage? = nil
 
@@ -32,6 +34,34 @@ class VariableManager {
         username = ""
         groups = []
         avatar = nil
+    }
+
+    /* User Data */
+
+    static func getUsers() -> Array<User> {
+        return users
+    }
+
+    static func getUserById(id: String) -> User? {
+        for user in users {
+            if user.id == id {
+                return user
+            }
+        }
+        return nil
+    }
+
+    static func getUserByName(username: String) -> User? {
+        for user in users {
+            if user.username == username {
+                return user
+            }
+        }
+        return nil
+    }
+
+    static func addUser(user: User) {
+        users.append(user)
     }
 
     /* Group Data */

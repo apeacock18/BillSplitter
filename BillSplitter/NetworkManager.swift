@@ -78,16 +78,37 @@ class NetworkManager {
             query.findObjectsInBackgroundWithBlock {
                 (results: [PFObject]?, error: NSError?) -> Void in
                 if error == nil && results != nil {
+                    var users: Set<String> = []
                     for result in results! {
+                        let members: Array<String> = result["members"] as! Array<String>
                         let groupObj = Group(
                             id: result.objectId!,
                             name: result["name"] as! String,
-                            members: result["members"] as! Array<String>
+                            members: members
                         )
                         VariableManager.addGroup(groupObj)
+                        for member in members {
+                            users.insert(member)
+                        }
                     }
-                    StorageManager.saveGroupData()
-                    completion(result: true)
+                    var userQueries: Array<PFQuery> = []
+                    for userId in users {
+                        userQueries.append(PFQuery(className: "Users").whereKey("objectId", equalTo: userId))
+                    }
+                    let userQuery = PFQuery.orQueryWithSubqueries(userQueries)
+                    userQuery.findObjectsInBackgroundWithBlock {
+                        (results: [PFObject]?, error: NSError?) -> Void in
+                        if error == nil && results != nil {
+                            for result in results! {
+                                let userObj = User(id: result.objectId!, username: result["username"] as! String)
+                                VariableManager.addUser(userObj)
+                            }
+                            StorageManager.saveGroupData()
+                            completion(result: true)
+                        } else {
+                            print(error)
+                        }
+                    }
                 } else {
                     completion(result: false)
                     print("getGroupDataFromServer error:")

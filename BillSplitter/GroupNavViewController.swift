@@ -35,10 +35,8 @@ class GroupNavViewController: UINavigationController {
     }
 
     func logout() {
-        print(Array(NSUserDefaults.standardUserDefaults().dictionaryRepresentation().keys).count)
         let appDomain = NSBundle.mainBundle().bundleIdentifier!
         NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
-        print(Array(NSUserDefaults.standardUserDefaults().dictionaryRepresentation().keys).count)
         self.presentViewController(LoginViewController(), animated: true, completion: nil)
         VariableManager.erase()
     }
