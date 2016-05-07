@@ -24,6 +24,8 @@
 		397784E11CD3E72F000F7600 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397784E01CD3E72F000F7600 /* StorageManager.swift */; };
 		397784F11CD3E91A000F7600 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397784E91CD3E8FC000F7600 /* GroupTableViewController.swift */; };
 		397784F21CD3E91A000F7600 /* GroupNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397784EB1CD3E8FC000F7600 /* GroupNavViewController.swift */; };
+		398D8EB71CDDC62100CC045E /* CreateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398D8EB51CDDC62100CC045E /* CreateCell.swift */; };
+		398D8EB81CDDC62100CC045E /* CreateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 398D8EB61CDDC62100CC045E /* CreateCell.xib */; };
 		39AB43A61CC9AAAA004F9937 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A41CC9AAAA004F9937 /* Bolts.framework */; };
 		39AB43A71CC9AAAA004F9937 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A51CC9AAAA004F9937 /* Parse.framework */; };
 		39AB43B21CC9AB9E004F9937 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A81CC9AB9E004F9937 /* AudioToolbox.framework */; };
@@ -113,6 +115,8 @@
 		397784EB1CD3E8FC000F7600 /* GroupNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupNavViewController.swift; sourceTree = "<group>"; };
 		3978787F1CC9EA410052DF04 /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateViewController.swift; path = ../BillSplitter/CreateViewController.swift; sourceTree = "<group>"; };
 		397EBAB21CCEA26500E2A56B /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = ../BillSplitter/TabViewController.swift; sourceTree = "<group>"; };
+		398D8EB51CDDC62100CC045E /* CreateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCell.swift; sourceTree = "<group>"; };
+		398D8EB61CDDC62100CC045E /* CreateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateCell.xib; sourceTree = "<group>"; };
 		39AB43A41CC9AAAA004F9937 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		39AB43A51CC9AAAA004F9937 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		39AB43A81CC9AB9E004F9937 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -251,6 +255,8 @@
 				39C00DF71CDB10E600D6F9C6 /* MemberTableViewController.swift */,
 				39579E221CD821C800E0ED6D /* MemberCell.swift */,
 				39579E211CD821C800E0ED6D /* MemberCell.xib */,
+				398D8EB51CDDC62100CC045E /* CreateCell.swift */,
+				398D8EB61CDDC62100CC045E /* CreateCell.xib */,
 			);
 			name = Summary;
 			sourceTree = "<group>";
@@ -365,6 +371,7 @@
 				396CC9FB1CCED6E200E4AC1D /* LoginViewController.xib in Resources */,
 				39579E281CD8249500E0ED6D /* GroupCell.xib in Resources */,
 				396CC9F81CCED67A00E4AC1D /* CreateViewController.xib in Resources */,
+				398D8EB81CDDC62100CC045E /* CreateCell.xib in Resources */,
 				1D63E4AC1C922CE900D8863B /* Assets.xcassets in Resources */,
 				1D63E4AA1C922CE900D8863B /* Main.storyboard in Resources */,
 				39CA4A461CCEF11600FC15A8 /* NewBillViewController.xib in Resources */,
@@ -414,6 +421,7 @@
 				39CA4A3A1CCEE17800FC15A8 /* SettingsViewController.swift in Sources */,
 				39CA4A3B1CCEE17800FC15A8 /* SettingsViewController.xib in Sources */,
 				39CA4A3D1CCEE17800FC15A8 /* TabViewController.swift in Sources */,
+				398D8EB71CDDC62100CC045E /* CreateCell.swift in Sources */,
 				39CA4A3E1CCEE17800FC15A8 /* Transaction.swift in Sources */,
 				397784E11CD3E72F000F7600 /* StorageManager.swift in Sources */,
 				39DA301D1CD9758B0029EAA7 /* SpinnerView.swift in Sources */,

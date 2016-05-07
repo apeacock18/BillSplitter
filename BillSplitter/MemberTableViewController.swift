@@ -32,18 +32,25 @@ class MemberTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return members.count
+        return members.count + 1
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellIdentifier = "MemberCell"
-        tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MemberCell
-        cell.name.text = members[indexPath.row]
+        if indexPath.row == 0 {
+            let cellIdentifier = "CreateCell"
+            tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! CreateCell
+            return cell
+        } else {
+            let cellIdentifier = "MemberCell"
+            tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MemberCell
+            cell.name.text = members[indexPath.row - 1]
 
-        cell.avatar.image = UIImage(named: "default")
-        cell.amount.text = "$0.00"
-        return cell
+            cell.avatar.image = UIImage(named: "default")
+            cell.amount.text = "$0.00"
+            return cell
+        }
     }
 
 
