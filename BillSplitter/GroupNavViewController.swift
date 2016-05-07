@@ -63,8 +63,8 @@ class GroupNavViewController: UINavigationController {
                         if result != nil {
                             let groupId: String = result!
                             NetworkManager.addUserToGroup(groupId, userId: VariableManager.getID()) {
-                                (result: Bool) in
-                                if result {
+                                (result: Int) in
+                                if result == 0 {
                                     VariableManager.addGroup(Group(id: groupId, name: text!, members: [VariableManager.getID()]))
                                     StorageManager.createGroup(groupId, name: text!)
                                     StorageManager.addUserToGroup(VariableManager.getID(), groupId: groupId)

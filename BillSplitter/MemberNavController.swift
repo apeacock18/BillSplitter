@@ -62,13 +62,17 @@ class MemberNavController: UINavigationController {
                             if userId != VariableManager.getID() {
                                 let groupId = self.memberController.group!.getID()
                                 NetworkManager.addUserToGroup(groupId, userId: userId) {
-                                    (result: Bool) in
-                                    if result {
+                                    (result: Int) in
+                                    if result == 0 {
                                         VariableManager.addUserToGroup(userId, groupId: groupId)
                                         StorageManager.addUserToGroup(userId, groupId: groupId)
                                         self.memberController.group!.addMember(userId)
                                         self.memberController.members.append(userId)
                                         self.memberController.tableView.reloadData()
+                                    } else if result == 1 {
+                                        let message = UIAlertController(title: "Error", message: "That user is already in this group.", preferredStyle: UIAlertControllerStyle.Alert)
+                                        message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                                        self.presentViewController(message, animated: true, completion: nil)
                                     } else {
                                         // TODO Error
                                     }

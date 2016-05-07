@@ -232,14 +232,14 @@
 				391A241C1CCF31F800884A27 /* TestViewController.swift */,
 				391A241D1CCF31F800884A27 /* TestViewController.xib */,
 				1D63E4DE1C937E9300D8863B /* Transaction.swift */,
-				397784E01CD3E72F000F7600 /* StorageManager.swift */,
-				39B6398C1CD41DF2002269A8 /* VariableManager.swift */,
-				39B6398E1CD4228C002269A8 /* NetworkManager.swift */,
 				39DEB6AC1CD7DC8400BA0440 /* MeViewController.swift */,
 				39DEB6AD1CD7DC8400BA0440 /* MeViewController.xib */,
 				39579E291CD8264C00E0ED6D /* Group.swift */,
 				397308E71CD95460008540C1 /* Spinner.swift */,
 				39DA301C1CD9758B0029EAA7 /* SpinnerView.swift */,
+				397784E01CD3E72F000F7600 /* StorageManager.swift */,
+				39B6398C1CD41DF2002269A8 /* VariableManager.swift */,
+				39B6398E1CD4228C002269A8 /* NetworkManager.swift */,
 			);
 			path = BillSplitter;
 			sourceTree = "<group>";

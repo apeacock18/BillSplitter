@@ -144,15 +144,22 @@ class NetworkManager {
         }
     }
 
-    static func addUserToGroup(groupId: String, userId: String, completion: (result: Bool) -> Void) {
+    static func addUserToGroup(groupId: String, userId: String, completion: (result: Int) -> Void) {
         PFCloud.callFunctionInBackground("addUserToGroup", withParameters: ["userId": userId, "groupId": groupId]) {
             (response: AnyObject?, error: NSError?) -> Void in
             if response != nil {
-                completion(result: true)
+                completion(result: 0) // Success
             }
             if error != nil {
                 print(error)
-                completion(result: false)
+                let code = error!.userInfo["error"]
+                if code != nil {
+                    if (code as? Int) == 2 {
+                        completion(result: 1)
+                        return
+                    }
+                }
+                completion(result: 2) // Error
             }
         }
     }

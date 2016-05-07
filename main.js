@@ -76,9 +76,7 @@ Parse.Cloud.define("addUserToGroup", function(request, response) {
         success: function(result) {
             var contains = false;
             var members = result.get("members");
-            if(members == null) {
-            	contains = true;
-            } else {
+            if(members != null) {
 	            for(var i = 0; i < members.length; i++) {
 	                if(members[i] == userId) {
 	                    contains = true;
@@ -86,7 +84,7 @@ Parse.Cloud.define("addUserToGroup", function(request, response) {
 	                }
 	            }
             }
-            if(contains == false) {
+            if(contains == true) {
                 response.error(2); // Group already contains user
             } else {
                 // Add groupId to user
