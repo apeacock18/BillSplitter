@@ -73,25 +73,30 @@ class NetworkManager {
         for group in groups {
             queries.append(PFQuery(className: "Groups").whereKey("objectId", equalTo: group))
         }
-        let query = PFQuery.orQueryWithSubqueries(queries)
-        query.findObjectsInBackgroundWithBlock {
-            (results: [PFObject]?, error: NSError?) -> Void in
-            if error == nil && results != nil {
-                for result in results! {
-                    let groupObj = Group(
-                        id: result.objectId!,
-                        name: result["name"] as! String,
-                        members: result["members"] as! Array<String>
-                    )
-                    VariableManager.addGroup(groupObj)
+        if queries.count > 0 {
+            let query = PFQuery.orQueryWithSubqueries(queries)
+            query.findObjectsInBackgroundWithBlock {
+                (results: [PFObject]?, error: NSError?) -> Void in
+                if error == nil && results != nil {
+                    for result in results! {
+                        let groupObj = Group(
+                            id: result.objectId!,
+                            name: result["name"] as! String,
+                            members: result["members"] as! Array<String>
+                        )
+                        VariableManager.addGroup(groupObj)
+                    }
+                    StorageManager.saveGroupData()
+                    completion(result: true)
+                } else {
+                    completion(result: false)
+                    print("getGroupDataFromServer error:")
+                    print(error)
                 }
-                StorageManager.saveGroupData()
-                completion(result: true)
-            } else {
-                completion(result: false)
-                print("getGroupDataFromServer error:")
-                print(error)
             }
+        } else {
+            // TODO Possibly will need to manage local storage
+            completion(result: true)
         }
     }
 
