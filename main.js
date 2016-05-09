@@ -100,6 +100,24 @@ Parse.Cloud.define("addUserToGroup", function(request, response) {
                         var group = new GroupObject();
                         group.id = groupId;
                         group.add("members", userId);
+
+                        if(members.length != 0) {
+                            var statuses = result.get("status");
+                            var data = new Array();
+                            for(var i = 0; i < members.length; i++) {
+                                var obj = new Object;
+                                obj.recipient = members[i];
+                                obj.amount = 0.00;
+                                data.push(obj);
+                            }
+                            var status = new Object;
+                            status.id = userId;
+                            status.data = data;
+                            var json = JSON.stringify(status);
+                            console.log(json);
+                        }
+                        group.add("status", json);
+
                         group.save(null, {
                             success: function(object2) {
                                 var dict = {};
@@ -184,6 +202,7 @@ Parse.Cloud.define("createGroup", function(request, response) {
     var group = new GroupObject();
     group.set("name", name);
     group.set("members", []);
+    group.set("status", []);
     group.save(null, {
         success: function(object) {
             response.success(object.id);
@@ -239,6 +258,72 @@ Parse.Cloud.define("create", function(request, response) {
         },
         error: function() {
             response.error(0); // Unknown error
+        }
+    });
+});
+
+
+/* Transactions */
+
+/**
+ * Start a transaction between group members.
+ * @param {string} groupId
+ * @param {string} payee - The user who should be receiving money.
+ * @param {<string, integer>} split - A dictionary with keys of users with values containing the percentage the user should pay. eg. {"gomeow": 25}
+ * @param {integer} amount - The Amount to be split.
+ *
+ * Error Codes:
+ * 0: Unknown error
+ * 1: Split does not add up to 100% of amount
+ */
+Parse.Cloud.define("newTransaction", function(request, response) {
+    var groupId = request.params.groupId;
+    var payee = request.params.payee;
+    var split = request.params.split;
+    var transactionAmount = request.params.amount;
+    var amountToPay = new Array();
+    var totalPercentage = 0;
+    for (var userId in split) {
+        if(!split.hasOwnProperty(userId)) {
+            continue;
+        }
+        amountToPay[userId] = transactionAmount * (split[userId] / 100);
+        totalPercentage += split[userId];
+    }
+    if(totalPercentage != 100) {
+        response.error(1);
+        return;
+    }
+    for (var userId in amountToPay) {
+        if(!amountToPay.hasOwnProperty(userId)) {
+            continue;
+        }
+        console.log(userId + " " + amountToPay[userId].toString());
+    }
+    var statusQuery = new Parse.Query("Groups");
+    statusQuery.equalTo("objectId", groupId);
+    statusQuery.first({
+        success: function(result) {
+            var statusArray = result.get("status");
+            var newArray = Array();
+            for(var json in statusArray) {
+                var status = JSON.parse(json);
+            }
+            var GroupClass = Parse.Object.extend("Groups");
+            var group = new GroupClass();
+            group.set("objectId", groupId);
+            group.set("status", newArray);
+            group.save(null, {
+                success: function(object) {
+                    response.success(object);
+                },
+                error: function(object, error) {
+                    response.error(error);
+                }
+            });
+        },
+        error: function(error) {
+            response.error(error);
         }
     });
 });

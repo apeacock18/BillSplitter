@@ -84,6 +84,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
 
     @IBAction func forgot(sender: UIButton) {
+        let query = PFQuery(className: "Groups")
+        query.whereKey("objectId", equalTo: "u6jlfcnH1Y")
+        query.getFirstObjectInBackgroundWithBlock() {
+            (response: PFObject?, error: NSError?) -> Void in
+            if response != nil {
+                print(response?.objectForKey("status"))
+            }
+            if error != nil {
+                print(error)
+            }
+        }
     }
 
     /*
