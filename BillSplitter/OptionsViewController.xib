@@ -16,13 +16,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCd-91-Af6">
-                    <rect key="frame" x="8" y="8" width="34" height="30"/>
-                    <state key="normal" title="Back"/>
-                    <connections>
-                        <action selector="back:" destination="-1" eventType="touchUpInside" id="fXa-Na-Dr4"/>
-                    </connections>
-                </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UOU-Bz-NRv">
                     <rect key="frame" x="0.0" y="75" width="375" height="255"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -39,13 +32,11 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="eCd-91-Af6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="6Sb-pm-vyx"/>
                 <constraint firstAttribute="trailing" secondItem="UOU-Bz-NRv" secondAttribute="trailing" id="CXJ-5D-vFZ"/>
+                <constraint firstItem="1Er-wS-R8B" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="46" id="Kp3-xo-nXP"/>
                 <constraint firstItem="UOU-Bz-NRv" firstAttribute="top" secondItem="1Er-wS-R8B" secondAttribute="bottom" constant="8" id="MuR-LR-ZGX"/>
                 <constraint firstItem="UOU-Bz-NRv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Q8h-Ne-SyW"/>
                 <constraint firstItem="1Er-wS-R8B" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="XeX-ra-oUp"/>
-                <constraint firstItem="eCd-91-Af6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="f2a-fh-dBi"/>
-                <constraint firstItem="1Er-wS-R8B" firstAttribute="top" secondItem="eCd-91-Af6" secondAttribute="bottom" constant="8" id="skB-EN-AsJ"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="415.5" y="318.5"/>

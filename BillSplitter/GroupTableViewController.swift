@@ -18,6 +18,18 @@ class GroupTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 80.0
+
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(GroupTableViewController.logout))
+        self.title = "Groups"
+        let button = UIButton(type: .Custom)
+        button.setTitle("+", forState: .Normal)
+        button.titleLabel?.font = UIFont.systemFontOfSize(20.0)
+        button.frame = CGRectMake(0, 0, 100, 40)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .Plain, target: self, action: #selector(GroupTableViewController.onCreate))
+        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName:UIFont.systemFontOfSize(40)], forState: .Normal)
+
+
     }
 
     func loadGroups() {
@@ -61,12 +73,73 @@ class GroupTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let vc = MemberNavController()
-        vc.memberController.group = groups[indexPath.row]
-        vc.memberController.members = groups[indexPath.row].getMembers()
+        let vc = MemberTableViewController()
+        vc.group = groups[indexPath.row]
+        vc.members = groups[indexPath.row].getMembers()
         vc.title = "Groups"
-        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        delegate.tabViewController?.viewControllers![0] = vc
+        //let nav = UINavigationController(rootViewController: vc)
+        self.navigationController?.pushViewController(vc, animated: true)
+
+
+        /*let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        delegate.tabViewController?.viewControllers![0] = vc*/
     }
-    
+
+    func logout() {
+        let appDomain = NSBundle.mainBundle().bundleIdentifier!
+        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+        self.presentViewController(LoginViewController(), animated: true, completion: nil)
+        VariableManager.erase()
+    }
+
+    func onCreate() {
+        let createGroup = UIAlertController(title: "Enter a group name", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        createGroup.addTextFieldWithConfigurationHandler({
+            (textField: UITextField!) in
+            textField.placeholder = "Group Name"
+        })
+
+        let create = UIAlertAction(title: "Create", style: .Default) {
+            (paramAction: UIAlertAction) in
+            if let textFields = createGroup.textFields {
+                let fields = textFields as [UITextField]
+                let text = fields[0].text
+                if text == nil || text == "" {
+
+                } else {
+                    NetworkManager.createGroup(text!) {
+                        (result: String?) in
+                        if result != nil {
+                            let groupId: String = result!
+                            NetworkManager.addUserToGroup(groupId, userId: VariableManager.getID()) {
+                                (result: Int) in
+                                if result == 0 {
+                                    VariableManager.addGroup(Group(id: groupId, name: text!, members: [VariableManager.getID()]))
+                                    StorageManager.createGroup(groupId, name: text!)
+                                    StorageManager.addUserToGroup(VariableManager.getID(), groupId: groupId)
+                                    self.reload()
+                                } else {
+                                    self.handleError()
+                                }
+                            }
+                        } else {
+                            self.handleError()
+                        }
+                    }
+                }
+            }
+        }
+        createGroup.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
+        createGroup.addAction(create)
+        self.presentViewController(createGroup, animated: true, completion: nil)
+        
+    }
+
+    func handleError() {
+        let message = UIAlertController(title: "Error", message: "Please try again.", preferredStyle: UIAlertControllerStyle.Alert)
+        message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(message, animated: true, completion: nil)
+    }
+
+
 }

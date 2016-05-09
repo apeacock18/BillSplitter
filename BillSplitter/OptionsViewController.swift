@@ -18,7 +18,8 @@ class OptionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
+
+        self.edgesForExtendedLayout = .None
     }
 
     override func didReceiveMemoryWarning() {

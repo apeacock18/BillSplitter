@@ -13,9 +13,10 @@ class TabViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let vc1 = GroupNavViewController()
-        vc1.title = "Groups"
-        vc1.tabBarItem.image = UIImage(named: "groups")
+        let groupTable = GroupTableViewController()
+        let nav = UINavigationController(rootViewController: groupTable)
+        nav.title = "Groups"
+        nav.tabBarItem.image = UIImage(named: "groups")
 
         let vc2 = MeViewController()
         vc2.title = "Me"
@@ -24,7 +25,7 @@ class TabViewController: UITabBarController {
         // vc3.title = "Settings"
         // vc3.tabBarItem.image = UIImage(named: "settings")
 
-        self.viewControllers = [vc1, vc2]
+        self.viewControllers = [nav, vc2]
         self.selectedIndex = 0
         // Do any additional setup after loading the view.
     }

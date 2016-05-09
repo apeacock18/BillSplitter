@@ -23,7 +23,6 @@
 		397308E81CD95460008540C1 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397308E71CD95460008540C1 /* Spinner.swift */; };
 		397784E11CD3E72F000F7600 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397784E01CD3E72F000F7600 /* StorageManager.swift */; };
 		397784F11CD3E91A000F7600 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397784E91CD3E8FC000F7600 /* GroupTableViewController.swift */; };
-		397784F21CD3E91A000F7600 /* GroupNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397784EB1CD3E8FC000F7600 /* GroupNavViewController.swift */; };
 		397F65DB1CE01CE20028CB86 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397F65D91CE01CE20028CB86 /* OptionsViewController.swift */; };
 		397F65DC1CE01CE20028CB86 /* OptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 397F65DA1CE01CE20028CB86 /* OptionsViewController.xib */; };
 		397F65E01CE02EE50028CB86 /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397F65DE1CE02EE50028CB86 /* OptionCell.swift */; };
@@ -47,7 +46,6 @@
 		39B6398F1CD4228C002269A8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B6398E1CD4228C002269A8 /* NetworkManager.swift */; };
 		39BFF4071CAF03B700CCA5D3 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39BFF4051CAF03B700CCA5D3 /* SettingsViewController.xib */; };
 		39C00DF81CDB10E600D6F9C6 /* MemberTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C00DF71CDB10E600D6F9C6 /* MemberTableViewController.swift */; };
-		39C00DFA1CDB179D00D6F9C6 /* MemberNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C00DF91CDB179D00D6F9C6 /* MemberNavController.swift */; };
 		39CA4A351CCEE16D00FC15A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4A41C922CE900D8863B /* AppDelegate.swift */; };
 		39CA4A361CCEE17800FC15A8 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3978787F1CC9EA410052DF04 /* CreateViewController.swift */; };
 		39CA4A371CCEE17800FC15A8 /* CreateViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 396CC9F61CCED67A00E4AC1D /* CreateViewController.xib */; };
@@ -117,7 +115,6 @@
 		397308E71CD95460008540C1 /* Spinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		397784E01CD3E72F000F7600 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		397784E91CD3E8FC000F7600 /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
-		397784EB1CD3E8FC000F7600 /* GroupNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupNavViewController.swift; sourceTree = "<group>"; };
 		3978787F1CC9EA410052DF04 /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateViewController.swift; path = ../BillSplitter/CreateViewController.swift; sourceTree = "<group>"; };
 		397EBAB21CCEA26500E2A56B /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = ../BillSplitter/TabViewController.swift; sourceTree = "<group>"; };
 		397F65D91CE01CE20028CB86 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
@@ -145,7 +142,6 @@
 		39BFF4001CAF007200CCA5D3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../BillSplitter/SettingsViewController.swift; sourceTree = "<group>"; };
 		39BFF4051CAF03B700CCA5D3 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = ../BillSplitter/SettingsViewController.xib; sourceTree = "<group>"; };
 		39C00DF71CDB10E600D6F9C6 /* MemberTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberTableViewController.swift; sourceTree = "<group>"; };
-		39C00DF91CDB179D00D6F9C6 /* MemberNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberNavController.swift; sourceTree = "<group>"; };
 		39CA4A431CCEF11600FC15A8 /* NewBillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewBillViewController.swift; sourceTree = "<group>"; };
 		39CA4A441CCEF11600FC15A8 /* NewBillViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewBillViewController.xib; sourceTree = "<group>"; };
 		39DA301C1CD9758B0029EAA7 /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
@@ -260,10 +256,8 @@
 			isa = PBXGroup;
 			children = (
 				397784E91CD3E8FC000F7600 /* GroupTableViewController.swift */,
-				397784EB1CD3E8FC000F7600 /* GroupNavViewController.swift */,
 				39579E251CD8249500E0ED6D /* GroupCell.swift */,
 				39579E261CD8249500E0ED6D /* GroupCell.xib */,
-				39C00DF91CDB179D00D6F9C6 /* MemberNavController.swift */,
 				39C00DF71CDB10E600D6F9C6 /* MemberTableViewController.swift */,
 				39579E221CD821C800E0ED6D /* MemberCell.swift */,
 				39579E211CD821C800E0ED6D /* MemberCell.xib */,
@@ -432,9 +426,7 @@
 				397784F11CD3E91A000F7600 /* GroupTableViewController.swift in Sources */,
 				39579E271CD8249500E0ED6D /* GroupCell.swift in Sources */,
 				39579E2A1CD8264C00E0ED6D /* Group.swift in Sources */,
-				39C00DFA1CDB179D00D6F9C6 /* MemberNavController.swift in Sources */,
 				39B6398D1CD41DF2002269A8 /* VariableManager.swift in Sources */,
-				397784F21CD3E91A000F7600 /* GroupNavViewController.swift in Sources */,
 				39CA4A361CCEE17800FC15A8 /* CreateViewController.swift in Sources */,
 				39CA4A371CCEE17800FC15A8 /* CreateViewController.xib in Sources */,
 				391A241E1CCF31F800884A27 /* TestViewController.swift in Sources */,
