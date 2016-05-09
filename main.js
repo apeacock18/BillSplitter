@@ -32,12 +32,13 @@ Parse.Cloud.define("login", function(request, response) {
 });
 
 /**
- * Adds a user to a group
+ * Retrieves the userId for a given username
  * @param {string} username - Username to query
  * @returns String userId
  * 
  * Error Codes:
  * 0: Unknown error
+ * 2: Username does not exist
  */
 Parse.Cloud.define("userIdFromUsername", function(request, response) {
     var username = request.params.username;
