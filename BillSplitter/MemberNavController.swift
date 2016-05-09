@@ -38,7 +38,7 @@ class MemberNavController: UINavigationController {
     func back() {
         let vc = GroupNavViewController()
         vc.title = "Groups"
-        (UIApplication.sharedApplication().delegate as! AppDelegate).tabViewController!.viewControllers![1] = vc
+        (UIApplication.sharedApplication().delegate as! AppDelegate).tabViewController!.viewControllers![0] = vc
     }
 
     func add() {
