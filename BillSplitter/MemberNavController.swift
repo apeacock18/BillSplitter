@@ -17,15 +17,7 @@ class MemberNavController: UINavigationController {
         super.viewDidLoad()
 
         memberController.title = "Members"
-
-
-        let button = UIButton(type: .Custom)
-        button.setTitle("+", forState: .Normal)
-        button.titleLabel?.font = UIFont.systemFontOfSize(20.0)
-        button.frame = CGRectMake(0, 0, 100, 40)
-        memberController.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
-        memberController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .Plain, target: self, action: #selector(MemberNavController.add))
-        memberController.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName:UIFont.systemFontOfSize(40)], forState: .Normal)
+        memberController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Options", style: .Plain, target: self, action: #selector(MemberNavController.options))
         memberController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: #selector(MemberNavController.back))
 
         self.viewControllers = [memberController]
@@ -39,6 +31,12 @@ class MemberNavController: UINavigationController {
         let vc = GroupNavViewController()
         vc.title = "Groups"
         (UIApplication.sharedApplication().delegate as! AppDelegate).tabViewController!.viewControllers![0] = vc
+    }
+
+    func options() {
+        let vc = OptionsViewController()
+        vc.users = memberController.members
+        self.presentViewController(vc, animated: true, completion: nil)
     }
 
     func add() {

@@ -26,12 +26,23 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forward" translatesAutoresizingMaskIntoConstraints="NO" id="cvS-QF-U0g">
+                        <rect key="frame" x="290" y="30" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="9iO-W2-8Rs"/>
+                            <constraint firstAttribute="width" constant="20" id="O3F-1E-6C9"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="XJW-hZ-cEU"/>
+                            <constraint firstAttribute="height" constant="20" id="bU1-mk-m3e"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="mvf-hs-bWS" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="2" id="0cL-Pm-lVr"/>
                     <constraint firstAttribute="bottomMargin" secondItem="mvf-hs-bWS" secondAttribute="bottom" constant="2" id="4EV-4X-Cvc"/>
                     <constraint firstItem="8PF-To-2pD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="DDx-bT-aOz"/>
                     <constraint firstItem="8PF-To-2pD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="GhV-SH-vPF"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="cvS-QF-U0g" secondAttribute="trailing" constant="2" id="QzX-c1-ta4"/>
+                    <constraint firstItem="cvS-QF-U0g" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vjq-Cl-FRa"/>
                     <constraint firstItem="mvf-hs-bWS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="wqY-FA-nPE"/>
                 </constraints>
             </tableViewCellContentView>
@@ -42,4 +53,7 @@
             <point key="canvasLocation" x="212" y="400"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="forward" width="25" height="25"/>
+    </resources>
 </document>
