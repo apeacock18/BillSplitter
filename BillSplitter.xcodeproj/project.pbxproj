@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D63E4AA1C922CE900D8863B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D63E4A81C922CE900D8863B /* Main.storyboard */; };
 		1D63E4AC1C922CE900D8863B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D63E4AB1C922CE900D8863B /* Assets.xcassets */; };
 		391A24171CCF253B00884A27 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 391A24151CCF245500884A27 /* CryptoSwift.framework */; };
 		391A24181CCF253B00884A27 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 391A24151CCF245500884A27 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -96,7 +95,6 @@
 /* Begin PBXFileReference section */
 		1D63E4A11C922CE900D8863B /* BillSplitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BillSplitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D63E4A41C922CE900D8863B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1D63E4A91C922CE900D8863B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1D63E4AB1C922CE900D8863B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../BillSplitter/Assets.xcassets; sourceTree = "<group>"; };
 		1D63E4B01C922CE900D8863B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../BillSplitter/Info.plist; sourceTree = "<group>"; };
 		1D63E4B51C922CEA00D8863B /* BillSplitter.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BillSplitter.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -230,7 +228,6 @@
 				1D63E4B01C922CE900D8863B /* Info.plist */,
 				39AB43C41CC9CB3B004F9937 /* LoginViewController.swift */,
 				396CC9FA1CCED6E200E4AC1D /* LoginViewController.xib */,
-				1D63E4A81C922CE900D8863B /* Main.storyboard */,
 				39CA4A431CCEF11600FC15A8 /* NewBillViewController.swift */,
 				39CA4A441CCEF11600FC15A8 /* NewBillViewController.xib */,
 				39BFF4001CAF007200CCA5D3 /* SettingsViewController.swift */,
@@ -391,7 +388,6 @@
 				398D8EB81CDDC62100CC045E /* CreateCell.xib in Resources */,
 				397F65E11CE02EE50028CB86 /* OptionCell.xib in Resources */,
 				1D63E4AC1C922CE900D8863B /* Assets.xcassets in Resources */,
-				1D63E4AA1C922CE900D8863B /* Main.storyboard in Resources */,
 				39CA4A461CCEF11600FC15A8 /* NewBillViewController.xib in Resources */,
 				397F65DC1CE01CE20028CB86 /* OptionsViewController.xib in Resources */,
 				391A241F1CCF31F800884A27 /* TestViewController.xib in Resources */,
@@ -477,17 +473,6 @@
 			targetProxy = 1D63E4C11C922CEA00D8863B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		1D63E4A81C922CE900D8863B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1D63E4A91C922CE900D8863B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D63E4C71C922CEA00D8863B /* Debug */ = {
