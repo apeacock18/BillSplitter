@@ -243,7 +243,7 @@ Parse.Cloud.define("createGroup", function(request, response) {
  * @param {string} password - Hashed password (SHA-512)
  * @param {string} email
  * @param {string} phoneNumber
- * @param {string} fName - First Name
+ * @param {string} name - Full Name
  * @param {string} username - Last Name
  * @returns 
  */
@@ -252,16 +252,14 @@ Parse.Cloud.define("create", function(request, response) {
     var password = request.params.password;
     var email = request.params.email;
     var phoneNumber = request.params.phoneNumber;
-    var fName = request.params.fName;
-    var lName = request.params.lName;
+    var name = request.params.name;
     var UserClass = Parse.Object.extend("Users");
     var user = new UserClass();
     user.set("username", username);
     user.set("password", password);
     user.set("email", email);
     user.set("phoneNumber", phoneNumber);
-    user.set("fName", fName);
-    user.set("lName", lName);
+    user.set("name", name);
     var query = new Parse.Query("Users");
     query.equalTo("username", username);
     query.find({

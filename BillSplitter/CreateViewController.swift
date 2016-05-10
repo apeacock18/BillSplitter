@@ -98,8 +98,7 @@ class CreateViewController: UIViewController, UITextFieldDelegate {
                                      password: password.text!.hashWithSalt(name),
                                      email: emailText,
                                      phoneNumber: "".lowercaseString,
-                                     fName: fNameText,
-                                     lName: lNameText
+                                     name: (fNameText + " " + lNameText)
         ) {
             (result: Int) in
             if result == 0 {
@@ -108,8 +107,7 @@ class CreateViewController: UIViewController, UITextFieldDelegate {
                 message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(message, animated: true, completion: nil)
             } else { // Result = 2
-                VariableManager.setFName(self.fName.text!)
-                VariableManager.setLName(self.lName.text!)
+                VariableManager.setName(fNameText + " " + lNameText)
                 VariableManager.setEmail(self.email.text!.lowercaseString)
                 VariableManager.setUsername(self.username.text!.lowercaseString)
                 VariableManager.setPhoneNumber("".lowercaseString); // TODO: Add phone number field

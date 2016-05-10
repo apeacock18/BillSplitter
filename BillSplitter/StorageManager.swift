@@ -99,8 +99,7 @@ class StorageManager {
         if let data: [String: String] = NSUserDefaults.standardUserDefaults().objectForKey("selfData") as? [String: String] {
             VariableManager.setID(data["id"]!)
             VariableManager.setEmail(data["email"]!)
-            VariableManager.setFName(data["fName"]!)
-            VariableManager.setLName(data["lName"]!)
+            VariableManager.setName(data["name"]!)
             VariableManager.setPhoneNumber(data["phoneNumber"]!)
             getAvatar()
         }
@@ -110,8 +109,7 @@ class StorageManager {
         let data: [String: AnyObject] = [
             "id":VariableManager.getID(),
             "email": VariableManager.getEmail(),
-            "fName": VariableManager.getFName(),
-            "lName": VariableManager.getLName(),
+            "name": VariableManager.getName(),
             "phoneNumber": VariableManager.getPhoneNumber()
         ]
         NSUserDefaults.standardUserDefaults().setObject(data, forKey: "selfData")

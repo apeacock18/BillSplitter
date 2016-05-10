@@ -19,7 +19,7 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     override func viewDidLoad() {
         super.viewDidLoad()
         avatar.image = VariableManager.getAvatar()
-        nameLabel.text = VariableManager.getFullName()
+        nameLabel.text = VariableManager.getName()
 
 
         imagePicker.delegate = self

@@ -14,15 +14,18 @@ class User {
 
     var username: String
     var id: String
+    var name: String
 
-    init(id: String, username: String) {
+    init(id: String, username: String, name: String) {
         self.id = id
         self.username = username
+        self.name = name
     }
 
-    init(id: String, username: String, avatar: UIImage) {
+    init(id: String, username: String, name: String, avatar: UIImage) {
         self.id = id
         self.username = username
+        self.name = name
         self.avatar = avatar
     }
 

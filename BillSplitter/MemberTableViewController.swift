@@ -51,7 +51,7 @@ class MemberTableViewController: UITableViewController {
 
             let id = members[indexPath.row - 1]
             if id == VariableManager.getID() {
-                cell.name.text = VariableManager.getFullName()
+                cell.name.text = VariableManager.getName()
                 cell.avatar.image = VariableManager.getAvatar()
             } else {
                 let user = VariableManager.getUserById(id)

@@ -14,8 +14,7 @@ class VariableManager {
     private static var id: String = ""
     private static var email: String = ""
     private static var phoneNumber: String = ""
-    private static var fName: String = ""
-    private static var lName: String = ""
+    private static var name: String = ""
     private static var username: String = ""
 
     private static var groups: Array<Group> = []
@@ -29,8 +28,7 @@ class VariableManager {
         id = ""
         email = ""
         phoneNumber = ""
-        fName = ""
-        lName = ""
+        name = ""
         username = ""
         groups = []
         avatar = nil
@@ -113,24 +111,12 @@ class VariableManager {
         self.email = email
     }
 
-    static func getFName() -> String {
-        return fName
+    static func getName() -> String {
+        return name
     }
 
-    static func setFName(fName: String) {
-        self.fName = fName
-    }
-
-    static func getLName() -> String {
-        return lName
-    }
-
-    static func setLName(lName: String) {
-        self.lName = lName
-    }
-
-    static func getFullName() -> String {
-        return self.fName + " " + self.lName
+    static func setName(name: String) {
+        self.name = name
     }
 
     static func getPhoneNumber() -> String {

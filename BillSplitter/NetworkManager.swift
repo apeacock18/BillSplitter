@@ -30,8 +30,7 @@ class NetworkManager {
                     if error == nil {
                         VariableManager.setUsername(object!.valueForKey("username") as! String)
                         VariableManager.setEmail(object!.valueForKey("email") as! String)
-                        VariableManager.setFName(object!.valueForKey("fName") as! String)
-                        VariableManager.setLName(object!.valueForKey("lName") as! String)
+                        VariableManager.setName(object!.valueForKey("name") as! String)
                         //VariableManager.setPhoneNumber(object!.valueForKey("phoneNumber") as! String)
 
                         let groups = object!.valueForKey("groups") as? Array<String>
@@ -100,7 +99,7 @@ class NetworkManager {
                         (results: [PFObject]?, error: NSError?) -> Void in
                         if error == nil && results != nil {
                             for result in results! {
-                                let userObj = User(id: result.objectId!, username: result["username"] as! String)
+                                let userObj = User(id: result.objectId!, username: result["username"] as! String, name: result["name"] as! String)
                                 VariableManager.addUser(userObj)
                             }
                             StorageManager.saveGroupData()
@@ -121,14 +120,13 @@ class NetworkManager {
         }
     }
 
-    static func createNewUser(username: String, password: String, email: String, phoneNumber: String, fName: String, lName: String, completion: (result: Int) -> Void) {
+    static func createNewUser(username: String, password: String, email: String, phoneNumber: String, name: String, completion: (result: Int) -> Void) {
         PFCloud.callFunctionInBackground("create", withParameters: [
             "username": username,
             "password": password,
             "email": email,
             "phoneNumber": phoneNumber,
-            "fName": fName,
-            "lName": lName,
+            "name": name,
             "groups": []
         ]) {
             (response: AnyObject?, error: NSError?) -> Void in
