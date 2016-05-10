@@ -102,21 +102,44 @@ Parse.Cloud.define("addUserToGroup", function(request, response) {
                         group.add("members", userId);
 
                         if(members.length != 0) {
+                            var newStatuses = new Array();
                             var statuses = result.get("status");
+                            for(var i = 0; i < statuses.length; i++) {
+                                var serialized = statuses[i];
+                                var deserialized = JSON.parse(serialized);
+                                var statusData = deserialized.data;
+                                var obj = new Object;
+                                obj.recipient = userId;
+                                obj.amount = 0.00;
+                                statusData.push(obj);
+                                deserialized.data = statusData;
+                                newStatuses.push(JSON.stringify(deserialized));
+                            }
+
                             var data = new Array();
                             for(var i = 0; i < members.length; i++) {
-                                var obj = new Object;
-                                obj.recipient = members[i];
-                                obj.amount = 0.00;
-                                data.push(obj);
+                                var obj2 = new Object;
+                                obj2.recipient = members[i];
+                                obj2.amount = 0.00;
+                                data.push(obj2);
                             }
                             var status = new Object;
                             status.id = userId;
                             status.data = data;
-                            var json = JSON.stringify(status);
-                            console.log(json);
+                            newStatuses.push(JSON.stringify(status));
+
+                            if(members.length == 1) {
+                                var obj3 = new Object;
+                                obj3.id = members[0];
+                                var obj3Data = new Object;
+                                obj3Data.recipient = userId;
+                                obj3Data.amount = 0.00;
+                                obj3.data = [obj3Data];
+                                newStatuses.push(JSON.stringify(obj3));
+                            }
+
+                            group.set("status", newStatuses);
                         }
-                        group.add("status", json);
 
                         group.save(null, {
                             success: function(object2) {
