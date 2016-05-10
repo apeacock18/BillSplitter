@@ -29,6 +29,7 @@
 		398D8EB71CDDC62100CC045E /* CreateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398D8EB51CDDC62100CC045E /* CreateCell.swift */; };
 		398D8EB81CDDC62100CC045E /* CreateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 398D8EB61CDDC62100CC045E /* CreateCell.xib */; };
 		398D8EBA1CDDD04200CC045E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398D8EB91CDDD04200CC045E /* User.swift */; };
+		39A04F081CE18A45006B89C1 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A04F071CE18A45006B89C1 /* Status.swift */; };
 		39AB43A61CC9AAAA004F9937 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A41CC9AAAA004F9937 /* Bolts.framework */; };
 		39AB43A71CC9AAAA004F9937 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A51CC9AAAA004F9937 /* Parse.framework */; };
 		39AB43B21CC9AB9E004F9937 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A81CC9AB9E004F9937 /* AudioToolbox.framework */; };
@@ -122,6 +123,7 @@
 		398D8EB51CDDC62100CC045E /* CreateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCell.swift; sourceTree = "<group>"; };
 		398D8EB61CDDC62100CC045E /* CreateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateCell.xib; sourceTree = "<group>"; };
 		398D8EB91CDDD04200CC045E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		39A04F071CE18A45006B89C1 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		39AB43A41CC9AAAA004F9937 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		39AB43A51CC9AAAA004F9937 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		39AB43A81CC9AB9E004F9937 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -245,6 +247,7 @@
 				39B6398C1CD41DF2002269A8 /* VariableManager.swift */,
 				39B6398E1CD4228C002269A8 /* NetworkManager.swift */,
 				398D8EB91CDDD04200CC045E /* User.swift */,
+				39A04F071CE18A45006B89C1 /* Status.swift */,
 			);
 			path = BillSplitter;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				397308E81CD95460008540C1 /* Spinner.swift in Sources */,
 				39CA4A381CCEE17800FC15A8 /* LoginViewController.swift in Sources */,
 				39579E241CD821C800E0ED6D /* MemberCell.swift in Sources */,
+				39A04F081CE18A45006B89C1 /* Status.swift in Sources */,
 				397F65E01CE02EE50028CB86 /* OptionCell.swift in Sources */,
 				39CA4A391CCEE17800FC15A8 /* LoginViewController.xib in Sources */,
 				39B6398F1CD4228C002269A8 /* NetworkManager.swift in Sources */,

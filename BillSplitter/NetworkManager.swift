@@ -80,10 +80,15 @@ class NetworkManager {
                     var users: Set<String> = []
                     for result in results! {
                         let members: Array<String> = result["members"] as! Array<String>
+                        var statusObjects: Array<Status> = []
+                        for json in (result["status"] as! Array<String>) {
+                            statusObjects.append(Status(json: json)!)
+                        }
                         let groupObj = Group(
                             id: result.objectId!,
                             name: result["name"] as! String,
-                            members: members
+                            members: members,
+                            statuses: statusObjects
                         )
                         VariableManager.addGroup(groupObj)
                         for member in members {

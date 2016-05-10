@@ -7,13 +7,13 @@
 //
 
 import Foundation
-import UIKit
 
 class Group {
 
-    private var id: String = ""
-    private var name: String = ""
-    private var members: Array<String> = []
+    private var id: String
+    private var name: String
+    private var members: Array<String>
+    private var statuses: [Status]
 
     // TODO create a status object
     //private var status
@@ -23,6 +23,14 @@ class Group {
         self.id = id
         self.name = name
         self.members = members
+        self.statuses = []
+    }
+
+    init(id: String, name: String, members: Array<String>, statuses: [Status]) {
+        self.id = id
+        self.name = name
+        self.members = members
+        self.statuses = statuses
     }
 
     func getID() -> String {
@@ -43,6 +51,15 @@ class Group {
 
     func count() -> Int {
         return members.count
+    }
+
+    func getStatusById(userId: String) -> Status? {
+        for status in statuses {
+            if status.id == userId {
+                return status
+            }
+        }
+        return nil
     }
 
 }

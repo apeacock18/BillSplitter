@@ -53,12 +53,14 @@ class MemberTableViewController: UITableViewController {
             if id == VariableManager.getID() {
                 cell.name.text = VariableManager.getName()
                 cell.avatar.image = VariableManager.getAvatar()
+                cell.amount.text = "$0.00"
             } else {
                 let user = VariableManager.getUserById(id)
                 cell.name.text = user?.name
                 cell.avatar.image = user?.getAvatar()
+                let status = group!.getStatusById(VariableManager.getID())
+                cell.amount.text = String(NSString(format: "$%.2f", status!.getAmountByRecipient(id)!))
             }
-            cell.amount.text = "$0.00"
             return cell
         }
     }
