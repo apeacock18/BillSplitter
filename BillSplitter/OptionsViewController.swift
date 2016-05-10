@@ -39,12 +39,8 @@ class OptionsViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cellIdentifier = "OptionCell"
         tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! OptionCell
-        cell.name.text = VariableManager.getUserById(users[indexPath.row])?.username
+        cell.name.text = VariableManager.getUserById(users[indexPath.row])?.name
         return cell
-    }
-
-    
-    @IBAction func back(sender: UIButton) {
     }
 
     /*

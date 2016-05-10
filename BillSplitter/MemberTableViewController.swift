@@ -55,7 +55,7 @@ class MemberTableViewController: UITableViewController {
                 cell.avatar.image = VariableManager.getAvatar()
             } else {
                 let user = VariableManager.getUserById(id)
-                cell.name.text = user?.username
+                cell.name.text = user?.name
                 cell.avatar.image = user?.getAvatar()
             }
             cell.amount.text = "$0.00"
