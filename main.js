@@ -304,6 +304,8 @@ Parse.Cloud.define("newTransaction", function(request, response) {
     var transactionAmount = request.params.amount;
     var amountToPay = new Array();
     var totalPercentage = 0;
+
+    /* Calculate how much each person should pay. */
     for (var userId in split) {
         if(!split.hasOwnProperty(userId)) {
             continue;
@@ -315,25 +317,45 @@ Parse.Cloud.define("newTransaction", function(request, response) {
         response.error(1);
         return;
     }
-    for (var userId in amountToPay) {
-        if(!amountToPay.hasOwnProperty(userId)) {
-            continue;
-        }
-        console.log(userId + " " + amountToPay[userId].toString());
-    }
+
+    /* Modify groups */
     var statusQuery = new Parse.Query("Groups");
     statusQuery.equalTo("objectId", groupId);
     statusQuery.first({
         success: function(result) {
             var statusArray = result.get("status");
-            var newArray = Array();
-            for(var json in statusArray) {
-                var status = JSON.parse(json);
+            var newStatuses = new Array();
+            for(var i = 0; i < statusArray.length; i++) {
+                var status = JSON.parse(statusArray[i]);
+                var statusData = status.data;
+                if(status.id == payee) {
+                    for(var j = 0; j < statusData.length; j++) {
+                        var recipient = statusData[j].recipient;
+                        if(amountToPay.hasOwnProperty(recipient)) {
+                            var amount = statusData[j].amount;
+                            amount -= amountToPay[recipient];
+                            statusData[j].amount = amount;
+                        }
+                    }
+                } else {
+                    for(var j = 0; j < statusData.length; j++) {
+                        var recipient = statusData[j].recipient;
+                        if(recipient == payee) {
+                            var amount = statusData[j].amount;
+                            if(amount == null) {
+                                amount = 0.0;
+                            }
+                            amount += amountToPay[status.id];
+                            statusData[j].amount = amount;
+                        }
+                    }
+                }
+                newStatuses.push(JSON.stringify(status));
             }
             var GroupClass = Parse.Object.extend("Groups");
             var group = new GroupClass();
             group.set("objectId", groupId);
-            group.set("status", newArray);
+            group.set("status", newStatuses);
             group.save(null, {
                 success: function(object) {
                     response.success(object);
