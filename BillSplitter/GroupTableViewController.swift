@@ -115,9 +115,11 @@ class GroupTableViewController: UITableViewController {
                                 (result: Int) in
                                 if result == 0 {
                                     VariableManager.addGroup(Group(id: groupId, name: text!, members: [VariableManager.getID()]))
-                                    StorageManager.createGroup(groupId, name: text!)
-                                    StorageManager.addUserToGroup(VariableManager.getID(), groupId: groupId)
-                                    self.reload()
+                                    NetworkManager.refreshStatus(groupId) {
+                                        () in
+                                        StorageManager.createGroup(groupId, name: text!)
+                                        StorageManager.addUserToGroup(VariableManager.getID(), groupId: groupId)
+                                        self.reload()                                    }
                                 } else {
                                     self.handleError()
                                 }

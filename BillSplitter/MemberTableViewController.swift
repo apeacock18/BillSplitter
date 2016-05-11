@@ -103,11 +103,14 @@ class MemberTableViewController: UITableViewController {
                                 NetworkManager.addUserToGroup(groupId, userId: userId) {
                                     (result: Int) in
                                     if result == 0 {
-                                        VariableManager.addUserToGroup(userId, groupId: groupId)
-                                        StorageManager.addUserToGroup(userId, groupId: groupId)
-                                        self.group!.addMember(userId)
-                                        self.members.append(userId)
-                                        self.tableView.reloadData()
+                                        NetworkManager.refreshStatus(groupId) {
+                                            () in
+                                            VariableManager.addUserToGroup(userId, groupId: groupId)
+                                            StorageManager.addUserToGroup(userId, groupId: groupId)
+                                            self.group!.addMember(userId)
+                                            self.members.append(userId)
+                                            self.tableView.reloadData()
+                                        }
                                     } else if result == 1 {
                                         let message = UIAlertController(title: "Error", message: "That user is already in this group.", preferredStyle: UIAlertControllerStyle.Alert)
                                         message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))

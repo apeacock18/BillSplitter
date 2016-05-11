@@ -172,10 +172,7 @@ class NetworkManager {
         PFCloud.callFunctionInBackground("addUserToGroup", withParameters: ["userId": userId, "groupId": groupId]) {
             (response: AnyObject?, error: NSError?) -> Void in
             if response != nil {
-                refreshStatus(groupId) {
-                    () in
-                    completion(result: 0) // Success
-                }
+                completion(result: 0) // Success
             }
             if error != nil {
                 print(error)
