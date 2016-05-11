@@ -33,6 +33,10 @@ class Group {
         self.statuses = statuses
     }
 
+    func reloadStatuses(statuses: [Status]) {
+        self.statuses = statuses
+    }
+
     func getID() -> String {
         return id
     }

@@ -172,7 +172,10 @@ class NetworkManager {
         PFCloud.callFunctionInBackground("addUserToGroup", withParameters: ["userId": userId, "groupId": groupId]) {
             (response: AnyObject?, error: NSError?) -> Void in
             if response != nil {
-                completion(result: 0) // Success
+                refreshStatus(groupId) {
+                    () in
+                    completion(result: 0) // Success
+                }
             }
             if error != nil {
                 print(error)
@@ -184,6 +187,26 @@ class NetworkManager {
                     }
                 }
                 completion(result: 2) // Error
+            }
+        }
+    }
+
+    static func refreshStatus(groupId: String, completion: () -> Void) {
+        let group = VariableManager.getGroup(groupId)
+        let query = PFQuery(className: "Groups")
+        query.whereKey("objectId", equalTo: groupId)
+        query.getFirstObjectInBackgroundWithBlock {
+            (result: PFObject?, error: NSError?) -> Void in
+            if result != nil {
+                let jsonArray: [String] = result!.objectForKey("status") as! [String]
+                var statuses: [Status] = []
+                for json in jsonArray {
+                    statuses.append(Status(json: json)!)
+                }
+                group!.reloadStatuses(statuses)
+                completion()
+            } else {
+                print(error)
             }
         }
     }

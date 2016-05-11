@@ -72,6 +72,15 @@ class VariableManager {
         return groups
     }
 
+    static func getGroup(groupId: String) -> Group? {
+        for group in groups {
+            if group.getID() == groupId {
+                return group
+            }
+         }
+        return nil
+    }
+
     static func groupCount() -> Int {
         return groups.count
     }
