@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionViewController" customModule="BillSplitter" customModuleProvider="target">
+            <connections>
+                <outlet property="dateField" destination="Auf-Fc-R4C" id="PrS-xk-bVV"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Transaction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVf-D1-R2s">
+                    <rect key="frame" x="20" y="60" width="560" height="26"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sa-WS-3a7">
+                    <rect key="frame" x="30" y="146" width="36" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="36" id="Qc3-Jg-Imx"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Auf-Fc-R4C">
+                    <rect key="frame" x="320" y="146" width="250" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="jdZ-hG-7Eq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="3sa-WS-3a7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="8XG-5w-11D"/>
+                <constraint firstItem="cVf-D1-R2s" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="FdN-Vr-mJn"/>
+                <constraint firstItem="Auf-Fc-R4C" firstAttribute="centerY" secondItem="3sa-WS-3a7" secondAttribute="centerY" id="SYV-tw-7qB"/>
+                <constraint firstAttribute="trailing" secondItem="Auf-Fc-R4C" secondAttribute="trailing" constant="30" id="WCg-J6-RgM"/>
+                <constraint firstAttribute="trailing" secondItem="cVf-D1-R2s" secondAttribute="trailing" constant="20" id="YST-1L-Tut"/>
+                <constraint firstItem="Auf-Fc-R4C" firstAttribute="top" secondItem="cVf-D1-R2s" secondAttribute="bottom" constant="60" id="ZvB-hX-IwO"/>
+                <constraint firstItem="cVf-D1-R2s" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="kg7-Cg-Cp0"/>
+                <constraint firstItem="3sa-WS-3a7" firstAttribute="top" secondItem="cVf-D1-R2s" secondAttribute="bottom" constant="60" id="lEL-V2-FAj"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
