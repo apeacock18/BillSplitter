@@ -57,7 +57,14 @@ class MemberTableViewController: UITableViewController, NewTransactionDelegate {
                 cell.name.text = user?.name
                 cell.avatar.image = user?.getAvatar()
                 let status = group!.getStatusById(VariableManager.getID())
-                cell.amount.text = String(NSString(format: "$%.2f", status!.getAmountByRecipient(id)!))
+
+                let amount: Double = status!.getAmountByRecipient(id)!
+                if amount <= 0 {
+                    cell.amount.textColor = UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 1) // #27ae60
+                } else {
+                    cell.amount.textColor = UIColor.redColor()
+                }
+                cell.amount.text = String(NSString(format: "$%.2f", amount))
             }
             return cell
         }
