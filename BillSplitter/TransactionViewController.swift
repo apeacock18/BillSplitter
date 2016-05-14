@@ -19,7 +19,7 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
 
     var group: Group?
 
-    var delegate: NewTransactionDelegate?
+    var delegate: ReloadDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +95,7 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
         NetworkManager.newTransaction(group!.getID(), payee: VariableManager.getID(), amount: Double(amount.text!)!, description: desc.text!, date: dateField.text!, users: selectedUsers) {
             (result: Bool) in
             NetworkManager.refreshStatus(self.group!.getID()) {
-                self.delegate?.dataReloadNeeded(self)
+                self.delegate?.dataReloadNeeded()
             }
         }
     }

@@ -27,7 +27,7 @@
 		397308E81CD95460008540C1 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397308E71CD95460008540C1 /* Spinner.swift */; };
 		397784E11CD3E72F000F7600 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397784E01CD3E72F000F7600 /* StorageManager.swift */; };
 		397784F11CD3E91A000F7600 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397784E91CD3E8FC000F7600 /* GroupTableViewController.swift */; };
-		397D9DAA1CE6DDA4007BA953 /* NewTransactionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397D9DA91CE6DDA4007BA953 /* NewTransactionDelegate.swift */; };
+		397D9DAA1CE6DDA4007BA953 /* ReloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397D9DA91CE6DDA4007BA953 /* ReloadDelegate.swift */; };
 		397F65DB1CE01CE20028CB86 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397F65D91CE01CE20028CB86 /* OptionsViewController.swift */; };
 		397F65DC1CE01CE20028CB86 /* OptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 397F65DA1CE01CE20028CB86 /* OptionsViewController.xib */; };
 		397F65E01CE02EE50028CB86 /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397F65DE1CE02EE50028CB86 /* OptionCell.swift */; };
@@ -130,7 +130,7 @@
 		397784E01CD3E72F000F7600 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		397784E91CD3E8FC000F7600 /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
 		3978787F1CC9EA410052DF04 /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateViewController.swift; path = ../BillSplitter/CreateViewController.swift; sourceTree = "<group>"; };
-		397D9DA91CE6DDA4007BA953 /* NewTransactionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTransactionDelegate.swift; sourceTree = "<group>"; };
+		397D9DA91CE6DDA4007BA953 /* ReloadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReloadDelegate.swift; sourceTree = "<group>"; };
 		397EBAB21CCEA26500E2A56B /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabViewController.swift; path = ../BillSplitter/TabViewController.swift; sourceTree = "<group>"; };
 		397F65D91CE01CE20028CB86 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		397F65DA1CE01CE20028CB86 /* OptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionsViewController.xib; sourceTree = "<group>"; };
@@ -285,7 +285,7 @@
 				39AE7D531CE6878500438AE8 /* DropDownCell.xib */,
 				39AE7D561CE687E500438AE8 /* DropDownTable.swift */,
 				3904B0581CE6A544001FD949 /* DropDownDelegate.swift */,
-				397D9DA91CE6DDA4007BA953 /* NewTransactionDelegate.swift */,
+				397D9DA91CE6DDA4007BA953 /* ReloadDelegate.swift */,
 			);
 			name = NewTransaction;
 			sourceTree = "<group>";
@@ -470,7 +470,7 @@
 				39B6398D1CD41DF2002269A8 /* VariableManager.swift in Sources */,
 				395C9FFA1CE534470073D283 /* DatePickerViewController.swift in Sources */,
 				39CA4A361CCEE17800FC15A8 /* CreateViewController.swift in Sources */,
-				397D9DAA1CE6DDA4007BA953 /* NewTransactionDelegate.swift in Sources */,
+				397D9DAA1CE6DDA4007BA953 /* ReloadDelegate.swift in Sources */,
 				39AE7D511CE67A7000438AE8 /* DatePickerVCDelegate.swift in Sources */,
 				39CA4A371CCEE17800FC15A8 /* CreateViewController.xib in Sources */,
 				391A241E1CCF31F800884A27 /* TestViewController.swift in Sources */,

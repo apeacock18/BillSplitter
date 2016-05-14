@@ -37,4 +37,8 @@ class User {
         }
     }
 
+    func setAvatar(image: UIImage) {
+        avatar = image
+    }
+
 }

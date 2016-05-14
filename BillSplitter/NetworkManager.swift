@@ -13,6 +13,8 @@ class NetworkManager {
 
     static let verbose = true
 
+    static var delegate: ReloadDelegate?
+
     static func login(username: String, password: String, completion: (result: Bool) -> Void) {
         PFCloud.callFunctionInBackground("login", withParameters: ["username":username, "password":password]) {
             (response: AnyObject?, error: NSError?) -> Void in
@@ -101,15 +103,31 @@ class NetworkManager {
                         userQueries.append(PFQuery(className: "Users").whereKey("objectId", equalTo: userId))
                     }
                     let userQuery = PFQuery.orQueryWithSubqueries(userQueries)
+
+                    var usersWithAvatars: [String:PFFile?] = [:]
+
                     userQuery.findObjectsInBackgroundWithBlock {
                         (results: [PFObject]?, error: NSError?) -> Void in
                         if error == nil && results != nil {
                             for result in results! {
                                 let userObj = User(id: result.objectId!, username: result["username"] as! String, name: result["name"] as! String)
                                 VariableManager.addUser(userObj)
+                                let imageFile = result.valueForKey("avatar") as? PFFile
+                                if imageFile != nil {
+                                    usersWithAvatars[result.objectId!] = imageFile
+                                }
                             }
                             StorageManager.saveGroupData()
                             completion(result: true)
+                            for (id, file) in usersWithAvatars {
+                                imageFromData(file!) {
+                                    (result: UIImage?) in
+                                    if result != nil {
+                                        VariableManager.addAvatarToUser(id, avatar: result!)
+                                    }
+                                }
+                            }
+                            delegate?.dataReloadNeeded()
                         } else {
                             debug(error)
                         }

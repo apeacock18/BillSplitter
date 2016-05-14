@@ -102,6 +102,14 @@ class VariableManager {
         }
     }
 
+    static func addAvatarToUser(userId: String, avatar: UIImage) {
+        for user in users {
+            if user.id == userId {
+                user.setAvatar(avatar)
+            }
+        }
+    }
+
     /* Self Data */
 
     static func getID() -> String {

@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class MemberTableViewController: UITableViewController, NewTransactionDelegate {
+class MemberTableViewController: UITableViewController, ReloadDelegate {
 
     var group: Group?
     var members: Array<String> = []
@@ -19,9 +19,14 @@ class MemberTableViewController: UITableViewController, NewTransactionDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 80.0
-
         self.title = "Members"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Options", style: .Plain, target: self, action: #selector(MemberTableViewController.options))
+        NetworkManager.delegate = self
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        NetworkManager.delegate = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -142,7 +147,7 @@ class MemberTableViewController: UITableViewController, NewTransactionDelegate {
         self.presentViewController(addUser, animated: true, completion: nil)
     }
 
-    func dataReloadNeeded(sender: TransactionViewController) {
+    func dataReloadNeeded() {
         tableView.reloadData()
     }
 
