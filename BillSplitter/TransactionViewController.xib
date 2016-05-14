@@ -47,6 +47,9 @@
                     <rect key="frame" x="274.5" y="517" width="51" height="33"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="Create"/>
+                    <connections>
+                        <action selector="newTransaction:" destination="-1" eventType="touchUpInside" id="6EV-Wh-T9U"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sR-lm-vSM">
                     <rect key="frame" x="30" y="136" width="88" height="30"/>

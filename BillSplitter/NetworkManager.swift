@@ -6,7 +6,6 @@
 //  Copyright © 2016 Davis Mariotti. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import Parse
 
@@ -231,6 +230,29 @@ class NetworkManager {
             }
             if response != nil {
                 completion(result: response as? String)
+            }
+        }
+    }
+
+    static func newTransaction(groupId: String, payee: String, amount: Double, description: String, date: String, users: [String], completion: (result: Bool) -> Void) {
+        var split: [String: Int] = [:]
+        for user in users {
+            split[user] = 100 / users.count
+        }
+
+        PFCloud.callFunctionInBackground("newTransaction", withParameters: [
+            "groupId": groupId,
+            "payee": payee,
+            "amount": amount,
+            "description": description,
+            "date": date,
+            "split": split
+        ]) {
+            (response: AnyObject?, error: NSError?) -> Void in
+            if response != nil && error == nil {
+                completion(result: true)
+            } else {
+                completion(result: false)
             }
         }
     }

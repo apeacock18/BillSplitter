@@ -19,6 +19,8 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
 
     var group: Group?
 
+    var delegate: NewTransactionDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         dateField.delegate = self
@@ -85,6 +87,16 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
             return false
         } else {
             return true
+        }
+    }
+
+    @IBAction func newTransaction(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        NetworkManager.newTransaction(group!.getID(), payee: VariableManager.getID(), amount: Double(amount.text!)!, description: desc.text!, date: dateField.text!, users: selectedUsers) {
+            (result: Bool) in
+            NetworkManager.refreshStatus(self.group!.getID()) {
+                self.delegate?.dataReloadNeeded(self)
+            }
         }
     }
 

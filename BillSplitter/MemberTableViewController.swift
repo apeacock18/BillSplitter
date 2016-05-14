@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class MemberTableViewController: UITableViewController {
+class MemberTableViewController: UITableViewController, NewTransactionDelegate {
 
     var group: Group?
     var members: Array<String> = []
@@ -67,6 +67,7 @@ class MemberTableViewController: UITableViewController {
         if indexPath.row == 0 { // Add Transaction
             // add()
             let vc = TransactionViewController()
+            vc.delegate = self
             vc.group = group
             self.presentViewController(vc, animated: true, completion: nil)
         }
@@ -74,28 +75,6 @@ class MemberTableViewController: UITableViewController {
     }
 
     func options() {
-        /* var dict: [String:Int] = [:]
-        for member in members {
-            dict[member] = (100 / group!.count())
-        }
-
-        PFCloud.callFunctionInBackground("newTransaction", withParameters: [
-            "groupId": group!.getID(),
-            "payee": members[2],
-            "split": dict,
-            "amount": 55.56
-        ]) {
-            (response: AnyObject?, error: NSError?) -> Void in
-            if response != nil {
-                let object = response as! PFObject
-                print(object.objectForKey("status"))
-            }
-            if error != nil {
-                print(error)
-            }
-        }
-
-        return */
         let vc = OptionsViewController()
         vc.users = members
         self.navigationController?.pushViewController(vc, animated: true)
@@ -154,6 +133,10 @@ class MemberTableViewController: UITableViewController {
         addUser.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
         addUser.addAction(add)
         self.presentViewController(addUser, animated: true, completion: nil)
+    }
+
+    func dataReloadNeeded(sender: TransactionViewController) {
+        tableView.reloadData()
     }
 
 }

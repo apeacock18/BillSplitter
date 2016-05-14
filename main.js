@@ -290,8 +290,10 @@ Parse.Cloud.define("create", function(request, response) {
  * Start a transaction between group members.
  * @param {string} groupId
  * @param {string} payee - The user who should be receiving money.
- * @param {<string, integer>} split - A dictionary with keys of users with values containing the percentage the user should pay. eg. {"gomeow": 25}
- * @param {integer} amount - The Amount to be split.
+ * @param {<string, double>} split - A dictionary with keys of users with values containing the percentage the user should pay. eg. {"gomeow": 25}
+ * @param {double} amount - The Amount to be split.
+ * @param {string} description - A description of the transaction
+ * @param {string} date - A date in the format MM-dd-yyyy
  *
  * Error Codes:
  * 0: Unknown error
@@ -302,6 +304,8 @@ Parse.Cloud.define("newTransaction", function(request, response) {
     var payee = request.params.payee;
     var split = request.params.split;
     var transactionAmount = request.params.amount;
+    var date = request.params.date;
+    var description = request.params.description;
     var amountToPay = new Array();
     var totalPercentage = 0;
 
