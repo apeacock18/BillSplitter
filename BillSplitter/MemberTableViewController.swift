@@ -33,16 +33,11 @@ class MemberTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return members.count + 2
+        return members.count + 1
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cellIdentifier = "CreateCell"
-            tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
-            let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! CreateCell
-            return cell
-        } else if indexPath.row == 1 {
             let cellIdentifier = "CreateCell"
             tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! CreateCell
@@ -52,7 +47,7 @@ class MemberTableViewController: UITableViewController {
             tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MemberCell
 
-            let id = members[indexPath.row - 2]
+            let id = members[indexPath.row - 1]
             if id == VariableManager.getID() {
                 cell.name.text = VariableManager.getName()
                 cell.avatar.image = VariableManager.getAvatar()

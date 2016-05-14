@@ -26,6 +26,7 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
         let formatter = NSDateFormatter()
         formatter.dateFormat = "MM-dd-yyyy"
         dateField.text = formatter.stringFromDate(NSDate())
+        self.hideKeyboardWhenTappedAround()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,7 +35,7 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
 
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         if textField == dateField {
-            dateField.resignFirstResponder()
+            resignAllResponders()
             let formatter = NSDateFormatter()
             formatter.dateFormat = "MM-dd-yyyy"
 
@@ -58,6 +59,7 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
 
             return false
         } else if textField == shareWith {
+            resignAllResponders()
             let dropDownTable = DropDownTable()
             dropDownTable.delegate = self
             dropDownTable.members = group!.getMembers()
@@ -106,6 +108,13 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
             shareWith.text = String(users.count) + " members"
         }
         selectedUsers = users
+    }
+
+    func resignAllResponders() {
+        desc.resignFirstResponder()
+        shareWith.resignFirstResponder()
+        dateField.resignFirstResponder()
+        amount.resignFirstResponder()
     }
 
 }
