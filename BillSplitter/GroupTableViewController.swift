@@ -82,7 +82,7 @@ class GroupTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc = MemberTableViewController()
         vc.group = groups[indexPath.row]
-        vc.members = groups[indexPath.row].getMembers()
+        vc.members = groups[indexPath.row].getMembers().filter { $0 != VariableManager.getID() }
         vc.title = "Groups"
         //let nav = UINavigationController(rootViewController: vc)
         self.navigationController?.pushViewController(vc, animated: true)
