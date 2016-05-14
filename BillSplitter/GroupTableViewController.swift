@@ -64,7 +64,14 @@ class GroupTableViewController: UITableViewController {
 
             let group = groups[indexPath.row]
             cell.groupNameLabel.text = group.getName()
-            cell.membersLabel.text = String(group.count()) + " Members"
+
+            if group.count() == 0 {
+                cell.membersLabel.text = ""
+            } else if group.count() == 1 {
+                cell.membersLabel.text = String(group.count()) + " member"
+            } else {
+                cell.membersLabel.text = String(group.count()) + " members"
+            }
 
             return cell
         } else {
