@@ -11,15 +11,17 @@ import Parse
 
 class NetworkManager {
 
+    static let verbose = true
+
     static func login(username: String, password: String, completion: (result: Bool) -> Void) {
         PFCloud.callFunctionInBackground("login", withParameters: ["username":username, "password":password]) {
             (response: AnyObject?, error: NSError?) -> Void in
             if error != nil {
-                print(error)
+                debug(error)
                 completion(result: false)
             }
             if response != nil {
-                print(response)
+                debug(response)
                 let userId = response as! String
                 VariableManager.setID(userId)
 
@@ -33,7 +35,7 @@ class NetworkManager {
                         //VariableManager.setPhoneNumber(object!.valueForKey("phoneNumber") as! String)
 
                         let groups = object!.valueForKey("groups") as? Array<String>
-                        print(groups)
+                        debug(groups)
 
 
                         let imageFile = object!.valueForKey("avatar") as? PFFile
@@ -109,13 +111,13 @@ class NetworkManager {
                             StorageManager.saveGroupData()
                             completion(result: true)
                         } else {
-                            print(error)
+                            debug(error)
                         }
                     }
                 } else {
                     completion(result: false)
-                    print("getGroupDataFromServer error:")
-                    print(error)
+                    debug("getGroupDataFromServer error:")
+                    debug(error)
                 }
             }
         } else {
@@ -135,7 +137,7 @@ class NetworkManager {
         ]) {
             (response: AnyObject?, error: NSError?) -> Void in
             if response != nil {
-                print("Create User Response: " + (response as! String))
+                debug("Create User Response: " + (response as! String))
                 VariableManager.setID(response as! String)
                 completion(result: 2)
             }
@@ -147,7 +149,7 @@ class NetworkManager {
                  * 1: Username already taken
                  */
                 completion(result: errorCode)
-                print("Create User Error: " + String(errorCode))
+                debug("Create User Error: " + String(errorCode))
             }
         }
     }
@@ -156,12 +158,12 @@ class NetworkManager {
         PFCloud.callFunctionInBackground("createGroup", withParameters: ["name": name]) {
             (response: AnyObject?, error: NSError?) -> Void in
             if response != nil {
-                print(response)
+                debug(response)
                 let groupId = response as! String
                 completion(result: groupId)
             }
             if error != nil {
-                print(error)
+                debug(error)
                 completion(result: nil)
             }
         }
@@ -174,7 +176,7 @@ class NetworkManager {
                 completion(result: 0) // Success
             }
             if error != nil {
-                print(error)
+                debug(error)
                 let code = error!.userInfo["error"]
                 if code != nil {
                     if (code as? Int) == 2 {
@@ -202,7 +204,7 @@ class NetworkManager {
                 group!.reloadStatuses(statuses)
                 completion()
             } else {
-                print(error)
+                debug(error)
             }
         }
     }
@@ -211,11 +213,11 @@ class NetworkManager {
         PFCloud.callFunctionInBackground("removeUserFromGroup", withParameters: ["userId": userId, "groupId": groupId]) {
             (response: AnyObject?, error: NSError?) -> Void in
             if response != nil {
-                print(response)
+                debug(response)
                 completion(result: true)
             }
             if error != nil {
-                print(error)
+                debug(error)
                 completion(result: false)
             }
         }
@@ -225,7 +227,7 @@ class NetworkManager {
         PFCloud.callFunctionInBackground("userIdFromUsername", withParameters: ["username": username]) {
             (response: AnyObject?, error: NSError?) -> Void in
             if error != nil {
-                print(error)
+                debug(error)
                 completion(result: nil)
             }
             if response != nil {
@@ -277,6 +279,16 @@ class NetworkManager {
                 completion(result: UIImage(data: imageData!))
             }
         })
+    }
+
+    static func debug(o: AnyObject?) {
+        if verbose {
+            if o != nil {
+                print(o!)
+            } else {
+                print(o)
+            }
+        }
     }
 
 }

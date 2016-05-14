@@ -63,11 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
-    struct Variables {
-        // Store main variables here?
-    }
-
-
 }
 
 
