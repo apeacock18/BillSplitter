@@ -226,6 +226,7 @@ Parse.Cloud.define("createGroup", function(request, response) {
     group.set("name", name);
     group.set("members", []);
     group.set("status", []);
+    group.set("transactions", []);
     group.save(null, {
         success: function(object) {
             response.success(object.id);
@@ -309,6 +310,13 @@ Parse.Cloud.define("newTransaction", function(request, response) {
     var amountToPay = new Array();
     var totalPercentage = 0;
 
+    var transaction = new Object;
+    transaction.payee = payee;
+    transaction.date = date;
+    transaction.amount = transactionAmount;
+    transaction.description = description;
+    transaction.split = split;
+
     /* Calculate how much each person should pay. */
     for (var userId in split) {
         if(!split.hasOwnProperty(userId)) {
@@ -356,10 +364,12 @@ Parse.Cloud.define("newTransaction", function(request, response) {
                 }
                 newStatuses.push(JSON.stringify(status));
             }
+
             var GroupClass = Parse.Object.extend("Groups");
             var group = new GroupClass();
             group.set("objectId", groupId);
             group.set("status", newStatuses);
+            group.add("transactions", transaction);
             group.save(null, {
                 success: function(object) {
                     response.success(object);
