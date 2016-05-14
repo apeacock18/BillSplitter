@@ -8,13 +8,21 @@
 
 import UIKit
 
-class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopoverPresentationControllerDelegate {
+class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopoverPresentationControllerDelegate, DatePickerVCDelegate, DropDownDelegate {
 
+    @IBOutlet weak var desc: UITextField!
     @IBOutlet weak var dateField: UITextField!
+    @IBOutlet weak var amount: UITextField!
+    @IBOutlet weak var shareWith: UITextField!
+
+    var selectedUsers: [String] = []
+
+    var group: Group?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         dateField.delegate = self
+        shareWith.delegate = self
         let formatter = NSDateFormatter()
         formatter.dateFormat = "MM-dd-yyyy"
         dateField.text = formatter.stringFromDate(NSDate())
@@ -22,23 +30,20 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         if textField == dateField {
             dateField.resignFirstResponder()
             let formatter = NSDateFormatter()
-            formatter.dateStyle = .MediumStyle
-            formatter.timeStyle = .NoStyle
+            formatter.dateFormat = "MM-dd-yyyy"
 
-            var initDate = formatter.dateFromString(dateField.text!)
-            if initDate == nil {
-                initDate = NSDate()
-            }
+            let initDate = formatter.dateFromString(dateField.text!)
+            print(initDate)
 
             let dateController = DatePickerViewController()
-            //dateController.datePicker.date = initDate!
+            dateController.delegate = self
+            dateController.initDate = initDate
 
             dateController.modalPresentationStyle = .Popover
             dateController.preferredContentSize = CGSizeMake(self.view.frame.width, 254.0)
@@ -52,6 +57,30 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
             self.presentViewController(dateController, animated: true, completion: nil)
 
             return false
+        } else if textField == shareWith {
+            let dropDownTable = DropDownTable()
+            dropDownTable.delegate = self
+            dropDownTable.members = group!.getMembers()
+            dropDownTable.selectedMembers = selectedUsers
+
+            dropDownTable.modalPresentationStyle = .Popover
+
+            var height: Int = 220
+
+            if group!.count() <= 5 {
+                height = (group!.getMembers().count * 44) - 1
+            }
+            dropDownTable.preferredContentSize = CGSizeMake(self.view.frame.width, CGFloat(height))
+
+            let popOverController = dropDownTable.popoverPresentationController
+            popOverController?.permittedArrowDirections = .Up
+            popOverController?.delegate = self
+            popOverController?.sourceView = shareWith
+            popOverController?.sourceRect = shareWith.bounds
+
+            self.presentViewController(dropDownTable, animated: true, completion: nil)
+
+            return false
         } else {
             return true
         }
@@ -59,6 +88,24 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
 
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return .None
+    }
+
+    func datePicked(sender: DatePickerViewController, date: NSDate) {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy"
+        
+        dateField.text = formatter.stringFromDate(date)
+    }
+
+    func usersPicked(sender: DropDownTable, users: [String]) {
+        if users.count == 0 {
+            shareWith.text = ""
+        } else if users.count == 1 {
+            shareWith.text = String(users.count) + " member"
+        } else {
+            shareWith.text = String(users.count) + " members"
+        }
+        selectedUsers = users
     }
 
 }

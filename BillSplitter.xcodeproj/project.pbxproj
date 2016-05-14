@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D63E4AC1C922CE900D8863B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D63E4AB1C922CE900D8863B /* Assets.xcassets */; };
+		3904B0591CE6A544001FD949 /* DropDownDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3904B0581CE6A544001FD949 /* DropDownDelegate.swift */; };
 		391A24171CCF253B00884A27 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 391A24151CCF245500884A27 /* CryptoSwift.framework */; };
 		391A24181CCF253B00884A27 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 391A24151CCF245500884A27 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		391A241E1CCF31F800884A27 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391A241C1CCF31F800884A27 /* TestViewController.swift */; };
@@ -46,6 +47,10 @@
 		39AB43B91CC9AB9F004F9937 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43AF1CC9AB9E004F9937 /* Security.framework */; };
 		39AB43BA1CC9AB9F004F9937 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43B01CC9AB9E004F9937 /* StoreKit.framework */; };
 		39AB43BB1CC9AB9F004F9937 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43B11CC9AB9E004F9937 /* SystemConfiguration.framework */; };
+		39AE7D511CE67A7000438AE8 /* DatePickerVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AE7D501CE67A7000438AE8 /* DatePickerVCDelegate.swift */; };
+		39AE7D541CE6878500438AE8 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AE7D521CE6878500438AE8 /* DropDownCell.swift */; };
+		39AE7D551CE6878500438AE8 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39AE7D531CE6878500438AE8 /* DropDownCell.xib */; };
+		39AE7D571CE687E500438AE8 /* DropDownTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AE7D561CE687E500438AE8 /* DropDownTable.swift */; };
 		39B6398D1CD41DF2002269A8 /* VariableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B6398C1CD41DF2002269A8 /* VariableManager.swift */; };
 		39B6398F1CD4228C002269A8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B6398E1CD4228C002269A8 /* NetworkManager.swift */; };
 		39BFF4071CAF03B700CCA5D3 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39BFF4051CAF03B700CCA5D3 /* SettingsViewController.xib */; };
@@ -105,6 +110,7 @@
 		1D63E4B51C922CEA00D8863B /* BillSplitter.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BillSplitter.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D63E4C01C922CEA00D8863B /* BillSplitter.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BillSplitter.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D63E4DE1C937E9300D8863B /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Transaction.swift; path = ../BillSplitter/Transaction.swift; sourceTree = "<group>"; };
+		3904B0581CE6A544001FD949 /* DropDownDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownDelegate.swift; sourceTree = "<group>"; };
 		391A24151CCF245500884A27 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CryptoSwift.framework; sourceTree = "<group>"; };
 		391A241C1CCF31F800884A27 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		391A241D1CCF31F800884A27 /* TestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
@@ -145,6 +151,10 @@
 		39AB43B01CC9AB9E004F9937 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		39AB43B11CC9AB9E004F9937 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		39AB43C41CC9CB3B004F9937 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../BillSplitter/LoginViewController.swift; sourceTree = "<group>"; };
+		39AE7D501CE67A7000438AE8 /* DatePickerVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerVCDelegate.swift; sourceTree = "<group>"; };
+		39AE7D521CE6878500438AE8 /* DropDownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
+		39AE7D531CE6878500438AE8 /* DropDownCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
+		39AE7D561CE687E500438AE8 /* DropDownTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownTable.swift; sourceTree = "<group>"; };
 		39B6398C1CD41DF2002269A8 /* VariableManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariableManager.swift; sourceTree = "<group>"; };
 		39B6398E1CD4228C002269A8 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		39BFF4001CAF007200CCA5D3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../BillSplitter/SettingsViewController.swift; sourceTree = "<group>"; };
@@ -268,6 +278,11 @@
 				395C9FF51CE533410073D283 /* TransactionViewController.xib */,
 				395C9FF81CE534470073D283 /* DatePickerViewController.swift */,
 				395C9FF91CE534470073D283 /* DatePickerViewController.xib */,
+				39AE7D501CE67A7000438AE8 /* DatePickerVCDelegate.swift */,
+				39AE7D521CE6878500438AE8 /* DropDownCell.swift */,
+				39AE7D531CE6878500438AE8 /* DropDownCell.xib */,
+				39AE7D561CE687E500438AE8 /* DropDownTable.swift */,
+				3904B0581CE6A544001FD949 /* DropDownDelegate.swift */,
 			);
 			name = NewTransaction;
 			sourceTree = "<group>";
@@ -406,6 +421,7 @@
 				39DEB6AF1CD7DC8400BA0440 /* MeViewController.xib in Resources */,
 				39579E231CD821C800E0ED6D /* MemberCell.xib in Resources */,
 				396CC9FB1CCED6E200E4AC1D /* LoginViewController.xib in Resources */,
+				39AE7D551CE6878500438AE8 /* DropDownCell.xib in Resources */,
 				39579E281CD8249500E0ED6D /* GroupCell.xib in Resources */,
 				396CC9F81CCED67A00E4AC1D /* CreateViewController.xib in Resources */,
 				398D8EB81CDDC62100CC045E /* CreateCell.xib in Resources */,
@@ -444,12 +460,14 @@
 				398D8EBA1CDDD04200CC045E /* User.swift in Sources */,
 				39C00DF81CDB10E600D6F9C6 /* MemberTableViewController.swift in Sources */,
 				39DEB6AE1CD7DC8400BA0440 /* MeViewController.swift in Sources */,
+				39AE7D571CE687E500438AE8 /* DropDownTable.swift in Sources */,
 				397784F11CD3E91A000F7600 /* GroupTableViewController.swift in Sources */,
 				39579E271CD8249500E0ED6D /* GroupCell.swift in Sources */,
 				39579E2A1CD8264C00E0ED6D /* Group.swift in Sources */,
 				39B6398D1CD41DF2002269A8 /* VariableManager.swift in Sources */,
 				395C9FFA1CE534470073D283 /* DatePickerViewController.swift in Sources */,
 				39CA4A361CCEE17800FC15A8 /* CreateViewController.swift in Sources */,
+				39AE7D511CE67A7000438AE8 /* DatePickerVCDelegate.swift in Sources */,
 				39CA4A371CCEE17800FC15A8 /* CreateViewController.xib in Sources */,
 				391A241E1CCF31F800884A27 /* TestViewController.swift in Sources */,
 				39CA4A451CCEF11600FC15A8 /* NewBillViewController.swift in Sources */,
@@ -464,11 +482,13 @@
 				39CA4A3A1CCEE17800FC15A8 /* SettingsViewController.swift in Sources */,
 				39CA4A3B1CCEE17800FC15A8 /* SettingsViewController.xib in Sources */,
 				39CA4A3D1CCEE17800FC15A8 /* TabViewController.swift in Sources */,
+				3904B0591CE6A544001FD949 /* DropDownDelegate.swift in Sources */,
 				397F65DB1CE01CE20028CB86 /* OptionsViewController.swift in Sources */,
 				398D8EB71CDDC62100CC045E /* CreateCell.swift in Sources */,
 				39CA4A3E1CCEE17800FC15A8 /* Transaction.swift in Sources */,
 				397784E11CD3E72F000F7600 /* StorageManager.swift in Sources */,
 				39DA301D1CD9758B0029EAA7 /* SpinnerView.swift in Sources */,
+				39AE7D541CE6878500438AE8 /* DropDownCell.swift in Sources */,
 				39CA4A351CCEE16D00FC15A8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

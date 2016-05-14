@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import Parse
 
 class MemberTableViewController: UITableViewController {
 
-    var group: Group? = nil
+    var group: Group?
     var members: Array<String> = []
 
     override func viewDidLoad() {
@@ -25,21 +26,23 @@ class MemberTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return members.count + 1
+        return members.count + 2
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
+            let cellIdentifier = "CreateCell"
+            tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! CreateCell
+            return cell
+        } else if indexPath.row == 1 {
             let cellIdentifier = "CreateCell"
             tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! CreateCell
@@ -49,7 +52,7 @@ class MemberTableViewController: UITableViewController {
             tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MemberCell
 
-            let id = members[indexPath.row - 1]
+            let id = members[indexPath.row - 2]
             if id == VariableManager.getID() {
                 cell.name.text = VariableManager.getName()
                 cell.avatar.image = VariableManager.getAvatar()
@@ -67,12 +70,37 @@ class MemberTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 0 { // Add Transaction
-            add()
+            // add()
+            let vc = TransactionViewController()
+            vc.group = group
+            self.presentViewController(vc, animated: true, completion: nil)
         }
 
     }
 
     func options() {
+        /* var dict: [String:Int] = [:]
+        for member in members {
+            dict[member] = (100 / group!.count())
+        }
+
+        PFCloud.callFunctionInBackground("newTransaction", withParameters: [
+            "groupId": group!.getID(),
+            "payee": members[2],
+            "split": dict,
+            "amount": 55.56
+        ]) {
+            (response: AnyObject?, error: NSError?) -> Void in
+            if response != nil {
+                let object = response as! PFObject
+                print(object.objectForKey("status"))
+            }
+            if error != nil {
+                print(error)
+            }
+        }
+
+        return */
         let vc = OptionsViewController()
         vc.users = members
         self.navigationController?.pushViewController(vc, animated: true)
@@ -104,7 +132,6 @@ class MemberTableViewController: UITableViewController {
                                     (result: Int) in
                                     if result == 0 {
                                         NetworkManager.refreshStatus(groupId) {
-                                            () in
                                             VariableManager.addUserToGroup(userId, groupId: groupId)
                                             StorageManager.addUserToGroup(userId, groupId: groupId)
                                             self.group!.addMember(userId)
