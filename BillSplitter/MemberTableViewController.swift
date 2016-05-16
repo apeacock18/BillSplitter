@@ -55,22 +55,22 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MemberCell
             cell.selectionStyle = .None
             let id = members[indexPath.row - 1]
-            if id == VariableManager.getID() {
-                cell.name.text = VariableManager.getName()
-                cell.avatar.image = VariableManager.getAvatar()
-                cell.amount.text = "$0.00"
-            } else {
-                let user = VariableManager.getUserById(id)
-                cell.name.text = user?.name
-                cell.avatar.image = user?.getAvatar()
-                let status = group!.getStatusById(VariableManager.getID())
-
-                let amount: Double = status!.getAmountByRecipient(id)!
-                if amount <= 0 {
-                    cell.amount.textColor = UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 1) // #27ae60
+            let user = VariableManager.getUserById(id)
+            cell.name.text = user?.name
+            cell.name.adjustsFontSizeToFitWidth = true
+            cell.avatar.image = user?.getAvatar()
+            cell.amount.adjustsFontSizeToFitWidth = true
+            let status = group!.getStatusById(VariableManager.getID())
+            let amount: Double = status!.getAmountByRecipient(id)!
+            if amount <= 0 {
+                cell.amount.textColor = UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 1) // #27ae60
+                if amount == 0 {
+                    cell.amount.text = String(NSString(format: "$%.2f", amount))
                 } else {
-                    cell.amount.textColor = UIColor.redColor()
+                    cell.amount.text = String(NSString(format: "$%.2f", -amount))
                 }
+            } else {
+                cell.amount.textColor = UIColor.redColor()
                 cell.amount.text = String(NSString(format: "$%.2f", amount))
             }
             return cell
