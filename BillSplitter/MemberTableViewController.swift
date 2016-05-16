@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class MemberTableViewController: UITableViewController, ReloadDelegate {
+class MemberTableViewController: UITableViewController, ReloadDelegate, GroupButtonBarDelegate {
 
     var group: Group?
     var members: Array<String> = []
@@ -46,12 +46,14 @@ class MemberTableViewController: UITableViewController, ReloadDelegate {
             let cellIdentifier = "CreateCell"
             tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! CreateCell
+            cell.delegate = self
+            cell.selectionStyle = .None
             return cell
         } else {
             let cellIdentifier = "MemberCell"
             tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MemberCell
-
+            cell.selectionStyle = .None
             let id = members[indexPath.row - 1]
             if id == VariableManager.getID() {
                 cell.name.text = VariableManager.getName()
@@ -73,17 +75,6 @@ class MemberTableViewController: UITableViewController, ReloadDelegate {
             }
             return cell
         }
-    }
-
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == 0 { // Add Transaction
-            // add()
-            let vc = TransactionViewController()
-            vc.delegate = self
-            vc.group = group
-            self.presentViewController(vc, animated: true, completion: nil)
-        }
-
     }
 
     func options() {
@@ -149,6 +140,19 @@ class MemberTableViewController: UITableViewController, ReloadDelegate {
 
     func dataReloadNeeded() {
         tableView.reloadData()
+    }
+
+    func buttonPressed(index: Int) {
+        if index == 0 {
+            add()
+        } else  if index == 1 { // Add Transaction
+            let vc = TransactionViewController()
+            vc.delegate = self
+            vc.group = group
+            self.presentViewController(vc, animated: true, completion: nil)
+        } else {
+            // TODO Show history
+        }
     }
 
 }

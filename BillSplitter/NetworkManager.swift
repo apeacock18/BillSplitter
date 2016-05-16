@@ -139,7 +139,6 @@ class NetworkManager {
                 }
             }
         } else {
-            // TODO Possibly will need to manage local storage
             completion(result: true)
         }
     }

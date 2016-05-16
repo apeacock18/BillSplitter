@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,18 +14,47 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Transaction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLe-Fe-RLH">
-                        <rect key="frame" x="71" y="25" width="179" height="29"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQ7-ZX-7eu">
+                        <rect key="frame" x="8" y="8" width="94.5" height="63.5"/>
+                        <state key="normal" title="Add Member">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTz-pj-NqL">
+                        <rect key="frame" x="102.5" y="8" width="115" height="63.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="115" id="uaJ-fs-tZN"/>
+                        </constraints>
+                        <state key="normal" title="New Transaction">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="quH-ac-YoM">
+                        <rect key="frame" x="217.5" y="8" width="94.5" height="63.5"/>
+                        <state key="normal" title="History">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="hLe-Fe-RLH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dxm-8r-W0Z"/>
-                    <constraint firstItem="hLe-Fe-RLH" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="oiI-Tq-52B"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="quH-ac-YoM" secondAttribute="bottom" id="21Y-IX-ahH"/>
+                    <constraint firstItem="RTz-pj-NqL" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="2Um-P4-hLp"/>
+                    <constraint firstItem="quH-ac-YoM" firstAttribute="leading" secondItem="RTz-pj-NqL" secondAttribute="trailing" id="AVj-KF-tsc"/>
+                    <constraint firstItem="ZQ7-ZX-7eu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="E2H-GO-1HK"/>
+                    <constraint firstItem="quH-ac-YoM" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="FtA-2W-VYz"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="ZQ7-ZX-7eu" secondAttribute="bottom" id="OaB-jX-s75"/>
+                    <constraint firstItem="RTz-pj-NqL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Wrm-2M-UWe"/>
+                    <constraint firstItem="quH-ac-YoM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="lvJ-ek-WG4"/>
+                    <constraint firstItem="ZQ7-ZX-7eu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="wcI-8d-cmv"/>
+                    <constraint firstItem="RTz-pj-NqL" firstAttribute="leading" secondItem="ZQ7-ZX-7eu" secondAttribute="trailing" id="xXS-lM-FIr"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="RTz-pj-NqL" secondAttribute="bottom" id="zBg-CF-B12"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="addMember" destination="ZQ7-ZX-7eu" id="Ivd-Vs-Fgm"/>
+                <outlet property="historyButton" destination="quH-ac-YoM" id="YaA-Ex-BHj"/>
+                <outlet property="newTransactionButton" destination="RTz-pj-NqL" id="vLx-T5-apR"/>
+            </connections>
             <point key="canvasLocation" x="416" y="401"/>
         </tableViewCell>
     </objects>

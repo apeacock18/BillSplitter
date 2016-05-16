@@ -61,7 +61,7 @@ class GroupTableViewController: UITableViewController {
             let cellIdentifier = "GroupCell"
             tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! GroupCell
-
+            cell.selectionStyle = .None
             let group = groups[indexPath.row]
             cell.groupNameLabel.text = group.getName()
 
