@@ -322,12 +322,8 @@ Parse.Cloud.define("newTransaction", function(request, response) {
         if(!split.hasOwnProperty(userId)) {
             continue;
         }
-        amountToPay[userId] = transactionAmount * (split[userId] / 100);
+        amountToPay[userId] = transactionAmount * split[userId];
         totalPercentage += split[userId];
-    }
-    if(totalPercentage != 100) {
-        response.error(1);
-        return;
     }
 
     /* Modify groups */

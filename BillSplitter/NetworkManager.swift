@@ -255,9 +255,9 @@ class NetworkManager {
     }
 
     static func newTransaction(groupId: String, payee: String, amount: Double, description: String, date: String, users: [String], completion: (result: Bool) -> Void) {
-        var split: [String: Int] = [:]
+        var split: [String: Double] = [:]
         for user in users {
-            split[user] = 100 / users.count
+            split[user] = 1 / Double(users.count)
         }
 
         PFCloud.callFunctionInBackground("newTransaction", withParameters: [
@@ -271,8 +271,10 @@ class NetworkManager {
             (response: AnyObject?, error: NSError?) -> Void in
             if response != nil && error == nil {
                 completion(result: true)
+                debug(response)
             } else {
                 completion(result: false)
+                debug(error)
             }
         }
     }
