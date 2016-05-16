@@ -19,7 +19,7 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 80.0
-        self.title = "Members"
+        self.title = group!.getName()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Options", style: .Plain, target: self, action: #selector(MemberTableViewController.options))
         NetworkManager.delegate = self
     }

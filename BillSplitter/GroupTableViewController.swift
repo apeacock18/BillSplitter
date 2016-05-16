@@ -126,7 +126,11 @@ class GroupTableViewController: UITableViewController {
                                         () in
                                         StorageManager.createGroup(groupId, name: text!)
                                         StorageManager.addUserToGroup(VariableManager.getID(), groupId: groupId)
-                                        self.reload()                                    }
+                                        self.reload()
+                                        let index = self.tableView.numberOfRowsInSection(0) - 1
+                                        let indexPath = NSIndexPath(forRow: index, inSection: 0)
+                                        self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: true)
+                                    }
                                 } else {
                                     self.handleError()
                                 }
