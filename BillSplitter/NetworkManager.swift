@@ -254,9 +254,12 @@ class NetworkManager {
     }
 
     static func newTransaction(groupId: String, payee: String, amount: Double, description: String, date: String, users: [String], completion: (result: Bool) -> Void) {
+        var allUsers = users
+        allUsers.append(VariableManager.getID())
+
         var split: [String: Double] = [:]
-        for user in users {
-            split[user] = 1 / Double(users.count)
+        for user in allUsers {
+            split[user] = 1 / Double(allUsers.count)
         }
 
         PFCloud.callFunctionInBackground("newTransaction", withParameters: [

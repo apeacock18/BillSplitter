@@ -64,7 +64,7 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
             resignAllResponders()
             let dropDownTable = DropDownTable()
             dropDownTable.delegate = self
-            dropDownTable.members = group!.getMembers()
+            dropDownTable.members = group!.getMembers().filter {$0 != VariableManager.getID()}
             dropDownTable.selectedMembers = selectedUsers
 
             dropDownTable.modalPresentationStyle = .Popover
@@ -72,7 +72,7 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
             var height: Int = 220
 
             if group!.count() <= 5 {
-                height = (group!.getMembers().count * 44) - 1
+                height = ((group!.getMembers().count - 1) * 44) - 1
             }
             dropDownTable.preferredContentSize = CGSizeMake(self.view.frame.width, CGFloat(height))
 
@@ -91,6 +91,25 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
     }
 
     @IBAction func newTransaction(sender: UIButton) {
+        if desc.text!.characters.count == 0 {
+            let message = UIAlertController(title: "No description", message: "Please enter a description.", preferredStyle: UIAlertControllerStyle.Alert)
+            message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(message, animated: true, completion: nil)
+            return
+        }
+        if amount.text!.characters.count == 0 {
+            let message = UIAlertController(title: "No amount entered", message: "Please enter a bill amount.", preferredStyle: UIAlertControllerStyle.Alert)
+            message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(message, animated: true, completion: nil)
+            return
+        }
+        if selectedUsers.count == 0 {
+            let message = UIAlertController(title: "No users selected", message: "Please select at least one user to shhare the bill with.", preferredStyle: UIAlertControllerStyle.Alert)
+            message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(message, animated: true, completion: nil)
+            return
+        }
+
         self.dismissViewControllerAnimated(true, completion: nil)
         NetworkManager.newTransaction(group!.getID(), payee: VariableManager.getID(), amount: Double(amount.text!)!, description: desc.text!, date: dateField.text!, users: selectedUsers) {
             (result: Bool) in
