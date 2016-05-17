@@ -6,21 +6,23 @@
 //  Copyright © 2016 Davis Mariotti. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class Transaction {
 
     var payee: String
-    var from: Array<String>
+    var split: [String:Double]
     var amount: Double
-    var reason: String
+    var desc: String
+    var date: String
 
-    init(name: String, amount: Double, from: Array<String>, reason: String)
+    init(name: String, amount: Double, from: [String:Double], desc: String, date: String)
     {
         self.payee = name
         self.amount = amount
-        self.from = from
-        self.reason = reason
+        self.split = from
+        self.desc = desc
+        self.date = date
     }
 
     init?(json: String) {
@@ -29,20 +31,33 @@ class Transaction {
         do {
             let jsonObject = try NSJSONSerialization.JSONObjectWithData(data, options: [])
             self.payee = jsonObject["payee"] as! String
-            self.from = jsonObject["from"] as! Array<String>
+            self.split = jsonObject["split"] as! [String:Double]
             self.amount = jsonObject["amount"] as! Double
-            self.reason = jsonObject["reason"] as! String
+            self.desc = jsonObject["description"] as! String
+            self.date = jsonObject["date"] as! String
         } catch {
             return nil
         }
     }
 
+    func getShare(id: String) -> Double {
+        return amount * split[id]!
+    }
+
+    func getDateInSeconds() -> Double {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy"
+        return formatter.dateFromString(date)!.timeIntervalSince1970
+    }
+
+
     func toString() -> String? {
         let jsonObject: [String: AnyObject] = [
             "payee": self.payee,
-            "from": self.from,
+            "split": self.split,
             "amount": self.amount,
-            "reason": self.reason
+            "description": self.desc,
+            "date": self.date
         ]
         do {
             return String(try NSJSONSerialization.dataWithJSONObject(jsonObject, options: []))
@@ -55,7 +70,7 @@ class Transaction {
 
      Example JSON:
 
-     {"payee":"v4vh5hb6", "from": ["vbghnkl54", "5vgh45bc2", "45ghvb33f"], amount: 20.0, reason: "Electricity"}
+     {"payee":"v4vh5hb6", "split": ["vbghnkl54": .33333333333, "5vgh45bc2": .33333333333, "45ghvb33f": .33333333333], amount: 20.00, description: "Electricity"}
 
      */
     

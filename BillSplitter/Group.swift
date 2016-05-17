@@ -14,6 +14,7 @@ class Group {
     private var name: String
     private var members: Array<String>
     private var statuses: [Status]
+    private var transactions: [Transaction]
 
     // TODO create a status object
     //private var status
@@ -24,17 +25,26 @@ class Group {
         self.name = name
         self.members = members
         self.statuses = []
+        self.transactions = []
     }
 
-    init(id: String, name: String, members: Array<String>, statuses: [Status]) {
+    init(id: String, name: String, members: Array<String>, statuses: [Status], transactions: [Transaction]) {
         self.id = id
         self.name = name
         self.members = members
         self.statuses = statuses
+        self.transactions = transactions
+        orderStatuses()
     }
 
-    func reloadStatuses(statuses: [Status]) {
+    func orderStatuses() {
+        transactions.sortInPlace { $0.getDateInSeconds() > $1.getDateInSeconds() }
+    }
+
+    func reload(statuses: [Status], transactions: [Transaction]) {
         self.statuses = statuses
+        self.transactions = transactions
+        orderStatuses()
     }
 
     func getID() -> String {
@@ -64,6 +74,10 @@ class Group {
             }
         }
         return nil
+    }
+
+    func getTransactions() -> [Transaction] {
+        return transactions
     }
 
 }

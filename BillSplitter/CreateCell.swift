@@ -20,11 +20,11 @@ class CreateCell: UITableViewCell {
         super.awakeFromNib()
 
         let newTransactionlayerL: CALayer = CALayer()
-        newTransactionlayerL.frame = CGRectMake(-5.0, 0.0, 2.0, newTransactionButton.layer.frame.height)
+        newTransactionlayerL.frame = CGRectMake(-7.0, 0.0, 2.0, newTransactionButton.layer.frame.height)
         newTransactionlayerL.backgroundColor = UIColor.grayColor().CGColor
         newTransactionButton.layer.addSublayer(newTransactionlayerL)
         let newTransactionlayerR: CALayer = CALayer()
-        newTransactionlayerR.frame = CGRectMake(newTransactionButton.layer.frame.width + 5.0, 0.0, 2.0, newTransactionButton.layer.frame.height)
+        newTransactionlayerR.frame = CGRectMake(newTransactionButton.layer.frame.width + 7.0, 0.0, 2.0, newTransactionButton.layer.frame.height)
         newTransactionlayerR.backgroundColor = UIColor.grayColor().CGColor
         newTransactionButton.layer.addSublayer(newTransactionlayerR)
 

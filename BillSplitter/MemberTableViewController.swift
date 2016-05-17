@@ -53,7 +53,6 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
             let cellIdentifier = "MemberCell"
             tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MemberCell
-            cell.selectionStyle = .None
             let id = members[indexPath.row - 1]
             let user = VariableManager.getUserById(id)
             cell.name.text = user?.name
@@ -151,7 +150,10 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
             vc.group = group
             self.presentViewController(vc, animated: true, completion: nil)
         } else {
-            // TODO Show history
+            let vc = HistoryTableViewController()
+            vc.group = group
+            vc.transactions = group!.getTransactions()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 

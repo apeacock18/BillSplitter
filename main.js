@@ -365,7 +365,7 @@ Parse.Cloud.define("newTransaction", function(request, response) {
             var group = new GroupClass();
             group.set("objectId", groupId);
             group.set("status", newStatuses);
-            group.add("transactions", transaction);
+            group.add("transactions", JSON.stringify(transaction));
             group.save(null, {
                 success: function(object) {
                     response.success(object);

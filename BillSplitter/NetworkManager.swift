@@ -84,14 +84,19 @@ class NetworkManager {
                     for result in results! {
                         let members: Array<String> = result["members"] as! Array<String>
                         var statusObjects: Array<Status> = []
+                        var transactionObjects: Array<Transaction> = []
                         for json in (result["status"] as! Array<String>) {
                             statusObjects.append(Status(json: json)!)
+                        }
+                        for json in (result["transactions"] as! Array<String>) {
+                            transactionObjects.append(Transaction(json: json)!)
                         }
                         let groupObj = Group(
                             id: result.objectId!,
                             name: result["name"] as! String,
                             members: members,
-                            statuses: statusObjects
+                            statuses: statusObjects,
+                            transactions: transactionObjects
                         )
                         VariableManager.addGroup(groupObj)
                         for member in members {
@@ -213,12 +218,17 @@ class NetworkManager {
         query.getFirstObjectInBackgroundWithBlock {
             (result: PFObject?, error: NSError?) -> Void in
             if result != nil {
-                let jsonArray: [String] = result!.objectForKey("status") as! [String]
+                let statusArray: [String] = result!.objectForKey("status") as! [String]
+                let transactionArray: [String] = result!.objectForKey("transactions") as! [String]
                 var statuses: [Status] = []
-                for json in jsonArray {
+                var transactions: [Transaction] = []
+                for json in statusArray {
                     statuses.append(Status(json: json)!)
                 }
-                group!.reloadStatuses(statuses)
+                for json in transactionArray {
+                    transactions.append(Transaction(json: json)!)
+                }
+                group!.reload(statuses, transactions: transactions)
                 completion()
             } else {
                 debug(error)
