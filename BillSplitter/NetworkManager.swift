@@ -176,6 +176,36 @@ class NetworkManager {
         }
     }
 
+    static func getUser(userId: String, completion: (result: User?) -> Void) {
+        let query = PFQuery(className: "Users")
+        query.whereKey("objectId", equalTo: userId)
+        query.getFirstObjectInBackgroundWithBlock {
+            (result: PFObject?, error: NSError?) -> Void in
+            if result != nil && error == nil {
+                let name = result!["name"] as! String
+                let username = result!["username"] as! String
+                let imageFile = result!["avatar"] as? PFFile
+                var user: User?
+                if imageFile != nil {
+                    imageFromData(imageFile!) {
+                        (result: UIImage?) in
+                        if result != nil {
+                            user = User(id: userId, username: username, name: name, avatar: result!)
+                        } else {
+                            user = User(id: userId, username: username, name: name)
+                        }
+                        completion(result: user)
+                    }
+                } else {
+                    user = User(id: userId, username: username, name: name)
+                    completion(result: user)
+                }
+            } else {
+                completion(result: nil)
+            }
+        }
+    }
+
     static func createGroup(name: String, completion: (result: String?) -> Void) {
         PFCloud.callFunctionInBackground("createGroup", withParameters: ["name": name]) {
             (response: AnyObject?, error: NSError?) -> Void in

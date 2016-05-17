@@ -62,6 +62,15 @@ class VariableManager {
         users.append(user)
     }
 
+    static func containsUser(userId: String) -> Bool {
+        for user in users {
+            if user.id == userId {
+                return true
+            }
+        }
+        return false
+    }
+
     /* Group Data */
 
     static func addGroup(group: Group) {

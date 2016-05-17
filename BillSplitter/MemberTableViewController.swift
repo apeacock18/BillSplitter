@@ -108,11 +108,25 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
                                     (result: Int) in
                                     if result == 0 {
                                         NetworkManager.refreshStatus(groupId) {
-                                            VariableManager.addUserToGroup(userId, groupId: groupId)
-                                            StorageManager.addUserToGroup(userId, groupId: groupId)
-                                            self.group!.addMember(userId)
-                                            self.members.append(userId)
-                                            self.tableView.reloadData()
+                                            if !VariableManager.containsUser(userId) {
+                                                NetworkManager.getUser(userId) {
+                                                    (result: User?) in
+                                                    if result != nil {
+                                                        VariableManager.addUser(result!)
+                                                        VariableManager.addUserToGroup(userId, groupId: groupId)
+                                                        StorageManager.addUserToGroup(userId, groupId: groupId)
+                                                        self.group!.addMember(userId)
+                                                        self.members.append(userId)
+                                                        self.tableView.reloadData()
+                                                    }
+                                                }
+                                            } else {
+                                                VariableManager.addUserToGroup(userId, groupId: groupId)
+                                                StorageManager.addUserToGroup(userId, groupId: groupId)
+                                                self.group!.addMember(userId)
+                                                self.members.append(userId)
+                                                self.tableView.reloadData()
+                                            }
                                         }
                                     } else if result == 1 {
                                         let message = UIAlertController(title: "Error", message: "That user is already in this group.", preferredStyle: UIAlertControllerStyle.Alert)
