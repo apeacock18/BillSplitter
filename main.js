@@ -261,6 +261,7 @@ Parse.Cloud.define("create", function(request, response) {
     user.set("email", email);
     user.set("phoneNumber", phoneNumber);
     user.set("name", name);
+    user.set("groups", []);
     var query = new Parse.Query("Users");
     query.equalTo("username", username);
     query.find({
