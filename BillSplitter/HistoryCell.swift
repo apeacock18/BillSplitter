@@ -22,6 +22,7 @@ class HistoryCell: UITableViewCell {
         payee.adjustsFontSizeToFitWidth = true
         total.adjustsFontSizeToFitWidth = true
         share.adjustsFontSizeToFitWidth = true
+        date.adjustsFontSizeToFitWidth = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -14,6 +14,8 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
     var group: Group?
     var members: Array<String> = []
 
+    let currencyFormatter = NSNumberFormatter()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -22,6 +24,8 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
         self.title = group!.getName()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Options", style: .Plain, target: self, action: #selector(MemberTableViewController.options))
         NetworkManager.delegate = self
+        self.currencyFormatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        self.currencyFormatter.currencyCode = NSLocale.currentLocale().displayNameForKey(NSLocaleCurrencySymbol, value: NSLocaleCurrencyCode)
     }
 
     override func viewDidDisappear(animated: Bool) {
@@ -76,6 +80,41 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
         }
     }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let member = members[indexPath.row - 1]
+        let payBack = UIAlertController(title: "Pay Back", message: "", preferredStyle: .Alert)
+        payBack.addTextFieldWithConfigurationHandler({
+            (textField: UITextField!) in
+            textField.text = "\(self.currencyFormatter.currencySymbol)0.00"
+            textField.keyboardType = .NumberPad
+            textField.addTarget(self, action: #selector(MemberTableViewController.textFieldDidChange(_:)), forControlEvents: .EditingChanged)
+        })
+        let okButton = UIAlertAction(title: "OK", style: .Default) {
+            (paramAction: UIAlertAction) in
+            if let textFields = payBack.textFields {
+                let fields = textFields as [UITextField]
+                let text = fields[0].text
+                if text != nil && text != "" {
+                    NetworkManager.payBack(self.group!.getID(), payFrom: member, payTo: VariableManager.getID(), amount: Double(self.currencyFormatter.numberFromString(text!)!)) {
+                        (result: Bool) in
+                        if result {
+                            NetworkManager.refreshStatus(self.group!.getID()) {
+                                self.tableView.reloadData()
+                            }
+                        } else {
+                            let message = UIAlertController(title: "Error", message: "Please try again.", preferredStyle: UIAlertControllerStyle.Alert)
+                            message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                            self.presentViewController(message, animated: true, completion: nil)
+                        }
+                    }
+                }
+            }
+        }
+        payBack.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
+        payBack.addAction(okButton)
+        self.presentViewController(payBack, animated: true, completion: nil)
+    }
+
     func options() {
         let vc = OptionsViewController()
         vc.users = members
@@ -87,6 +126,7 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
         addUser.addTextFieldWithConfigurationHandler({
             (textField: UITextField!) in
             textField.placeholder = "Username"
+
         })
         let add = UIAlertAction(title: "Add", style: .Default) {
             (paramAction: UIAlertAction) in
@@ -115,7 +155,6 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
                                                         VariableManager.addUser(result!)
                                                         VariableManager.addUserToGroup(userId, groupId: groupId)
                                                         StorageManager.addUserToGroup(userId, groupId: groupId)
-                                                        self.group!.addMember(userId)
                                                         self.members.append(userId)
                                                         self.tableView.reloadData()
                                                     }
@@ -123,7 +162,6 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
                                             } else {
                                                 VariableManager.addUserToGroup(userId, groupId: groupId)
                                                 StorageManager.addUserToGroup(userId, groupId: groupId)
-                                                self.group!.addMember(userId)
                                                 self.members.append(userId)
                                                 self.tableView.reloadData()
                                             }
@@ -169,6 +207,11 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
             vc.transactions = group!.getTransactions()
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+
+    func textFieldDidChange(textField: UITextField) {
+        let text = textField.text!.stringByReplacingOccurrencesOfString(currencyFormatter.currencySymbol, withString: "").stringByReplacingOccurrencesOfString(currencyFormatter.groupingSeparator, withString: "").stringByReplacingOccurrencesOfString(currencyFormatter.decimalSeparator, withString: "")
+        textField.text = currencyFormatter.stringFromNumber((text as NSString).doubleValue / 100.0)
     }
 
 }

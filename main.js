@@ -381,3 +381,64 @@ Parse.Cloud.define("newTransaction", function(request, response) {
         }
     });
 });
+
+/**
+ * Allows a user to pay back another user.
+ * @param {string} payFrom - The user paying
+ * @param {string} payTo - The user receiving money
+ * @param {double} amount - Amount to be paid
+ * @param {string} groupId - The group that contains this transaction
+ *
+ * Error Codes:
+ * 0: Unknown Error
+ *
+*/
+Parse.Cloud.define("payBack", function(request, response) {
+    var payTo = request.params.payTo;
+    var payFrom = request.params.payFrom;
+    var amount = request.params.amount;
+    var groupId = request.params.groupId;
+    var statusQuery = new Parse.Query("Groups");
+    statusQuery.equalTo("objectId", groupId);
+    statusQuery.first({
+        success: function(result) {
+            var statusArray = result.get("status");
+            var newStatuses = new Array();
+            for(var i = 0; i < statusArray.length; i++) {
+                var status = JSON.parse(statusArray[i]);
+                var statusData = status.data;
+                for(var j = 0; j < statusData.length; j++) {
+                    if(status.id == payTo) {
+                        if(statusData[j].recipient == payFrom) {
+                            var storedAmount = statusData[j].amount;
+                            storedAmount += amount;
+                            statusData[j].amount = storedAmount;
+                        }
+                    } else if(status.id == payFrom) {
+                        if(statusData[j].recipient == payTo) {
+                            var storedAmount = statusData[j].amount;
+                            storedAmount -= amount;
+                            statusData[j].amount = storedAmount;
+                        }
+                    }
+                }
+                newStatuses.push(JSON.stringify(status));
+            }
+            var GroupClass = Parse.Object.extend("Groups");
+            var group = new GroupClass();
+            group.set("objectId", groupId);
+            group.set("status", newStatuses);
+            group.save(null, {
+                success: function(object) {
+                    response.success(1);
+                },
+                error: function(object, error) {
+                    response.error(error);
+                }
+            });
+        },
+        error: function(error) {
+            response.error(error);
+        }
+    });
+});

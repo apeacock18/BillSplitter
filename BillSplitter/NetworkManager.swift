@@ -321,6 +321,24 @@ class NetworkManager {
         }
     }
 
+    static func payBack(groupId: String, payFrom: String, payTo: String, amount: Double, completion: (result: Bool) -> Void) {
+        PFCloud.callFunctionInBackground("payBack", withParameters: [
+            "groupId": groupId,
+            "payFrom": payFrom,
+            "payTo": payTo,
+            "amount": amount
+        ]) {
+            (response: AnyObject?, error: NSError?) -> Void in
+            if response != nil && error == nil {
+                debug(response)
+                completion(result: true)
+            } else {
+                debug(error)
+                completion(result: false)
+            }
+        }
+    }
+
 
     static func sendAvatarToServer(image: UIImage) {
         let user = PFObject(className: "Users")

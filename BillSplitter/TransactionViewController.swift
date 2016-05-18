@@ -21,6 +21,8 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
 
     var delegate: ReloadDelegate?
 
+    let currencyFormatter = NSNumberFormatter()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         dateField.delegate = self
@@ -29,6 +31,13 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
         formatter.dateFormat = "MM-dd-yyyy"
         dateField.text = formatter.stringFromDate(NSDate())
         self.hideKeyboardWhenTappedAround()
+
+        amount.keyboardType = .NumberPad
+        amount.addTarget(self, action: #selector(TransactionViewController.textFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        amount.text = "\(currencyFormatter.currencySymbol)0.00"
+
+        currencyFormatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        currencyFormatter.currencyCode = NSLocale.currentLocale().displayNameForKey(NSLocaleCurrencySymbol, value: NSLocaleCurrencyCode)
     }
 
     override func didReceiveMemoryWarning() {
@@ -111,7 +120,8 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
         }
 
         self.dismissViewControllerAnimated(true, completion: nil)
-        NetworkManager.newTransaction(group!.getID(), payee: VariableManager.getID(), amount: Double(amount.text!)!, description: desc.text!, date: dateField.text!, users: selectedUsers) {
+
+        NetworkManager.newTransaction(group!.getID(), payee: VariableManager.getID(), amount: Double(currencyFormatter.numberFromString(amount.text!)!), description: desc.text!, date: dateField.text!, users: selectedUsers) {
             (result: Bool) in
             NetworkManager.refreshStatus(self.group!.getID()) {
                 self.delegate?.dataReloadNeeded()
@@ -146,6 +156,11 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
         shareWith.resignFirstResponder()
         dateField.resignFirstResponder()
         amount.resignFirstResponder()
+    }
+
+    func textFieldDidChange(textField: UITextField) {
+        let text = textField.text!.stringByReplacingOccurrencesOfString(currencyFormatter.currencySymbol, withString: "").stringByReplacingOccurrencesOfString(currencyFormatter.groupingSeparator, withString: "").stringByReplacingOccurrencesOfString(currencyFormatter.decimalSeparator, withString: "")
+        textField.text = currencyFormatter.stringFromNumber((text as NSString).doubleValue / 100.0)
     }
 
 }
