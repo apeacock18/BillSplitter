@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
@@ -44,7 +44,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jL3-8I-ibl">
-                    <rect key="frame" x="274.5" y="517" width="51" height="33"/>
+                    <rect key="frame" x="275" y="517" width="51" height="33"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="Create"/>
                     <connections>
@@ -63,7 +63,7 @@
                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3o-ai-kbx">
-                    <rect key="frame" x="30" y="236" width="60" height="29.5"/>
+                    <rect key="frame" x="30" y="236" width="60" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -74,11 +74,18 @@
                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share with" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTt-cg-abz">
-                    <rect key="frame" x="30" y="285.5" width="81" height="30"/>
+                    <rect key="frame" x="30" y="286" width="81" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Psx-Gf-q0n">
+                    <rect key="frame" x="12" y="20" width="34" height="30"/>
+                    <state key="normal" title="Back"/>
+                    <connections>
+                        <action selector="back:" destination="-1" eventType="touchUpInside" id="yw8-sg-UZy"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -96,6 +103,7 @@
                 <constraint firstItem="DH4-oL-2VI" firstAttribute="centerY" secondItem="hTt-cg-abz" secondAttribute="centerY" id="RU6-GQ-ST6"/>
                 <constraint firstItem="DH4-oL-2VI" firstAttribute="top" secondItem="bka-Sk-Dbk" secondAttribute="bottom" constant="20" id="SMH-WS-RDa"/>
                 <constraint firstItem="Auf-Fc-R4C" firstAttribute="centerY" secondItem="3sa-WS-3a7" secondAttribute="centerY" id="SYV-tw-7qB"/>
+                <constraint firstItem="Psx-Gf-q0n" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="SsW-Kw-Zu2"/>
                 <constraint firstAttribute="bottom" secondItem="jL3-8I-ibl" secondAttribute="bottom" constant="50" id="VfI-qd-OKQ"/>
                 <constraint firstItem="3bP-bu-ujM" firstAttribute="leading" secondItem="5sR-lm-vSM" secondAttribute="trailing" constant="20" id="Vpa-eW-tPO"/>
                 <constraint firstAttribute="trailing" secondItem="Auf-Fc-R4C" secondAttribute="trailing" constant="30" id="WCg-J6-RgM"/>
@@ -103,6 +111,7 @@
                 <constraint firstItem="5sR-lm-vSM" firstAttribute="top" secondItem="cVf-D1-R2s" secondAttribute="bottom" constant="50" id="apf-NB-1Tl"/>
                 <constraint firstItem="hTt-cg-abz" firstAttribute="top" secondItem="d3o-ai-kbx" secondAttribute="bottom" constant="20" id="bny-lV-6Sp"/>
                 <constraint firstItem="3sa-WS-3a7" firstAttribute="top" secondItem="5sR-lm-vSM" secondAttribute="bottom" constant="20" id="cFN-Hy-wQ7"/>
+                <constraint firstItem="Psx-Gf-q0n" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="eVW-m5-vur"/>
                 <constraint firstItem="bka-Sk-Dbk" firstAttribute="leading" secondItem="3bP-bu-ujM" secondAttribute="leading" id="f3Y-vd-g0j"/>
                 <constraint firstItem="hTt-cg-abz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="fFP-xI-5k0"/>
                 <constraint firstItem="3bP-bu-ujM" firstAttribute="centerY" secondItem="5sR-lm-vSM" secondAttribute="centerY" id="kZT-yW-My5"/>

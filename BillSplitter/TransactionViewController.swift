@@ -129,6 +129,10 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
         }
     }
 
+    @IBAction func back(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return .None
     }
