@@ -41,7 +41,11 @@ class Transaction {
     }
 
     func getShare(id: String) -> Double {
-        return amount * split[id]!
+        if let splitPercentage = split[id] {
+            return amount * splitPercentage
+        } else {
+            return 0.0
+        }
     }
 
     func getDateInSeconds() -> Double {
