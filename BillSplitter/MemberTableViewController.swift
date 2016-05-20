@@ -83,6 +83,18 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 0 {
+            return
+        }
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! MemberCell
+        if cell.amount.textColor == UIColor.redColor() || cell.amount.text == "$0.00" {
+            let message = UIAlertController(title: "Invalid action", message: "You can only account for when another member paid you.", preferredStyle: UIAlertControllerStyle.Alert)
+            message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(message, animated: true, completion: nil)
+            cell.selected = false
+            return
+        }
+        
         let member = members[indexPath.row - 1]
         let payBack = UIAlertController(title: "Pay Back", message: "", preferredStyle: .Alert)
         payBack.addTextFieldWithConfigurationHandler({
@@ -107,6 +119,7 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
                             let message = UIAlertController(title: "Error", message: "Please try again.", preferredStyle: UIAlertControllerStyle.Alert)
                             message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                             self.presentViewController(message, animated: true, completion: nil)
+                            cell.selected = false
                         }
                     }
                 }
