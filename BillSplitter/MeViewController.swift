@@ -12,6 +12,7 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
 
     
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
 
     let imagePicker = UIImagePickerController()
     @IBOutlet weak var avatar: UIImageView!
@@ -19,6 +20,7 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     override func viewDidLoad() {
         super.viewDidLoad()
         avatar.image = VariableManager.getAvatar()
+        emailLabel.text = VariableManager.getEmail()
         nameLabel.text = VariableManager.getName()
 
 

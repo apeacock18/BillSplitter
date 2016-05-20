@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MeViewController" customModule="BillSplitter" customModuleProvider="target">
             <connections>
                 <outlet property="avatar" destination="ML9-G6-b9b" id="aLl-9j-oNC"/>
+                <outlet property="emailLabel" destination="dhW-BY-9pH" id="p9f-S7-Zth"/>
                 <outlet property="nameLabel" destination="fIZ-BF-WHV" id="Qpp-nc-rVf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -30,21 +31,30 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="up0-ox-bif">
-                    <rect key="frame" x="25.5" y="168" width="99" height="30"/>
+                    <rect key="frame" x="26" y="168" width="99" height="30"/>
                     <state key="normal" title="Change Image"/>
                     <connections>
                         <action selector="avatarButton:" destination="-1" eventType="touchUpInside" id="aJO-gf-YGb"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhW-BY-9pH">
+                    <rect key="frame" x="20" y="270" width="560" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="up0-ox-bif" firstAttribute="centerX" secondItem="ML9-G6-b9b" secondAttribute="centerX" id="7Lb-bM-keZ"/>
                 <constraint firstItem="ML9-G6-b9b" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="CCp-q9-uLD"/>
+                <constraint firstAttribute="trailing" secondItem="dhW-BY-9pH" secondAttribute="trailing" constant="20" id="NyY-ug-4dQ"/>
                 <constraint firstAttribute="trailing" secondItem="fIZ-BF-WHV" secondAttribute="trailing" constant="30" id="Wcs-q2-e7s"/>
                 <constraint firstItem="up0-ox-bif" firstAttribute="top" secondItem="ML9-G6-b9b" secondAttribute="bottom" constant="8" id="c6d-mG-tNd"/>
+                <constraint firstItem="dhW-BY-9pH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="fjd-fd-tIn"/>
                 <constraint firstItem="ML9-G6-b9b" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="gQ0-hN-bwU"/>
                 <constraint firstItem="fIZ-BF-WHV" firstAttribute="centerY" secondItem="ML9-G6-b9b" secondAttribute="centerY" id="hZA-1b-Cgy"/>
+                <constraint firstItem="dhW-BY-9pH" firstAttribute="top" secondItem="up0-ox-bif" secondAttribute="bottom" constant="72" id="io1-w4-sTI"/>
             </constraints>
         </view>
     </objects>
