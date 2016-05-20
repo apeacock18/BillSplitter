@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
@@ -48,17 +48,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNz-Bq-l1N">
-                    <rect key="frame" x="50" y="357" width="57" height="30"/>
+                    <rect key="frame" x="272" y="375" width="57" height="30"/>
                     <state key="normal" title="Register"/>
                     <connections>
                         <action selector="register:" destination="-1" eventType="touchUpInside" id="gYE-Av-IB9"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uu5-el-gbr">
-                    <rect key="frame" x="497" y="357" width="53" height="30"/>
-                    <state key="normal" title="Forgot?"/>
-                    <connections>
-                        <action selector="forgot:" destination="-1" eventType="touchUpInside" id="wl5-8f-cG6"/>
                     </connections>
                 </button>
             </subviews>
@@ -67,20 +60,26 @@
                 <constraint firstItem="j6f-hg-sk9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="00T-pN-CS4"/>
                 <constraint firstItem="DZ2-Xo-eoq" firstAttribute="top" secondItem="Vuc-Jc-ZeG" secondAttribute="bottom" constant="40" id="756-iT-vOQ"/>
                 <constraint firstItem="7gJ-ZD-yOL" firstAttribute="top" secondItem="j6f-hg-sk9" secondAttribute="bottom" constant="70" id="GGQ-hq-tP8"/>
+                <constraint firstItem="dNz-Bq-l1N" firstAttribute="top" secondItem="DZ2-Xo-eoq" secondAttribute="bottom" constant="38" id="HRv-Vb-e8e"/>
                 <constraint firstAttribute="trailing" secondItem="j6f-hg-sk9" secondAttribute="trailing" id="K5Z-Yn-xE5"/>
                 <constraint firstItem="j6f-hg-sk9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OBS-Po-ucL"/>
                 <constraint firstAttribute="trailing" secondItem="7gJ-ZD-yOL" secondAttribute="trailing" constant="20" id="RJT-C7-bLv"/>
                 <constraint firstItem="Vuc-Jc-ZeG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="VtW-w8-aUJ"/>
                 <constraint firstAttribute="trailing" secondItem="DZ2-Xo-eoq" secondAttribute="trailing" id="WAT-8e-Cuk"/>
                 <constraint firstItem="DZ2-Xo-eoq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZDn-c0-mwR"/>
-                <constraint firstItem="Uu5-el-gbr" firstAttribute="top" secondItem="Vuc-Jc-ZeG" secondAttribute="bottom" constant="120" id="bYW-06-tOg"/>
                 <constraint firstItem="dNz-Bq-l1N" firstAttribute="top" secondItem="Vuc-Jc-ZeG" secondAttribute="bottom" constant="120" id="eDm-SR-k9u"/>
                 <constraint firstItem="dNz-Bq-l1N" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="nDp-eT-o9Q"/>
                 <constraint firstAttribute="trailing" secondItem="Vuc-Jc-ZeG" secondAttribute="trailing" constant="20" id="paE-Nb-rhQ"/>
                 <constraint firstItem="7gJ-ZD-yOL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="tNE-Z1-t2z"/>
                 <constraint firstItem="Vuc-Jc-ZeG" firstAttribute="top" secondItem="7gJ-ZD-yOL" secondAttribute="bottom" constant="30" id="x86-Wk-WAZ"/>
-                <constraint firstAttribute="trailing" secondItem="Uu5-el-gbr" secondAttribute="trailing" constant="50" id="zYH-4Z-1qQ"/>
+                <constraint firstItem="dNz-Bq-l1N" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="z92-Yj-GB6"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="eDm-SR-k9u"/>
+                    <exclude reference="nDp-eT-o9Q"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="358" y="394"/>
         </view>
     </objects>

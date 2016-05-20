@@ -81,30 +81,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func register(sender: UIButton) {
         self.presentViewController(CreateViewController(), animated: true, completion: nil)
     }
-
-
-    @IBAction func forgot(sender: UIButton) {
-        let query = PFQuery(className: "Groups")
-        query.whereKey("objectId", equalTo: "qw4DlW2bVY")
-        query.getFirstObjectInBackgroundWithBlock() {
-            (response: PFObject?, error: NSError?) -> Void in
-            if response != nil {
-                print(response?.objectForKey("status"))
-            }
-            if error != nil {
-                print(error)
-            }
-        }
-    }
-
-    /*
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
