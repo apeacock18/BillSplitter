@@ -159,6 +159,9 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
                                                         StorageManager.addUserToGroup(userId, groupId: groupId)
                                                         self.members.append(userId)
                                                         self.tableView.reloadData()
+                                                        let index = self.tableView.numberOfRowsInSection(0) - 1
+                                                        let indexPath = NSIndexPath(forRow: index, inSection: 0)
+                                                        self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: true)
                                                     }
                                                 }
                                             } else {
