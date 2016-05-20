@@ -13,6 +13,7 @@ class MemberCell: UITableViewCell {
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var amount: UILabel!
+    @IBOutlet weak var whoOwes: UILabel!
     
     
     override func awakeFromNib() {

@@ -66,6 +66,7 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
             let status = group!.getStatusById(VariableManager.getID())
             let amount: Double = status!.getAmountByRecipient(id)!
             if amount <= 0 {
+                cell.whoOwes.text = "They Owe:"
                 cell.amount.textColor = UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 1) // #27ae60
                 if amount == 0 {
                     cell.amount.text = String(NSString(format: "$%.2f", amount))
@@ -73,6 +74,7 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
                     cell.amount.text = String(NSString(format: "$%.2f", -amount))
                 }
             } else {
+                cell.whoOwes.text = "You Owe:"
                 cell.amount.textColor = UIColor.redColor()
                 cell.amount.text = String(NSString(format: "$%.2f", amount))
             }
