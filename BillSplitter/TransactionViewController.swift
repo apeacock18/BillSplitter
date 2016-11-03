@@ -52,7 +52,6 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
             formatter.dateFormat = "MM-dd-yyyy"
 
             let initDate = formatter.date(from: dateField.text!)
-            print(initDate!)
 
             let dateController = DatePickerViewController()
             dateController.delegate = self

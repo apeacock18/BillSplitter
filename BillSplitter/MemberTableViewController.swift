@@ -223,8 +223,6 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
         let text = textField.text!.replacingOccurrences(of: currencyFormatter.currencySymbol, with: "").replacingOccurrences(of: currencyFormatter.groupingSeparator, with: "").replacingOccurrences(of: currencyFormatter.decimalSeparator, with: "")
 
         textField.text = currencyFormatter.string(from: NSNumber(value: (text as NSString).doubleValue / 100.0))
-        print(currencyFormatter.currencyCode)
-        //currencyFormatter.s
     }
 
 }
