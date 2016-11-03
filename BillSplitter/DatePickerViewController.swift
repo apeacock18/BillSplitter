@@ -14,22 +14,22 @@ class DatePickerViewController: UIViewController {
 
     weak var delegate: DatePickerVCDelegate?
 
-    var initDate: NSDate?
+    var initDate: Date?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         if initDate != nil {
             datePicker.date = initDate!
         }
-        datePicker.maximumDate = NSDate()
+        datePicker.maximumDate = Date()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
-    @IBAction func ok(sender: UIButton) {
-        delegate?.datePicked(self, date: datePicker.date)
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func ok(_ sender: UIButton) {
+        delegate?.datePicked(sender: self, date: datePicker.date)
+        self.dismiss(animated: true, completion: nil)
     }
 }

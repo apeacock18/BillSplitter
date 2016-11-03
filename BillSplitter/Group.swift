@@ -38,7 +38,7 @@ class Group {
     }
 
     func orderStatuses() {
-        transactions.sortInPlace { $0.getDateInSeconds() > $1.getDateInSeconds() }
+        transactions.sort { $0.getDateInSeconds() > $1.getDateInSeconds() }
     }
 
     func reload(statuses: [Status], transactions: [Transaction]) {

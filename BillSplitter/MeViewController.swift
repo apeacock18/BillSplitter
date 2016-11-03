@@ -12,6 +12,7 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
 
     
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
 
     let imagePicker = UIImagePickerController()
     @IBOutlet weak var avatar: UIImageView!
@@ -19,6 +20,7 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     override func viewDidLoad() {
         super.viewDidLoad()
         avatar.image = VariableManager.getAvatar()
+        emailLabel.text = VariableManager.getEmail()
         nameLabel.text = VariableManager.getName()
 
 
@@ -30,22 +32,23 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func avatarButton(sender: UIButton) {
+    @IBAction func avatarButton(_ sender: UIButton) {
         imagePicker.allowsEditing = true
-        imagePicker.sourceType = .PhotoLibrary
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        imagePicker.sourceType = .photoLibrary
+        self.present(imagePicker, animated: true, completion: nil)
     }
 
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
             avatar.image = pickedImage
-            NetworkManager.sendAvatarToServer(pickedImage)
-            StorageManager.saveSelfAvatar(pickedImage)
+            NetworkManager.sendAvatarToServer(image: pickedImage)
+            StorageManager.saveSelfAvatar(image: pickedImage)
         }
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 
 }

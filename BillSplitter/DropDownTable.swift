@@ -19,50 +19,50 @@ class DropDownTable: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        delegate?.usersPicked(self, users: selectedMembers)
+        delegate?.usersPicked(sender: self, users: selectedMembers)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return members.count
     }
 
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let member = members[indexPath.row]
         let cellIdentifier = "DropDownCell"
-        tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! DropDownCell
-        cell.nameField.text = VariableManager.getUserById(member)!.name
+        tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DropDownCell
+        cell.nameField.text = VariableManager.getUserById(id: member)!.name
         cell.id = member
-        cell.selectionStyle = .None
+        cell.selectionStyle = .none
         if selectedMembers.contains(member) {
-            cell.accessoryType = .Checkmark
+            cell.accessoryType = .checkmark
         }
 
 
         return cell
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! DropDownCell
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! DropDownCell
 
-        if cell.selected {
-            cell.selected = false
-            if cell.accessoryType == .None {
-                cell.accessoryType = .Checkmark
+        if cell.isSelected {
+            cell.isSelected = false
+            if cell.accessoryType == .none {
+                cell.accessoryType = .checkmark
                 selectedMembers.append(cell.id)
             } else {
-                cell.accessoryType = .None
+                cell.accessoryType = .none
                 selectedMembers = selectedMembers.filter { $0 != cell.id}
             }
         }

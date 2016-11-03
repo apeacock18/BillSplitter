@@ -15,51 +15,51 @@ class NetworkManager {
 
     static var delegate: ReloadDelegate?
 
-    static func login(username: String, password: String, completion: (result: Bool) -> Void) {
-        PFCloud.callFunctionInBackground("login", withParameters: ["username":username, "password":password]) {
-            (response: AnyObject?, error: NSError?) -> Void in
+    static func login(username: String, password: String, completion: @escaping (Bool) -> ()) {
+        PFCloud.callFunction(inBackground: "login", withParameters: ["username":username, "password":password]) {
+            (response: Any?, error: Error?) -> Void in
             if error != nil {
-                debug(error)
-                completion(result: false)
+                debug(o: error)
+                completion(false)
             }
             if response != nil {
-                debug(response)
+                debug(o: response)
                 let userId = response as! String
-                VariableManager.setID(userId)
+                VariableManager.setID(id: userId)
 
                 let query = PFQuery(className: "Users").whereKey("objectId", equalTo: userId)
-                query.getFirstObjectInBackgroundWithBlock({
-                    (object: PFObject?, error: NSError?) -> Void in
+                query.getFirstObjectInBackground(block: {
+                    (object: PFObject?, error: Error?) -> Void in
                     if error == nil {
-                        VariableManager.setUsername(object!.valueForKey("username") as! String)
-                        VariableManager.setEmail(object!.valueForKey("email") as! String)
-                        VariableManager.setName(object!.valueForKey("name") as! String)
+                        VariableManager.setUsername(username: object!.value(forKey: "username") as! String)
+                        VariableManager.setEmail(email: object!.value(forKey: "email") as! String)
+                        VariableManager.setName(name: object!.value(forKey: "name") as! String)
                         //VariableManager.setPhoneNumber(object!.valueForKey("phoneNumber") as! String)
 
-                        let groups = object!.valueForKey("groups") as? Array<String>
-                        debug(groups)
+                        let groups = object!.value(forKey: "groups") as? Array<String>
+                        debug(o: groups)
 
 
-                        let imageFile = object!.valueForKey("avatar") as? PFFile
+                        let imageFile = object!.value(forKey: "avatar") as? PFFile
                         if imageFile != nil {
-                            imageFromData(imageFile!) {
+                            imageFromData(file: imageFile!) {
                                 (result: UIImage?) in
                                 if result != nil {
-                                    VariableManager.setAvatar(result!)
+                                    VariableManager.setAvatar(image: result!)
                                 }
                                 if groups != nil {
-                                    getGroupDataFromServer(groups!) {
+                                    getGroupDataFromServer(groups: groups!) {
                                         (result: Bool) in
-                                        completion(result: true)
+                                        completion(true)
                                     }
                                 }
                             }
                         } else {
-                            VariableManager.setAvatar(UIImage(named: "default")!)
+                            VariableManager.setAvatar(image: UIImage(named: "default")!)
                             if groups != nil {
-                                getGroupDataFromServer(groups!) {
+                                getGroupDataFromServer(groups: groups!) {
                                     (result: Bool) in
-                                    completion(result: true)
+                                    completion(true)
                                 }
                             }
                         }
@@ -70,15 +70,15 @@ class NetworkManager {
         }
     }
 
-    static func getGroupDataFromServer(groups: Array<String>, completion: (result: Bool) -> Void) {
-        var queries: Array<PFQuery> = []
+    static func getGroupDataFromServer(groups: Array<String>, completion: @escaping (Bool) -> ()) {
+        var queries: Array<PFQuery<PFObject>> = []
         for group in groups {
             queries.append(PFQuery(className: "Groups").whereKey("objectId", equalTo: group))
         }
         if queries.count > 0 {
-            let query = PFQuery.orQueryWithSubqueries(queries)
-            query.findObjectsInBackgroundWithBlock {
-                (results: [PFObject]?, error: NSError?) -> Void in
+            let query = PFQuery.orQuery(withSubqueries: queries)
+            query.findObjectsInBackground {
+                (results: [PFObject]?, error: Error?) -> Void in
                 if error == nil && results != nil {
                     var users: Set<String> = []
                     for result in results! {
@@ -98,58 +98,58 @@ class NetworkManager {
                             statuses: statusObjects,
                             transactions: transactionObjects
                         )
-                        VariableManager.addGroup(groupObj)
+                        VariableManager.addGroup(group: groupObj)
                         for member in members {
                             users.insert(member)
                         }
                     }
-                    var userQueries: Array<PFQuery> = []
+                    var userQueries: Array<PFQuery<PFObject>> = []
                     for userId in users {
                         userQueries.append(PFQuery(className: "Users").whereKey("objectId", equalTo: userId))
                     }
-                    let userQuery = PFQuery.orQueryWithSubqueries(userQueries)
+                    let userQuery = PFQuery.orQuery(withSubqueries: userQueries)
 
                     var usersWithAvatars: [String:PFFile?] = [:]
 
-                    userQuery.findObjectsInBackgroundWithBlock {
-                        (results: [PFObject]?, error: NSError?) -> Void in
+                    userQuery.findObjectsInBackground {
+                        (results: [PFObject]?, error: Error?) -> Void in
                         if error == nil && results != nil {
                             for result in results! {
                                 let userObj = User(id: result.objectId!, username: result["username"] as! String, name: result["name"] as! String)
-                                VariableManager.addUser(userObj)
-                                let imageFile = result.valueForKey("avatar") as? PFFile
+                                VariableManager.addUser(user: userObj)
+                                let imageFile = result.value(forKey: "avatar") as? PFFile
                                 if imageFile != nil {
                                     usersWithAvatars[result.objectId!] = imageFile
                                 }
                             }
                             StorageManager.saveGroupData()
-                            completion(result: true)
+                            completion(true)
                             for (id, file) in usersWithAvatars {
-                                imageFromData(file!) {
+                                imageFromData(file: file!) {
                                     (result: UIImage?) in
                                     if result != nil {
-                                        VariableManager.addAvatarToUser(id, avatar: result!)
+                                        VariableManager.addAvatarToUser(userId: id, avatar: result!)
                                     }
                                 }
                             }
                             delegate?.dataReloadNeeded()
                         } else {
-                            debug(error)
+                            debug(o: error)
                         }
                     }
                 } else {
-                    completion(result: false)
-                    debug("getGroupDataFromServer error:")
-                    debug(error)
+                    completion(false)
+                    debug(o: "getGroupDataFromServer error:")
+                    debug(o: error)
                 }
             }
         } else {
-            completion(result: true)
+            completion(true)
         }
     }
 
-    static func createNewUser(username: String, password: String, email: String, phoneNumber: String, name: String, completion: (result: Int) -> Void) {
-        PFCloud.callFunctionInBackground("create", withParameters: [
+    static func createNewUser(username: String, password: String, email: String, phoneNumber: String, name: String, completion: @escaping (Int) -> ()) {
+        PFCloud.callFunction(inBackground: "create", withParameters: [
             "username": username,
             "password": password,
             "email": email,
@@ -157,99 +157,100 @@ class NetworkManager {
             "name": name,
             "groups": []
         ]) {
-            (response: AnyObject?, error: NSError?) -> Void in
+            (response: Any?, error: Error?) -> Void in
             if response != nil {
-                debug("Create User Response: " + (response as! String))
-                VariableManager.setID(response as! String)
-                completion(result: 2)
+                debug(o: "Create User Response: " + (response as! String))
+                VariableManager.setID(id: response as! String)
+                completion(2)
             }
             if error != nil {
-                let errorCode: Int = error!.userInfo["error"] as! Int
+
+                let errorCode: Int = (error! as NSError).userInfo["error"] as! Int
                 /*
                  * Error Codes:
                  * 0: Unknown error
                  * 1: Username already taken
                  */
-                completion(result: errorCode)
-                debug("Create User Error: " + String(errorCode))
+                completion(errorCode)
+                debug(o: "Create User Error: " + String(errorCode))
             }
         }
     }
 
-    static func getUser(userId: String, completion: (result: User?) -> Void) {
+    static func getUser(userId: String, completion: @escaping (_ result: User?) -> Void) {
         let query = PFQuery(className: "Users")
         query.whereKey("objectId", equalTo: userId)
-        query.getFirstObjectInBackgroundWithBlock {
-            (result: PFObject?, error: NSError?) -> Void in
+        query.getFirstObjectInBackground {
+            (result: PFObject?, error: Error?) -> Void in
             if result != nil && error == nil {
                 let name = result!["name"] as! String
                 let username = result!["username"] as! String
                 let imageFile = result!["avatar"] as? PFFile
                 var user: User?
                 if imageFile != nil {
-                    imageFromData(imageFile!) {
+                    imageFromData(file: imageFile!) {
                         (result: UIImage?) in
                         if result != nil {
                             user = User(id: userId, username: username, name: name, avatar: result!)
                         } else {
                             user = User(id: userId, username: username, name: name)
                         }
-                        completion(result: user)
+                        completion(user)
                     }
                 } else {
                     user = User(id: userId, username: username, name: name)
-                    completion(result: user)
+                    completion(user)
                 }
             } else {
-                completion(result: nil)
+                completion(nil)
             }
         }
     }
 
-    static func createGroup(name: String, completion: (result: String?) -> Void) {
-        PFCloud.callFunctionInBackground("createGroup", withParameters: ["name": name]) {
-            (response: AnyObject?, error: NSError?) -> Void in
+    static func createGroup(name: String, completion: @escaping (_ result: String?) -> Void) {
+        PFCloud.callFunction(inBackground: "createGroup", withParameters: ["name": name]) {
+            (response: Any?, error: Error?) -> Void in
             if response != nil {
-                debug(response)
+                debug(o: response)
                 let groupId = response as! String
-                completion(result: groupId)
+                completion(groupId)
             }
             if error != nil {
-                debug(error)
-                completion(result: nil)
+                debug(o: error)
+                completion(nil)
             }
         }
     }
 
-    static func addUserToGroup(groupId: String, userId: String, completion: (result: Int) -> Void) {
-        PFCloud.callFunctionInBackground("addUserToGroup", withParameters: ["userId": userId, "groupId": groupId]) {
-            (response: AnyObject?, error: NSError?) -> Void in
+    static func addUserToGroup(groupId: String, userId: String, completion: @escaping (_ result: Int) -> Void) {
+        PFCloud.callFunction(inBackground: "addUserToGroup", withParameters: ["userId": userId, "groupId": groupId]) {
+            (response: Any?, error: Error?) -> Void in
             if response != nil {
-                completion(result: 0) // Success
+                completion(0) // Success
             }
             if error != nil {
-                debug(error)
-                let code = error!.userInfo["error"]
+                debug(o: error)
+                let code = (error! as NSError).userInfo["error"]
                 if code != nil {
                     if (code as? Int) == 2 {
-                        completion(result: 1)
+                        completion(1)
                         return
                     }
                 }
-                completion(result: 2) // Error
+                completion(2) // Error
             }
         }
     }
 
-    static func refreshStatus(groupId: String, completion: () -> Void) {
-        let group = VariableManager.getGroup(groupId)
+    static func refreshStatus(groupId: String, completion: @escaping () -> Void) {
+        let group = VariableManager.getGroup(groupId: groupId)
         let query = PFQuery(className: "Groups")
         query.whereKey("objectId", equalTo: groupId)
-        query.getFirstObjectInBackgroundWithBlock {
-            (result: PFObject?, error: NSError?) -> Void in
+        query.getFirstObjectInBackground {
+            (result: PFObject?, error: Error?) -> Void in
             if result != nil {
-                let statusArray: [String] = result!.objectForKey("status") as! [String]
-                let transactionArray: [String] = result!.objectForKey("transactions") as! [String]
+                let statusArray: [String] = result!.object(forKey: "status") as! [String]
+                let transactionArray: [String] = result!.object(forKey: "transactions") as! [String]
                 var statuses: [Status] = []
                 var transactions: [Transaction] = []
                 for json in statusArray {
@@ -258,42 +259,42 @@ class NetworkManager {
                 for json in transactionArray {
                     transactions.append(Transaction(json: json)!)
                 }
-                group!.reload(statuses, transactions: transactions)
+                group!.reload(statuses: statuses, transactions: transactions)
                 completion()
             } else {
-                debug(error)
+                debug(o: error)
             }
         }
     }
 
-    static func removeUserFromGroup(groupId: String, userId: String, completion: (result: Bool) -> Void) {
-        PFCloud.callFunctionInBackground("removeUserFromGroup", withParameters: ["userId": userId, "groupId": groupId]) {
-            (response: AnyObject?, error: NSError?) -> Void in
+    static func removeUserFromGroup(groupId: String, userId: String, completion: @escaping (_ result: Bool) -> Void) {
+        PFCloud.callFunction(inBackground: "removeUserFromGroup", withParameters: ["userId": userId, "groupId": groupId]) {
+            (response: Any?, error: Error?) -> Void in
             if response != nil {
-                debug(response)
-                completion(result: true)
+                debug(o: response)
+                completion(true)
             }
             if error != nil {
-                debug(error)
-                completion(result: false)
+                debug(o: error)
+                completion(false)
             }
         }
     }
 
-    static func userExists(username: String, completion: (result: String?) -> Void) {
-        PFCloud.callFunctionInBackground("userIdFromUsername", withParameters: ["username": username]) {
-            (response: AnyObject?, error: NSError?) -> Void in
+    static func userExists(username: String, completion: @escaping (_ result: String?) -> Void) {
+        PFCloud.callFunction(inBackground: "userIdFromUsername", withParameters: ["username": username]) {
+            (response: Any?, error: Error?) -> Void in
             if error != nil {
-                debug(error)
-                completion(result: nil)
+                debug(o: error)
+                completion(nil)
             }
             if response != nil {
-                completion(result: response as? String)
+                completion(response as? String)
             }
         }
     }
 
-    static func newTransaction(groupId: String, payee: String, amount: Double, description: String, date: String, users: [String], completion: (result: Bool) -> Void) {
+    static func newTransaction(groupId: String, payee: String, amount: Double, description: String, date: String, users: [String], completion: @escaping (_ result: Bool) -> Void) {
         var allUsers = users
         allUsers.append(VariableManager.getID())
 
@@ -302,7 +303,7 @@ class NetworkManager {
             split[user] = 1 / Double(allUsers.count)
         }
 
-        PFCloud.callFunctionInBackground("newTransaction", withParameters: [
+        PFCloud.callFunction(inBackground: "newTransaction", withParameters: [
             "groupId": groupId,
             "payee": payee,
             "amount": amount,
@@ -310,31 +311,31 @@ class NetworkManager {
             "date": date,
             "split": split
         ]) {
-            (response: AnyObject?, error: NSError?) -> Void in
+            (response: Any?, error: Error?) -> Void in
             if response != nil && error == nil {
-                completion(result: true)
-                debug(response)
+                completion(true)
+                debug(o: response)
             } else {
-                completion(result: false)
-                debug(error)
+                completion(false)
+                debug(o: error)
             }
         }
     }
 
-    static func payBack(groupId: String, payFrom: String, payTo: String, amount: Double, completion: (result: Bool) -> Void) {
-        PFCloud.callFunctionInBackground("payBack", withParameters: [
+    static func payBack(groupId: String, payFrom: String, payTo: String, amount: Double, completion: @escaping (Bool) -> ()) {
+        PFCloud.callFunction(inBackground: "payBack", withParameters: [
             "groupId": groupId,
             "payFrom": payFrom,
             "payTo": payTo,
             "amount": amount
         ]) {
-            (response: AnyObject?, error: NSError?) -> Void in
+            (response: Any?, error: Error?) -> Void in
             if response != nil && error == nil {
-                debug(response)
-                completion(result: true)
+                debug(o: response)
+                completion(true)
             } else {
-                debug(error)
-                completion(result: false)
+                debug(o: error)
+                completion(false)
             }
         }
     }
@@ -352,16 +353,21 @@ class NetworkManager {
         user.saveInBackground()
     }
 
-    static func imageFromData(file: PFFile, completion: (result: UIImage?) -> Void) {
-        file.getDataInBackgroundWithBlock({
-            (imageData: NSData?, error: NSError?) -> Void in
+
+    static func dothis(completion: (_ result: Bool) -> Void)  {
+
+    }
+
+    static func imageFromData(file: PFFile, completion:@escaping (UIImage?) -> ()) {
+        file.getDataInBackground(block: {
+            (imageData: Data?, error: Error?) -> Void in
             if error == nil {
-                completion(result: UIImage(data: imageData!))
+                completion(UIImage(data: imageData!))
             }
         })
     }
 
-    static func debug(o: AnyObject?) {
+    static func debug(o: Any?) {
         if verbose {
             if o != nil {
                 print(o!)

@@ -17,9 +17,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        username.autocorrectionType = UITextAutocorrectionType.No
+        username.autocorrectionType = UITextAutocorrectionType.no
         username.delegate = self
-        password.autocorrectionType = UITextAutocorrectionType.No
+        password.autocorrectionType = UITextAutocorrectionType.no
         password.delegate = self
         //Root View
 
@@ -32,79 +32,69 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-
-    @IBAction func login(sender: UIButton) {
-        login()
-    }
-
     func login() {
         self.dismissKeyboard()
         if username.text!.characters.count == 0 {
-            let message = UIAlertController(title: "Username not entered", message: "Please enter your username.", preferredStyle: UIAlertControllerStyle.Alert)
-            message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(message, animated: true, completion: nil)
+            let message = UIAlertController(title: "Username not entered", message: "Please enter your username.", preferredStyle: UIAlertControllerStyle.alert)
+            message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(message, animated: true, completion: nil)
             return
         }
         if password.text!.characters.count == 0 {
-            let message = UIAlertController(title: "Password not entered", message: "Please enter your password.", preferredStyle: UIAlertControllerStyle.Alert)
-            message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(message, animated: true, completion: nil)
+            let message = UIAlertController(title: "Password not entered", message: "Please enter your password.", preferredStyle: UIAlertControllerStyle.alert)
+            message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(message, animated: true, completion: nil)
             return
         }
 
         // Start loading screen
         let sv = SpinnerView()
         self.view.addSubview(sv.view)
-        let name: String = username.text!.lowercaseString
-        NetworkManager.login(name, password: password.text!.lowercaseString.hashWithSalt(name)) {
+        let name: String = username.text!.lowercased()
+        NetworkManager.login(username: name, password: password.text!.lowercased().hashWithSalt(salt: name)) {
             (result: Bool) in
             sv.view.removeFromSuperview() // Remove loading screen
             if result {
-                let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                let delegate = UIApplication.shared.delegate as! AppDelegate
                 delegate.tabViewController = TabViewController()
-                self.presentViewController(delegate.tabViewController!, animated: true, completion: nil)
+                self.present(delegate.tabViewController!, animated: true, completion: nil)
             } else {
-                let message = UIAlertController(title: "Username/Password Incorrect", message: "Please try again.", preferredStyle: UIAlertControllerStyle.Alert)
-                message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(message, animated: true, completion: nil)
+                let message = UIAlertController(title: "Username/Password Incorrect", message: "Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+                message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.default, handler: nil))
+                self.present(message, animated: true, completion: nil)
             }
         }
     }
 
-    func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
+    @IBAction func login(_ sender: UIButton) {
+        login()
+    }
+
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {  //delegate method
         username.resignFirstResponder()
         login()
         return true
     }
 
 
-    @IBAction func register(sender: UIButton) {
-        self.presentViewController(CreateViewController(), animated: true, completion: nil)
+    @IBAction func register(_ sender: UIButton) {
+        self.present(CreateViewController(), animated: true, completion: nil)
     }
 
 
-    @IBAction func forgot(sender: UIButton) {
+    @IBAction func forgot(_ sender: UIButton) {
         let query = PFQuery(className: "Groups")
         query.whereKey("objectId", equalTo: "qw4DlW2bVY")
-        query.getFirstObjectInBackgroundWithBlock() {
-            (response: PFObject?, error: NSError?) -> Void in
+        query.getFirstObjectInBackground() {
+            (response: PFObject?, error: Error?) -> Void in
             if response != nil {
-                print(response?.objectForKey("status"))
+                print(response!.object(forKey: "status")!)
             }
             if error != nil {
-                print(error)
+                print(error!)
             }
         }
     }
-
-    /*
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

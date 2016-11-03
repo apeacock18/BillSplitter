@@ -19,9 +19,9 @@ class Status {
     }
 
     init?(json: String) {
-        let data: NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
+        let data: Data = json.data(using: String.Encoding.utf8)!
         do {
-            let jsonObject = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+            let jsonObject = try JSONSerialization.jsonObject(with: data as Data, options: []) as! [String: Any]
             self.id = jsonObject["id"] as! String
             self.data = jsonObject["data"] as! [[String: AnyObject]]
         } catch {
@@ -40,11 +40,11 @@ class Status {
 
     func toString() -> String? {
         let jsonObject: [String: AnyObject] = [
-            "id": self.id,
-            "data": self.data
+            "id": self.id as AnyObject,
+            "data": self.data as AnyObject
         ]
         do {
-            return String(try NSJSONSerialization.dataWithJSONObject(jsonObject, options: []))
+            return String(describing: try JSONSerialization.data(withJSONObject: jsonObject, options: []))
         } catch {
             return nil
         }

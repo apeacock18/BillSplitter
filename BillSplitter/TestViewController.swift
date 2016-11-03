@@ -20,10 +20,10 @@ class TestViewController: UIViewController {
     }
 
     func readData() -> String {
-        let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        if let data = defaults.objectForKey("selfData") as? NSData {
+        let defaults: UserDefaults = UserDefaults.standard
+        if let data = defaults.object(forKey: "selfData") as? NSData {
 
-            let dict = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [String:String]
+            let dict = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as! [String:String]
             return dict["fName"]!+" "+dict["lName"]!+" "+dict["username"]!+" "+dict["email"]!
         } else {
             return "nil"

@@ -27,9 +27,9 @@ class Transaction {
 
     init?(json: String) {
 
-        let data: NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
+        let data: Data = json.data(using: String.Encoding.utf8)!
         do {
-            let jsonObject = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+            let jsonObject = try JSONSerialization.jsonObject(with: data as Data, options: []) as! [String: Any?]
             self.payee = jsonObject["payee"] as! String
             self.split = jsonObject["split"] as! [String:Double]
             self.amount = jsonObject["amount"] as! Double
@@ -41,26 +41,30 @@ class Transaction {
     }
 
     func getShare(id: String) -> Double {
-        return amount * split[id]!
+        if let splitPercentage = split[id] {
+            return amount * splitPercentage
+        } else {
+            return 0.0
+        }
     }
 
     func getDateInSeconds() -> Double {
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "MM-dd-yyyy"
-        return formatter.dateFromString(date)!.timeIntervalSince1970
+        return formatter.date(from: date)!.timeIntervalSince1970
     }
 
 
     func toString() -> String? {
         let jsonObject: [String: AnyObject] = [
-            "payee": self.payee,
-            "split": self.split,
-            "amount": self.amount,
-            "description": self.desc,
-            "date": self.date
+            "payee": self.payee as AnyObject,
+            "split": self.split as AnyObject,
+            "amount": self.amount as AnyObject,
+            "description": self.desc as AnyObject,
+            "date": self.date as AnyObject
         ]
         do {
-            return String(try NSJSONSerialization.dataWithJSONObject(jsonObject, options: []))
+            return String(describing: try JSONSerialization.data(withJSONObject: jsonObject, options: []))
         } catch {
             return nil
         }

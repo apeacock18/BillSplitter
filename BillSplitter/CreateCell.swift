@@ -20,34 +20,34 @@ class CreateCell: UITableViewCell {
         super.awakeFromNib()
 
         let newTransactionlayerL: CALayer = CALayer()
-        newTransactionlayerL.frame = CGRectMake(-7.0, 0.0, 2.0, newTransactionButton.layer.frame.height)
-        newTransactionlayerL.backgroundColor = UIColor.grayColor().CGColor
+        newTransactionlayerL.frame = CGRect(x: -7.0, y: 0.0, width: 2.0, height: newTransactionButton.layer.frame.height)
+        newTransactionlayerL.backgroundColor = UIColor.gray.cgColor
         newTransactionButton.layer.addSublayer(newTransactionlayerL)
         let newTransactionlayerR: CALayer = CALayer()
-        newTransactionlayerR.frame = CGRectMake(newTransactionButton.layer.frame.width + 7.0, 0.0, 2.0, newTransactionButton.layer.frame.height)
-        newTransactionlayerR.backgroundColor = UIColor.grayColor().CGColor
+        newTransactionlayerR.frame = CGRect(x: newTransactionButton.layer.frame.width + 7.0, y: 0.0, width: 2.0, height: newTransactionButton.layer.frame.height)
+        newTransactionlayerR.backgroundColor = UIColor.gray.cgColor
         newTransactionButton.layer.addSublayer(newTransactionlayerR)
 
-        addMember.addTarget(self, action: #selector(CreateCell.add), forControlEvents: .TouchUpInside)
-        newTransactionButton.addTarget(self, action: #selector(CreateCell.newTransaction), forControlEvents: .TouchUpInside)
-        historyButton.addTarget(self, action: #selector(CreateCell.history), forControlEvents: .TouchUpInside)
+        addMember.addTarget(self, action: #selector(CreateCell.add), for: .touchUpInside)
+        newTransactionButton.addTarget(self, action: #selector(CreateCell.newTransaction), for: .touchUpInside)
+        historyButton.addTarget(self, action: #selector(CreateCell.history), for: .touchUpInside)
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
 
     func add() {
-        delegate?.buttonPressed(0)
+        delegate?.buttonPressed(index: 0)
     }
 
     func newTransaction() {
-        delegate?.buttonPressed(1)
+        delegate?.buttonPressed(index: 1)
     }
 
     func history() {
-        delegate?.buttonPressed(2)
+        delegate?.buttonPressed(index: 2)
     }
 }

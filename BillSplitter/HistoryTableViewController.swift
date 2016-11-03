@@ -26,25 +26,25 @@ class HistoryTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transactions.count
     }
 
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "HistoryCell"
-        tableView.registerNib(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! HistoryCell
+        tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath as IndexPath) as! HistoryCell
         let transaction = transactions[indexPath.row]
-        cell.payee.text = VariableManager.getUserById(transaction.payee)!.name
+        cell.payee.text = VariableManager.getUserById(id: transaction.payee)!.name
         cell.desc.text = transaction.desc
         cell.date.text = transaction.date
         cell.total.text = String(NSString(format: "$%.2f", transaction.amount))
-        cell.share.text = String(NSString(format: "$%.2f", transaction.getShare(VariableManager.getID())))
+        cell.share.text = String(NSString(format: "$%.2f", transaction.getShare(id: VariableManager.getID())))
         cell.split.text = "Split between \(transaction.split.count) members"
 
         return cell

@@ -14,24 +14,25 @@ class StorageManager {
 
 
     static func createGroup(id: String, name: String) {
-        if NSUserDefaults.standardUserDefaults().objectForKey("groups") != nil {
-            var groupData: [String:AnyObject] = NSUserDefaults.standardUserDefaults().objectForKey("groups") as! [String:AnyObject]
+        if UserDefaults.standard.object(forKey: "groups") != nil {
+            var groupData: [String:Any] = UserDefaults.standard.object(forKey: "groups") as! [String:Any]
             groupData[id] = ["name": name, "members": []]
-            NSUserDefaults.standardUserDefaults().setObject(groupData, forKey: "groups")
+            UserDefaults.standard.set(groupData, forKey: "groups")
 
         } else {
-            let groupData: [String: AnyObject] = [id: ["name": name, "members": []]]
-            NSUserDefaults.standardUserDefaults().setObject(groupData, forKey: "groups")
+            let groupData: [String: Any] = [id: ["name": name, "members": []]]
+            UserDefaults.standard.set(groupData, forKey: "groups")
         }
-        NSUserDefaults.standardUserDefaults().synchronize()
+        UserDefaults.standard.synchronize()
     }
 
 
     /*
      * This function adds a user to the specified group.
      */
+    @discardableResult
     static func addUserToGroup(id: String, groupId: String) -> Bool {
-        var groupData: [String:AnyObject] = NSUserDefaults.standardUserDefaults().objectForKey("groups") as! [String:AnyObject]
+        var groupData: [String:AnyObject] = UserDefaults.standard.object(forKey: "groups") as! [String:AnyObject]
         var group: [String:AnyObject] = groupData[groupId] as! [String:AnyObject]
         var currentUsers: [String] = group["members"] as! [String]
 
@@ -44,10 +45,10 @@ class StorageManager {
         }
 
         currentUsers.append(id)
-        group["members"] = currentUsers
-        groupData[groupId] = group
-        NSUserDefaults.standardUserDefaults().setObject(groupData, forKey: "groups")
-        NSUserDefaults.standardUserDefaults().synchronize()
+        group["members"] = currentUsers as AnyObject?
+        groupData[groupId] = group as AnyObject?
+        UserDefaults.standard.set(groupData, forKey: "groups")
+        UserDefaults.standard.synchronize()
         return true
     }
 
@@ -55,8 +56,8 @@ class StorageManager {
      * This function removes a user from the specified group.
      */
     static func removeUserFromGroup(id: String, groupId: String) -> Bool {
-        var groupData: [String:AnyObject] = NSUserDefaults.standardUserDefaults().objectForKey("groups") as! [String:AnyObject]
-        var group: [String:AnyObject] = groupData[groupId] as! [String:AnyObject]
+        var groupData: [String:AnyObject] = UserDefaults.standard.object(forKey: "groups") as! [String:AnyObject]
+        var group: [String:Any] = groupData[groupId] as! [String:Any]
         let currentUsers: [String] = group["members"] as! [String]
 
         //let currentUsers: [String] = NSUserDefaults.standardUserDefaults().objectForKey("groups")[groupId]["members"] as! [String]
@@ -66,9 +67,9 @@ class StorageManager {
         }
 
         group["members"] = currentUsers.filter() {$0 != id}
-        groupData[groupId] = group
-        NSUserDefaults.standardUserDefaults().setObject(groupData, forKey: "groups")
-        NSUserDefaults.standardUserDefaults().synchronize()
+        groupData[groupId] = group as AnyObject?
+        UserDefaults.standard.set(groupData, forKey: "groups")
+        UserDefaults.standard.synchronize()
         return true
     }
 
@@ -80,13 +81,13 @@ class StorageManager {
         var data: [String: AnyObject] = [:]
         for group in VariableManager.getGroups() {
             let groupData: [String: AnyObject] = [
-                "name": group.getName(),
-                "members": group.getMembers()
+                "name": group.getName() as AnyObject,
+                "members": group.getMembers() as AnyObject
             ]
-            data[group.getID()] = groupData
+            data[group.getID()] = groupData as AnyObject?
         }
-        NSUserDefaults.standardUserDefaults().setObject(data, forKey: "groups")
-        NSUserDefaults.standardUserDefaults().synchronize()
+        UserDefaults.standard.set(data, forKey: "groups")
+        UserDefaults.standard.synchronize()
     }
 
 
@@ -96,42 +97,44 @@ class StorageManager {
      */
 
     static func recallSelfData() {
-        if let data: [String: String] = NSUserDefaults.standardUserDefaults().objectForKey("selfData") as? [String: String] {
-            VariableManager.setID(data["id"]!)
-            VariableManager.setEmail(data["email"]!)
-            VariableManager.setName(data["name"]!)
-            VariableManager.setPhoneNumber(data["phoneNumber"]!)
+        if let data: [String: String] = UserDefaults.standard.object(forKey: "selfData") as? [String: String] {
+            VariableManager.setID(id: data["id"]!)
+            VariableManager.setEmail(email: data["email"]!)
+            VariableManager.setName(name: data["name"]!)
+            VariableManager.setPhoneNumber(phoneNumber: data["phoneNumber"]!)
             getAvatar()
         }
     }
 
     static func saveSelfData() {
         let data: [String: AnyObject] = [
-            "id":VariableManager.getID(),
-            "email": VariableManager.getEmail(),
-            "name": VariableManager.getName(),
-            "phoneNumber": VariableManager.getPhoneNumber()
+            "id":VariableManager.getID() as AnyObject,
+            "email": VariableManager.getEmail() as AnyObject,
+            "name": VariableManager.getName() as AnyObject,
+            "phoneNumber": VariableManager.getPhoneNumber() as AnyObject
         ]
-        NSUserDefaults.standardUserDefaults().setObject(data, forKey: "selfData")
-        NSUserDefaults.standardUserDefaults().synchronize()
+        UserDefaults.standard.set(data, forKey: "selfData")
+        UserDefaults.standard.synchronize()
     }
 
 
+    @discardableResult
     static func getAvatar() -> UIImage? {
-        var currentImage = NSUserDefaults.standardUserDefaults().objectForKey("selfAvatar") as? UIImage
+        var currentImage = UserDefaults.standard.object(forKey: "selfAvatar") as? UIImage
         if currentImage == nil {
             currentImage = UIImage(named: "default")!
         }
         return currentImage
     }
 
+    @discardableResult
     static func saveSelfAvatar(image: UIImage) -> Bool {
-        let currentImage = NSUserDefaults.standardUserDefaults().objectForKey("selfAvatar") as? UIImage
+        let currentImage = UserDefaults.standard.object(forKey: "selfAvatar") as? UIImage
         if currentImage == nil {
             return false
         }
-        NSUserDefaults.standardUserDefaults().setObject(image, forKey: "selfAvatar")
-        NSUserDefaults.standardUserDefaults().synchronize()
+        UserDefaults.standard.set(image, forKey: "selfAvatar")
+        UserDefaults.standard.synchronize()
         return true
     }
 

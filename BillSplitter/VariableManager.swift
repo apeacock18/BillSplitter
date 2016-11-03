@@ -106,7 +106,7 @@ class VariableManager {
     static func addUserToGroup(userId: String, groupId: String) {
         for group in groups {
             if group.getID() == groupId {
-                group.addMember(userId)
+                group.addMember(userId: userId)
             }
         }
     }
@@ -114,7 +114,7 @@ class VariableManager {
     static func addAvatarToUser(userId: String, avatar: UIImage) {
         for user in users {
             if user.id == userId {
-                user.setAvatar(avatar)
+                user.setAvatar(image: avatar)
             }
         }
     }

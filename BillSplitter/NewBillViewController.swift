@@ -25,14 +25,14 @@ class NewBillViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func cancel(sender: UIButton) {
-        self.navigationController?.popToViewController(LoginViewController(), animated: true)
+    @IBAction func cancel(_ sender: UIButton) {
+        _ = self.navigationController?.popToViewController(LoginViewController(), animated: true)
     }
 
-    @IBAction func add(sender: UIButton) {
+    @IBAction func add(_ sender: UIButton) {
     }
 
-    @IBAction func datepicked(sender: UIDatePicker) {
+    @IBAction func datepicked(_ sender: UIDatePicker) {
     }
     
 }
