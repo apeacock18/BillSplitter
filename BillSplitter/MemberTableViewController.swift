@@ -160,7 +160,6 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
                                                     if result != nil {
                                                         VariableManager.addUser(user: result!)
                                                         VariableManager.addUserToGroup(userId: userId, groupId: groupId)
-                                                        StorageManager.addUserToGroup(id: userId, groupId: groupId)
                                                         self.members.append(userId)
                                                         self.tableView.reloadData()
                                                         let index = self.tableView.numberOfRows(inSection: 0) - 1
@@ -170,7 +169,6 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
                                                 }
                                             } else {
                                                 VariableManager.addUserToGroup(userId: userId, groupId: groupId)
-                                                StorageManager.addUserToGroup(id: userId, groupId: groupId)
                                                 self.members.append(userId)
                                                 self.tableView.reloadData()
                                             }

@@ -129,7 +129,7 @@ class NetworkManager {
                                                             getAvatarFromServer(userId: user) {
                                                                 (image) -> Void in
                                                                 if image != nil {
-                                                                    VariableManager.addAvatarToUser(userId: userId, avatar: image!)
+                                                                VariableManager.addAvatarToUser(userId: user, avatar: image!)
                                                                 }
                                                             }
                                                         }
@@ -171,36 +171,6 @@ class NetworkManager {
                     VariableManager.setToken(token: data["token"] as! String)
                     completion(0)
                 }
-            }
-        }
-    }
-
-    static func getUser_(userId: String, completion: @escaping (_ result: User?) -> Void) {
-        let query = PFQuery(className: "Users")
-        query.whereKey("objectId", equalTo: userId)
-        query.getFirstObjectInBackground {
-            (result: PFObject?, error: Error?) -> Void in
-            if result != nil && error == nil {
-                let name = result!["name"] as! String
-                let username = result!["username"] as! String
-                let imageFile = result!["avatar"] as? PFFile
-                var user: User?
-                if imageFile != nil {
-                    /*imageFromData(file: imageFile!) {
-                     (result: UIImage?) in
-                     if result != nil {
-                     user = User(id: userId, username: username, name: name, avatar: result!)
-                     } else {
-                     user = User(id: userId, username: username, name: name)
-                     }
-                     completion(user)
-                     }*/
-                } else {
-                    user = User(id: userId, username: username, name: name)
-                    completion(user)
-                }
-            } else {
-                completion(nil)
             }
         }
     }
@@ -379,7 +349,7 @@ class NetworkManager {
                                            "split": String(data: jsonSplit, encoding: .utf8)!,
                                            "date": date]
 
-            runRequest(urlFrag: "", params: params) {
+            runRequest(urlFrag: "transaction/new/", params: params) {
                 (data, error) -> Void in
                 if data != nil && error == nil {
                     completion(true)
@@ -465,6 +435,8 @@ class NetworkManager {
             if let data = data, let dataString = String(data: data, encoding: String.Encoding.utf8) {
                 if urlFrag != "person/avatar/" {
                     debug(o: urlFrag + ": " + dataString)
+                } else {
+                    debug(o: urlFrag)
                 }
                 completion(dataString, error)
             } else {

@@ -42,7 +42,6 @@ class MeViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
             avatar.image = pickedImage
             NetworkManager.sendAvatarToServer(image: pickedImage)
-            StorageManager.saveSelfAvatar(image: pickedImage)
         }
         dismiss(animated: true, completion: nil)
     }

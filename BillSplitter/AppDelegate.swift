@@ -31,11 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window!.rootViewController = loginViewController
         self.window!.makeKeyAndVisible()
-
-        /* TODO: These should be used when local storage is used instead of getting all information from the server.
-         StorageManager.recallSelfData()
-         StorageManager.recallGroupData()
-         */
         
         return true
     }

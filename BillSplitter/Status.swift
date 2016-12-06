@@ -35,7 +35,6 @@ class Status {
     }
 
     func getAmountByRecipient(userId: String) -> Double? {
-        print(data)
         for object in data {
             if (String(object["recipient"] as! Int)) == userId {
                 return object["amount"] as? Double

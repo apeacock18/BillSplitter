@@ -132,8 +132,6 @@ class GroupTableViewController: UITableViewController {
                                     VariableManager.addGroup(group: Group(id: groupId, name: text!, members: [VariableManager.getID()]))
                                     NetworkManager.refreshStatus(groupId: groupId) {
                                         () in
-                                        StorageManager.createGroup(id: groupId, name: text!)
-                                        StorageManager.addUserToGroup(id: VariableManager.getID(), groupId: groupId)
                                         self.reload()
                                         let index = self.tableView.numberOfRows(inSection: 0) - 1
                                         let indexPath = IndexPath(row: index, section: 0)

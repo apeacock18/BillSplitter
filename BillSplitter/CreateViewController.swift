@@ -108,7 +108,6 @@ class CreateViewController: UIViewController, UITextFieldDelegate {
                 VariableManager.setUsername(username: self.username.text!.lowercased())
                 VariableManager.setPhoneNumber(phoneNumber: "".lowercased()); // TODO: Add phone number field
                 VariableManager.setAvatar(image: UIImage(named: "default")!)
-                StorageManager.saveSelfData()
 
                 OperationQueue.main.addOperation {
                     self.present(TabViewController(), animated: true, completion: nil)
