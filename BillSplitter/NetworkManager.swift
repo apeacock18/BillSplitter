@@ -25,7 +25,7 @@ class NetworkManager {
             if data != nil {
                 debug(o: data)
                 if let response = data!.jsonToDictionary() {
-                    if let error = response["Error"] {
+                    if let _ = response["Error"] {
                         completion(false)
                     } else {
                         let userId = String(response["id"] as! Int)
@@ -50,7 +50,7 @@ class NetworkManager {
                             }
                             if data != nil {
                                 if let response = data!.jsonToDictionary() {
-                                    if let error = response["Error"] {
+                                    if let _ = response["Error"] {
                                         // TODO?
                                     }
                                     completion(false)
@@ -109,7 +109,7 @@ class NetworkManager {
                                                 if data != nil {
                                                     debug(o: data)
                                                     if let response = data!.jsonToDictionary() {
-                                                        if let error = response["Error"] {
+                                                        if let _ = response["Error"] {
                                                             // TODO?
                                                         }
                                                         completion(false)
@@ -215,7 +215,7 @@ class NetworkManager {
                 completion(nil)
             } else {
                 let data = response!.jsonToDictionary()!
-                if let error = data["Error"] {
+                if let _ = data["Error"] {
                 } else {
                     let id = data["id"] as! Int
                     completion(String(id))
@@ -251,7 +251,7 @@ class NetworkManager {
                 completion()
             } else {
                 let data = response!.jsonToDictionary()!
-                if let error = data["Error"] {
+                if let _ = data["Error"] {
                     completion()
                 } else {
                     let statusStrings = data["status"] as! [[String: AnyObject]]
@@ -265,7 +265,7 @@ class NetworkManager {
                             completion()
                         } else {
                             let data = response!.jsonToDictionary()!
-                            if let error = data["Error"] {
+                            if let _ = data["Error"] {
                                 completion()
                             } else {
                                 let transactionStrings: [[String:Any]] = data["transactions"] as! [[String:Any]]
@@ -297,7 +297,7 @@ class NetworkManager {
                 completion(false)
             } else {
                 let data = response!.jsonToDictionary()!
-                if let error = data["Error"] {
+                if let _ = data["Error"] {
                     completion(false)
                 } else {
                     if let result = data["Result"] {
@@ -318,7 +318,7 @@ class NetworkManager {
                 completion(nil)
             } else {
                 let data = response!.jsonToDictionary()!
-                if let error = data["Error"] {
+                if let _ = data["Error"] {
                     completion(nil)
                 } else {
                     let id = data["id"] as! Int
@@ -368,7 +368,7 @@ class NetworkManager {
                 completion(false)
             } else {
                 let data = response!.jsonToDictionary()!
-                if let error = data["Error"] {
+                if let _ = data["Error"] {
                     completion(false)
                 } else {
                     completion(true)
