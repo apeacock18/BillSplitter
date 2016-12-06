@@ -23,7 +23,6 @@ class NetworkManager {
                 completion(false)
             }
             if data != nil {
-                debug(o: data)
                 if let response = data!.jsonToDictionary() {
                     if let _ = response["Error"] {
                         completion(false)
@@ -107,7 +106,6 @@ class NetworkManager {
                                                     completion(false)
                                                 }
                                                 if data != nil {
-                                                    debug(o: data)
                                                     if let response = data!.jsonToDictionary() {
                                                         if let _ = response["Error"] {
                                                             // TODO?
@@ -177,7 +175,7 @@ class NetworkManager {
         }
     }
 
-    static func getUser(userId: String, completion: @escaping (_ result: User?) -> Void) {
+    static func getUser_(userId: String, completion: @escaping (_ result: User?) -> Void) {
         let query = PFQuery(className: "Users")
         query.whereKey("objectId", equalTo: userId)
         query.getFirstObjectInBackground {
@@ -204,6 +202,39 @@ class NetworkManager {
             } else {
                 completion(nil)
             }
+        }
+    }
+
+    static func getUser(userId: String, completion: @escaping (_ result: User?) -> Void) {
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: [userId], options: [])
+            let json = String(data: jsonData, encoding: .utf8)!
+            runRequest(urlFrag: "person/info/", params: ["token": VariableManager.getToken(), "userIds": json]) {
+                (response, error) -> Void in
+                if error != nil {
+                    completion(nil)
+                }
+                if response != nil {
+                    if let data = response!.jsonToDictionary() {
+                        if let _ = data["Error"] {
+                            // TODO?
+                        }
+                        completion(nil)
+                    } else if let data = response!.jsonToArray() {
+                        let person = (data as! [[String:Any]])[0]
+                        let username = person["username"] as! String
+                        let first_name = person["first_name"] as! String
+                        let last_name = person["last_name"] as! String
+                        let email = person["email"] as! String
+                        let phoneNumber = person["phoneNumber"] as! String
+                        let id = String(person["id"] as! Int!)
+                        let user = User(id: id, username: username, name: first_name + " " + last_name, email: email, phonenumber: phoneNumber)
+                        completion(user)
+                    }
+                }
+            }
+        } catch let error {
+            debug(o: error)
         }
     }
 
@@ -274,8 +305,8 @@ class NetworkManager {
                                     let description = transactionString["description"] as! String
                                     let payee = String(transactionString["payee"] as! Int)
                                     let date = transactionString["date"] as! String
-                                    let amount = transactionString["description"] as! Double
-                                    let split = transactionString["description"] as! [String: Int]
+                                    let amount = transactionString["amount"] as! Double
+                                    let split = transactionString["split"] as! [String: Int]
                                     let transaction = Transaction(payee: payee, amount: amount, split: split, desc: description, date: date)
                                     transactions.append(transaction)
                                 }
