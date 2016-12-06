@@ -60,7 +60,9 @@ class VariableManager {
     }
 
     static func addUser(user: User) {
-        users.append(user)
+        if !containsUser(userId: user.id) {
+            users.append(user)
+        }
     }
 
     static func containsUser(userId: String) -> Bool {
