@@ -53,15 +53,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let name: String = username.text!.lowercased()
         NetworkManager.login(username: name, password: password.text!.lowercased().hashWithSalt(salt: name)) {
             (result: Bool) in
-            sv.view.removeFromSuperview() // Remove loading screen
             if result {
                 let delegate = UIApplication.shared.delegate as! AppDelegate
-                delegate.tabViewController = TabViewController()
+
+                let tabViewController = TabViewController()
+                delegate.tabViewController = tabViewController
+
                 self.present(delegate.tabViewController!, animated: true, completion: nil)
+
             } else {
                 let message = UIAlertController(title: "Username/Password Incorrect", message: "Please try again.", preferredStyle: UIAlertControllerStyle.alert)
                 message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.default, handler: nil))
                 self.present(message, animated: true, completion: nil)
+                sv.view.removeFromSuperview()
             }
         }
     }

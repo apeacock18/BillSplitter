@@ -129,7 +129,7 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
         }
     }
 
-    @IBAction func back(sender: UIButton) {
+    @IBAction func back(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
 

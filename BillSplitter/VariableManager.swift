@@ -21,6 +21,7 @@ class VariableManager {
 
     private static var users: Array<User> = []
 
+    private static var token: String = ""
 
     private static var avatar: UIImage? = nil
 
@@ -112,9 +113,13 @@ class VariableManager {
     }
 
     static func addAvatarToUser(userId: String, avatar: UIImage) {
-        for user in users {
-            if user.id == userId {
-                user.setAvatar(image: avatar)
+        if userId == id {
+            self.avatar = avatar
+        } else {
+            for user in users {
+                if user.id == userId {
+                    user.setAvatar(image: avatar)
+                }
             }
         }
     }
@@ -159,6 +164,14 @@ class VariableManager {
 
     static func setUsername(username: String) {
         self.username = username
+    }
+
+    static func getToken() -> String {
+        return token
+    }
+
+    static func setToken(token: String) {
+        self.token = token
     }
 
     static func getAvatar() -> UIImage {

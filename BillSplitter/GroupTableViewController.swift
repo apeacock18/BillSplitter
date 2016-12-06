@@ -96,8 +96,15 @@ class GroupTableViewController: UITableViewController {
     func logout() {
         let appDomain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: appDomain)
-        self.present(LoginViewController(), animated: true, completion: nil)
         VariableManager.erase()
+
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromLeft
+        view.window!.layer.add(transition, forKey: kCATransition)
+
+        self.present(LoginViewController(), animated: false, completion: nil)
     }
 
     func onCreate() {

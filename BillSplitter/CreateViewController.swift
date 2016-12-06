@@ -98,23 +98,29 @@ class CreateViewController: UIViewController, UITextFieldDelegate {
                                      password: password.text!.hashWithSalt(salt: name),
                                      email: emailText,
                                      phoneNumber: "".lowercased(),
-                                     name: (fNameText + " " + lNameText)
+                                     firstName: fNameText,
+                                     lastName: lNameText
         ) {
             (result: Int) in
             if result == 0 {
-            } else if result == 1 { // Send an error, the username is taken
-                let message = UIAlertController(title: "Username Taken", message: "Please choose another username.", preferredStyle: UIAlertControllerStyle.alert)
-                message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.default, handler: nil))
-                self.present(message, animated: true, completion: nil)
-            } else { // Result = 2
                 VariableManager.setName(name: fNameText + " " + lNameText)
                 VariableManager.setEmail(email: self.email.text!.lowercased())
                 VariableManager.setUsername(username: self.username.text!.lowercased())
                 VariableManager.setPhoneNumber(phoneNumber: "".lowercased()); // TODO: Add phone number field
                 VariableManager.setAvatar(image: UIImage(named: "default")!)
                 StorageManager.saveSelfData()
-                
-                self.present(TabViewController(), animated: true, completion: nil)
+
+                OperationQueue.main.addOperation {
+                    self.present(TabViewController(), animated: true, completion: nil)
+                }
+            } else if result == 2 { // Send an error, the username is taken
+                let message = UIAlertController(title: "Username Taken", message: "Please choose another username.", preferredStyle: UIAlertControllerStyle.alert)
+                message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(message, animated: true, completion: nil)
+            } else {
+                let message = UIAlertController(title: "Error", message: "Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+                message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(message, animated: true, completion: nil)
             }
         }
     }

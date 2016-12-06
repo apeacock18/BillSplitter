@@ -12,8 +12,6 @@
 		390C52F01CEABE76002E7E76 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390C52EF1CEABE76002E7E76 /* HistoryTableViewController.swift */; };
 		390C52F31CEABF7D002E7E76 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390C52F11CEABF7D002E7E76 /* HistoryCell.swift */; };
 		390C52F41CEABF7D002E7E76 /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 390C52F21CEABF7D002E7E76 /* HistoryCell.xib */; };
-		391A241E1CCF31F800884A27 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391A241C1CCF31F800884A27 /* TestViewController.swift */; };
-		391A241F1CCF31F800884A27 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 391A241D1CCF31F800884A27 /* TestViewController.xib */; };
 		39579E231CD821C800E0ED6D /* MemberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39579E211CD821C800E0ED6D /* MemberCell.xib */; };
 		39579E241CD821C800E0ED6D /* MemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39579E221CD821C800E0ED6D /* MemberCell.swift */; };
 		39579E271CD8249500E0ED6D /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39579E251CD8249500E0ED6D /* GroupCell.swift */; };
@@ -100,8 +98,6 @@
 		390C52EF1CEABE76002E7E76 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		390C52F11CEABF7D002E7E76 /* HistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		390C52F21CEABF7D002E7E76 /* HistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
-		391A241C1CCF31F800884A27 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		391A241D1CCF31F800884A27 /* TestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
 		39579E211CD821C800E0ED6D /* MemberCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemberCell.xib; sourceTree = "<group>"; };
 		39579E221CD821C800E0ED6D /* MemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberCell.swift; sourceTree = "<group>"; };
 		39579E251CD8249500E0ED6D /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
@@ -231,7 +227,6 @@
 				39A04F071CE18A45006B89C1 /* Status.swift */,
 				397784E01CD3E72F000F7600 /* StorageManager.swift */,
 				397EBAB21CCEA26500E2A56B /* TabViewController.swift */,
-				391A241C1CCF31F800884A27 /* TestViewController.swift */,
 				1D63E4DE1C937E9300D8863B /* Transaction.swift */,
 				398D8EB91CDDD04200CC045E /* User.swift */,
 				39B6398C1CD41DF2002269A8 /* VariableManager.swift */,
@@ -241,7 +236,6 @@
 				39DEB6AD1CD7DC8400BA0440 /* MeViewController.xib */,
 				39CA4A441CCEF11600FC15A8 /* NewBillViewController.xib */,
 				39BFF4051CAF03B700CCA5D3 /* SettingsViewController.xib */,
-				391A241D1CCF31F800884A27 /* TestViewController.xib */,
 				395C9FFC1CE534510073D283 /* NewTransaction */,
 				397F65DD1CE01E5B0028CB86 /* Options */,
 				397784E81CD3E8E7000F7600 /* Summary */,
@@ -378,7 +372,6 @@
 				1D63E4AC1C922CE900D8863B /* Assets.xcassets in Resources */,
 				39CA4A461CCEF11600FC15A8 /* NewBillViewController.xib in Resources */,
 				397F65DC1CE01CE20028CB86 /* OptionsViewController.xib in Resources */,
-				391A241F1CCF31F800884A27 /* TestViewController.xib in Resources */,
 				395C9FF71CE533410073D283 /* TransactionViewController.xib in Resources */,
 				395C9FFB1CE534470073D283 /* DatePickerViewController.xib in Resources */,
 				39BFF4071CAF03B700CCA5D3 /* SettingsViewController.xib in Resources */,
@@ -406,7 +399,6 @@
 				397D9DAA1CE6DDA4007BA953 /* ReloadDelegate.swift in Sources */,
 				39AE7D511CE67A7000438AE8 /* DatePickerVCDelegate.swift in Sources */,
 				39CA4A371CCEE17800FC15A8 /* CreateViewController.xib in Sources */,
-				391A241E1CCF31F800884A27 /* TestViewController.swift in Sources */,
 				39CA4A451CCEF11600FC15A8 /* NewBillViewController.swift in Sources */,
 				397308E81CD95460008540C1 /* Spinner.swift in Sources */,
 				39CA4A381CCEE17800FC15A8 /* LoginViewController.swift in Sources */,

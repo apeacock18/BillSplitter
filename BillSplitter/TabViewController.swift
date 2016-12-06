@@ -10,8 +10,12 @@ import UIKit
 
 class TabViewController: UITabBarController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
         let groupTable = GroupTableViewController()
         let nav = UINavigationController(rootViewController: groupTable)
@@ -21,29 +25,20 @@ class TabViewController: UITabBarController {
         let vc2 = MeViewController()
         vc2.title = "Me"
         vc2.tabBarItem.image = UIImage(named: "user")
-        // let vc3 = SettingsViewController
+        // let vc3 = SettingsViewController()
         // vc3.title = "Settings"
         // vc3.tabBarItem.image = UIImage(named: "settings")
 
         self.viewControllers = [nav, vc2]
         self.selectedIndex = 0
-        // Do any additional setup after loading the view.
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-
-    /*
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

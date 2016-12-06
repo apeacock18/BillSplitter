@@ -13,6 +13,11 @@ class Status {
     var id: String
     var data: [[String:AnyObject]]
 
+    init(information: [String:AnyObject]) {
+        self.id = String(information["id"] as! Int)
+        self.data = information["data"] as! [[String:AnyObject]]
+    }
+
     init(id: String, data: [[String:AnyObject]]) {
         self.id = id
         self.data = data
@@ -30,8 +35,9 @@ class Status {
     }
 
     func getAmountByRecipient(userId: String) -> Double? {
+        print(data)
         for object in data {
-            if (object["recipient"] as! String) == userId {
+            if (String(object["recipient"] as! Int)) == userId {
                 return object["amount"] as? Double
             }
         }

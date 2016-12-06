@@ -175,12 +175,18 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
                                                 self.tableView.reloadData()
                                             }
                                         }
-                                    } else if result == 1 {
+                                    } else if result == 6 {
+                                        let message = UIAlertController(title: "Invalid username", message: "That username does not exist.", preferredStyle: UIAlertControllerStyle.alert)
+                                        message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                        self.present(message, animated: true, completion: nil)
+                                    } else if result == 7 {
                                         let message = UIAlertController(title: "Error", message: "That user is already in this group.", preferredStyle: UIAlertControllerStyle.alert)
                                         message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                                         self.present(message, animated: true, completion: nil)
                                     } else {
-                                        // TODO Error
+                                        let message = UIAlertController(title: "Error", message: "Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+                                        message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                        self.present(message, animated: true, completion: nil)
                                     }
                                 }
                             } else {

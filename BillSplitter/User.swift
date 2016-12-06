@@ -15,17 +15,31 @@ class User {
     var username: String
     var id: String
     var name: String
+    var email: String
+    var phonenumber: String
 
     init(id: String, username: String, name: String) {
         self.id = id
         self.username = username
         self.name = name
+        self.email = ""
+        self.phonenumber = ""
+    }
+
+    init(id: String, username: String, name: String, email: String, phonenumber: String) {
+        self.id = id
+        self.username = username
+        self.name = name
+        self.email = email
+        self.phonenumber = phonenumber
     }
 
     init(id: String, username: String, name: String, avatar: UIImage) {
         self.id = id
         self.username = username
         self.name = name
+        self.email = ""
+        self.phonenumber = ""
         self.avatar = avatar
     }
 

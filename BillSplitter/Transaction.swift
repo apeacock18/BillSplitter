@@ -11,16 +11,16 @@ import Foundation
 class Transaction {
 
     var payee: String
-    var split: [String:Double]
+    var split: [String:Int]
     var amount: Double
     var desc: String
     var date: String
 
-    init(name: String, amount: Double, from: [String:Double], desc: String, date: String)
+    init(payee: String, amount: Double, split: [String:Int], desc: String, date: String)
     {
-        self.payee = name
+        self.payee = payee
         self.amount = amount
-        self.split = from
+        self.split = split
         self.desc = desc
         self.date = date
     }
@@ -31,7 +31,7 @@ class Transaction {
         do {
             let jsonObject = try JSONSerialization.jsonObject(with: data as Data, options: []) as! [String: Any?]
             self.payee = jsonObject["payee"] as! String
-            self.split = jsonObject["split"] as! [String:Double]
+            self.split = jsonObject["split"] as! [String:Int]
             self.amount = jsonObject["amount"] as! Double
             self.desc = jsonObject["description"] as! String
             self.date = jsonObject["date"] as! String
@@ -42,7 +42,7 @@ class Transaction {
 
     func getShare(id: String) -> Double {
         if let splitPercentage = split[id] {
-            return amount * splitPercentage
+            return amount * Double(splitPercentage)
         } else {
             return 0.0
         }
@@ -50,7 +50,7 @@ class Transaction {
 
     func getDateInSeconds() -> Double {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd-yyyy"
+        formatter.dateFormat = "yyyy-MM-dd"
         return formatter.date(from: date)!.timeIntervalSince1970
     }
 
