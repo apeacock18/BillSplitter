@@ -132,10 +132,12 @@ class GroupTableViewController: UITableViewController {
                                     VariableManager.addGroup(group: Group(id: groupId, name: text!, members: [VariableManager.getID()]))
                                     NetworkManager.refreshStatus(groupId: groupId) {
                                         () in
-                                        self.reload()
-                                        let index = self.tableView.numberOfRows(inSection: 0) - 1
-                                        let indexPath = IndexPath(row: index, section: 0)
-                                        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                                        OperationQueue.main.addOperation {
+                                            self.reload()
+                                            let index = self.tableView.numberOfRows(inSection: 0) - 1
+                                            let indexPath = IndexPath(row: index, section: 0)
+                                            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                                        }
                                     }
                                 } else {
                                     self.handleError()

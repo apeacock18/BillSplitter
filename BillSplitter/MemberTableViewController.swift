@@ -103,7 +103,9 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
                             (result: Bool) in
                             if result {
                                 NetworkManager.refreshStatus(groupId: self.group!.getID()) {
-                                    self.tableView.reloadData()
+                                    OperationQueue.main.addOperation {
+                                        self.tableView.reloadData()
+                                    }
                                 }
                             } else {
                                 let message = UIAlertController(title: "Error", message: "Please try again.", preferredStyle: UIAlertControllerStyle.alert)
@@ -160,11 +162,13 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
                                                     if result != nil {
                                                         VariableManager.addUser(user: result!)
                                                         VariableManager.addUserToGroup(userId: userId, groupId: groupId)
-                                                        self.members.append(userId)
-                                                        self.tableView.reloadData()
-                                                        let index = self.tableView.numberOfRows(inSection: 0) - 1
-                                                        let indexPath = IndexPath(row: index, section: 0)
-                                                        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                                                        OperationQueue.main.addOperation {
+                                                            self.members.append(userId)
+                                                            self.tableView.reloadData()
+                                                            let index = self.tableView.numberOfRows(inSection: 0) - 1
+                                                            let indexPath = IndexPath(row: index, section: 0)
+                                                            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                                                        }
                                                     }
                                                 }
                                             } else {

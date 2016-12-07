@@ -11,12 +11,12 @@ import Foundation
 class Transaction {
 
     var payee: String
-    var split: [String:Int]
+    var split: [String:Double]
     var amount: Double
     var desc: String
     var date: String
 
-    init(payee: String, amount: Double, split: [String:Int], desc: String, date: String)
+    init(payee: String, amount: Double, split: [String:Double], desc: String, date: String)
     {
         self.payee = payee
         self.amount = amount
@@ -31,7 +31,7 @@ class Transaction {
         do {
             let jsonObject = try JSONSerialization.jsonObject(with: data as Data, options: []) as! [String: Any?]
             self.payee = jsonObject["payee"] as! String
-            self.split = jsonObject["split"] as! [String:Int]
+            self.split = jsonObject["split"] as! [String:Double]
             self.amount = jsonObject["amount"] as! Double
             self.desc = jsonObject["description"] as! String
             self.date = jsonObject["date"] as! String
@@ -42,7 +42,7 @@ class Transaction {
 
     func getShare(id: String) -> Double {
         if let splitPercentage = split[id] {
-            return amount * Double(splitPercentage)
+            return amount * Double(splitPercentage) / 100
         } else {
             return 0.0
         }
@@ -64,7 +64,8 @@ class Transaction {
             "date": self.date as AnyObject
         ]
         do {
-            return String(describing: try JSONSerialization.data(withJSONObject: jsonObject, options: []))
+            let data = try JSONSerialization.data(withJSONObject: jsonObject, options: [])
+            return String(data: data, encoding: .utf8)
         } catch {
             return nil
         }

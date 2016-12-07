@@ -75,7 +75,7 @@ class NetworkManager {
 
                                         var transactions: [Transaction] = []
                                         for transactionString in transactionStrings {
-                                            let split = transactionString["split"] as! [String:Int]
+                                            let split = transactionString["split"] as! [String:Double]
 
                                             transactions.append(Transaction(payee: String(transactionString["payee"] as! Int),
                                                                             amount: transactionString["amount"] as! Double,
@@ -276,7 +276,7 @@ class NetworkManager {
                                     let payee = String(transactionString["payee"] as! Int)
                                     let date = transactionString["date"] as! String
                                     let amount = transactionString["amount"] as! Double
-                                    let split = transactionString["split"] as! [String: Int]
+                                    let split = transactionString["split"] as! [String: Double]
                                     let transaction = Transaction(payee: payee, amount: amount, split: split, desc: description, date: date)
                                     transactions.append(transaction)
                                 }
@@ -336,13 +336,14 @@ class NetworkManager {
 
         var split: [String: Double] = [:]
         for user in allUsers {
-            split[String(user)] = 1 / Double(allUsers.count)
+            split[String(user)] = 100 / Double(allUsers.count)
         }
 
         do {
             let jsonSplit = try JSONSerialization.data(withJSONObject: split, options: [])
 
-            let params: [String:String] = ["groupId": String(groupId),
+            let params: [String:String] = ["token": VariableManager.getToken(),
+                                           "groupId": String(groupId),
                                            "payee": payee,
                                            "amount": String(amount),
                                            "description": description,
@@ -368,10 +369,13 @@ class NetworkManager {
             if error != nil {
                 completion(false)
             } else {
-                let data = response!.jsonToDictionary()!
-                if let _ = data["Error"] {
-                    completion(false)
-                } else {
+                if let data = response!.jsonToDictionary() {
+                    if let _ = data["Error"] {
+                        completion(false)
+                    } else {
+                        completion(true)
+                    }
+                } else if let _ = response?.jsonToArray() {
                     completion(true)
                 }
             }

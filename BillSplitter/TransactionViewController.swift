@@ -121,10 +121,12 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
 
         self.dismiss(animated: true, completion: nil)
 
-        NetworkManager.newTransaction(groupId: group!.getID(), payee: VariableManager.getID(), amount: Double(currencyFormatter.number(from: amount.text!)!), description: desc.text!, date: dateField.text!, users: selectedUsers) {
+        NetworkManager.newTransaction(groupId: group!.getID(), payee: VariableManager.getID(), amount: Double(currencyFormatter.number(from: amount.text!)!), description: desc.text!, date: convertDate(dateString: dateField.text!), users: selectedUsers) {
             (result: Bool) in
             NetworkManager.refreshStatus(groupId: self.group!.getID()) {
-                self.delegate?.dataReloadNeeded()
+                OperationQueue.main.addOperation {
+                    self.delegate?.dataReloadNeeded()
+                }
             }
         }
     }
@@ -153,6 +155,14 @@ class TransactionViewController: UIViewController, UITextFieldDelegate, UIPopove
             shareWith.text = String(users.count) + " members"
         }
         selectedUsers = users
+    }
+
+    func convertDate(dateString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        let date = dateFormatter.date(from: dateString)
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date!)
     }
 
     func resignAllResponders() {
