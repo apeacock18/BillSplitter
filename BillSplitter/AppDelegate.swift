@@ -18,15 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var loginViewController: LoginViewController?
     var tabViewController: TabViewController?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        let configuration = ParseClientConfiguration {
-            $0.applicationId = "SmKujk7VXA7gQcUNz6hHjbPWpk1jF0Wtp1RPZ71Z"
-            $0.server = "https://parseapi.back4app.com/"
-            $0.clientKey = "g1gsXIi0t2Hk1maTsl5lXGbEaqLMlIQE8MludaDW"
-        }
-        Parse.initialize(with: configuration)
-
         loginViewController = LoginViewController()
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window!.rootViewController = loginViewController
