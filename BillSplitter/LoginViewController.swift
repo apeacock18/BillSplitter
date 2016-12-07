@@ -25,6 +25,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         self.hideKeyboardWhenTappedAround()
 
+
+        if let token = StorageManager.loadToken() {
+            loginWithToken(token: token)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,7 +55,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let sv = SpinnerView()
         self.view.addSubview(sv.view)
         let name: String = username.text!.lowercased()
-        NetworkManager.login(username: name, password: password.text!.lowercased().hashWithSalt(salt: name)) {
+        NetworkManager.loginWithUsername(username: name, password: password.text!.lowercased().hashWithSalt(salt: name)) {
             (result: Bool) in
             if result {
                 let delegate = UIApplication.shared.delegate as! AppDelegate
@@ -63,7 +67,30 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
             } else {
                 let message = UIAlertController(title: "Username/Password Incorrect", message: "Please try again.", preferredStyle: UIAlertControllerStyle.alert)
-                message.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.default, handler: nil))
+                message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(message, animated: true, completion: nil)
+                sv.view.removeFromSuperview()
+            }
+        }
+    }
+
+    func loginWithToken(token: String) {
+        // Start loading screen
+        let sv = SpinnerView()
+        self.view.addSubview(sv.view)
+        NetworkManager.loginWithToken(token: token) {
+            (result: Bool) in
+            if result {
+                let delegate = UIApplication.shared.delegate as! AppDelegate
+
+                let tabViewController = TabViewController()
+                delegate.tabViewController = tabViewController
+
+                self.present(delegate.tabViewController!, animated: true, completion: nil)
+
+            } else {
+                let message = UIAlertController(title: "Login expired", message: "Please login.", preferredStyle: UIAlertControllerStyle.alert)
+                message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(message, animated: true, completion: nil)
                 sv.view.removeFromSuperview()
             }

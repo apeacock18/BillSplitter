@@ -12,85 +12,22 @@ import UIKit
 
 class StorageManager {
 
-
-    static func createGroup(id: String, name: String) {
-        if UserDefaults.standard.object(forKey: "groups") != nil {
-            var groupData: [String:Any] = UserDefaults.standard.object(forKey: "groups") as! [String:Any]
-            groupData[id] = ["name": name, "members": []]
-            UserDefaults.standard.set(groupData, forKey: "groups")
-
-        } else {
-            let groupData: [String: Any] = [id: ["name": name, "members": []]]
-            UserDefaults.standard.set(groupData, forKey: "groups")
-        }
+    static func saveToken() {
+        UserDefaults.standard.set(VariableManager.getToken(), forKey: "token")
         UserDefaults.standard.synchronize()
     }
 
-
-    /*
-     * This function adds a user to the specified group.
-     */
-    @discardableResult
-    static func addUserToGroup(id: String, groupId: String) -> Bool {
-        var groupData: [String:AnyObject] = UserDefaults.standard.object(forKey: "groups") as! [String:AnyObject]
-        var group: [String:AnyObject] = groupData[groupId] as! [String:AnyObject]
-        var currentUsers: [String] = group["members"] as! [String]
-
-        //let currentUsers: [String] = NSUserDefaults.standardUserDefaults().objectForKey("groups")[groupId]["members"] as! [String]
-
-        // eg. ["groups"]["hfb435vgh4"]["members"] as! [String]
-
-        if currentUsers.contains(id) {
-            return false
+    static func loadToken() -> String? {
+        if let token: String = UserDefaults.standard.object(forKey: "token") as? String {
+            VariableManager.setToken(token: token)
+            return token
         }
-
-        currentUsers.append(id)
-        group["members"] = currentUsers as AnyObject?
-        groupData[groupId] = group as AnyObject?
-        UserDefaults.standard.set(groupData, forKey: "groups")
-        UserDefaults.standard.synchronize()
-        return true
+        return nil
     }
 
-    /*
-     * This function removes a user from the specified group.
-     */
-    static func removeUserFromGroup(id: String, groupId: String) -> Bool {
-        var groupData: [String:AnyObject] = UserDefaults.standard.object(forKey: "groups") as! [String:AnyObject]
-        var group: [String:Any] = groupData[groupId] as! [String:Any]
-        let currentUsers: [String] = group["members"] as! [String]
-
-        //let currentUsers: [String] = NSUserDefaults.standardUserDefaults().objectForKey("groups")[groupId]["members"] as! [String]
-
-        if currentUsers.contains(id) {
-            return false
-        }
-
-        group["members"] = currentUsers.filter() {$0 != id}
-        groupData[groupId] = group as AnyObject?
-        UserDefaults.standard.set(groupData, forKey: "groups")
-        UserDefaults.standard.synchronize()
-        return true
+    static func eraseToken() {
+        UserDefaults.standard.set(nil, forKey: "token")
     }
-
-    static func recallGroupData() {
-
-    }
-
-    static func saveGroupData() {
-        var data: [String: AnyObject] = [:]
-        for group in VariableManager.getGroups() {
-            let groupData: [String: AnyObject] = [
-                "name": group.getName() as AnyObject,
-                "members": group.getMembers() as AnyObject
-            ]
-            data[group.getID()] = groupData as AnyObject?
-        }
-        UserDefaults.standard.set(data, forKey: "groups")
-        UserDefaults.standard.synchronize()
-    }
-
-
 
     /*
      * Self data below.

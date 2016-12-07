@@ -11,12 +11,12 @@ import Parse
 
 class NetworkManager {
 
-    static let verbose = true
+    static let verbose = false
     static var delegate: ReloadDelegate?
     static let baseUrl: String = "http://127.0.0.1:8000/"
     //static let baseUrl: String = "http://api.gomeow.info/"
 
-    static func login(username: String, password: String, completion: @escaping (Bool) -> ()) {
+    static func loginWithUsername(username: String, password: String, completion: @escaping (Bool) -> ()) {
         runRequest(urlFrag: "login/", params: ["username": username, "password": password]) {
             (data, error) -> Void in
             if error != nil {
@@ -40,117 +40,160 @@ class NetworkManager {
                         VariableManager.setName(name: firstName + " " + lastName)
                         VariableManager.setEmail(email: email)
                         VariableManager.setPhoneNumber(phoneNumber: phoneNumber)
-
-                        // Groups
-                        runRequest(urlFrag: "group/info/", params: ["token": token, "userId": userId]) {
-                            (data, error) -> Void in
-                            if error != nil {
-                                completion(false)
-                            }
-                            if data != nil {
-                                if let response = data!.jsonToDictionary() {
-                                    if let _ = response["Error"] {
-                                        // TODO?
-                                    }
-                                    completion(false)
-                                } else if let response = data!.jsonToArray() {
-                                    var usersToQueryFor: [String] = []
-                                    for group in response as! [[String: Any]] {
-                                        let groupId = String(group["id"] as! Int)
-                                        let name = group["name"] as! String
-                                        let statusStrings = group["status"] as! [[String:Any]]
-                                        let memberInts = group["members"] as! [Int]
-                                        var members: [String] = []
-
-                                        for memberInt in memberInts {
-                                            members.append(String(memberInt))
-                                        }
-
-                                        let transactionStrings = group["transactions"] as! [[String:Any]]
-                                        var statuses: [Status] = []
-                                        for statusString in statusStrings {
-                                            statuses.append(Status(id: String(statusString["id"] as! Int),
-                                                                   data: statusString["data"] as! [[String: AnyObject]]))
-                                        }
-
-                                        var transactions: [Transaction] = []
-                                        for transactionString in transactionStrings {
-                                            let split = transactionString["split"] as! [String:Double]
-
-                                            transactions.append(Transaction(payee: String(transactionString["payee"] as! Int),
-                                                                            amount: transactionString["amount"] as! Double,
-                                                                            split: split,
-                                                                            desc: transactionString["description"] as! String,
-                                                                            date: transactionString["date"] as! String))
-                                        }
-                                        let groupObj = Group(
-                                            id: groupId,
-                                            name: name,
-                                            members: members,
-                                            statuses: statuses,
-                                            transactions: transactions
-                                        )
-
-                                        VariableManager.addGroup(group: groupObj)
-                                        usersToQueryFor += members
-                                    }
-
-                                    let noDuplicates = usersToQueryFor.removeDuplicates()
-                                    if noDuplicates.count != 0 {
-                                        do {
-                                            let jsonData = try JSONSerialization.data(withJSONObject: noDuplicates, options: [])
-                                            let json = String(data: jsonData, encoding: .utf8)!
-                                            runRequest(urlFrag: "person/info/", params: ["token":VariableManager.getToken(), "userIds": json]) {
-                                                (data, error) -> Void in
-                                                if error != nil {
-                                                    completion(false)
-                                                }
-                                                if data != nil {
-                                                    if let response = data!.jsonToDictionary() {
-                                                        if let _ = response["Error"] {
-                                                            // TODO?
-                                                        }
-                                                        completion(false)
-                                                    } else if let response = data!.jsonToArray() {
-                                                        for person in response as! [[String:Any]] {
-                                                            let username = person["username"] as! String
-                                                            let first_name = person["first_name"] as! String
-                                                            let last_name = person["last_name"] as! String
-                                                            let email = person["email"] as! String
-                                                            let phoneNumber = person["phoneNumber"] as! String
-                                                            let id = String(person["id"] as! Int!)
-                                                            let user = User(id: id, username: username, name: first_name + " " + last_name, email: email, phonenumber: phoneNumber)
-                                                            VariableManager.addUser(user: user)
-                                                        }
-                                                        completion(true)
-
-                                                        // Get avatars
-                                                        for user in noDuplicates {
-                                                            getAvatarFromServer(userId: user) {
-                                                                (image) -> Void in
-                                                                if image != nil {
-                                                                VariableManager.addAvatarToUser(userId: user, avatar: image!)
-                                                                }
-                                                            }
-                                                        }
-                                                        delegate?.dataReloadNeeded()
-                                                    }
-                                                }
-                                            }
-                                        } catch let error {
-                                            debug(o: error)
-                                        }
-                                    } else {
-                                        completion(true)
-                                    }
-                                } else {
-                                    completion(true)
-                                }
-                            }
+                        StorageManager.saveToken()
+                        getGroupData() {
+                            (result) -> Void in
+                            completion(result)
                         }
                     }
                 } else {
                     completion(false)
+                }
+            }
+        }
+    }
+
+    static func loginWithToken(token: String, completion: @escaping (Bool) -> ()) {
+        runRequest(urlFrag: "login/", params: ["token": token]) {
+            (data, error) -> Void in
+            if error != nil {
+                completion(false)
+            }
+            if data != nil {
+                if let response = data!.jsonToDictionary() {
+                    if let _ = response["Error"] {
+                        completion(false)
+                    } else {
+                        let userId = String(response["id"] as! Int)
+                        let username = response["username"] as! String
+                        let firstName = response["firstName"] as! String
+                        let lastName = response["lastName"] as! String
+                        let email = response["email"] as! String
+                        let phoneNumber = response["phoneNumber"] as! String
+                        VariableManager.setID(id: String(userId))
+                        VariableManager.setUsername(username: username)
+                        VariableManager.setName(name: firstName + " " + lastName)
+                        VariableManager.setEmail(email: email)
+                        VariableManager.setPhoneNumber(phoneNumber: phoneNumber)
+                        VariableManager.setToken(token: token)
+                        getGroupData() {
+                            (result) -> Void in
+                            completion(result)
+                        }
+                    }
+                } else {
+                    completion(false)
+                }
+            }
+        }
+    }
+
+    static func getGroupData(completion: @escaping (Bool) -> ()) {
+
+        // Groups
+        runRequest(urlFrag: "group/info/", params: ["token": VariableManager.getToken(), "userId": VariableManager.getID()]) {
+            (data, error) -> Void in
+            if error != nil {
+                completion(false)
+            }
+            if data != nil {
+                if let response = data!.jsonToDictionary() {
+                    if let _ = response["Error"] {
+                        // TODO?
+                    }
+                    completion(false)
+                } else if let response = data!.jsonToArray() {
+                    var usersToQueryFor: [String] = []
+                    for group in response as! [[String: Any]] {
+                        let groupId = String(group["id"] as! Int)
+                        let name = group["name"] as! String
+                        let statusStrings = group["status"] as! [[String:Any]]
+                        let memberInts = group["members"] as! [Int]
+                        var members: [String] = []
+
+                        for memberInt in memberInts {
+                            members.append(String(memberInt))
+                        }
+
+                        let transactionStrings = group["transactions"] as! [[String:Any]]
+                        var statuses: [Status] = []
+                        for statusString in statusStrings {
+                            statuses.append(Status(id: String(statusString["id"] as! Int),
+                                                   data: statusString["data"] as! [[String: AnyObject]]))
+                        }
+
+                        var transactions: [Transaction] = []
+                        for transactionString in transactionStrings {
+                            let split = transactionString["split"] as! [String:Double]
+
+                            transactions.append(Transaction(payee: String(transactionString["payee"] as! Int),
+                                                            amount: transactionString["amount"] as! Double,
+                                                            split: split,
+                                                            desc: transactionString["description"] as! String,
+                                                            date: transactionString["date"] as! String))
+                        }
+                        let groupObj = Group(
+                            id: groupId,
+                            name: name,
+                            members: members,
+                            statuses: statuses,
+                            transactions: transactions
+                        )
+
+                        VariableManager.addGroup(group: groupObj)
+                        usersToQueryFor += members
+                    }
+
+                    let noDuplicates = usersToQueryFor.removeDuplicates()
+                    if noDuplicates.count != 0 {
+                        do {
+                            let jsonData = try JSONSerialization.data(withJSONObject: noDuplicates, options: [])
+                            let json = String(data: jsonData, encoding: .utf8)!
+                            runRequest(urlFrag: "person/info/", params: ["token":VariableManager.getToken(), "userIds": json]) {
+                                (data, error) -> Void in
+                                if error != nil {
+                                    completion(false)
+                                }
+                                if data != nil {
+                                    if let response = data!.jsonToDictionary() {
+                                        if let _ = response["Error"] {
+                                            // TODO?
+                                        }
+                                        completion(false)
+                                    } else if let response = data!.jsonToArray() {
+                                        for person in response as! [[String:Any]] {
+                                            let username = person["username"] as! String
+                                            let first_name = person["first_name"] as! String
+                                            let last_name = person["last_name"] as! String
+                                            let email = person["email"] as! String
+                                            let phoneNumber = person["phoneNumber"] as! String
+                                            let id = String(person["id"] as! Int!)
+                                            let user = User(id: id, username: username, name: first_name + " " + last_name, email: email, phonenumber: phoneNumber)
+                                            VariableManager.addUser(user: user)
+                                        }
+                                        completion(true)
+
+                                        // Get avatars
+                                        for user in noDuplicates {
+                                            getAvatarFromServer(userId: user) {
+                                                (image) -> Void in
+                                                if image != nil {
+                                                    VariableManager.addAvatarToUser(userId: user, avatar: image!)
+                                                }
+                                            }
+                                        }
+                                        delegate?.dataReloadNeeded()
+                                    }
+                                }
+                            }
+                        } catch let error {
+                            debug(o: error)
+                        }
+                    } else {
+                        completion(true)
+                    }
+                } else {
+                    completion(true)
                 }
             }
         }

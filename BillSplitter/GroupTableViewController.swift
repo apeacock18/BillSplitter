@@ -97,6 +97,7 @@ class GroupTableViewController: UITableViewController {
         let appDomain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: appDomain)
         VariableManager.erase()
+        StorageManager.eraseToken()
 
         let transition = CATransition()
         transition.duration = 0.5
