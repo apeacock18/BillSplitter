@@ -458,7 +458,7 @@ class NetworkManager {
     }
 
 
-    static func runRequest(urlFrag: String, params: [String: String], completion:@escaping (String?, Error?) -> ()) {
+    private static func runRequest(urlFrag: String, params: [String: String], completion:@escaping (String?, Error?) -> ()) {
         var postString = "?"
         for (key, value) in params {
             postString +=
@@ -473,7 +473,7 @@ class NetworkManager {
         }
     }
 
-    static func runRequest(urlFrag: String, body: Data, completion:@escaping (String?, Error?) -> ()) {
+    private static func runRequest(urlFrag: String, body: Data, completion:@escaping (String?, Error?) -> ()) {
         var request = URLRequest(url: URL(string: self.baseUrl + urlFrag)!)
         request.httpMethod = "POST"
         request.httpBody = body
