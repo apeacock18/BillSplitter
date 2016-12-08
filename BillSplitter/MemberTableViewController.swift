@@ -64,20 +64,19 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
             cell.avatar.image = user?.getAvatar()
             cell.amount.adjustsFontSizeToFitWidth = true
             let status = group!.getStatusById(userId: VariableManager.getID())
-            var amount: Double? = status!.getAmountByRecipient(userId: id)
-            if amount == nil {
-                amount = 0.0
-            }
-            if amount! <= 0.0 {
+            let amount: Double = status!.getAmountByRecipient(userId: id) ?? 0.0
+            if amount <= 0.0 {
+                cell.whoOwes.text = "They Owe"
                 cell.amount.textColor = UIColor(red: 39/255, green: 174/255, blue: 96/255, alpha: 1) // #27ae60
                 if amount == 0 {
-                    cell.amount.text = String(NSString(format: "$%.2f", amount!))
+                    cell.amount.text = String(NSString(format: "$%.2f", amount))
                 } else {
-                    cell.amount.text = String(NSString(format: "$%.2f", -amount!))
+                    cell.amount.text = String(NSString(format: "$%.2f", -amount))
                 }
             } else {
+                cell.whoOwes.text = "You Owe"
                 cell.amount.textColor = UIColor.red
-                cell.amount.text = String(NSString(format: "$%.2f", amount!))
+                cell.amount.text = String(NSString(format: "$%.2f", amount))
             }
             return cell
         }
