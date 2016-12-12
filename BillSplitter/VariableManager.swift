@@ -32,6 +32,7 @@ class VariableManager {
         name = ""
         username = ""
         groups = []
+        users = []
         avatar = nil
     }
 
@@ -186,5 +187,14 @@ class VariableManager {
 
     static func setAvatar(image: UIImage) {
         self.avatar = image
+    }
+
+    static func reloadGroups(completion: @escaping (Bool) -> ()) {
+        groups = []
+        users = []
+        NetworkManager.getGroupData() {
+            (result) -> Void in
+            completion(result)
+        }
     }
 }

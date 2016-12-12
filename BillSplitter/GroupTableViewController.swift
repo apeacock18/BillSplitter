@@ -29,11 +29,34 @@ class GroupTableViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(GroupTableViewController.onCreate))
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName:UIFont.systemFont(ofSize: 40)], for: .normal)
 
-
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl?.addTarget(self, action: #selector(GroupTableViewController.refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl!)
     }
 
     func loadGroups() {
         groups = VariableManager.getGroups()
+    }
+
+    func refresh() {
+        VariableManager.reloadGroups() {
+            (result) -> Void in
+            if result {
+                OperationQueue.main.addOperation {
+                    self.refreshControl?.endRefreshing()
+                    self.reload()
+                    let index = self.tableView.numberOfRows(inSection: 0) - 1
+                    let indexPath = IndexPath(row: index, section: 0)
+                    self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                }
+            } else {
+                self.refreshControl?.endRefreshing()
+                let message = UIAlertController(title: "Error", message: "Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+                message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(message, animated: true, completion: nil)
+            }
+        }
     }
 
     func reload() {
