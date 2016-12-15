@@ -16,6 +16,10 @@ class TabViewController: UITabBarController {
 
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
         let groupTable = GroupTableViewController()
         let nav = UINavigationController(rootViewController: groupTable)
@@ -31,10 +35,6 @@ class TabViewController: UITabBarController {
 
         self.viewControllers = [nav, vc2]
         self.selectedIndex = 0
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
 
     override func didReceiveMemoryWarning() {

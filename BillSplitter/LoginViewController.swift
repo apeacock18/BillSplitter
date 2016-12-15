@@ -58,13 +58,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         NetworkManager.loginWithUsername(username: name, password: password.text!.lowercased().hashWithSalt(salt: name)) {
             (result: Bool) in
             if result {
-                let delegate = UIApplication.shared.delegate as! AppDelegate
-
                 let tabViewController = TabViewController()
-                delegate.tabViewController = tabViewController
-
-                self.present(delegate.tabViewController!, animated: true, completion: nil)
-
+                self.present(tabViewController, animated: true, completion: nil)
             } else {
                 let message = UIAlertController(title: "Username/Password Incorrect", message: "Please try again.", preferredStyle: UIAlertControllerStyle.alert)
                 message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))

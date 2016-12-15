@@ -23,14 +23,19 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
         tableView.rowHeight = 80.0
         self.title = group!.getName()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Options", style: .plain, target: self, action: #selector(MemberTableViewController.options))
-        NetworkManager.delegate = self
+        NetworkManager.memberDelegate = self
         self.currencyFormatter.numberStyle = .currency
-        self.currencyFormatter.currencyCode = Locale.current.currencySymbol
+        self.currencyFormatter.locale = Locale.current
+
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl?.addTarget(self, action: #selector(MemberTableViewController.refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl!)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NetworkManager.delegate = nil
+        NetworkManager.memberDelegate = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -168,12 +173,26 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
                                                             let indexPath = IndexPath(row: index, section: 0)
                                                             self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                                                         }
+                                                        NetworkManager.getAvatarFromServer(userId: result!.id) {
+                                                            (image) -> Void in
+                                                            if image != nil {
+                                                                VariableManager.addAvatarToUser(userId: result!.id, avatar: image!)
+                                                                OperationQueue.main.addOperation {
+                                                                    self.tableView.reloadData()
+                                                                    let index = self.tableView.numberOfRows(inSection: 0) - 1
+                                                                    let indexPath = IndexPath(row: index, section: 0)
+                                                                    self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                                                                }
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             } else {
-                                                VariableManager.addUserToGroup(userId: userId, groupId: groupId)
-                                                self.members.append(userId)
-                                                self.tableView.reloadData()
+                                                OperationQueue.main.addOperation {
+                                                    VariableManager.addUserToGroup(userId: userId, groupId: groupId)
+                                                    self.members.append(userId)
+                                                    self.tableView.reloadData()
+                                                }
                                             }
                                         }
                                     } else if result == 6 {
@@ -205,6 +224,26 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
         self.present(addUser, animated: true, completion: nil)
     }
 
+    func refresh() {
+        VariableManager.reloadGroups() {
+            (result) -> Void in
+            if result {
+                OperationQueue.main.addOperation {
+                    self.refreshControl?.endRefreshing()
+                    self.dataReloadNeeded()
+                    let index = self.tableView.numberOfRows(inSection: 0) - 1
+                    let indexPath = IndexPath(row: index, section: 0)
+                    self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                }
+            } else {
+                self.refreshControl?.endRefreshing()
+                let message = UIAlertController(title: "Error", message: "Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+                message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(message, animated: true, completion: nil)
+            }
+        }
+    }
+
     func dataReloadNeeded() {
         tableView.reloadData()
     }
@@ -229,7 +268,10 @@ class MemberTableViewController: UITableViewController, ReloadDelegate, GroupBut
 
         let text = textField.text!.replacingOccurrences(of: currencyFormatter.currencySymbol, with: "").replacingOccurrences(of: currencyFormatter.groupingSeparator, with: "").replacingOccurrences(of: currencyFormatter.decimalSeparator, with: "")
 
-        textField.text = currencyFormatter.string(from: NSNumber(value: (text as NSString).doubleValue / 100.0))
+        let newText = currencyFormatter.string(from: NSNumber(value: (text as NSString).doubleValue / 100.0))
+        
+        textField.text = newText
+        print(newText)
     }
-
+    
 }

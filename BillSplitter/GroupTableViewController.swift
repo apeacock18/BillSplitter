@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupTableViewController: UITableViewController {
+class GroupTableViewController: UITableViewController, ReloadDelegate {
 
     var groups: Array<Group> = []
     
@@ -18,6 +18,8 @@ class GroupTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 80.0
+
+        NetworkManager.groupDelegate = self
 
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(GroupTableViewController.logout))
         self.title = "Groups"
@@ -178,6 +180,10 @@ class GroupTableViewController: UITableViewController {
         createGroup.addAction(create)
         self.present(createGroup, animated: true, completion: nil)
         
+    }
+
+    func dataReloadNeeded() {
+        tableView.reloadData()
     }
 
     func handleError() {
