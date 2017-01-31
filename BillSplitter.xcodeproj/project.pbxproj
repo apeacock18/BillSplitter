@@ -36,8 +36,6 @@
 		398D8EB81CDDC62100CC045E /* CreateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 398D8EB61CDDC62100CC045E /* CreateCell.xib */; };
 		398D8EBA1CDDD04200CC045E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398D8EB91CDDD04200CC045E /* User.swift */; };
 		39A04F081CE18A45006B89C1 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A04F071CE18A45006B89C1 /* Status.swift */; };
-		39A54C291DCB18880033A402 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 39A54C281DCB18880033A402 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		39A54C2A1DCB18D90033A402 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39A54C281DCB18880033A402 /* CryptoSwift.framework */; };
 		39AB43A61CC9AAAA004F9937 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A41CC9AAAA004F9937 /* Bolts.framework */; };
 		39AB43A71CC9AAAA004F9937 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A51CC9AAAA004F9937 /* Parse.framework */; };
 		39AB43B21CC9AB9E004F9937 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43A81CC9AB9E004F9937 /* AudioToolbox.framework */; };
@@ -48,7 +46,6 @@
 		39AB43B71CC9AB9F004F9937 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43AD1CC9AB9E004F9937 /* libz.tbd */; };
 		39AB43B81CC9AB9F004F9937 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43AE1CC9AB9E004F9937 /* QuartzCore.framework */; };
 		39AB43B91CC9AB9F004F9937 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43AF1CC9AB9E004F9937 /* Security.framework */; };
-		39AB43BA1CC9AB9F004F9937 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43B01CC9AB9E004F9937 /* StoreKit.framework */; };
 		39AB43BB1CC9AB9F004F9937 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AB43B11CC9AB9E004F9937 /* SystemConfiguration.framework */; };
 		39AE7D511CE67A7000438AE8 /* DatePickerVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AE7D501CE67A7000438AE8 /* DatePickerVCDelegate.swift */; };
 		39AE7D541CE6878500438AE8 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AE7D521CE6878500438AE8 /* DropDownCell.swift */; };
@@ -69,10 +66,29 @@
 		39CA4A3E1CCEE17800FC15A8 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D63E4DE1C937E9300D8863B /* Transaction.swift */; };
 		39CA4A451CCEF11600FC15A8 /* NewBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CA4A431CCEF11600FC15A8 /* NewBillViewController.swift */; };
 		39CA4A461CCEF11600FC15A8 /* NewBillViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39CA4A441CCEF11600FC15A8 /* NewBillViewController.xib */; };
+		39CDDF901E3FCAA7006DF026 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39CDDF8D1E3FCA94006DF026 /* CryptoSwift.framework */; };
+		39CDDF931E3FCCAD006DF026 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 39CDDF8D1E3FCA94006DF026 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		39DA301D1CD9758B0029EAA7 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DA301C1CD9758B0029EAA7 /* SpinnerView.swift */; };
 		39DEB6AE1CD7DC8400BA0440 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DEB6AC1CD7DC8400BA0440 /* MeViewController.swift */; };
 		39DEB6AF1CD7DC8400BA0440 /* MeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39DEB6AD1CD7DC8400BA0440 /* MeViewController.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		39CDDF8C1E3FCA94006DF026 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 39CDDF871E3FCA94006DF026 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE45519693E190098E6F3;
+			remoteInfo = CryptoSwift;
+		};
+		39CDDF8E1E3FCA94006DF026 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 39CDDF871E3FCA94006DF026 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE46019693E190098E6F3;
+			remoteInfo = Tests;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		391A24191CCF253B00884A27 /* Embed Frameworks */ = {
@@ -81,7 +97,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				39A54C291DCB18880033A402 /* CryptoSwift.framework in Embed Frameworks */,
+				39CDDF931E3FCCAD006DF026 /* CryptoSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -107,7 +123,6 @@
 		395C9FF51CE533410073D283 /* TransactionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransactionViewController.xib; sourceTree = "<group>"; };
 		395C9FF81CE534470073D283 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		395C9FF91CE534470073D283 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
-		3964E7651DB9EB3200EFC0AF /* CryptoSwift */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CryptoSwift; sourceTree = "<group>"; };
 		396CC9F61CCED67A00E4AC1D /* CreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateViewController.xib; path = BillSplitter/CreateViewController.xib; sourceTree = SOURCE_ROOT; };
 		396CC9FA1CCED6E200E4AC1D /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = BillSplitter/LoginViewController.xib; sourceTree = SOURCE_ROOT; };
 		397308E71CD95460008540C1 /* Spinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
@@ -125,7 +140,6 @@
 		398D8EB61CDDC62100CC045E /* CreateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateCell.xib; sourceTree = "<group>"; };
 		398D8EB91CDDD04200CC045E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		39A04F071CE18A45006B89C1 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
-		39A54C281DCB18880033A402 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CryptoSwift.framework; sourceTree = "<group>"; };
 		39AB43A41CC9AAAA004F9937 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		39AB43A51CC9AAAA004F9937 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		39AB43A81CC9AB9E004F9937 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -136,7 +150,6 @@
 		39AB43AD1CC9AB9E004F9937 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		39AB43AE1CC9AB9E004F9937 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		39AB43AF1CC9AB9E004F9937 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		39AB43B01CC9AB9E004F9937 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		39AB43B11CC9AB9E004F9937 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		39AB43C41CC9CB3B004F9937 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../BillSplitter/LoginViewController.swift; sourceTree = "<group>"; };
 		39AE7D501CE67A7000438AE8 /* DatePickerVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerVCDelegate.swift; sourceTree = "<group>"; };
@@ -150,10 +163,10 @@
 		39C00DF71CDB10E600D6F9C6 /* MemberTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberTableViewController.swift; sourceTree = "<group>"; };
 		39CA4A431CCEF11600FC15A8 /* NewBillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewBillViewController.swift; sourceTree = "<group>"; };
 		39CA4A441CCEF11600FC15A8 /* NewBillViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewBillViewController.xib; sourceTree = "<group>"; };
+		39CDDF871E3FCA94006DF026 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		39DA301C1CD9758B0029EAA7 /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		39DEB6AC1CD7DC8400BA0440 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		39DEB6AD1CD7DC8400BA0440 /* MeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeViewController.xib; sourceTree = "<group>"; };
-		39FDB0181DC9769800E16DE9 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CryptoSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39A54C2A1DCB18D90033A402 /* CryptoSwift.framework in Frameworks */,
+				39CDDF901E3FCAA7006DF026 /* CryptoSwift.framework in Frameworks */,
 				39AB43B21CC9AB9E004F9937 /* AudioToolbox.framework in Frameworks */,
 				39AB43B31CC9AB9E004F9937 /* CFNetwork.framework in Frameworks */,
 				39AB43B41CC9AB9E004F9937 /* CoreGraphics.framework in Frameworks */,
@@ -170,7 +183,6 @@
 				39AB43B71CC9AB9F004F9937 /* libz.tbd in Frameworks */,
 				39AB43B81CC9AB9F004F9937 /* QuartzCore.framework in Frameworks */,
 				39AB43B91CC9AB9F004F9937 /* Security.framework in Frameworks */,
-				39AB43BA1CC9AB9F004F9937 /* StoreKit.framework in Frameworks */,
 				39AB43BB1CC9AB9F004F9937 /* SystemConfiguration.framework in Frameworks */,
 				39AB43A71CC9AAAA004F9937 /* Parse.framework in Frameworks */,
 				39AB43A61CC9AAAA004F9937 /* Bolts.framework in Frameworks */,
@@ -183,7 +195,7 @@
 		1D63E4981C922CE900D8863B = {
 			isa = PBXGroup;
 			children = (
-				39A54C281DCB18880033A402 /* CryptoSwift.framework */,
+				39CDDF871E3FCA94006DF026 /* CryptoSwift.xcodeproj */,
 				39AB43A81CC9AB9E004F9937 /* AudioToolbox.framework */,
 				39AB43A91CC9AB9E004F9937 /* CFNetwork.framework */,
 				39AB43AA1CC9AB9E004F9937 /* CoreGraphics.framework */,
@@ -192,7 +204,6 @@
 				39AB43AD1CC9AB9E004F9937 /* libz.tbd */,
 				39AB43AE1CC9AB9E004F9937 /* QuartzCore.framework */,
 				39AB43AF1CC9AB9E004F9937 /* Security.framework */,
-				39AB43B01CC9AB9E004F9937 /* StoreKit.framework */,
 				39AB43B11CC9AB9E004F9937 /* SystemConfiguration.framework */,
 				39AB43A41CC9AAAA004F9937 /* Bolts.framework */,
 				39AB43A51CC9AAAA004F9937 /* Parse.framework */,
@@ -213,6 +224,7 @@
 		1D63E4A31C922CE900D8863B /* BillSplitter */ = {
 			isa = PBXGroup;
 			children = (
+				1D63E4AB1C922CE900D8863B /* Assets.xcassets */,
 				1D63E4B01C922CE900D8863B /* Info.plist */,
 				1D63E4A41C922CE900D8863B /* AppDelegate.swift */,
 				3978787F1CC9EA410052DF04 /* CreateViewController.swift */,
@@ -230,7 +242,6 @@
 				1D63E4DE1C937E9300D8863B /* Transaction.swift */,
 				398D8EB91CDDD04200CC045E /* User.swift */,
 				39B6398C1CD41DF2002269A8 /* VariableManager.swift */,
-				1D63E4AB1C922CE900D8863B /* Assets.xcassets */,
 				396CC9F61CCED67A00E4AC1D /* CreateViewController.xib */,
 				396CC9FA1CCED6E200E4AC1D /* LoginViewController.xib */,
 				39CA4A441CCEF11600FC15A8 /* NewBillViewController.xib */,
@@ -263,8 +274,6 @@
 		3964E7641DB9EB3200EFC0AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				39FDB0181DC9769800E16DE9 /* CryptoSwift.framework */,
-				3964E7651DB9EB3200EFC0AF /* CryptoSwift */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -297,6 +306,15 @@
 				397F65DF1CE02EE50028CB86 /* OptionCell.xib */,
 			);
 			name = Options;
+			sourceTree = "<group>";
+		};
+		39CDDF881E3FCA94006DF026 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				39CDDF8D1E3FCA94006DF026 /* CryptoSwift.framework */,
+				39CDDF8F1E3FCA94006DF026 /* Tests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,8 +350,14 @@
 				TargetAttributes = {
 					1D63E4A01C922CE900D8863B = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 89C3C5UDK7;
+						DevelopmentTeam = TND9GMD8DZ;
 						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -348,12 +372,35 @@
 			mainGroup = 1D63E4981C922CE900D8863B;
 			productRefGroup = 1D63E4A21C922CE900D8863B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 39CDDF881E3FCA94006DF026 /* Products */;
+					ProjectRef = 39CDDF871E3FCA94006DF026 /* CryptoSwift.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1D63E4A01C922CE900D8863B /* BillSplitter */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		39CDDF8D1E3FCA94006DF026 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = 39CDDF8C1E3FCA94006DF026 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		39CDDF8F1E3FCA94006DF026 /* Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Tests.xctest;
+			remoteRef = 39CDDF8E1E3FCA94006DF026 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1D63E49F1C922CE900D8863B /* Resources */ = {
@@ -467,7 +514,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -509,7 +556,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -522,16 +569,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: davismariotti@gmail.com (5JWWGTPNB2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: davismariotti@gmail.com (5JWWGTPNB2)";
-				DEVELOPMENT_TEAM = 89C3C5UDK7;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = TND9GMD8DZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = BillSplitter/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = info.gomeow;
+				PRODUCT_BUNDLE_IDENTIFIER = com.davismariotti.billsplitter;
 				PRODUCT_NAME = BillSplitter;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -545,16 +592,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: davismariotti@gmail.com (5JWWGTPNB2)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: davismariotti@gmail.com (5JWWGTPNB2)";
-				DEVELOPMENT_TEAM = 89C3C5UDK7;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = TND9GMD8DZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = BillSplitter/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = info.gomeow;
+				PRODUCT_BUNDLE_IDENTIFIER = com.davismariotti.billsplitter;
 				PRODUCT_NAME = BillSplitter;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
