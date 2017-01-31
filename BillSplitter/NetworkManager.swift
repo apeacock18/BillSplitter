@@ -15,7 +15,7 @@ class NetworkManager {
     static var groupDelegate: ReloadDelegate?
     static var memberDelegate: ReloadDelegate?
     //static let baseUrl: String = "http://127.0.0.1:8000/"
-    static let baseUrl: String = "http://api.gomeow.info/"
+    static let baseUrl: String = "https://api.davismariotti.com/"
 
     static func loginWithUsername(username: String, password: String, completion: @escaping (Bool) -> ()) {
         runRequest(urlFrag: "login/", params: ["username": username, "password": password]) {
