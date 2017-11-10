@@ -113,13 +113,17 @@ class CreateViewController: UIViewController, UITextFieldDelegate {
                     self.present(TabViewController(), animated: true, completion: nil)
                 }
             } else if result == 2 { // Send an error, the username is taken
-                let message = UIAlertController(title: "Username Taken", message: "Please choose another username.", preferredStyle: UIAlertControllerStyle.alert)
-                message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(message, animated: true, completion: nil)
+                OperationQueue.main.addOperation {
+                    let message = UIAlertController(title: "Username Taken", message: "Please choose another username.", preferredStyle: UIAlertControllerStyle.alert)
+                    message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(message, animated: true, completion: nil)
+                }
             } else {
-                let message = UIAlertController(title: "Error", message: "Please try again.", preferredStyle: UIAlertControllerStyle.alert)
-                message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(message, animated: true, completion: nil)
+                OperationQueue.main.addOperation {
+                    let message = UIAlertController(title: "Error", message: "Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+                    message.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(message, animated: true, completion: nil)
+                }
             }
         }
     }
